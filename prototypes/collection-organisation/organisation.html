@@ -1,0 +1,75 @@
+<section class="chapter org-section" id="organisation" aria-labelledby="org-title">
+  <div class="org-light" aria-hidden="true"></div>
+  <div class="org-layout">
+    <header class="chapter-intro org-intro">
+      <p class="org-eyebrow">03 / Organisation</p>
+      <h2 id="org-title">Notre<br><em>structure.</em></h2>
+      <p class="org-intro-copy">Un collectif organisé pour porter l’ambition du club.</p>
+      <div class="org-editorial-rule" aria-hidden="true"></div>
+      <p class="org-instruction" id="org-instruction">Choisissez un nom pour découvrir sa fonction, son responsable et son équipe.</p>
+    </header>
+
+    <div class="org-diagram">
+      <ul class="org-tree" aria-label="Organigramme hiérarchique du club" aria-describedby="org-instruction">
+        <li class="org-branch org-root">
+          <button class="org-node org-node-president" type="button" data-org-person="yvan" aria-haspopup="dialog" aria-controls="org-person-dialog">
+            <span class="org-node-role">Président</span><strong>Yvan</strong>
+          </button>
+          <ul class="org-children">
+            <li class="org-branch org-director">
+              <button class="org-node org-node-director" type="button" data-org-person="messi" aria-haspopup="dialog" aria-controls="org-person-dialog">
+                <span class="org-node-role">Directeur général</span><strong>Messi</strong>
+              </button>
+              <ul class="org-children org-services">
+                <li class="org-branch">
+                  <button class="org-node" type="button" data-org-person="charel" aria-haspopup="dialog" aria-controls="org-person-dialog">
+                    <span class="org-node-role">Finances et transferts</span><strong>Charel</strong>
+                  </button>
+                  <ul class="org-children">
+                    <li class="org-branch">
+                      <button class="org-node org-node-leaf" type="button" data-org-person="marco" aria-haspopup="dialog" aria-controls="org-person-dialog">
+                        <span class="org-node-role">Comptabilité</span><strong>Marco</strong>
+                      </button>
+                    </li>
+                  </ul>
+                </li>
+                <li class="org-branch">
+                  <button class="org-node" type="button" data-org-person="mamady" aria-haspopup="dialog" aria-controls="org-person-dialog">
+                    <span class="org-node-role">Logistique et commerce</span><strong>Mamady</strong>
+                  </button>
+                  <ul class="org-children">
+                    <li class="org-branch">
+                      <button class="org-node org-node-leaf" type="button" data-org-person="dylan" aria-haspopup="dialog" aria-controls="org-person-dialog">
+                        <span class="org-node-role">Équipements</span><strong>Dylan</strong>
+                      </button>
+                    </li>
+                  </ul>
+                </li>
+                <li class="org-branch">
+                  <button class="org-node" type="button" data-org-person="emilie" aria-haspopup="dialog" aria-controls="org-person-dialog">
+                    <span class="org-node-role">Marketing et communication</span><strong>Émilie</strong>
+                  </button>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p class="org-diagram-caption">Des rôles clairs. Une vision collective.</p>
+    </div>
+  </div>
+
+  <dialog class="org-dialog" id="org-person-dialog" aria-labelledby="org-person-name" aria-describedby="org-person-description">
+    <div class="org-dialog-content">
+      <div class="org-dialog-top"><p class="org-eyebrow">VALORIA FC / Organisation</p><button class="org-dialog-close" type="button" data-org-close aria-label="Fermer la fiche">Fermer</button></div>
+      <p class="org-dialog-role" id="org-person-role"></p>
+      <h2 class="org-dialog-heading" id="org-person-name" tabindex="-1"></h2>
+      <p class="org-dialog-description" id="org-person-description"></p>
+      <dl class="org-relations">
+        <div><dt>Responsable</dt><dd id="org-person-manager"></dd></div>
+        <div><dt>Rattachements directs</dt><dd><ul id="org-person-reports"></ul><p id="org-person-empty">Aucun rattachement direct indiqué.</p></dd></div>
+      </dl>
+      <p class="org-person-count" id="org-person-count"></p>
+    </div>
+  </dialog>
+</section>
