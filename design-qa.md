@@ -1,45 +1,61 @@
-# Contrôle visuel et fonctionnel — phase 3 VALORIA FC
-
-## Référence et comparaison
-
-Source de vérité : brief de phase 3 et budget 0 €, état de phase 2 et visuels officiels déjà présents. Le texte technique détaillé « Bronze and Time » est étudié comme référence de progression ; aucun audit visuel du site distant n’est revendiqué et aucun actif Laocoön n’est utilisé.
-
-Références avant : `artifacts/phase-3/before-desktop-full.png` (1440 px de large) et `before-mobile-full.png` (390 × 5908 pixels). Implémentation finale : `final-desktop-full.png` (1440 × 4752 pixels) et `final-mobile-full.png` (390 × 5289 pixels). Viewports CSS 1440 × 1000 et 390 × 844, densité 1, route principale et mouvement réduit. Les images pleine page sont plus hautes que le viewport ; pas de confusion avec une capture à densité différente.
-
-Comparaison assemblée consultée : `vue-ensemble-avant-apres.jpg`, deux colonnes réduites à 420 px. Captures de section par rectangles DOM : introduction, identité, collection, organisation, engagements, contact et footer, chacune en versions desktop et mobile. Contrôles focalisés consultés : `organisation-mobile.jpg`, `comparaison-mobile.jpg`, `identite-mobile.jpg` et `fiche-mobile.jpg` ; vues originales et page entière consultées pour la hiérarchie globale. Les formes du blason et des maillots proviennent des mêmes fichiers qu’avant.
-
-## Résultats des cinq surfaces
-
-- **Typographies :** familles locales conservées et centralisées. Titre monumental par mots avec nom accessible complet ; texte clair sur fond sombre, hiérarchie stable, aucune coupure constatée aux quatre largeurs. Le blason occupe une place plus dominante sans modification du logo.
-- **Espacements et composition :** disparition des panneaux beige alternés. Espacements de chapitre communs ; navigation persistante, progression et chapitre courant. L’arbre mobile mesure environ 559 px au lieu d’une longue série de grandes cartes ; toutes les personnes restent accessibles. La page mobile passe de 5908 à 5289 px sans supprimer le contenu officiel. Les marges vides de l’atlas sont resserrées.
-- **Couleurs et tokens :** noir/bordeaux continus, crème pour le texte, or pour accents/bordures/focus. Même style de cartes, boutons, formulaires et footer. Violet uniquement associé au troisième maillot. Axe passe sur les états déjà testés et aucune séparation claire/sombre brutale ne subsiste dans les captures finales.
-- **Images :** aucun nouvel actif ou génération. Cadrage CSS de l’atlas sans déformation ; rapports naturels des images vérifiés dans les tests aux quatre largeurs. Aucune promesse de modèle 3D ou de reflets calculés : le blason est une image avec inclinaison CSS.
-- **Contenus :** fonctions et rattachements conservés dans le module organisation, inchangé. Quatre maillots sans sponsor, aucune donnée sportive ou commerciale ajoutée. Formulaire local et navigation entre fiches toujours fonctionnels.
-
-## Corrections et historique
-
-La première revue globale a confirmé la continuité sombre et le gain de place, mais a montré une flèche noire devenue peu lisible sur le fond sombre du lien de présentation. La règle d’icône a été adaptée au nouveau fond. Les captures focalisées finales et les tests après correction sont conformes ; aucun P0/P1/P2 restant identifié. Les contrôles antérieurs sont archivés dans `docs/qa-phase-2.md`.
-
-## Validation
-
-Compilation finale réussie. 18 tests Playwright réussis : les 14 précédents sont inchangés et quatre parcours nouveaux couvrent 320/390/768/1440 px, navigation fixe, chapitre courant, ancre non masquée, arbre mobile compact, conservation des proportions des maillots et absence de requête HTTP vers une origine externe dans ces parcours. Sortie brute : `artifacts/phase-3/test-results.txt`.
-
-Les vérifications de phase 2 couvrent le scroll en descente et remontée sur mobile et ordinateur, les préférences, le clavier, les fiches et la comparaison. Les images et la vidéo ont été capturées depuis le résultat compilé servi localement, sans exception JavaScript observée. Aucun déploiement ni nouvelle dépendance.
-
-## Prévisualisation et limites
-
-Le relais partagé est indisponible. Le ZIP n’est pas une application exécutable dans le lecteur de fichiers. La tentative additionnelle de fichier HTML autonome a rencontré `ERR_BLOCKED_BY_ADMINISTRATOR` sur le schéma file:// ; aucune restriction n’a été contournée et cette variante n’est pas livrée comme aperçu vérifié. Le serveur Vite et Chromium local sont vérifiés ; instructions PC dans PREVISUALISATION.md.
-
-Pas de test Safari/iPhone physique, pas de nouvelle ressource 3D ni d’exports de maillots séparés. Pas de garantie universelle de fréquence d’images ou de gratuité d’offres futures d’hébergement ; aucune offre activée ici. Les licences des ressources existantes et les limites de vérification des coûts figurent dans docs/budget-zero.md.
-
-## Checklist
-
-- [x] Budget et conservation inscrits dans AGENTS.md.
-- [x] Design sombre continu et mobile repensé, captures inspectées.
-- [x] Comparaison et fiches préservées, aucune image officielle changée.
-- [x] Navigation, progressions et préférences vérifiées.
-- [x] Compilation et 18 tests réussis ; 14 tests précédents inchangés.
-- [x] Prévisualisation locale documentée, aucune URL partagée inventée.
-- [x] Aucun achat, abonnement, nouvel outil de génération ou déploiement.
+# VALORIA FC — QA du prototype HERO → IDENTITÉ
 
 final result: passed
+
+Périmètre : prototype local `prototypes/hero-cinematique/` uniquement. Aucune refonte de la collection ou de l’organisation, aucune modification de la production.
+
+## Références et comparaison
+
+Source visuelle : six images jointes au dernier brief utilisateur. Référence principale : planche 2 « Concept site officiel — Direction UI/UX », cadrages 01, 02 et 04. Les variantes 3/5 et 6 fixent la matière et la composition mobile. La consigne écrite « titre jamais masqué par le blason » prime sur le chevauchement des anciennes variantes.
+
+Les maquettes sont visibles dans la conversation, mais leurs fichiers originaux ne sont pas montés sur disque. Comparaison visuelle de la composition et des états, sans différence pixel à pixel ni identification certaine de leur fonte. La planche générale est un montage de plusieurs cadres ; elle ne représente pas un viewport unique à reproduire en entier.
+
+Implémentation : Chromium local, prototype **compilé**, desktop 1440×900 et mobile 390×844, densité 1. Captures PNG à ces dimensions exactes. Les planches de restitution redimensionnent seulement les captures et ne retouchent pas le site ou ses assets.
+
+Preuves :
+
+- `artifacts/motion-prototype/desktop-deux-cadrages.png` : deux états desktop.
+- `artifacts/motion-prototype/mobile-deux-cadrages.png` : deux états mobile.
+- `artifacts/motion-prototype/comparaison-avant-apres.png` : ancien prototype local (`artifacts/art-direction-audit/hero-prototype-1440.jpg`, également repris dans les références) et nouveau cadrage sans chevauchement. L’ancien viewport 1440×1000 et le nouveau 1440×900 sont signalés : cette planche n’est pas une comparaison pixel à pixel à viewport identique.
+- Détails titre/blason : captures individuelles `hero-initial-1440x900.png` et `hero-initial-390x844.png`, inspectées en pleine définition ; ancien cadrage visible dans la comparaison précédente. Contrôle géométrique de leurs boîtes pendant l’entrée et à douze positions de scroll.
+- `hero-reduced-motion-390x844.png` : deux chapitres statiques lisibles.
+- `scroll-mobile.mp4` et `scroll-desktop.mp4` : huit secondes chacun, descente puis remontée. Séquences de 96 captures réelles du navigateur encodées à 12 images/s ; ce n’est pas une mesure du framerate du site. Images intermédiaires `frames-mobile/f024.jpg` et `frames-desktop/f024.jpg` inspectées en plus des poses finales.
+
+## Surfaces de fidélité
+
+| Surface | Constat après correction |
+| --- | --- |
+| Typographie | Cormorant Garamond et Manrope locales conservées. VALORIA FC entièrement lisible au-dessus du blason ; titre d’identité en deux lignes, italique dorée, petites capitales et navigation discrète. Fonte exacte des maquettes non identifiée. |
+| Composition et espacements | Titre et blason séparés ; CTA sous le blason ; cadrage final texte à gauche / blason à droite. Mobile recomposé verticalement, avec un cadrage spécifique sur écran court et paysage. |
+| Palette | Noir profond, bordeaux du textile original, or et crème. Aucun violet ni nouvelle palette. Contrôle axe AA sans violation détectée dans les six états audités. |
+| Assets | `crest.webp` et `hero-burgundy.webp` inchangés. Pas de grande image de maquette utilisée comme interface. Décor textile authentique, léger éclairage CSS, icônes Phosphor déjà installées. Aucun actif Laocoön. |
+| Contenu | Textes du prototype et des références conservés. Aucun sponsor, numéro, stade ou département illustratif ajouté ; aucun nom de personne modifié. |
+
+## Historique des corrections
+
+- P1 — Titre et blason superposés dans l’ancien cadrage : zones verticales séparées et taille du blason adaptée à la hauteur disponible. Vérification des images et des états intermédiaires ; aucune intersection détectée.
+- P1 — Identité masquée en mouvement réduit/pause : deux chapitres désormais présents dans le flux, également sans JavaScript. Capture statique inspectée et navigation testée.
+- P2 — Animation d’entrée en concurrence avec le scroll : enfants séparés pour l’entrée, parents réservés au scroll ; entrée annulée si le défilement commence.
+- P2 — Focus différé pouvant voler celui d’un contrôle : temporisateur annulé au changement de mode et focus conditionné au lien initiateur encore actif.
+- P2 — Focus perdu lorsqu’une branche devient inerte : retour à « Le club » uniquement si l’élément actif appartient à la branche qui disparaît ; contrôle dans les deux sens.
+- P2 — Décalage de lecture à la pause : compensation du scroll et hauteur de lecture suffisante. Écart du titre mesuré inférieur à 0,5 px sur les cinq formats.
+- P2 — Légende déplacée après l’identité dans la lecture statique : ordre HTML corrigé, légende désormais après l’introduction.
+
+Aucun problème P0/P1/P2 restant observé dans ce périmètre. La revue visuelle confirme les deux cadrages et la continuité du décor ; elle ne remplace pas la validation artistique de l’utilisateur.
+
+## Validation technique
+
+- Compilation du site et compilation indépendante du prototype : réussies.
+- Tests Playwright existants du site : **29 réussis** (43,8 s). Ils préservent le comportement existant ; les tests du prototype sont exécutés séparément.
+- Prototype : 320×568, 390×844, 768×1024, 1440×900 et 844×390.
+- Entrée, douze positions du scroll, retour exact à la pose initiale, cadrage final, absence de débordement, navigation clavier, restauration du focus, pause et réduction des animations : contrôlés.
+- Geste tactile réel envoyé à Chromium émulé en 390×844 : scroll naturel vérifié.
+- Axe WCAG A/AA : six audits, aucune violation détectée. Cela ne constitue pas une certification exhaustive d’accessibilité.
+- Aucune erreur JavaScript non interceptée, réponse HTTP en erreur ou requête réseau extérieure au serveur local détectée.
+- Rapport détaillé : `artifacts/motion-prototype/prototype-verification.json`.
+
+Limites : aucun iPhone physique/Safari iOS connecté ; pas de garantie universelle de fréquence d’images. Le relais de navigateur partagé n’est pas disponible : vérification réalisée dans Chromium/Playwright local, avec captures du rendu effectif. Les liens vers les sections existantes de production sont conservés mais n’ont pas fait l’objet d’un nouvel audit distant.
+
+## Suite
+
+Attendre la validation visuelle. Ne pas intégrer à main ni étendre aux autres sections ou publier avant cette validation. Aucune dépendance ajoutée et aucun service activé. Coût supplémentaire : **0 €**.
