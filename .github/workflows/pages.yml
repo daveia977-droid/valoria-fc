@@ -1,8 +1,6 @@
 name: Publier VALORIA FC sur GitHub Pages
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -34,7 +32,7 @@ jobs:
       - name: Installer Chromium pour les tests
         run: npx playwright install --with-deps chromium
       - name: Compiler pour /valoria-fc/
-        run: npm run build
+        run: npm run build -- --base=/valoria-fc/
       - name: Exécuter les tests existants
         run: npm test
       - name: Vérifier la version compilée sous /valoria-fc/

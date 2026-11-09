@@ -9,16 +9,14 @@ for (const width of [390, 1440]) {
     await page.setViewportSize({ width, height: 900 });
     await page.emulateMedia({ reducedMotion: "reduce" });
     await page.goto("/");
-    const tree = page.locator("#org-tree");
-    await expect(tree.locator(".org-person")).toHaveCount(7);
-    const directNames = (id) =>
-      tree
-        .locator(`li:has(> [data-person="${id}"]) > ul > li > button strong`)
-        .allTextContents();
-    expect(await directNames("yvan")).toEqual(["Messi"]);
-    expect(await directNames("messi")).toEqual(["Charel", "Mamady", "Émilie"]);
-    expect(await directNames("charel")).toEqual(["Marco"]);
-    expect(await directNames("mamady")).toEqual(["Dylan"]);
+    const tree = page.locator("#club-people");
+    await expect(tree.locator(".person-button")).toHaveCount(7);
+    expect(await tree.locator('.leadership-list [data-person]').evaluateAll(nodes => nodes.map(n => n.dataset.person))).toEqual(['yvan', 'messi']);
+    const poles = tree.locator('.poles-list > li');
+    expect(await poles.count()).toBe(3);
+    expect(await poles.nth(0).locator('[data-person]').evaluateAll(nodes => nodes.map(n => n.dataset.person))).toEqual(['charel', 'marco']);
+    expect(await poles.nth(1).locator('[data-person]').evaluateAll(nodes => nodes.map(n => n.dataset.person))).toEqual(['mamady', 'dylan']);
+    expect(await poles.nth(2).locator('[data-person]').evaluateAll(nodes => nodes.map(n => n.dataset.person))).toEqual(['emilie']);
 
     const charel = tree.locator('[data-person="charel"]');
     await charel.focus();
@@ -128,7 +126,7 @@ test("défilement réversible : le blason et les textes retrouvent leur pose", a
     };
     const crest = () =>
       page
-        .locator(".hero-crest")
+        .locator(".emblem")
         .evaluate((el) => getComputedStyle(el).transform);
     await scroll(180);
     const initial = await crest();
@@ -136,24 +134,14 @@ test("défilement réversible : le blason et les textes retrouvent leur pose", a
     expect(await crest()).not.toBe(initial);
     await scroll(180);
     expect(await crest()).toBe(initial);
-    const title = page.locator("#club-title");
-    const documentTop = await title.evaluate(
-      (el) => el.getBoundingClientRect().top + scrollY,
-    );
-    const height = await page.evaluate(() => innerHeight);
-    await scroll(documentTop - height + 110);
-    const low = Number(
-      await title.evaluate((el) => getComputedStyle(el).opacity),
-    );
-    await scroll(documentTop - height + 230);
-    const high = Number(
-      await title.evaluate((el) => getComputedStyle(el).opacity),
-    );
-    expect(high).toBeGreaterThan(low + 0.15);
-    await scroll(documentTop - height + 110);
-    expect(
-      Number(await title.evaluate((el) => getComputedStyle(el).opacity)),
-    ).toBeCloseTo(low, 2);
+    await scroll(0);
+    const original = await crest();
+    await scroll((await page.locator('.story').evaluate(el => el.offsetHeight)) - 900);
+    await expect(page.locator('.identity')).toHaveAttribute('aria-hidden', 'false');
+    expect(await page.locator('.identity').evaluate(el => Number(getComputedStyle(el).opacity))).toBe(1);
+    await scroll(0);
+    expect(await crest()).toBe(original);
+
   }
 });
 
@@ -162,10 +150,10 @@ test("mouvement réduit pendant une fiche : arrêt de toutes les animations", as
 }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/");
-  await page.locator('#org-tree [data-person="messi"]').click();
+  await page.locator('#club-people [data-person="messi"]').click();
   await page.emulateMedia({ reducedMotion: "reduce" });
   // MediaQueryList change is asynchronous; verify it applied before closing the modal.
-  await expect(page.locator("#motion-toggle")).toHaveAttribute(
+  await expect(page.locator("#pause")).toHaveAttribute(
     "aria-pressed",
     "true",
   );
@@ -181,7 +169,7 @@ test("mouvement réduit pendant une fiche : arrêt de toutes les animations", as
   await expect(page.locator("#person-dialog")).toBeVisible();
   await expect(page.locator("#person-name")).toHaveText("Messi");
   await page.keyboard.press("Escape");
-  await expect(page.locator(".hero-crest")).toHaveCSS("transform", "none");
+  await expect(page.locator(".emblem")).toHaveCSS("transform", "none");
 });
 
 test("accessibilité de la comparaison et de la fiche d’organisation", async ({
@@ -206,6 +194,6 @@ test("accessibilité de la comparaison et de la fiche d’organisation", async (
     ).toEqual([]);
   };
   await check();
-  await page.locator('#org-tree [data-person="messi"]').click();
+  await page.locator('#club-people [data-person="messi"]').click();
   await check();
 });

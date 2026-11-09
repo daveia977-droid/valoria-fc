@@ -1,97 +1,34 @@
-# valoria-fc
-Site vitrine officiel du club de football fictif VALORIA FC — projet pédagogique.
+# VALORIA FC
 
-**Budget prioritaire : 0 €.** Voir [AGENTS.md](AGENTS.md) et [le bilan des ressources](docs/budget-zero.md). Aucun achat, essai payant, abonnement, service facturé à l’usage ou déploiement n’est nécessaire pour cette version locale.
+Site vitrine personnel d’un club fictif, avec un budget maximal de **0 €**. Vite, HTML, CSS et JavaScript ; polices et ressources locales, aucune API payante.
 
-**Pour voir le vrai site sur son PC : [PREVISUALISATION.md](PREVISUALISATION.md).** Un ZIP doit être téléchargé puis extrait ; son aperçu dans Codex n’exécute pas Vite. Le guide donne les étapes Windows / macOS / Linux et le diagnostic du relais partagé indisponible.
+Le hero « Écrin bordeaux » se transforme au scroll en scène d’identité. La collection propose quatre maillots 2D de face, sans sponsor, dos ou rotation. La structure présente Yvan, Messi et les trois pôles avec leurs rattachements, à travers sept profils interactifs. Le formulaire télécharge seulement un brouillon local.
 
-Le code complet est dans la branche **`main`** de ce dépôt, suivant la demande de l’utilisateur. Sources, assets, animations, organigramme, modèle et tests sont conservés. La branche `feat/valoria-v1` reste disponible avec l’état validé de la correction. **La synchronisation GitHub ne constitue pas un déploiement du site.**
-
-**Hébergement choisi : GitHub Pages.** Le [workflow et le guide de publication](docs/github-pages.md) compilent et vérifient le site sous `/valoria-fc/`, puis publient uniquement `dist/`. L’activation de Pages et le résultat distant ne sont pas encore vérifiables depuis cet environnement ; le guide donne l’étape exacte dans GitHub. Aucune offre payante n’est activée.
-
-## Version 1
-
-Site statique en français : noir profond, bordeaux, or et crème, hero « VALORIA FC » avec écusson central, motion design 2D, collection sans sponsor, présentation du club, organisation et responsabilités. Le violet est réservé au troisième maillot.
-
-La première phase de refonte est documentée dans [docs/phase-1.md](docs/phase-1.md). Les captures avant/après et l’aperçu animé sont disponibles localement dans `artifacts/phase-1/` ; aucune refonte des maillots ni intégration 3D n’a été entreprise.
-
-La [phase 2](docs/phase-2.md) ajoute un organigramme interactif animé, des fiches de fonction navigables, un défilement réversible et une comparaison des deux domiciles. Cette phase est exclusivement locale et n’effectue aucun déploiement.
-
-La [phase 3](docs/phase-3.md) unifie désormais l’ensemble du site dans une composition sombre continue, agrandit le blason, compacte l’organigramme mobile et resserre les cadrages de collection. Navigation persistante, suivi du chapitre et progression de lecture ; aucune nouvelle dépendance ou ressource achetée. Les captures de toutes les sections et la vidéo sont dans `artifacts/phase-3/`.
-
-### Domicile V1 en 3D
-
-La [correction ciblée de la collection](docs/correction-collection.md) retire la fenêtre « Vue 360° » et ses commandes. Chaque tenue apparaît en grand dans la collection. Le domicile V1 réutilise son modèle existant : glisser directement au doigt ou à la souris pour tourner, ou utiliser les flèches du clavier. Les trois autres maillots gardent leur image de face, accompagnée d’une perspective légère et de l’indication « Visuel 2D ». Aucun visuel, motif ou modèle n’a été régénéré.
-
-Three.js 0.187.0 (MIT), déjà présent, et le GLB autonome de 942 ko sont chargés lorsque le domicile V1 devient visible. Le rendu est calculé à la demande, sans rotation automatique. Sortir de la collection ou choisir un autre maillot libère le rendu. La réduction des animations et la pause globale annulent la perspective décorative des images 2D ; la rotation 3D reste une action manuelle explicite. Le site reste utilisable sans WebGL. Budget : 0 €.
-
-Les **29 tests Playwright passent** : les 18 tests des autres fonctionnalités sont inchangés ; les 11 contrôles du module maillot sont adaptés à la présentation intégrée. Compilation validée, rotation et défilement tactile vérifiés à 320/390/768/1440 px. [Capture desktop](docs/media/collection-desktop.jpg), [capture mobile](docs/media/collection-mobile.jpg) et [démonstration du mouvement](docs/media/collection-mouvement.mp4).
-
-### Développement
-
-Node.js 22.12+ ou 24 recommandé. Aucun secret, compte externe, base de données ou service payant nécessaire.
+## Lancer
 
 ```sh
 npm ci
-npm run dev -- --host 0.0.0.0 --port 4173 --strictPort
+npm run dev
 ```
 
-Utiliser le checkout existant. Aucun worktree supplémentaire nécessaire.
-
-### Vérification
+## Compiler et vérifier
 
 ```sh
-npm run build
 npm test
-npm run test:pages
+npm run build
+npm run preview -- --port 4188 --strictPort
 ```
 
-Les tests utilisent Chromium système s’il est disponible dans `/usr/bin/chromium`. Sinon, installer le navigateur de Playwright avec `npx playwright install chromium`, ou fournir `CHROMIUM_PATH`. Les sept tests initiaux restent inchangés. Sept tests supplémentaires vérifient les fiches de l’organigramme et leur hiérarchie, la comparaison au clavier, le défilement réversible sur mobile et ordinateur, la réduction du mouvement et les nouveaux états d’accessibilité.
+Dans un autre terminal, `node tools/verify_release.mjs` contrôle la compilation servie sur 4188 et produit les captures et résultats dans `artifacts/v1-final/`.
 
-Le contrôle responsive est effectué par émulation de navigateur, pas sur un iPhone physique. Le test axe ne remplace pas un audit humain complet d’accessibilité.
+Vercel est connecté à la branche officielle `main`, avec publication du seul dossier `dist/`. La base Vite est `/`. Le workflow historique GitHub Pages est conservé en déclenchement manuel ; pour ce cas uniquement, compiler avec `npm run build -- --base=/valoria-fc/` puis `npm run test:pages`.
 
-### Animations
+## Licences et données
 
-- Entrée progressive du titre « VALORIA FC », de l’écusson central, de la navigation et des textes ; arrière-plan textile bordeaux/or en mouvement continu.
-- Flottement de l’image de l’écusson et changement de position / inclinaison lié au défilement ; perspective CSS d’une image 2D, sans modèle 3D.
-- Apparitions des sections et des cartes de l’organigramme, pilotées par la position de défilement dans les deux sens.
-- Animation des fiches de fonction et de la comparaison des deux domiciles ; transitions entre les quatre tenues conservées.
-- Bouton de pause, respect de `prefers-reduced-motion` et arrêt du mouvement d’ambiance hors écran / onglet masqué.
-- Web Animations API, IntersectionObserver et CSS : aucune bibliothèque de motion, aucun WebGL requis, aucun défilement détourné.
+Les fontes Manrope / Cormorant Garamond et les icônes Phosphor conservent leurs notices dans `public/licenses/`. UI UX Pro Max, sous MIT, est installé dans `.agents/skills/ui-ux-pro-max/` et sert à la conception, pas au code exécuté dans le navigateur.
 
-### Modifier les contenus
+Les visuels sources restent conservés. Le masque `collection-mask.png` rend le fond de l’atlas transparent sans régénérer les tenues ; son générateur local est `tools/build_collection_mask.mjs`. Les anciennes études et sources restent archivées dans le dépôt, sans chargement par la V1.
 
-- `index.html` : textes, organisation, navigation et formulaire.
-- `src/main.js` : initialisation, navigation, descriptions de maillots et formulaire.
-- `src/motion.js` : contrôleur de mouvement et apparitions réversibles.
-- `src/organisation.js` : fonctions, rattachements, fiches et navigation entre personnes.
-- `src/kit-atlas.js` : cadrage fidèle des visuels existants et comparaison des domiciles.
-- `src/jersey-entry.js`, `src/jersey-viewer.js`, `src/jersey.css` : ouverture différée, rendu WebGL et interface de la tenue 3D.
-- `public/models/domicile-v1.glb` : véritable maillage 3D avec texture embarquée ; aucune API de modèles externe.
-- `tools/prepare_jersey_texture.py`, `tools/build_jersey.py` : reproduction locale de la texture dérivée et du modèle Blender.
-- `design/maillots/` : source Blender existante et ancienne maquette SVG du dos, conservées sans modification ; ces fichiers ne sont pas chargés par le site.
-- `src/style.css` : palette, typographies, mise en page et responsive.
-- `public/assets/` : visuels WebP optimisés. `collection.webp` contient uniquement les maillots **sans sponsor**.
-- `docs/references.md` : ressources examinées, choix, licences et provenance des visuels.
+Les pages `mentions-legales.html`, `confidentialite.html` et `cgu.html` décrivent le projet et le fonctionnement observé. La France est confirmée ; les informations de publication et le contact de l’éditeur restent à compléter, ainsi que les coordonnées détaillées de l’hébergeur. Aucun nom, adresse ou pratique de collecte n’a été inventé.
 
-Les images sont des adaptations générées à partir des références visuelles reçues dans la conversation. Elles ne remplacent pas un master vectoriel de l’écusson. Les mots et dates présents sur les anciens visuels ne constituent pas des faits sportifs officiels.
-
-### Contact et périmètre
-
-Aucune adresse de contact n’a été fournie. Le formulaire prépare un fichier texte local ; il n’envoie aucun message, ne stocke rien et ne transmet aucune donnée. Le site l’indique avant la saisie et après le téléchargement.
-
-Pas de paiement, réservation, sponsor signé, palmarès, joueur recruté ou calendrier inventé. Les fonctions d’entraîneur et de joueurs restent à définir.
-
-### Publication GitHub Pages
-
-La configuration active pour cette mission est `.github/workflows/pages.yml`. `npm run build` produit des URL préfixées par `/valoria-fc/` ; `npm run test:pages` contrôle la version compilée à quatre largeurs, avec le GLB réel, les polices, les interactions et le défilement tactile. Le développement reste accessible à la racine locale.
-
-Le [guide GitHub Pages](docs/github-pages.md) décrit les permissions minimales, les résultats des tests, les limites de gratuité et l’activation **Settings → Pages → Source → GitHub Actions**. Le workflow se lance sur `main` et manuellement. Par précaution pour le budget, les builds automatiques d’un dépôt privé sont désactivés tant que l’offre n’a pas été vérifiée.
-
-Les dernières études de maillots sont conservées dans `design/maillots/etudes-v1/` et ne remplacent pas les visuels du site. L’ancienne préparation Vercel reste dans l’historique et les documents existants, sans utilisation. Aucun autre hébergeur n’est sollicité.
-
-Pour vérifier localement le résultat de production : `npm run build`, puis `npm run preview -- --port 4174 --strictPort`, et ouvrir `http://127.0.0.1:4174/valoria-fc/`.
-
-Avant publication : fournir les coordonnées et mentions légales adaptées au responsable réel de la publication ; valider les visuels et leurs droits d’utilisation. Aucun déploiement n’a été effectué dans cette tâche.
-
-L’historique complet et la branche `feat/valoria-v1` sont conservés. Les futurs changements et toute activation d’hébergement restent soumis aux demandes de l’utilisateur et au budget de 0 €.
+Détails de livraison : [docs/v1-publication.md](docs/v1-publication.md).

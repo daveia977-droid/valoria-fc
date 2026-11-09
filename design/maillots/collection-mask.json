@@ -1,0 +1,15 @@
+{
+  "source": "public/assets/collection.webp",
+  "sha256": "c22a61936c7fe155a8327a2bf750c4c9ca2ccaac4612aa88739becc8e19ef5f7",
+  "background": [
+    17,
+    16,
+    20
+  ],
+  "tolerance": 8,
+  "method": "Edge-connected background mask. Original image unchanged.",
+  "width": 1832,
+  "height": 859,
+  "components": 1,
+  "foreground": 701539
+}

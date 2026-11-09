@@ -12,11 +12,11 @@ test("navigation, collection accessible et brouillon local", async ({
     "VALORIA FC",
   );
   await page.getByRole("link", { name: "Découvrir le club" }).click();
-  await expect(page).toHaveURL(/#club$/);
+  await expect(page).toHaveURL(/#identite$/);
   await page.getByRole("tab", { name: /Domicile V2/ }).click();
   await expect(page.locator("#kit-name")).toHaveText("Domicile V2");
   await page.getByRole("tab", { name: /Domicile V2/ }).press("End");
-  await expect(page.getByRole("tab", { name: /Troisième/ })).toHaveAttribute(
+  await expect(page.getByRole("tab", { name: /Third/ })).toHaveAttribute(
     "aria-selected",
     "true",
   );
@@ -34,7 +34,7 @@ test("navigation, collection accessible et brouillon local", async ({
   await page.getByRole("button", { name: "Télécharger mon brouillon" }).click();
   const download = await downloadEvent;
   expect(download.suggestedFilename()).toBe("message-valoria-fc.txt");
-  await expect(page.getByRole("status")).toContainText(
+  await expect(page.locator("#form-status")).toContainText(
     "Aucun message n’a été envoyé",
   );
   await page.keyboard.press("Escape");
@@ -46,7 +46,7 @@ test("mouvement visible, pause et préférences système", async ({ page }) => {
   await page.goto("/");
   const position = () =>
     page
-      .locator(".hero-crest img")
+      .locator(".crest-reveal")
       .evaluate((el) => getComputedStyle(el).transform);
   const first = await position();
   await page.waitForTimeout(250);
@@ -59,7 +59,7 @@ test("mouvement visible, pause et préférences système", async ({ page }) => {
   expect(await position()).toBe(stopped);
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.reload();
-  await expect(page.locator("#motion-toggle")).toHaveAttribute(
+  await expect(page.locator("#pause")).toHaveAttribute(
     "aria-pressed",
     "true",
   );
@@ -94,6 +94,11 @@ for (const width of [320, 390, 768, 1440]) {
       await expect(page.locator("#mobile-menu")).not.toBeVisible();
       await expect(page).toHaveURL(/#collection$/);
     }
+    // Validate even intentionally deferred images, without mistaking lazy loading for a broken URL.
+    await page.locator("img").evaluateAll(async images => {
+      images.forEach(image => { image.loading = "eager"; });
+      await Promise.allSettled(images.map(image => image.decode()));
+    });
     const broken = await page
       .locator("img")
       .evaluateAll((images) =>

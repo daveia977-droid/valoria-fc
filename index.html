@@ -1,539 +1,97 @@
 <!doctype html>
-<html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, viewport-fit=cover"
-    />
-    <meta name="theme-color" content="#100c0c" />
-    <meta
-      name="description"
-      content="Découvrez VALORIA FC, un club de football fictif : son identité, sa collection de maillots et son organisation. Projet pédagogique."
-    />
-    <link rel="icon" href="/assets/favicon.png" type="image/png" />
-    <link rel="preload" as="image" href="/assets/hero-burgundy.webp" />
-    <title>VALORIA FC — La force du collectif</title>
-  </head>
-  <body>
-    <a class="skip-link" href="#contenu">Aller au contenu</a>
-    <header class="site-header">
-      <a class="brand" href="#accueil" aria-label="VALORIA FC — accueil"
-        ><img src="/assets/crest.webp" alt="" width="40" height="48" /><span
-          >VALORIA FC<small>La force du collectif</small></span
-        ></a
-      >
-      <nav class="desktop-nav" aria-label="Navigation principale">
-        <a href="#club">Le club</a><a href="#collection">Collection</a
-        ><a href="#organisation">Organisation</a
-        ><a class="nav-contact" href="#contact">Parlons du projet</a>
-      </nav>
-      <button
-        class="menu-toggle"
-        id="menu-open"
-        type="button"
-        aria-haspopup="dialog"
-        aria-controls="mobile-menu"
-      >
-        Menu
-      </button>
-      <div class="reading-progress" aria-hidden="true"></div>
-    </header>
-    <main id="contenu">
-      <section class="hero" id="accueil" aria-labelledby="hero-title">
-        <img
-          class="hero-scene"
-          src="/assets/hero-burgundy.webp"
-          alt=""
-          width="1672"
-          height="941"
-          fetchpriority="high"
-        />
-        <div class="hero-content wrap">
-          <p class="eyebrow hero-enter">Football. Identité. Ambition.</p>
-          <h1 id="hero-title" class="hero-line" aria-label="VALORIA FC">
-            <span class="hero-word" aria-hidden="true">VALORIA</span>
-            <span class="hero-word" aria-hidden="true">FC</span>
-          </h1>
-          <div class="hero-crest" aria-hidden="true">
-            <img src="/assets/crest.webp" width="700" height="875" alt="" />
-          </div>
-          <p class="hero-motto hero-enter">La force du collectif.</p>
-          <p class="hero-description hero-enter">
-            Une même passion. Une identité à part.<br />Découvrez l’univers de
-            VALORIA FC.
-          </p>
-          <a class="button button-gold hero-enter" href="#club"
-            >Découvrir le club <span aria-hidden="true">↗</span></a
-          >
-        </div>
-        <div class="hero-bottom wrap">
-          <span>Club fictif · Projet pédagogique</span
-          ><a href="#club">Explorer <span aria-hidden="true">↓</span></a
-          ><button type="button" id="motion-toggle" aria-pressed="false">
-            Mettre en pause les animations
-          </button>
-        </div>
-      </section>
+<html lang="fr" class="static-motion">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#090707">
+  <title>VALORIA FC — La force du collectif</title>
+  <meta name="description" content="VALORIA FC : un club fictif, une identité, quatre maillots et un collectif. Site vitrine personnel.">
+  <link rel="icon" href="/assets/favicon.png">
+  <link rel="preload" as="image" href="/assets/hero-burgundy.webp">
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="navigation site-header">
+  <a class="brand" href="#accueil" aria-label="VALORIA FC — accueil"><img src="/assets/crest.webp" alt="" width="700" height="875"><span>VALORIA FC</span></a>
+  <nav class="desktop-nav" aria-label="Navigation principale"><a href="#identite">Le club</a><a href="#collection">Collection</a><a class="org-link" href="#organisation">Organisation</a></nav>
+  <div class="header-actions"><button class="menu-toggle" id="menu-open" type="button" aria-haspopup="dialog" aria-controls="mobile-menu">Menu</button><button class="pause" id="pause" type="button" aria-pressed="false" aria-label="Mettre en pause les animations" disabled><img class="icon" data-icon="pause" alt="" width="16" height="16"><span class="pause-word">Pause</span></button></div>
+</header>
+<main id="contenu" tabindex="-1">
+ <section class="story" id="accueil" aria-label="L’identité VALORIA FC">
+  <div class="scene">
+   <div class="atmosphere" aria-hidden="true"><img class="textile" src="/assets/hero-burgundy.webp" alt="" width="1672" height="941"><div class="aura"></div><div class="beam"></div><div class="grain"></div></div>
+   <div class="opening">
+    <div class="title-reveal"><p class="overline">LA FORCE DU COLLECTIF</p><h1>VALORIA FC</h1></div>
+    <div class="edition"><span>Football club</span><span>Projet personnel · Club fictif</span></div>
+   </div>
+   <div class="emblem" aria-hidden="true"><div class="emblem-shadow"></div><div class="crest-reveal"><img src="/assets/crest.webp" alt="" width="700" height="875" fetchpriority="high"></div></div>
+   <div class="hero-action"><a class="outline-link" href="#identite">Découvrir le club <img class="icon" data-icon="arrow" alt="" width="16" height="16"></a></div>
+   <div class="scene-caption"><span class="caption-line" aria-hidden="true"></span><span>Un blason.<br>Une même identité.</span></div>
+   <div class="identity" id="identite">
+    <p class="overline">01 / L’identité</p>
+    <h2 tabindex="-1">La force<br>du <em>collectif.</em></h2>
+    <p class="identity-copy">Une même passion.<br>Une identité à part.</p>
+    <a href="#collection" class="line-link">Découvrir nos couleurs <img class="icon" data-icon="arrow" alt="" width="18" height="18"></a>
+    <img class="static-crest" src="/assets/crest.webp" alt="" aria-hidden="true" width="700" height="875" loading="lazy">
+   </div>
+   <footer class="scene-footer"><span class="chapter-index" aria-label="Deux chapitres"><b>01</b><span class="index-track" aria-hidden="true"><i></i></span><span>02</span></span><a href="#identite" class="scroll-cue"><span>Entrer dans l’histoire</span><span class="circle"><img class="icon" data-icon="down" alt="" width="20" height="20"></span></a><span class="footer-note">VALORIA FC</span></footer>
+  </div>
+ </section>
 
-      <section
-        class="club section-light"
-        id="club"
-        aria-labelledby="club-title"
-      >
-        <div class="wrap">
-          <div class="section-heading reveal">
-            <p class="eyebrow">01 / Notre projet</p>
-            <span class="section-note">Le football comme point de départ.</span>
-          </div>
-          <div class="club-intro">
-            <h2 id="club-title" class="reveal">
-              Un club.<br />Une ambition <em>commune.</em>
-            </h2>
-            <div class="club-copy reveal">
-              <p class="lead">
-                Le collectif ne s’arrête pas<br class="desktop-break" />
-                au bord du terrain.
-              </p>
-              <p>
-                VALORIA FC est un club professionnel fictif imaginé pour
-                explorer le fonctionnement d’une entreprise sportive. Le sport,
-                le commerce et la communication y avancent ensemble.
-              </p>
-              <a class="text-link" href="#organisation"
-                >Rencontrer l’organisation <span aria-hidden="true">↗</span></a
-              >
-            </div>
-          </div>
-          <div class="activities">
-            <article class="reveal">
-              <span class="item-number">01</span>
-              <h3>Le sport</h3>
-              <p>
-                Organiser les matchs, coordonner les entraînements, gérer
-                l’équipe et préparer le recrutement.
-              </p>
-            </article>
-            <article class="reveal">
-              <span class="item-number">02</span>
-              <h3>Le commerce</h3>
-              <p>
-                Imaginer la billetterie, la boutique et les partenariats qui
-                accompagnent le développement du club.
-              </p>
-            </article>
-            <article class="reveal">
-              <span class="item-number">03</span>
-              <h3>La communication</h3>
-              <p>
-                Construire une identité reconnaissable et créer un lien durable
-                avec les supporters.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
+<section class="chapter collection-section" id="collection" aria-labelledby="collection-title">
+ <div class="chapter-atmosphere" aria-hidden="true"><img src="/assets/hero-burgundy.webp" alt="" width="1672" height="941" loading="lazy"></div>
+ <div class="collection-layout">
+  <header class="chapter-intro collection-intro">
+   <p class="overline">02 / Collection</p><h2 id="collection-title">Nos<em>maillots.</em></h2>
+   <p class="chapter-copy">Quatre tenues.<br>Une même identité.</p>
+   <p class="collection-season">2026 / 2027</p>
+   <details class="home-comparison" id="home-comparison"><summary>Comparer les deux domiciles</summary><div class="comparison-grid">
+     <figure><div class="comparison-kit-window" data-comparison="0"><img class="kit-strip" src="/assets/collection.webp" alt="Domicile V1 rouge et or, sans sponsor" width="1832" height="859" loading="lazy"></div><figcaption><h3>Domicile V1</h3><p>Rouge &amp; or</p></figcaption></figure>
+     <figure><div class="comparison-kit-window" data-comparison="1"><img class="kit-strip" src="/assets/collection.webp" alt="Domicile V2 bleu nuit et or, sans sponsor" width="1832" height="859" loading="lazy"></div><figcaption><h3>Domicile V2</h3><p>Bleu nuit &amp; or</p></figcaption></figure>
+   </div></details>
+   <a class="line-link collection-onward" href="#organisation">Découvrir l’organisation <img class="icon" data-icon="arrow" alt="" width="18" height="18"></a>
+  </header>
+  <div class="collection-display">
+   <div class="kit-tabs" role="tablist" aria-label="Choisir une tenue">
+    <button class="kit-tab" id="kit-tab-0" type="button" role="tab" data-kit="0" aria-selected="true" aria-controls="kit-panel">Domicile V1</button>
+    <button class="kit-tab" id="kit-tab-1" type="button" role="tab" data-kit="1" aria-selected="false" aria-controls="kit-panel" tabindex="-1">Domicile V2</button>
+    <button class="kit-tab" id="kit-tab-2" type="button" role="tab" data-kit="2" aria-selected="false" aria-controls="kit-panel" tabindex="-1">Extérieur</button>
+    <button class="kit-tab" id="kit-tab-3" type="button" role="tab" data-kit="3" aria-selected="false" aria-controls="kit-panel" tabindex="-1">Third</button>
+   </div>
+   <div class="kit-panel" id="kit-panel" role="tabpanel" aria-labelledby="kit-tab-0" tabindex="0" data-presentation="2d">
+    <div class="kit-image-wrap"><div class="kit-viewport"><img id="kit-image" class="kit-strip" src="/assets/collection.webp" alt="Maillot Domicile V1 VALORIA FC rouge et or, sans sponsor" width="1832" height="859" loading="lazy" draggable="false"></div></div>
+    <div class="kit-details"><div><h3 id="kit-name">Domicile V1</h3><p id="kit-colours">Rouge &amp; or</p></div><p class="kit-counter"><b id="kit-number">01</b> / 04</p></div>
+   </div>
+   <p class="sr-only" id="kit-announcement" role="status" aria-live="polite" aria-atomic="true"></p>
+  </div>
+ </div>
+</section>
 
-      <section
-        class="collection"
-        id="collection"
-        aria-labelledby="collection-title"
-      >
-        <div class="wrap">
-          <div class="section-heading reveal">
-            <p class="eyebrow">02 / L’identité en mouvement</p>
-            <span class="section-note"
-              >Collection conceptuelle 2026 / 2027</span
-            >
-          </div>
-          <div class="collection-heading reveal">
-            <h2 id="collection-title">
-              Nos couleurs.<br /><em>Votre caractère.</em>
-            </h2>
-            <p>
-              Quatre expressions d’une même identité.<br />Le même écusson.
-              Aucun sponsor.
-            </p>
-          </div>
-          <div class="kit-layout">
-            <div
-              class="kit-stage reveal"
-              id="kit-panel"
-              role="tabpanel"
-              aria-labelledby="kit-tab-0"
-              aria-describedby="kit-motion-note"
-              tabindex="0"
-              data-presentation="2d"
-            >
-              <div class="kit-window">
-                <img
-                  id="kit-image"
-                  class="kit-strip"
-                  src="/assets/collection.webp"
-                  alt="Maillot domicile V1 rouge et or, sans sponsor"
-                  width="1832"
-                  height="891"
-                  loading="eager"
-                />
-              </div>
-              <div class="jersey-canvas" hidden></div>
-              <p class="kit-motion-note" id="kit-motion-note">Visuel 2D</p>
-            </div>
-            <div class="kit-info reveal">
-              <p class="eyebrow">Collection 2026 / 2027</p>
-              <div id="kit-copy" aria-live="polite">
-                <h3 id="kit-name">Domicile V1</h3>
-                <p id="kit-description">
-                  Le rouge pour l’intensité. L’or pour la signature. Une
-                  première proposition de tenue domicile.
-                </p>
-              </div>
-              <div
-                class="kit-tabs"
-                role="tablist"
-                aria-label="Choisir un maillot"
-              >
-                <button
-                  id="kit-tab-0"
-                  class="kit-tab"
-                  type="button"
-                  role="tab"
-                  aria-selected="true"
-                  aria-controls="kit-panel"
-                  data-kit="0"
-                >
-                  <span class="swatch red" aria-hidden="true"></span
-                  ><span>Domicile V1<small>Rouge & or</small></span></button
-                ><button
-                  id="kit-tab-1"
-                  class="kit-tab"
-                  type="button"
-                  role="tab"
-                  aria-selected="false"
-                  aria-controls="kit-panel"
-                  tabindex="-1"
-                  data-kit="1"
-                >
-                  <span class="swatch navy" aria-hidden="true"></span
-                  ><span>Domicile V2<small>Bleu nuit & or</small></span></button
-                ><button
-                  id="kit-tab-2"
-                  class="kit-tab"
-                  type="button"
-                  role="tab"
-                  aria-selected="false"
-                  aria-controls="kit-panel"
-                  tabindex="-1"
-                  data-kit="2"
-                >
-                  <span class="swatch ivory" aria-hidden="true"></span
-                  ><span>Extérieur<small>Ivoire & or</small></span></button
-                ><button
-                  id="kit-tab-3"
-                  class="kit-tab"
-                  type="button"
-                  role="tab"
-                  aria-selected="false"
-                  aria-controls="kit-panel"
-                  tabindex="-1"
-                  data-kit="3"
-                >
-                  <span class="swatch purple" aria-hidden="true"></span
-                  ><span>Troisième<small>Noir, violet & or</small></span>
-                </button>
-              </div>
-              <p class="collection-disclaimer">
-                Visuels de conception · Présentation uniquement.<br />Aucun
-                achat ni réservation sur ce site.
-              </p>
-            </div>
-          </div>
-          <details class="home-comparison" id="home-comparison">
-            <summary>Comparer les deux domiciles <span>V1 / V2</span></summary>
-            <div class="comparison-grid">
-              <figure>
-                <div class="comparison-kit-window" data-atlas-kit="0">
-                  <img
-                    class="kit-strip"
-                    src="/assets/collection.webp"
-                    alt="Domicile V1 rouge et or, visuel existant sans sponsor"
-                    width="1832"
-                    height="859"
-                  />
-                </div>
-                <figcaption>
-                  <h3>Domicile V1</h3>
-                  <p>Rouge &amp; or</p>
-                </figcaption>
-              </figure>
-              <figure>
-                <div class="comparison-kit-window" data-atlas-kit="1">
-                  <img
-                    class="kit-strip"
-                    src="/assets/collection.webp"
-                    alt="Domicile V2 bleu nuit et or, visuel existant sans sponsor"
-                    width="1832"
-                    height="859"
-                  />
-                </div>
-                <figcaption>
-                  <h3>Domicile V2</h3>
-                  <p>Bleu nuit &amp; or</p>
-                </figcaption>
-              </figure>
-            </div>
-            <p class="comparison-note">
-              Deux propositions pour le domicile. Comparaison des visuels
-              existants, sans sponsor.
-            </p>
-          </details>
-        </div>
-      </section>
+<section class="chapter organisation-section" id="organisation" aria-labelledby="organisation-title">
+ <div class="chapter-atmosphere" aria-hidden="true"><img src="/assets/hero-burgundy.webp" alt="" width="1672" height="941" loading="lazy"></div>
+ <div class="organisation-layout">
+  <header class="chapter-intro organisation-intro"><p class="overline">03 / Organisation</p><h2 id="organisation-title">Notre<em>structure.</em></h2><p class="chapter-copy">Un collectif organisé pour porter<br>l’ambition du club.</p><p class="organisation-hint">Choisissez un nom pour découvrir sa fonction et ses rattachements.</p></header>
+  <div class="organisation-editorial" id="club-people" aria-label="Direction et pôles du club">
+   <ol class="leadership-list" aria-label="Yvan dirige le club ; Messi, sous sa responsabilité, coordonne les trois pôles">
+    <li><span class="member-step" aria-hidden="true">01 / Présidence</span><button class="person-button leader-button" type="button" data-person="yvan" aria-haspopup="dialog" aria-controls="person-dialog"><span class="person-role-label">Président</span><strong>Yvan</strong><img class="icon person-arrow" data-icon="arrow" alt="" width="18" height="18"></button></li>
+    <li><span class="member-step" aria-hidden="true">02 / Direction générale</span><button class="person-button leader-button" type="button" data-person="messi" aria-haspopup="dialog" aria-controls="person-dialog"><span class="person-role-label">Directeur général</span><strong>Messi</strong><img class="icon person-arrow" data-icon="arrow" alt="" width="18" height="18"></button><p class="report-note">Sous la responsabilité d’Yvan</p></li>
+   </ol>
+   <h3 class="poles-heading">Trois pôles sous la direction de Messi</h3>
+   <ul class="poles-list" aria-label="Les trois pôles rattachés à Messi">
+    <li class="pole"><span class="pole-index" aria-hidden="true">01</span><button class="person-button " type="button" data-person="charel" aria-haspopup="dialog" aria-controls="person-dialog"><span class="person-role-label">Finances et transferts</span><strong>Charel</strong><img class="icon person-arrow" data-icon="arrow" alt="" width="18" height="18"></button><div class="pole-associate"><span>Avec</span><button class="person-button associate-button" type="button" data-person="marco" aria-haspopup="dialog" aria-controls="person-dialog"><span class="person-role-label">Comptabilité</span><strong>Marco</strong><img class="icon person-arrow" data-icon="arrow" alt="" width="18" height="18"></button></div></li>
+    <li class="pole"><span class="pole-index" aria-hidden="true">02</span><button class="person-button " type="button" data-person="mamady" aria-haspopup="dialog" aria-controls="person-dialog"><span class="person-role-label">Logistique et commerce</span><strong>Mamady</strong><img class="icon person-arrow" data-icon="arrow" alt="" width="18" height="18"></button><div class="pole-associate"><span>Avec</span><button class="person-button associate-button" type="button" data-person="dylan" aria-haspopup="dialog" aria-controls="person-dialog"><span class="person-role-label">Équipements</span><strong>Dylan</strong><img class="icon person-arrow" data-icon="arrow" alt="" width="18" height="18"></button></div></li>
+    <li class="pole"><span class="pole-index" aria-hidden="true">03</span><button class="person-button " type="button" data-person="emilie" aria-haspopup="dialog" aria-controls="person-dialog"><span class="person-role-label">Marketing et communication</span><strong>Émilie</strong><img class="icon person-arrow" data-icon="arrow" alt="" width="18" height="18"></button></li>
+   </ul>
+  </div>
+ </div>
+</section>
 
-      <section
-        class="organisation section-light"
-        id="organisation"
-        aria-labelledby="organisation-title"
-      >
-        <div class="wrap">
-          <div class="section-heading reveal">
-            <p class="eyebrow">03 / Ceux qui font le projet</p>
-            <span class="section-note"
-              >Des rôles clairs. Une vision collective.</span
-            >
-          </div>
-          <div class="organisation-heading reveal">
-            <h2 id="organisation-title">
-              Une équipe.<br /><em>Sur tous les terrains.</em>
-            </h2>
-            <p>
-              La direction donne le cap. Chaque service contribue à faire
-              fonctionner le club au quotidien.
-            </p>
-          </div>
-          <p class="org-instruction">
-            Choisissez un nom pour découvrir sa fonction, son responsable et son
-            équipe.
-          </p>
-          <ul
-            class="org-tree"
-            id="org-tree"
-            aria-label="Organigramme hiérarchique du club"
-          >
-            <li class="org-branch">
-              <button
-                type="button"
-                class="org-person reveal"
-                data-person="yvan"
-                aria-haspopup="dialog"
-                aria-controls="person-dialog"
-              >
-                <span class="org-role">Président</span><strong>Yvan</strong
-                ><span class="org-hint">Voir la fonction</span>
-              </button>
-              <ul class="org-children">
-                <li class="org-branch">
-                  <button
-                    type="button"
-                    class="org-person reveal"
-                    data-person="messi"
-                    aria-haspopup="dialog"
-                    aria-controls="person-dialog"
-                  >
-                    <span class="org-role">Directeur général</span
-                    ><strong>Messi</strong
-                    ><span class="org-hint">Voir la fonction</span>
-                  </button>
-                  <ul class="org-children">
-                    <li class="org-branch">
-                      <button
-                        type="button"
-                        class="org-person reveal"
-                        data-person="charel"
-                        aria-haspopup="dialog"
-                        aria-controls="person-dialog"
-                      >
-                        <span class="org-role">Finances et transferts</span
-                        ><strong>Charel</strong
-                        ><span class="org-hint">Voir la fonction</span>
-                      </button>
-                      <ul class="org-children">
-                        <li class="org-branch">
-                          <button
-                            type="button"
-                            class="org-person reveal"
-                            data-person="marco"
-                            aria-haspopup="dialog"
-                            aria-controls="person-dialog"
-                          >
-                            <span class="org-role">Comptabilité</span
-                            ><strong>Marco</strong
-                            ><span class="org-hint">Voir la fonction</span>
-                          </button>
-                        </li>
-                      </ul>
-                    </li>
-                    <li class="org-branch">
-                      <button
-                        type="button"
-                        class="org-person reveal"
-                        data-person="mamady"
-                        aria-haspopup="dialog"
-                        aria-controls="person-dialog"
-                      >
-                        <span class="org-role">Logistique et commerce</span
-                        ><strong>Mamady</strong
-                        ><span class="org-hint">Voir la fonction</span>
-                      </button>
-                      <ul class="org-children">
-                        <li class="org-branch">
-                          <button
-                            type="button"
-                            class="org-person reveal"
-                            data-person="dylan"
-                            aria-haspopup="dialog"
-                            aria-controls="person-dialog"
-                          >
-                            <span class="org-role">Équipements</span
-                            ><strong>Dylan</strong
-                            ><span class="org-hint">Voir la fonction</span>
-                          </button>
-                        </li>
-                      </ul>
-                    </li>
-                    <li class="org-branch">
-                      <button
-                        type="button"
-                        class="org-person reveal"
-                        data-person="emilie"
-                        aria-haspopup="dialog"
-                        aria-controls="person-dialog"
-                      >
-                        <span class="org-role">Marketing et communication</span
-                        ><strong>Émilie</strong
-                        ><span class="org-hint">Voir la fonction</span>
-                      </button>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-          </ul>
-          <aside class="sport-note reveal">
-            <h3>Le terrain se prépare.</h3>
-            <p>
-              L’entraîneur principal et l’effectif ne sont pas encore attribués.
-              Les matchs et le calendrier seront présentés lorsque ces éléments
-              seront définis.
-            </p>
-          </aside>
-        </div>
-      </section>
+<section class="contact-strip" id="contact" aria-labelledby="contact-title"><div><p class="overline">VALORIA FC / Le projet</p><h2 id="contact-title">Une idée à <em>partager ?</em></h2><p>Préparez un brouillon à conserver sur votre appareil. Aucun message n’est envoyé.</p></div><button class="outline-link" id="contact-open" type="button" aria-haspopup="dialog" aria-controls="contact-dialog">Préparer un message <img class="icon" data-icon="arrow" alt="" width="18" height="18"></button></section>
 
-      <section class="commitments" aria-labelledby="commitments-title">
-        <div class="wrap commitments-layout">
-          <div class="reveal">
-            <p class="eyebrow">04 / Construire avec responsabilité</p>
-            <h2 id="commitments-title">
-              L’ambition,<br /><em>avec du sens.</em>
-            </h2>
-            <p>Quatre dimensions guident la réflexion du projet.</p>
-          </div>
-          <div class="accordion reveal">
-            <details open>
-              <summary>Équilibre économique</summary>
-              <p>
-                Mettre en relation les dépenses sportives, les coûts de
-                fonctionnement et les activités commerciales envisagées.
-              </p>
-            </details>
-            <details>
-              <summary>Ressources humaines</summary>
-              <p>
-                Définir les responsabilités et la coordination entre les
-                services, tout en distinguant les fonctions administratives et
-                sportives.
-              </p>
-            </details>
-            <details>
-              <summary>Cadre réglementaire</summary>
-              <p>
-                Prendre en compte les obligations d’une organisation sportive,
-                le droit à l’image et la protection des données avant toute mise
-                en œuvre réelle.
-              </p>
-            </details>
-            <details>
-              <summary>Responsabilité sociale & environnementale</summary>
-              <p>
-                Intégrer l’accessibilité, l’inclusion et l’impact
-                environnemental aux décisions. Ces axes sont des intentions de
-                travail, pas des certifications obtenues.
-              </p>
-            </details>
-          </div>
-        </div>
-      </section>
 
-      <section
-        class="contact section-light"
-        id="contact"
-        aria-labelledby="contact-title"
-      >
-        <div class="wrap contact-layout">
-          <div class="reveal">
-            <p class="eyebrow">Le collectif commence par un échange.</p>
-            <h2 id="contact-title">Faisons vivre<br /><em>le projet.</em></h2>
-          </div>
-          <div class="contact-copy reveal">
-            <p>
-              Une idée, une question sur VALORIA FC ? Préparez votre message
-              pour l’équipe du projet.
-            </p>
-            <button
-              class="button button-burgundy"
-              type="button"
-              id="contact-open"
-            >
-              Préparer un message <span aria-hidden="true">↗</span>
-            </button>
-            <p class="fine-print">
-              Aucune adresse de contact n’est encore publiée. Vous pourrez
-              télécharger votre brouillon ; rien ne sera envoyé.
-            </p>
-          </div>
-        </div>
-      </section>
-    </main>
-    <footer class="footer">
-      <div class="wrap footer-main">
-        <a class="brand" href="#accueil"
-          ><img src="/assets/crest.webp" alt="" width="40" height="48" /><span
-            >VALORIA FC<small>La force du collectif</small></span
-          ></a
-        >
-        <p>Un projet de management.<br />Une passion pour le football.</p>
-        <a class="text-link" href="#accueil"
-          >Retour en haut <span aria-hidden="true">↑</span></a
-        >
-      </div>
-      <div class="wrap footer-bottom">
-        <span>VALORIA FC · Projet pédagogique · Club fictif</span
-        ><span>Sans sponsor · Sans paiement · Sans traceur</span>
-      </div>
-    </footer>
-
-    <dialog id="mobile-menu" class="menu-dialog" aria-labelledby="menu-title">
-      <div class="dialog-head">
-        <p id="menu-title">VALORIA FC</p>
-        <button class="close-button" type="button" data-close>Fermer</button>
-      </div>
-      <nav aria-label="Navigation mobile">
-        <a href="#club">Le club</a><a href="#collection">Collection</a
-        ><a href="#organisation">Organisation</a
-        ><a href="#contact">Parlons du projet</a>
-      </nav>
-    </dialog>
+</main>
+<footer class="footer"><div class="footer-top"><a class="brand" href="#accueil"><img src="/assets/crest.webp" alt="" width="700" height="875"><span>VALORIA FC</span></a><p>Projet personnel · Club fictif</p><a class="line-link" href="#accueil">Retour en haut <img class="icon" data-icon="arrow" alt="" width="18" height="18"></a></div><nav class="legal-links" aria-label="Informations légales"><a href="./mentions-legales.html">Mentions légales</a><a href="./confidentialite.html">Confidentialité</a><a href="./cgu.html">CGU</a></nav></footer>
+<dialog id="mobile-menu" class="menu-dialog" aria-labelledby="menu-title"><div class="dialog-head"><p id="menu-title">VALORIA FC</p><button class="close-button" type="button" data-close>Fermer</button></div><nav aria-label="Navigation mobile"><a href="#identite">Le club</a><a href="#collection">Collection</a><a href="#organisation">Organisation</a><a href="#contact">Parlons du projet</a></nav></dialog>
     <dialog
       id="contact-dialog"
       class="contact-dialog"
@@ -611,7 +169,7 @@
             <dd>
               <ul id="person-reports"></ul>
               <p id="person-empty">
-                Pas de personne rattachée dans l’organigramme fourni.
+                Aucun rattachement direct indiqué dans le projet.
               </p>
             </dd>
           </div>
@@ -619,6 +177,7 @@
         <p id="person-count" class="person-count"></p>
       </div>
     </dialog>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+
+<script type="module" src="/src/main.js"></script>
+</body>
 </html>

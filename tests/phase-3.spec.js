@@ -25,8 +25,8 @@ for (const width of [320, 390, 768, 1440]) {
     const header = await page.locator(".site-header").boundingBox();
     expect(header.y).toBe(0);
     if (width < 761) {
-      const tree = await page.locator("#org-tree").boundingBox();
-      expect(tree.height).toBeLessThan(900);
+      const tree = await page.locator("#club-people").boundingBox();
+      expect(tree.height).toBeLessThan(800);
       await page.getByRole("button", { name: "Menu", exact: true }).click();
       await page
         .getByRole("navigation", { name: "Navigation mobile" })
@@ -38,12 +38,12 @@ for (const width of [320, 390, 768, 1440]) {
         .getByRole("link", { name: "Le club", exact: true })
         .click();
     }
-    await expect(page).toHaveURL(/#club$/);
+    await expect(page).toHaveURL(/#identite$/);
     const sectionTop = await page
-      .locator("#club")
+      .locator("#identite")
       .evaluate((el) => el.getBoundingClientRect().top);
     expect(sectionTop).toBeGreaterThanOrEqual(header.height);
-    await expect(page.locator('.desktop-nav a[href="#club"]')).toHaveAttribute(
+    await expect(page.locator('.desktop-nav a[href="#identite"]')).toHaveAttribute(
       "aria-current",
       "location",
     );
@@ -65,7 +65,7 @@ for (const width of [320, 390, 768, 1440]) {
         () => document.documentElement.scrollWidth <= innerWidth,
       ),
     ).toBe(true);
-    await page.locator('#org-tree [data-person="emilie"]').click();
+    await page.locator('#club-people [data-person="emilie"]').click();
     await expect(page.locator("#person-role")).toHaveText(
       "Marketing et communication",
     );

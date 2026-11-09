@@ -1,150 +1,58 @@
-import "./style.css";
-import "./jersey.css";
-import { initMotion } from "./motion.js";
-import { initOrganisation } from "./organisation.js";
-import { positionAtlas, initComparison } from "./kit-atlas.js";
-import { initJersey } from "./jersey-entry.js";
-import arrowUpRight from "@phosphor-icons/core/assets/regular/arrow-up-right.svg";
-import arrowDown from "@phosphor-icons/core/assets/regular/arrow-down.svg";
-import arrowUp from "@phosphor-icons/core/assets/regular/arrow-up.svg";
+import './style.css';
+import './hero-motion.js';
+import { initCollection } from './collection.js';
+import { initClubOrganisation } from './club-organisation.js';
+initCollection();
+initClubOrganisation();
 
-const icons = { "↗": arrowUpRight, "↓": arrowDown, "↑": arrowUp };
-document.querySelectorAll('span[aria-hidden="true"]').forEach((span) => {
-  const src = icons[span.textContent];
-  if (!src) return;
-  const icon = Object.assign(document.createElement("img"), {
-    src,
-    alt: "",
-    className: "icon",
-  });
-  icon.width = 20;
-  icon.height = 20;
-  span.replaceChildren(icon);
-});
-
-const motion = initMotion();
-initOrganisation(motion);
-initComparison(motion);
-const jersey = initJersey(motion);
-
-// Native modal dialogs provide focus containment, Escape handling, and focus return.
-const menu = document.querySelector("#mobile-menu");
-const contactDialog = document.querySelector("#contact-dialog");
-document
-  .querySelector("#menu-open")
-  .addEventListener("click", () => menu.showModal());
-document
-  .querySelector("#contact-open")
-  .addEventListener("click", () => contactDialog.showModal());
-for (const dialog of [menu, contactDialog]) {
-  dialog
-    .querySelector("[data-close]")
-    .addEventListener("click", () => dialog.close());
-  dialog.addEventListener("click", (event) => {
+const menu = document.querySelector('#mobile-menu');
+const contact = document.querySelector('#contact-dialog');
+document.querySelector('#menu-open').addEventListener('click', () => menu.showModal());
+document.querySelector('#contact-open').addEventListener('click', () => contact.showModal());
+for (const dialog of document.querySelectorAll('dialog')) {
+  dialog.querySelector('[data-close]').addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', event => {
     if (event.target !== dialog) return;
-    const rect = dialog.getBoundingClientRect();
-    if (
-      event.clientX < rect.left ||
-      event.clientX > rect.right ||
-      event.clientY < rect.top ||
-      event.clientY > rect.bottom
-    )
-      dialog.close();
+    const r = dialog.getBoundingClientRect();
+    if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) dialog.close();
   });
 }
-menu
-  .querySelectorAll("a")
-  .forEach((link) => link.addEventListener("click", () => menu.close()));
+menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => menu.close()));
 
-const kits = [
-  {
-    name: "Domicile V1",
-    alt: "Maillot domicile V1 rouge et or, sans sponsor",
-    description:
-      "Le rouge pour l’intensité. L’or pour la signature. Une première proposition de tenue domicile.",
-  },
-  {
-    name: "Domicile V2",
-    alt: "Maillot domicile V2 bleu nuit et or, sans sponsor",
-    description:
-      "Le bleu nuit pour la profondeur. Des lignes dorées pour porter la même identité autrement.",
-  },
-  {
-    name: "Extérieur",
-    alt: "Maillot extérieur ivoire et or, sans sponsor",
-    description:
-      "L’ivoire pour la clarté. Des accents bleu nuit et or pour une tenue extérieure singulière.",
-  },
-  {
-    name: "Troisième",
-    alt: "Troisième maillot noir, violet et or, sans sponsor",
-    description:
-      "Le noir et le violet se rencontrent. Une troisième tenue qui affirme le caractère de VALORIA FC.",
-  },
-];
-const tabs = [...document.querySelectorAll("[data-kit]")];
-const strip = document.querySelector("#kit-image");
-let activeKit = 0;
-function positionKit() {
-  positionAtlas(document.querySelector(".kit-window"), strip, activeKit);
-}
-function selectKit(index, focus = false) {
-  activeKit = index;
-  tabs.forEach((tab, i) => {
-    tab.setAttribute("aria-selected", String(i === index));
-    tab.tabIndex = i === index ? 0 : -1;
-  });
-  const kit = kits[index];
-  document.querySelector("#kit-name").textContent = kit.name;
-  document.querySelector("#kit-description").textContent = kit.description;
-  document
-    .querySelector("#kit-panel")
-    .setAttribute("aria-labelledby", `kit-tab-${index}`);
-  strip.alt = kit.alt;
-  positionKit();
-  jersey.select(index);
-  if (focus) tabs[index].focus();
-  if (!motion.paused)
-    motion.animate(
-      document.querySelector("#kit-copy"),
-      [
-        { opacity: 0.3, transform: "translateY(8px)" },
-        { opacity: 1, transform: "translateY(0)" },
-      ],
-      { duration: 250, easing: "cubic-bezier(.16, 1, .3, 1)" },
-    );
-}
-tabs.forEach((tab, index) => {
-  tab.addEventListener("click", () => selectKit(index));
-  tab.addEventListener("keydown", (event) => {
-    const next = {
-      ArrowRight: (index + 1) % 4,
-      ArrowLeft: (index + 3) % 4,
-      Home: 0,
-      End: 3,
-    }[event.key];
-    if (next === undefined) return;
-    event.preventDefault();
-    selectKit(next, true);
-  });
-});
-new ResizeObserver(positionKit).observe(document.querySelector(".kit-window"));
-strip.addEventListener("load", positionKit);
-positionKit();
-
-document.querySelector("#contact-form").addEventListener("submit", (event) => {
+document.querySelector('#contact-form').addEventListener('submit', event => {
   event.preventDefault();
   const data = new FormData(event.currentTarget);
-  const text = `VALORIA FC — Brouillon de message\n\nNom : ${data.get("name")}\nE-mail : ${data.get("email")}\nSujet : ${data.get("subject")}\n\n${data.get("message")}\n\nCe fichier est un brouillon. Aucun message n’a été envoyé.\n`;
-  const url = URL.createObjectURL(
-    new Blob([text], { type: "text/plain;charset=utf-8" }),
-  );
-  const link = Object.assign(document.createElement("a"), {
-    href: url,
-    download: "message-valoria-fc.txt",
-  });
-  link.click();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
-  document.querySelector("#form-status").textContent =
-    "Votre brouillon a été préparé pour téléchargement. Aucun message n’a été envoyé.";
+  const text = `VALORIA FC — Brouillon de message\n\nNom : ${data.get('name')}\nE-mail : ${data.get('email')}\nSujet : ${data.get('subject')}\n\n${data.get('message')}\n\nCe fichier est un brouillon. Aucun message n’a été envoyé.\n`;
+  const url = URL.createObjectURL(new Blob([text], { type: 'text/plain;charset=utf-8' }));
+  const link = Object.assign(document.createElement('a'), { href: url, download: 'message-valoria-fc.txt' });
+  link.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+  document.querySelector('#form-status').textContent = 'Votre brouillon a été préparé pour téléchargement. Aucun message n’a été envoyé.';
 });
+
+const root = document.documentElement;
+const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+const chapters = [...document.querySelectorAll('.chapter')];
+const nav = [...document.querySelectorAll('.desktop-nav a')];
+const paused = () => reduced.matches || root.classList.contains('static-motion');
+root.classList.add('js-chapters');
+const visibility = new IntersectionObserver(entries => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); }); }, { rootMargin: '0px 0px -8% 0px', threshold: 0 });
+chapters.forEach(chapter => visibility.observe(chapter));
+let frame = 0;
+function render() {
+  frame = 0;
+  const rectangles = chapters.map(chapter => chapter.getBoundingClientRect());
+  let active = '#identite';
+  chapters.forEach((chapter, i) => {
+    const r = rectangles[i];
+    if (r.top <= innerHeight * .4) active = `#${chapter.id}`;
+    if (r.bottom < 0 || r.top > innerHeight) return;
+    const p = Math.max(-1, Math.min(1, (innerHeight / 2 - r.top - r.height / 2) / innerHeight));
+    chapter.style.setProperty('--chapter-shift', `${paused() ? 0 : p * (innerWidth < 761 ? 16 : 26)}px`);
+  });
+  nav.forEach(link => { if (link.getAttribute('href') === active) link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current'); });
+}
+function schedule() { if (!frame && !document.hidden) frame = requestAnimationFrame(render); }
+addEventListener('scroll', schedule, { passive: true }); addEventListener('resize', schedule, { passive: true });
+document.addEventListener('visibilitychange', schedule); reduced.addEventListener('change', schedule);
+new MutationObserver(schedule).observe(root, { attributes: true, attributeFilter: ['class'] });
+render();
