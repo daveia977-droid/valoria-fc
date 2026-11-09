@@ -23,7 +23,7 @@ Le code complet a été retrouvé dans `/workspace/valoria-fc`, branche locale `
 
 Avant toute modification : archive complète hors checkout, incluant les ressources et captures ignorées par Git, dans `/workspace/valoria-sauvegardes/2026-11-09-collection/etat-avant.tar.gz` (179 fichiers, vérifiés), manifeste SHA-256 et bundle de l’historique Git. L’état source initial complet est aussi conservé dans le commit `7468ca9` de la branche de travail. Aucun fichier source existant n’est supprimé.
 
-La synchronisation cible `feat/valoria-v1`, sans modifier `main`, pour permettre une revue avant validation. Les sources Blender et SVG déjà présentes sont également copiées sans modification dans `design/maillots/`. Les captures livrées et la démonstration sont dans `docs/media/`. Les dépendances installées, caches et fichiers compilés restent exclus de Git et sont reproductibles avec `npm ci` et `npm run build`.
+La première synchronisation a ciblé `feat/valoria-v1`, sans modifier `main`, pour permettre une revue. À la demande suivante de l’utilisateur, le site complet est ensuite intégré à `main` en conservant l’historique et la branche de travail, sans changement de l’application ni déploiement. Les sources Blender et SVG déjà présentes sont également copiées sans modification dans `design/maillots/`. Les captures livrées et la démonstration sont dans `docs/media/`. Les dépendances installées, caches et fichiers compilés restent exclus de Git et sont reproductibles avec `npm ci` et `npm run build`.
 
 ## Validation
 

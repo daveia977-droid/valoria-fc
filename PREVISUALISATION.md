@@ -8,7 +8,7 @@ Dans l’environnement cloud, `sites-preview status` signale `preview relay unav
 
 ## Windows — étapes exactes
 
-1. Sur GitHub, sélectionner la branche **feat/valoria-v1**, puis **Code → Download ZIP** et **Extraire tout**. La branche `main` reste volontairement sur le README initial jusqu’à validation. Une archive locale `valoria-collection-source.zip` est également fournie. Ne pas essayer de consulter un ZIP comme un aperçu interactif.
+1. Sur GitHub, sélectionner la branche **main**, puis **Code → Download ZIP** et **Extraire tout**. Le site complet est maintenant sur `main` ; `feat/valoria-v1` conserve aussi l’état précédent. Une archive locale `valoria-collection-source.zip` a également été fournie. Ne pas essayer de consulter un ZIP comme un aperçu interactif.
 2. Ouvrir le dossier extrait qui contient **package.json**, **index.html** et le dossier **src**.
 3. Dans la barre d’adresse de l’Explorateur Windows, saisir `powershell` puis Entrée : le terminal s’ouvre dans ce dossier.
 4. Vérifier les prérequis :

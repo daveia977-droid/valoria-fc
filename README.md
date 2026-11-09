@@ -5,7 +5,7 @@ Site vitrine officiel du club de football fictif VALORIA FC — projet pédagogi
 
 **Pour voir le vrai site sur son PC : [PREVISUALISATION.md](PREVISUALISATION.md).** Un ZIP doit être téléchargé puis extrait ; son aperçu dans Codex n’exécute pas Vite. Le guide donne les étapes Windows / macOS / Linux et le diagnostic du relais partagé indisponible.
 
-Le code complet est dans la branche **`feat/valoria-v1`** de ce dépôt. `main` reste sur le README initial en attendant validation. Sources, assets, animations, organigramme, modèle et tests sont conservés dans cette branche. **Aucun déploiement Vercel pour cette correction.**
+Le code complet est dans la branche **`main`** de ce dépôt, suivant la demande de l’utilisateur. Sources, assets, animations, organigramme, modèle et tests sont conservés. La branche `feat/valoria-v1` reste disponible avec l’état validé de la correction. **La synchronisation GitHub ne constitue pas un déploiement du site.**
 
 ## Version 1
 
@@ -81,12 +81,14 @@ Pas de paiement, réservation, sponsor signé, palmarès, joueur recruté ou cal
 
 ### Vercel — préparation uniquement
 
-Vercel est l’hébergeur choisi. Le fichier `vercel.json` configure Vite, la compilation `npm run build`, le dossier `dist` et les en-têtes de sécurité. Les fichiers statiques restent compatibles avec tout serveur HTTP ; les animations ne dépendent pas de l’hébergeur. Le dépôt ne contient aucune clé de déploiement.
+Le dépôt conserve la préparation Vercel existante : `vercel.json` configure Vite, la compilation `npm run build`, le dossier `dist` et les en-têtes de sécurité. Aucun compte Vercel n’est connecté à l’environnement de développement et le dépôt ne contient aucune clé de déploiement. Les animations et le modèle 3D fonctionnent dans le navigateur et ne dépendent pas de Vercel.
 
-La procédure d’import GitHub, de prévisualisation et de retour arrière est décrite dans [docs/vercel-deploy.md](docs/vercel-deploy.md). Les changements de la branche `feat/valoria-v1` sont encore locaux : ils doivent être enregistrés et poussés sur GitHub avant qu’un import Vercel puisse les récupérer. Aucun commit, push ou déploiement n’a été effectué automatiquement.
+La procédure historique d’import Vercel est décrite dans [docs/vercel-deploy.md](docs/vercel-deploy.md). Le code est désormais synchronisé sur GitHub dans `main`, sans activation d’hébergement.
+
+**GitHub Pages suffit aussi pour ce site statique.** La [documentation GitHub](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages) indique que Pages est disponible gratuitement pour les dépôts publics sur GitHub Free. Pour un dépôt privé, il faut vérifier l’offre du compte avant de retenir cette solution ; aucune modification de visibilité ni offre payante ne doit être activée automatiquement. La [configuration Vite pour Pages](https://vite.dev/guide/static-deploy.html#github-pages) nécessitera une compilation et l’adaptation de la base `/valoria-fc/` et des chemins des ressources. Cette publication n’est pas encore configurée ni activée.
 
 Pour vérifier localement le résultat de production : `npm run build`, puis `npm run preview -- --port 4174 --strictPort`.
 
 Avant publication : fournir les coordonnées et mentions légales adaptées au responsable réel de la publication ; valider les visuels et leurs droits d’utilisation. Aucun déploiement n’a été effectué dans cette tâche.
 
-Retour arrière : conserver le déploiement Vercel précédent et utiliser les actions de restauration proposées par Vercel si nécessaire. Le développement est isolé dans la branche `feat/valoria-v1` ; aucune modification de `main`, aucun push automatique.
+L’historique complet et la branche `feat/valoria-v1` sont conservés. Les futurs changements et toute activation d’hébergement restent soumis aux demandes de l’utilisateur et au budget de 0 €.
