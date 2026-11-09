@@ -1,0 +1,68 @@
+{
+  "status": "Geometry study verified. Rear design blocked pending the original PNG. No official rear/side appearance inferred.",
+  "before": {
+    "bytes": 941476,
+    "meshes": 6,
+    "triangles": 34936,
+    "size_xyz": [
+      1.3403475284576416,
+      1.608526088297367,
+      0.2639999985694885
+    ],
+    "embedded_images": 1
+  },
+  "after": {
+    "bytes": 1093588,
+    "meshes": 6,
+    "triangles": 34936,
+    "size_xyz": [
+      1.3421458005905151,
+      1.6137702753767371,
+      0.3757927119731903
+    ],
+    "embedded_images": 2
+  },
+  "front_texture_sha256": "6c09a1cabf79027f858d2bbaa6aea2e327233c8c0387951f0b1f835c92f15f24",
+  "front_texture_byte_identical": true,
+  "cloth_simulation": false,
+  "folds": "Actual displaced vertices; knit detail uses a separate procedural normal map.",
+  "viewport_checks": [
+    {
+      "width": 320,
+      "rendered": true,
+      "noOverflow": true,
+      "manualRotation": true,
+      "nativeTouchScroll": true
+    },
+    {
+      "width": 390,
+      "rendered": true,
+      "noOverflow": true,
+      "manualRotation": true,
+      "nativeTouchScroll": true
+    },
+    {
+      "width": 768,
+      "rendered": true,
+      "noOverflow": true,
+      "manualRotation": true,
+      "nativeTouchScroll": "not a touch viewport"
+    },
+    {
+      "width": 1440,
+      "rendered": true,
+      "noOverflow": true,
+      "manualRotation": true,
+      "nativeTouchScroll": "not a touch viewport"
+    }
+  ],
+  "page_errors": [],
+  "phone_hardware_tested": false,
+  "demo_input": "emulated mobile touch",
+  "demo_angles_observed": [
+    90,
+    270
+  ],
+  "frame_count": 60,
+  "website_modified": false
+}
