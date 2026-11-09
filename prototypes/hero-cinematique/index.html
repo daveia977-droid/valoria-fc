@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="fr">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#090707"><title>VALORIA FC — Étude du hero</title><link rel="icon" href="/assets/favicon.png"><link rel="stylesheet" href="./style.css"></head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="navigation">
+  <a class="brand" href="#accueil" aria-label="VALORIA FC — accueil"><img src="/assets/crest.webp" alt="" width="700" height="875"><span>VALORIA FC</span></a>
+  <nav aria-label="Navigation du prototype"><a href="#identite">Le club</a><a href="#collection">Collection</a><a class="org-link" href="https://valoria-fc.vercel.app/#organisation">Organisation</a></nav>
+  <button class="pause" id="pause" type="button" aria-pressed="false" aria-label="Mettre en pause les animations"><svg aria-hidden="true" viewBox="0 0 16 16" width="16" height="16"><path d="M5 3v10M11 3v10" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><span class="pause-word">Pause</span></button>
+</header>
+<main id="contenu" tabindex="-1">
+ <section class="story" id="accueil" aria-label="L’identité VALORIA FC">
+  <div class="scene">
+   <div class="atmosphere" aria-hidden="true"><img class="textile" src="/assets/hero-burgundy.webp" alt="" width="1672" height="941"><div class="aura"></div><div class="beam"></div><div class="grain"></div></div>
+   <div class="opening">
+    <p class="overline">LA FORCE DU COLLECTIF</p>
+    <h1>VALORIA <span>FC</span></h1>
+    <div class="edition"><span>Football club</span><span>Projet personnel · Club fictif</span></div>
+   </div>
+   <div class="emblem" aria-hidden="true"><div class="emblem-shadow"></div><img src="/assets/crest.webp" alt="" width="700" height="875" fetchpriority="high"></div>
+   <div class="identity" id="identite">
+    <p class="overline">01 / L’identité</p>
+    <h2>La force<br>du <em>collectif.</em></h2>
+    <p class="identity-copy">Une même passion.<br>Une identité à part.</p>
+    <a href="#collection" class="line-link">Découvrir nos couleurs <svg aria-hidden="true" viewBox="0 0 16 16" width="18" height="18"><path d="M3 13L13 3M4 3h9v9" fill="none" stroke="currentColor"/></svg></a>
+   </div>
+   <div class="scene-caption"><span class="caption-line"></span><span>Un blason.<br>Une même identité.</span></div>
+   <footer class="scene-footer"><span class="chapter-index"><b>01</b><span class="index-track"><i></i></span><span>02</span></span><a href="#identite" class="scroll-cue"><span>Entrer dans l’histoire</span><span class="circle" aria-hidden="true">↓</span></a><span class="footer-note">VALORIA FC</span></footer>
+  </div>
+ </section>
+ <section class="collection-bridge" id="collection" aria-labelledby="collection-title">
+   <div class="bridge-head"><p class="overline">02 / La collection</p><span>2026 / 2027</span></div>
+   <h2 id="collection-title">Une identité.<br><em>Quatre expressions.</em></h2>
+   <div class="collection-glimpse"><div class="collection-light" aria-hidden="true"></div><img src="/assets/collection.webp" alt="Les quatre maillots VALORIA FC validés, sans sponsor" width="1832" height="859" loading="lazy"></div>
+   <div class="bridge-bottom"><p>Domicile V1 · Domicile V2 · Extérieur · Troisième</p><a href="https://valoria-fc.vercel.app/#collection" class="line-link">Voir la collection existante <svg aria-hidden="true" viewBox="0 0 16 16" width="18" height="18"><path d="M3 13L13 3M4 3h9v9" fill="none" stroke="currentColor"/></svg></a></div>
+ </section>
+</main>
+<script type="module" src="./motion.js"></script>
+</body></html>
