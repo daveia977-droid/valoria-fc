@@ -54,4 +54,8 @@ npm run preview -- --host 127.0.0.1 --port 4174 --strictPort
 
 Ces commandes sont locales et ne constituent pas un déploiement. Pour les tests : `npm test` ; si le navigateur de Playwright n’est pas installé sur ce PC, `npx playwright install chromium` le prépare. Les commandes correspondantes sous PowerShell peuvent utiliser `npm.cmd` / `npx.cmd`.
 
+La compilation destinée à GitHub Pages utilise `/valoria-fc/`. Avec le serveur de prévisualisation sur le port 4174, ouvrir **http://127.0.0.1:4174/valoria-fc/**. Le serveur de développement sur 4173 conserve la racine `/`. Le contrôle complet du sous-chemin compilé s’exécute avec `npm run test:pages` (ou `npm.cmd run test:pages` sous PowerShell) ; il démarre et arrête automatiquement un serveur local sur le port 4175.
+
+Pour la publication réelle et l’étape d’activation dans GitHub, voir [docs/github-pages.md](docs/github-pages.md). L’URL publique n’est pas assimilée à une adresse locale ou à un dépôt GitHub.
+
 Le site utilise des polices et visuels locaux, sans API, clé, essai payant ou compte d’hébergement. L’installation initiale des dépendances nécessite une connexion au registre npm, sans abonnement à un service applicatif.

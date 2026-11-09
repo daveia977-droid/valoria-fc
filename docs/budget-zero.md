@@ -1,5 +1,9 @@
 # Règle permanente : budget du projet 0 €
 
+## Mission d’hébergement suivante : GitHub Pages
+
+L’utilisateur a choisi GitHub Pages et autorisé sa configuration et sa publication après tests. Voir `docs/github-pages.md`. Cette autorisation ne concerne ni Vercel ni un autre hébergeur. Le workflow utilise des actions officielles épinglées, un runner Ubuntu standard, aucun cache supplémentaire et un artefact `dist/` conservé un jour. Les builds de dépôt privé sont bloqués tant que l’offre gratuite n’est pas vérifiée. Aucun abonnement, achat, domaine ou jeton personnel n’est ajouté. La visibilité du dépôt et l’offre du compte ne sont pas modifiées.
+
 Le budget est prioritaire et inscrit dans `AGENTS.md` pour les prochaines phases. Projet personnel fictif, sans activité commerciale réelle.
 
 ## Décisions de la phase 3 initiale

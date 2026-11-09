@@ -7,7 +7,8 @@
     "dev": "vite --host 0.0.0.0",
     "build": "vite build",
     "preview": "vite preview --host 0.0.0.0",
-    "test": "playwright test"
+    "test": "playwright test",
+    "test:pages": "node tools/check_pages_preview.mjs"
   },
   "dependencies": {
     "@fontsource/cormorant-garamond": "^5.2.8",

@@ -9,6 +9,7 @@ Projet personnel, fictif et sans activité commerciale réelle. Pour toutes les 
 - Ne pas générer de nouveaux visuels avec un outil potentiellement payant pour cette phase. Réutiliser les images, polices et icônes déjà disponibles, sans modifier les visuels officiels.
 - Vérifier licences et limites d’usage avant toute nouvelle intégration. Les conditions d’un hébergement gratuit doivent être revérifiées au moment d’un éventuel choix futur ; aucun coût nul permanent ne peut être déduit d’une ancienne offre.
 - Ne déployer ni demander de VERCEL_TOKEN pendant les phases locales. Ne pas modifier la configuration de déploiement sans nécessité. Aucun service distant ne doit être activé pour une prévisualisation locale.
+- Hébergeur choisi : GitHub Pages, sous `/valoria-fc/`, avec publication de `dist/` uniquement lors d’une mission autorisant la mise en ligne. Ne pas utiliser Vercel, Netlify ou un autre hébergeur. Ne pas rendre un dépôt public ni activer une offre payante sans instruction explicite ; vérifier l’éligibilité gratuite avant publication.
 
 ## Identité et conservation
 

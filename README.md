@@ -7,6 +7,8 @@ Site vitrine officiel du club de football fictif VALORIA FC — projet pédagogi
 
 Le code complet est dans la branche **`main`** de ce dépôt, suivant la demande de l’utilisateur. Sources, assets, animations, organigramme, modèle et tests sont conservés. La branche `feat/valoria-v1` reste disponible avec l’état validé de la correction. **La synchronisation GitHub ne constitue pas un déploiement du site.**
 
+**Hébergement choisi : GitHub Pages.** Le [workflow et le guide de publication](docs/github-pages.md) compilent et vérifient le site sous `/valoria-fc/`, puis publient uniquement `dist/`. L’activation de Pages et le résultat distant ne sont pas encore vérifiables depuis cet environnement ; le guide donne l’étape exacte dans GitHub. Aucune offre payante n’est activée.
+
 ## Version 1
 
 Site statique en français : noir profond, bordeaux, or et crème, hero « VALORIA FC » avec écusson central, motion design 2D, collection sans sponsor, présentation du club, organisation et responsabilités. Le violet est réservé au troisième maillot.
@@ -41,6 +43,7 @@ Utiliser le checkout existant. Aucun worktree supplémentaire nécessaire.
 ```sh
 npm run build
 npm test
+npm run test:pages
 ```
 
 Les tests utilisent Chromium système s’il est disponible dans `/usr/bin/chromium`. Sinon, installer le navigateur de Playwright avec `npx playwright install chromium`, ou fournir `CHROMIUM_PATH`. Les sept tests initiaux restent inchangés. Sept tests supplémentaires vérifient les fiches de l’organigramme et leur hiérarchie, la comparaison au clavier, le défilement réversible sur mobile et ordinateur, la réduction du mouvement et les nouveaux états d’accessibilité.
@@ -79,15 +82,15 @@ Aucune adresse de contact n’a été fournie. Le formulaire prépare un fichier
 
 Pas de paiement, réservation, sponsor signé, palmarès, joueur recruté ou calendrier inventé. Les fonctions d’entraîneur et de joueurs restent à définir.
 
-### Vercel — préparation uniquement
+### Publication GitHub Pages
 
-Le dépôt conserve la préparation Vercel existante : `vercel.json` configure Vite, la compilation `npm run build`, le dossier `dist` et les en-têtes de sécurité. Aucun compte Vercel n’est connecté à l’environnement de développement et le dépôt ne contient aucune clé de déploiement. Les animations et le modèle 3D fonctionnent dans le navigateur et ne dépendent pas de Vercel.
+La configuration active pour cette mission est `.github/workflows/pages.yml`. `npm run build` produit des URL préfixées par `/valoria-fc/` ; `npm run test:pages` contrôle la version compilée à quatre largeurs, avec le GLB réel, les polices, les interactions et le défilement tactile. Le développement reste accessible à la racine locale.
 
-La procédure historique d’import Vercel est décrite dans [docs/vercel-deploy.md](docs/vercel-deploy.md). Le code est désormais synchronisé sur GitHub dans `main`, sans activation d’hébergement.
+Le [guide GitHub Pages](docs/github-pages.md) décrit les permissions minimales, les résultats des tests, les limites de gratuité et l’activation **Settings → Pages → Source → GitHub Actions**. Le workflow se lance sur `main` et manuellement. Par précaution pour le budget, les builds automatiques d’un dépôt privé sont désactivés tant que l’offre n’a pas été vérifiée.
 
-**GitHub Pages suffit aussi pour ce site statique.** La [documentation GitHub](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages) indique que Pages est disponible gratuitement pour les dépôts publics sur GitHub Free. Pour un dépôt privé, il faut vérifier l’offre du compte avant de retenir cette solution ; aucune modification de visibilité ni offre payante ne doit être activée automatiquement. La [configuration Vite pour Pages](https://vite.dev/guide/static-deploy.html#github-pages) nécessitera une compilation et l’adaptation de la base `/valoria-fc/` et des chemins des ressources. Cette publication n’est pas encore configurée ni activée.
+Les dernières études de maillots sont conservées dans `design/maillots/etudes-v1/` et ne remplacent pas les visuels du site. L’ancienne préparation Vercel reste dans l’historique et les documents existants, sans utilisation. Aucun autre hébergeur n’est sollicité.
 
-Pour vérifier localement le résultat de production : `npm run build`, puis `npm run preview -- --port 4174 --strictPort`.
+Pour vérifier localement le résultat de production : `npm run build`, puis `npm run preview -- --port 4174 --strictPort`, et ouvrir `http://127.0.0.1:4174/valoria-fc/`.
 
 Avant publication : fournir les coordonnées et mentions légales adaptées au responsable réel de la publication ; valider les visuels et leurs droits d’utilisation. Aucun déploiement n’a été effectué dans cette tâche.
 
