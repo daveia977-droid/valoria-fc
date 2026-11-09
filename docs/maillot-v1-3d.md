@@ -1,5 +1,7 @@
 # Domicile V1 : première version réellement en 3D
 
+> Historique de la première intégration. La fenêtre et ses commandes décrites ci-dessous ont été retirées lors de la [correction ciblée de la collection](correction-collection.md). Le GLB et sa géométrie restent inchangés. La présentation actuelle est directement intégrée dans la collection, sans nouvelle interface.
+
 ## Réalisation
 
 Le GLB contient six maillages : corps creux avec panneaux avant et arrière, deux manches avec ouvertures, deux bordures de manche et col en volume. La géométrie a une profondeur d’environ 0,264 unité et ne consiste pas en un plan portant une image. La texture de face réutilise les pixels du premier maillot de `collection.webp` ; le dos est uni, suivant la décision de l’utilisateur. Le modèle embarque son image JPEG et ne demande aucune ressource externe.

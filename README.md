@@ -5,6 +5,8 @@ Site vitrine officiel du club de football fictif VALORIA FC — projet pédagogi
 
 **Pour voir le vrai site sur son PC : [PREVISUALISATION.md](PREVISUALISATION.md).** Un ZIP doit être téléchargé puis extrait ; son aperçu dans Codex n’exécute pas Vite. Le guide donne les étapes Windows / macOS / Linux et le diagnostic du relais partagé indisponible.
 
+Le code complet est dans la branche **`feat/valoria-v1`** de ce dépôt. `main` reste sur le README initial en attendant validation. Sources, assets, animations, organigramme, modèle et tests sont conservés dans cette branche. **Aucun déploiement Vercel pour cette correction.**
+
 ## Version 1
 
 Site statique en français : noir profond, bordeaux, or et crème, hero « VALORIA FC » avec écusson central, motion design 2D, collection sans sponsor, présentation du club, organisation et responsabilités. Le violet est réservé au troisième maillot.
@@ -17,11 +19,11 @@ La [phase 3](docs/phase-3.md) unifie désormais l’ensemble du site dans une co
 
 ### Domicile V1 en 3D
 
-La [première tenue 3D](docs/maillot-v1-3d.md) est maintenant modélisée et intégrée : dans **Collection**, ouvrir **Explorer le domicile V1 en 3D**. Rotation souris, tactile, clavier et curseur ; face, dos, côtés, zoom et rotation automatique facultative. Dos bordeaux uni sans sponsor, nom ni numéro. Modèle original approximatif créé localement avec Blender, texture de face dérivée du visuel existant ; aucun fichier officiel n’a été remplacé.
+La [correction ciblée de la collection](docs/correction-collection.md) retire la fenêtre « Vue 360° » et ses commandes. Chaque tenue apparaît en grand dans la collection. Le domicile V1 réutilise son modèle existant : glisser directement au doigt ou à la souris pour tourner, ou utiliser les flèches du clavier. Les trois autres maillots gardent leur image de face, accompagnée d’une perspective légère et de l’indication « Visuel 2D ». Aucun visuel, motif ou modèle n’a été régénéré.
 
-Three.js 0.187.0 (MIT) est chargé uniquement à l’ouverture de la vue 3D, avec le GLB autonome de 942 ko. Le reste du site fonctionne sans WebGL. La réduction des animations et la pause globale désactivent la rotation automatique ; la fermeture libère le rendu et ses ressources. Les trois autres tenues et le blason restent en 2D. Budget des nouvelles ressources et services : 0 €.
+Three.js 0.187.0 (MIT), déjà présent, et le GLB autonome de 942 ko sont chargés lorsque le domicile V1 devient visible. Le rendu est calculé à la demande, sans rotation automatique. Sortir de la collection ou choisir un autre maillot libère le rendu. La réduction des animations et la pause globale annulent la perspective décorative des images 2D ; la rotation 3D reste une action manuelle explicite. Le site reste utilisable sans WebGL. Budget : 0 €.
 
-Les **29 tests Playwright passent** : les 18 précédents, inchangés, et 11 contrôles pour la géométrie volumétrique, le chargement à la demande, les interactions, les replis, le nettoyage et les formats 320/390/768/1440 px. Compilation validée et vue 3D vérifiée dans le résultat compilé sur le serveur local de prévisualisation.
+Les **29 tests Playwright passent** : les 18 tests des autres fonctionnalités sont inchangés ; les 11 contrôles du module maillot sont adaptés à la présentation intégrée. Compilation validée, rotation et défilement tactile vérifiés à 320/390/768/1440 px. [Capture desktop](docs/media/collection-desktop.jpg), [capture mobile](docs/media/collection-mobile.jpg) et [démonstration du mouvement](docs/media/collection-mouvement.mp4).
 
 ### Développement
 
@@ -64,6 +66,7 @@ Le contrôle responsive est effectué par émulation de navigateur, pas sur un i
 - `src/jersey-entry.js`, `src/jersey-viewer.js`, `src/jersey.css` : ouverture différée, rendu WebGL et interface de la tenue 3D.
 - `public/models/domicile-v1.glb` : véritable maillage 3D avec texture embarquée ; aucune API de modèles externe.
 - `tools/prepare_jersey_texture.py`, `tools/build_jersey.py` : reproduction locale de la texture dérivée et du modèle Blender.
+- `design/maillots/` : source Blender existante et ancienne maquette SVG du dos, conservées sans modification ; ces fichiers ne sont pas chargés par le site.
 - `src/style.css` : palette, typographies, mise en page et responsive.
 - `public/assets/` : visuels WebP optimisés. `collection.webp` contient uniquement les maillots **sans sponsor**.
 - `docs/references.md` : ressources examinées, choix, licences et provenance des visuels.

@@ -1,11 +1,11 @@
 import { test, expect } from "@playwright/test";
 import { readFileSync } from "node:fs";
 
-const stage = ".jersey-stage";
+const stage = "#kit-panel";
 async function openViewer(page) {
   await page.goto("/");
-  await page.locator("#jersey-open").click();
-  await expect(page.locator(stage)).toHaveAttribute("data-state", "ready", { timeout: 20000 });
+  await page.locator(stage).scrollIntoViewIfNeeded();
+  await expect(page.locator(stage)).toHaveAttribute("data-presentation", "3d", { timeout: 20000 });
 }
 
 test("le GLB contient un vêtement volumétrique autonome et un dos uni", async () => {
@@ -26,86 +26,84 @@ test("le GLB contient un vêtement volumétrique autonome et un dos uni", async 
   expect(buffer.length).toBeLessThan(1_500_000);
 });
 
-test("chargement à la demande, vraies vues différentes, zoom, clavier et libération à la fermeture", async ({ page }) => {
+test("3D intégrée à la collection, chargement différé et manipulation directe sans fenêtre", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   const requests = [];
   page.on("request", (request) => requests.push(request.url()));
   await page.goto("/");
   expect(requests.filter((url) => /\.glb|jersey-viewer|three(?:\.js|_)/.test(url))).toEqual([]);
-  await page.locator("#jersey-open").click();
-  await expect(page.locator(stage)).toHaveAttribute("data-state", "ready", { timeout: 20000 });
+  await expect(page.locator("#jersey-dialog, #jersey-open, #jersey-angle, [data-view]")).toHaveCount(0);
+  await page.locator(stage).scrollIntoViewIfNeeded();
+  await expect(page.locator(stage)).toHaveAttribute("data-presentation", "3d", { timeout: 20000 });
   expect(requests.some((url) => url.endsWith("domicile-v1.glb"))).toBe(true);
   const canvas = page.locator(".jersey-canvas canvas");
   await expect(canvas).toHaveAttribute("data-engine", /three\.js/);
   const front = await canvas.screenshot();
-  await page.locator('[data-view="180"]').click();
+  await page.locator(stage).focus();
+  for (let i = 0; i < 12; i++) await page.keyboard.press("ArrowRight");
   await expect(page.locator(stage)).toHaveAttribute("data-angle", "180");
   expect(front.equals(await canvas.screenshot())).toBe(false);
-  await expect(page.locator('[data-view="180"]')).toHaveAttribute("aria-pressed", "true");
-  await canvas.focus();
-  await page.keyboard.press("ArrowRight");
-  await expect(page.locator(stage)).toHaveAttribute("data-angle", "195");
   await page.keyboard.press("Home");
   await expect(page.locator(stage)).toHaveAttribute("data-angle", "0");
-  await page.getByRole("button", { name: "Zoomer le maillot", exact: true }).click();
-  await expect(page.locator(stage)).toHaveAttribute("data-zoom", "1.10");
-  await page.getByRole("button", { name: "Réinitialiser", exact: true }).click();
-  await expect(page.locator(stage)).toHaveAttribute("data-zoom", "1.00");
-  await page.keyboard.press("Escape");
-  await expect(page.locator("#jersey-dialog")).not.toBeVisible();
+  await page.getByRole("tab", { name: /Domicile V2/ }).click();
   await expect(canvas).toHaveCount(0);
-  await expect(page.locator("#jersey-open")).toBeFocused();
-  await page.locator("#jersey-open").click();
-  await expect(page.locator(stage)).toHaveAttribute("data-state", "ready");
+  await expect(page.locator(stage)).toHaveAttribute("data-presentation", "2d");
+  await expect(page.locator("#kit-motion-note")).toHaveText("Visuel 2D");
+  await page.getByRole("tab", { name: /Domicile V1/ }).click();
+  await expect(page.locator(stage)).toHaveAttribute("data-presentation", "3d");
   await expect(page.locator(".jersey-canvas canvas")).toHaveCount(1);
-  await expect(page.locator(stage)).toHaveAttribute("data-angle", "0");
 });
 
-test("rotation facultative et arrêt immédiat lors d’une préférence de mouvement réduit", async ({ page }) => {
-  await page.emulateMedia({ reducedMotion: "no-preference" });
-  await openViewer(page);
-  const automatic = page.locator("#jersey-auto");
-  await expect(page.locator(stage)).toHaveAttribute("data-rotating", "false");
-  await automatic.click();
-  await expect(page.locator(stage)).toHaveAttribute("data-rotating", "true");
-  await expect.poll(() => page.locator(stage).getAttribute("data-angle")).not.toBe("0");
+test("mouvement réduit : aucune rotation passive, commande manuelle toujours possible", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
-  await expect(automatic).toBeDisabled();
-  await expect(automatic).toHaveAttribute("aria-pressed", "false");
-  await expect(page.locator(stage)).toHaveAttribute("data-rotating", "false");
-  await page.locator('[data-view="180"]').click();
-  await expect(page.locator(stage)).toHaveAttribute("data-angle", "180");
-  await expect(page.locator("#jersey-motion-note")).toContainText("préférences");
+  await openViewer(page);
+  await expect(page.locator(stage)).toHaveAttribute("data-angle", "0");
+  await page.waitForTimeout(300);
+  await expect(page.locator(stage)).toHaveAttribute("data-angle", "0");
+  await page.locator(stage).focus();
+  await page.keyboard.press("ArrowLeft");
+  await expect(page.locator(stage)).toHaveAttribute("data-angle", "345");
+  await expect(page.locator("#collection button")).toHaveCount(4);
 });
 
-test("la pause globale désactive aussi la rotation du maillot", async ({ page }) => {
+test("perspective 2D limitée au visuel original et annulée par la pause globale", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "no-preference" });
   await page.goto("/");
+  await page.getByRole("tab", { name: /Domicile V2/ }).click();
+  const box = await page.locator(stage).boundingBox();
+  await page.mouse.move(box.x + box.width * .8, box.y + box.height * .4);
+  await expect.poll(() => page.locator(stage).evaluate((el) => el.style.getPropertyValue("--kit-tilt-y"))).not.toBe("0deg");
+  const tilt = await page.locator(stage).evaluate((el) => parseFloat(el.style.getPropertyValue("--kit-tilt-y")));
+  expect(Math.abs(tilt)).toBeLessThanOrEqual(4);
+  await expect(page.locator("#kit-image")).toHaveAttribute("src", "/assets/collection.webp");
   await page.locator("#motion-toggle").click();
-  await page.locator("#jersey-open").click();
-  await expect(page.locator(stage)).toHaveAttribute("data-state", "ready", { timeout: 20000 });
-  await expect(page.locator("#jersey-auto")).toBeDisabled();
-  await page.locator('[data-view="90"]').click();
-  await expect(page.locator(stage)).toHaveAttribute("data-angle", "90");
+  await page.locator(stage).scrollIntoViewIfNeeded();
+  await page.mouse.move(box.x + box.width * .8, box.y + box.height * .4);
+  await expect.poll(() => page.locator(stage).evaluate((el) => el.style.getPropertyValue("--kit-tilt-y"))).toBe("0deg");
+  await page.getByRole("tab", { name: /Domicile V1/ }).click();
+  await expect(page.locator(stage)).toHaveAttribute("data-presentation", "3d", { timeout: 20000 });
+  await page.locator(stage).focus();
+  await page.keyboard.press("ArrowRight");
+  await expect(page.locator(stage)).toHaveAttribute("data-angle", "15");
 });
 
-test("modèle indisponible : message, retour à la collection et nouvel essai", async ({ page }) => {
+test("modèle indisponible : visuel 2D conservé et sélection des tenues opérationnelle", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.route("**/models/domicile-v1.glb", (route) => route.fulfill({ status: 404, body: "unavailable" }));
   await page.goto("/");
-  await page.locator("#jersey-open").click();
-  await expect(page.locator(stage)).toHaveAttribute("data-state", "error");
-  await expect(page.getByText("La présentation 2D de la collection reste disponible.")).toBeVisible();
+  const response = page.waitForResponse("**/models/domicile-v1.glb");
+  await page.locator(stage).scrollIntoViewIfNeeded();
+  expect((await response).status()).toBe(404);
+  await expect(page.locator(stage)).toHaveAttribute("data-presentation", "2d");
+  await expect(page.locator("#kit-image")).toBeVisible();
   await expect(page.locator(".jersey-canvas canvas")).toHaveCount(0);
+  await page.getByRole("tab", { name: /Extérieur/ }).click();
+  await expect(page.locator("#kit-name")).toHaveText("Extérieur");
   await page.unroute("**/models/domicile-v1.glb");
-  await page.locator("#jersey-retry").click();
-  await expect(page.locator(stage)).toHaveAttribute("data-state", "ready", { timeout: 20000 });
-  await page.getByRole("button", { name: "Fermer la vue 3D" }).click();
-  await page.getByRole("tab", { name: "Domicile V2" }).click();
-  await expect(page.locator("#kit-name")).toHaveText("Domicile V2");
+  await openViewer(page);
 });
 
-test("absence de WebGL : repli 2D accessible sans casser les autres fonctions", async ({ page }) => {
+test("absence de WebGL : quatre images accessibles, sans nouvelle interface de repli", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.addInitScript(() => {
     const original = HTMLCanvasElement.prototype.getContext;
@@ -114,15 +112,16 @@ test("absence de WebGL : repli 2D accessible sans casser les autres fonctions", 
     };
   });
   await page.goto("/");
-  await page.locator("#jersey-open").click();
-  await expect(page.locator(stage)).toHaveAttribute("data-state", "error");
-  await expect(page.locator('[data-view="0"]')).toBeDisabled();
-  await page.getByRole("button", { name: "Revenir à la collection" }).click();
-  await page.getByRole("tab", { name: "Troisième" }).click();
+  await page.locator(stage).scrollIntoViewIfNeeded();
+  await expect(page.locator("#kit-image")).toBeVisible();
+  await expect(page.locator(stage)).toHaveAttribute("data-presentation", "2d");
+  await expect(page.locator("#kit-motion-note")).toHaveText("Visuel 2D");
+  await page.getByRole("tab", { name: /Troisième/ }).click();
   await expect(page.locator("#kit-name")).toHaveText("Troisième");
+  await expect(page.locator("#collection button")).toHaveCount(4);
 });
 
-test("fermeture pendant un chargement : aucun rendu ni contrôle orphelin", async ({ page }) => {
+test("sélection pendant un chargement : interruption puis retour à V1 sans rendu orphelin", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   let release;
   const pending = new Promise((resolve) => { release = resolve; });
@@ -132,46 +131,61 @@ test("fermeture pendant un chargement : aucun rendu ni contrôle orphelin", asyn
   });
   await page.goto("/");
   const requested = page.waitForRequest("**/models/domicile-v1.glb");
-  await page.locator("#jersey-open").click();
+  await page.locator(stage).scrollIntoViewIfNeeded();
   await requested;
-  await page.keyboard.press("Escape");
+  await page.getByRole("tab", { name: /Domicile V2/ }).click();
   release();
   await expect(page.locator(".jersey-canvas canvas")).toHaveCount(0);
+  await expect(page.locator("#kit-image")).toBeVisible();
   await page.unroute("**/models/domicile-v1.glb");
-  await page.locator("#jersey-open").click();
-  await expect(page.locator(stage)).toHaveAttribute("data-state", "ready", { timeout: 20000 });
+  await page.getByRole("tab", { name: /Domicile V1/ }).click();
+  await expect(page.locator(stage)).toHaveAttribute("data-presentation", "3d", { timeout: 20000 });
   await expect(page.locator(".jersey-canvas canvas")).toHaveCount(1);
 });
 
 for (const width of [320, 390, 768, 1440]) {
-  test(`vue 3D responsive et rotation manuelle à ${width}px`, async ({ browser, baseURL }) => {
+  test(`maillot en grand, rotation directe et défilement naturel à ${width}px`, async ({ browser, baseURL }) => {
     const page = await browser.newPage({ baseURL, viewport: { width, height: 900 }, hasTouch: width < 761, reducedMotion: "reduce" });
     await openViewer(page);
-    const dialog = page.locator("#jersey-dialog");
-    expect(await dialog.evaluate((el) => el.scrollWidth <= el.clientWidth)).toBe(true);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
     const canvas = page.locator(".jersey-canvas canvas");
     const box = await canvas.boundingBox();
-    expect(box.width).toBeGreaterThan(200);
+    expect(box.width).toBeGreaterThan(250);
+    expect(box.height).toBeGreaterThan(350);
     expect(box.x).toBeGreaterThanOrEqual(0);
     expect(box.x + box.width).toBeLessThanOrEqual(width);
+    const start = { x: box.x + box.width / 2, y: box.y + box.height / 2 };
     if (width < 761) {
       const cdp = await page.context().newCDPSession(page);
-      const start = { x: box.x + box.width / 2, y: box.y + box.height / 2 };
       await cdp.send("Input.dispatchTouchEvent", { type: "touchStart", touchPoints: [start] });
-      await cdp.send("Input.dispatchTouchEvent", { type: "touchMove", touchPoints: [{ x: start.x + 70, y: start.y + 10 }] });
+      await cdp.send("Input.dispatchTouchEvent", { type: "touchMove", touchPoints: [{ x: start.x + 70, y: start.y }] });
       await cdp.send("Input.dispatchTouchEvent", { type: "touchEnd", touchPoints: [] });
+      await expect(page.locator(stage)).toHaveAttribute("data-angle", "46");
+      const beforeScroll = await page.evaluate(() => scrollY);
+      await cdp.send("Input.dispatchTouchEvent", { type: "touchStart", touchPoints: [start] });
+      for (let i = 1; i <= 5; i++) {
+        await cdp.send("Input.dispatchTouchEvent", { type: "touchMove", touchPoints: [{ x: start.x, y: start.y - i * 20 }] });
+        await page.waitForTimeout(30);
+      }
+      await cdp.send("Input.dispatchTouchEvent", { type: "touchEnd", touchPoints: [] });
+      await expect.poll(() => page.evaluate(() => scrollY)).toBeGreaterThan(beforeScroll + 30);
       await cdp.detach();
     } else {
-      await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+      await page.mouse.move(start.x, start.y);
       await page.mouse.down();
-      await page.mouse.move(box.x + box.width / 2 + 70, box.y + box.height / 2 + 10, { steps: 5 });
+      await page.mouse.move(start.x + 70, start.y, { steps: 5 });
       await page.mouse.up();
+      await expect(page.locator(stage)).toHaveAttribute("data-angle", "46");
     }
-    await expect(page.locator(stage)).toHaveAttribute("data-angle", "42");
-    await page.locator('[data-view="180"]').click();
-    await expect(page.locator(stage)).toHaveAttribute("data-angle", "180");
-    await page.keyboard.press("Escape");
-    await expect(dialog).not.toBeVisible();
+    for (const name of ["Domicile V2", "Extérieur", "Troisième"]) {
+      await page.getByRole("tab", { name: new RegExp(name) }).click();
+      await expect(page.locator(stage)).toHaveAttribute("data-presentation", "2d");
+      await expect(page.locator("#kit-image")).toBeVisible();
+      const image = await page.locator(".kit-window").boundingBox();
+      expect(image.x).toBeGreaterThanOrEqual(0);
+      expect(image.x + image.width).toBeLessThanOrEqual(width);
+      expect(image.height).toBeGreaterThan(350);
+    }
     await page.close();
   });
 }

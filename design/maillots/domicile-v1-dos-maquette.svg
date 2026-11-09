@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1120" viewBox="0 0 1000 1120">
+<defs>
+ <linearGradient id="cloth" x1="0" x2="1"><stop stop-color="#48040d"/><stop offset=".19" stop-color="#750710"/><stop offset=".48" stop-color="#900b17"/><stop offset=".72" stop-color="#790710"/><stop offset="1" stop-color="#47040b"/></linearGradient>
+ <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f5dc9f"/><stop offset=".48" stop-color="#e9c47e"/><stop offset="1" stop-color="#b98134"/></linearGradient>
+ <linearGradient id="fold" x1="0" x2="1"><stop stop-color="#ffffff" stop-opacity="0"/><stop offset=".44" stop-color="#ffffff" stop-opacity=".045"/><stop offset=".55" stop-color="#1e0004" stop-opacity=".07"/><stop offset="1" stop-color="#1e0004" stop-opacity="0"/></linearGradient>
+ <filter id="shadow"><feGaussianBlur stdDeviation="15"/></filter>
+ <clipPath id="shirt"><path d="M418 226 Q500 243 582 226 L646 245 C710 256 748 284 766 330 L814 448 L701 491 L663 410 C658 548 661 743 683 922 Q500 955 317 922 C339 743 342 548 337 410 L299 491 L186 448 L234 330 C252 284 290 256 354 245 Z"/></clipPath>
+</defs>
+<rect width="1000" height="1120" fill="#f0ebe3"/>
+<text x="500" y="75" text-anchor="middle" font-family="Manrope, sans-serif" font-size="24" letter-spacing="7" fill="#291819">VALORIA FC</text>
+<text x="500" y="110" text-anchor="middle" font-family="Manrope, sans-serif" font-size="11" letter-spacing="3" fill="#786350">DOMICILE V1 · PROPOSITION DU DOS</text>
+<ellipse cx="500" cy="956" rx="193" ry="15" fill="#291819" opacity=".14" filter="url(#shadow)"/>
+<path d="M418 226 Q500 243 582 226 L646 245 C710 256 748 284 766 330 L814 448 L701 491 L663 410 C658 548 661 743 683 922 Q500 955 317 922 C339 743 342 548 337 410 L299 491 L186 448 L234 330 C252 284 290 256 354 245 Z" fill="url(#cloth)" stroke="#4c0710" stroke-width="2"/>
+<g clip-path="url(#shirt)">
+ <path d="M354 245 Q399 333 368 470 Q346 710 371 923 L409 930 Q370 718 399 466 Q412 341 354 245Z" fill="url(#fold)"/>
+ <path d="M646 245 Q601 333 632 470 Q654 710 629 923 L591 930 Q630 718 601 466 Q588 341 646 245Z" fill="url(#fold)"/>
+ <path d="M422 238 Q500 255 578 238" fill="none" stroke="#4a0410" stroke-width="3" opacity=".32"/>
+ <path d="M418 230 Q378 270 337 410 M582 230 Q622 270 663 410" fill="none" stroke="#43020a" stroke-width="2" opacity=".28"/>
+ <path d="M337 410 Q355 635 331 917 M663 410 Q645 635 669 917" fill="none" stroke="#43020a" stroke-width="2" opacity=".24"/>
+ <path d="M319 910 Q500 940 681 910" fill="none" stroke="#45040d" stroke-width="2" opacity=".4"/>
+ <path d="M190 435 L305 476 L299 493 L184 451 Z" fill="url(#gold)"/>
+ <path d="M190 435 L305 476" fill="none" stroke="#f7dfaa" stroke-width="2"/>
+ <g transform="translate(1000 0) scale(-1 1)"><path d="M190 435 L305 476 L299 493 L184 451 Z" fill="url(#gold)"/><path d="M190 435 L305 476" fill="none" stroke="#f7dfaa" stroke-width="2"/></g>
+</g>
+<path d="M418 211 Q500 224 582 211 L583 236 Q500 255 417 236 Z" fill="url(#gold)" stroke="#ad7830" stroke-width="1.5"/>
+<path d="M421 215 Q500 229 579 215" fill="none" stroke="#f9e7ba" stroke-width="3"/>
+<path d="M416 237 Q500 257 584 237" fill="none" stroke="#4a0410" stroke-width="3"/>
+<path d="M342 266 Q284 279 255 331" fill="none" stroke="#c64e55" stroke-width="2" opacity=".13"/>
+<path d="M658 266 Q716 279 745 331" fill="none" stroke="#c64e55" stroke-width="2" opacity=".13"/>
+<line x1="375" y1="1011" x2="625" y2="1011" stroke="#b9a185" stroke-width="1"/>
+<text x="500" y="1048" text-anchor="middle" font-family="Manrope, sans-serif" font-size="17" fill="#291819">Dos bordeaux uni</text>
+<text x="500" y="1081" text-anchor="middle" font-family="Manrope, sans-serif" font-size="10" letter-spacing="2" fill="#786350">MAQUETTE 2D · SANS NOM · SANS NUMÉRO · SANS SPONSOR</text>
+</svg>

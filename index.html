@@ -161,6 +161,9 @@
               id="kit-panel"
               role="tabpanel"
               aria-labelledby="kit-tab-0"
+              aria-describedby="kit-motion-note"
+              tabindex="0"
+              data-presentation="2d"
             >
               <div class="kit-window">
                 <img
@@ -170,10 +173,11 @@
                   alt="Maillot domicile V1 rouge et or, sans sponsor"
                   width="1832"
                   height="891"
-                  loading="lazy"
+                  loading="eager"
                 />
               </div>
-              <span class="kit-watermark" aria-hidden="true">VALORIA</span>
+              <div class="jersey-canvas" hidden></div>
+              <p class="kit-motion-note" id="kit-motion-note">Visuel 2D</p>
             </div>
             <div class="kit-info reveal">
               <p class="eyebrow">Collection 2026 / 2027</p>
@@ -238,9 +242,6 @@
                   ><span>Troisième<small>Noir, violet & or</small></span>
                 </button>
               </div>
-              <button class="jersey-open" id="jersey-open" type="button" aria-haspopup="dialog" aria-controls="jersey-dialog">
-                <span>Explorer le domicile V1 en 3D</span><span aria-hidden="true">360° ↗</span>
-              </button>
               <p class="collection-disclaimer">
                 Visuels de conception · Présentation uniquement.<br />Aucun
                 achat ni réservation sur ce site.
@@ -616,54 +617,6 @@
           </div>
         </dl>
         <p id="person-count" class="person-count"></p>
-      </div>
-    </dialog>
-    <dialog id="jersey-dialog" class="jersey-dialog" aria-labelledby="jersey-title" aria-describedby="jersey-description">
-      <div class="dialog-head">
-        <p class="eyebrow">La collection · Vue 360°</p>
-        <button class="close-button" type="button" data-jersey-close aria-label="Fermer la vue 3D" autofocus>Fermer ×</button>
-      </div>
-      <div class="jersey-heading">
-        <h2 id="jersey-title">Domicile V1<span>En mouvement.</span></h2>
-        <p id="jersey-description">Faites tourner le maillot pour découvrir la face, le dos et les côtés.</p>
-      </div>
-      <div class="jersey-layout">
-        <div class="jersey-stage" data-state="idle" aria-busy="false">
-          <div class="jersey-canvas"></div>
-          <p class="jersey-status" role="status" aria-live="polite">La vue 3D se charge à l’ouverture.</p>
-          <div class="jersey-fallback" hidden>
-            <p>La présentation 2D de la collection reste disponible.</p>
-            <button type="button" id="jersey-retry">Réessayer la 3D</button>
-            <button type="button" data-jersey-close>Revenir à la collection</button>
-          </div>
-          <span class="jersey-stage-label" aria-hidden="true">VALORIA FC · 2026 / 2027</span>
-        </div>
-        <div class="jersey-sidebar">
-          <p class="eyebrow">Rouge & or · Sans sponsor</p>
-          <fieldset class="jersey-controls" disabled>
-            <legend>Explorer le maillot</legend>
-            <div class="jersey-views" role="group" aria-label="Angle de vue">
-              <button type="button" data-view="0" aria-pressed="true">Face</button>
-              <button type="button" data-view="180" aria-pressed="false">Dos</button>
-              <button type="button" data-view="90" aria-pressed="false">Côté gauche</button>
-              <button type="button" data-view="270" aria-pressed="false">Côté droit</button>
-            </div>
-            <label for="jersey-angle">Rotation <output id="jersey-angle-value" for="jersey-angle" aria-live="off">0°</output></label>
-            <input id="jersey-angle" type="range" min="0" max="360" value="0" step="1" aria-label="Rotation du maillot en degrés" />
-            <div class="jersey-zoom" role="group" aria-label="Grossissement du maillot">
-              <button type="button" data-zoom="out" aria-label="Dézoomer le maillot">−</button>
-              <button type="button" data-zoom="reset">Réinitialiser</button>
-              <button type="button" data-zoom="in" aria-label="Zoomer le maillot">+</button>
-            </div>
-            <button type="button" id="jersey-auto" aria-pressed="false">Rotation automatique</button>
-            <p id="jersey-motion-note" class="jersey-note"></p>
-          </fieldset>
-          <p class="jersey-help" id="jersey-help">Glissez sur le maillot avec la souris ou le doigt. Au clavier : flèches pour tourner, + et − pour zoomer.</p>
-          <div class="jersey-details">
-            <p>Prototype 3D créé à partir du visuel de face. Coupe approximative, dos bordeaux uni, sans flocage.</p>
-            <a href="/models/domicile-v1.glb" download="VALORIA-FC-domicile-V1.glb">Télécharger le modèle 3D (.glb)</a>
-          </div>
-        </div>
       </div>
     </dialog>
     <script type="module" src="/src/main.js"></script>

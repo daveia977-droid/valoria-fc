@@ -8,7 +8,7 @@ Dans l’environnement cloud, `sites-preview status` signale `preview relay unav
 
 ## Windows — étapes exactes
 
-1. Télécharger la dernière archive `valoria-3d-source.zip` comme fichier, puis utiliser **Extraire tout**. Ne pas essayer de la consulter comme un aperçu interactif.
+1. Sur GitHub, sélectionner la branche **feat/valoria-v1**, puis **Code → Download ZIP** et **Extraire tout**. La branche `main` reste volontairement sur le README initial jusqu’à validation. Une archive locale `valoria-collection-source.zip` est également fournie. Ne pas essayer de consulter un ZIP comme un aperçu interactif.
 2. Ouvrir le dossier extrait qui contient **package.json**, **index.html** et le dossier **src**.
 3. Dans la barre d’adresse de l’Explorateur Windows, saisir `powershell` puis Entrée : le terminal s’ouvre dans ce dossier.
 4. Vérifier les prérequis :
@@ -30,7 +30,7 @@ npm.cmd run dev -- --host 127.0.0.1 --port 4173 --strictPort
 6. Ouvrir dans son navigateur l’adresse affichée à la ligne **Local:** par Vite. Garder le terminal ouvert pendant la consultation. Le site est exécuté sur le PC ; aucune publication n’est effectuée.
 7. Pour arrêter le serveur : **Ctrl+C** dans le terminal.
 
-Pour la tenue 3D : ouvrir **Collection**, puis **Explorer le domicile V1 en 3D**. Souris ou doigt pour tourner, boutons pour la face et le dos, curseur de rotation et commandes de zoom. Le fichier GLB est déjà fourni ; Blender n’est pas nécessaire pour consulter le site. WebGL 2 est nécessaire uniquement pour cette vue. La collection 2D reste accessible si la 3D est indisponible.
+Dans **Collection**, sélectionner une tenue avec les quatre choix existants. Le domicile V1 se tourne directement en glissant au doigt ou à la souris ; au clavier, flèches gauche/droite et Début pour revenir de face. Les trois autres tenues conservent leur visuel 2D, sans dos ou côté inventé. Il n’y a plus de fenêtre 360°, de jauge ou de commandes de zoom. Le fichier GLB est fourni ; Blender n’est pas nécessaire pour consulter le site. Sans WebGL 2, l’image d’origine reste affichée.
 
 `npm.cmd` évite le blocage éventuel du script PowerShell `npm.ps1` ; aucune modification de la politique d’exécution n’est nécessaire. Si le port est déjà occupé, arrêter le serveur Vite de son autre fenêtre ou choisir `--port 4175`.
 

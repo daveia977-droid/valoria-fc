@@ -25,7 +25,7 @@ document.querySelectorAll('span[aria-hidden="true"]').forEach((span) => {
 const motion = initMotion();
 initOrganisation(motion);
 initComparison(motion);
-initJersey(motion);
+const jersey = initJersey(motion);
 
 // Native modal dialogs provide focus containment, Escape handling, and focus return.
 const menu = document.querySelector("#mobile-menu");
@@ -102,6 +102,7 @@ function selectKit(index, focus = false) {
     .setAttribute("aria-labelledby", `kit-tab-${index}`);
   strip.alt = kit.alt;
   positionKit();
+  jersey.select(index);
   if (focus) tabs[index].focus();
   if (!motion.paused)
     motion.animate(
