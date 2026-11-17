@@ -13,16 +13,16 @@ test("navigation, collection accessible et brouillon local", async ({
   );
   await page.getByRole("link", { name: "Découvrir le club" }).click();
   await expect(page).toHaveURL(/#identite$/);
-  await page.getByRole("tab", { name: /Domicile V2/ }).click();
-  await expect(page.locator("#kit-name")).toHaveText("Domicile V2");
-  await page.getByRole("tab", { name: /Domicile V2/ }).press("End");
+  await page.getByRole("tab", { name: /Domicile/ }).click();
+  await expect(page.locator("#kit-name")).toHaveText("Domicile");
+  await page.getByRole("tab", { name: /Domicile/ }).press("End");
   await expect(page.getByRole("tab", { name: /Third/ })).toHaveAttribute(
     "aria-selected",
     "true",
   );
   await expect(page.locator("#kit-image")).toHaveAttribute(
     "alt",
-    /sans sponsor/,
+    /NW\$/,
   );
   await page.getByRole("button", { name: "Préparer un message" }).click();
   await page.getByLabel("Votre nom", { exact: true }).fill("Supporter Valoria");
