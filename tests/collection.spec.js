@@ -1,20 +1,21 @@
 import { test, expect } from '@playwright/test';
 
 for (const width of [320, 390, 768, 1440]) {
-  test(`quatre maillots authentiques en 2D, sans dos ni téléchargement 3D à ${width}px`, async ({ page }) => {
+  test(`trois maillots authentiques en 2D, sans dos ni téléchargement 3D à ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: width < 761 ? 844 : 900 });
     const requests = [], errors = [];
     page.on('request', request => requests.push(request.url()));
     page.on('pageerror', error => errors.push(error.message));
     await page.goto('/');
     await page.locator('#collection').scrollIntoViewIfNeeded();
-    for (const [index, name] of ['Domicile V1', 'Domicile V2', 'Extérieur', 'Third'].entries()) {
+    for (const [index, name] of ['Domicile', 'Extérieur', 'Third'].entries()) {
       const tab = page.getByRole('tab', { name, exact: true });
       await tab.click();
       await expect(tab).toHaveAttribute('aria-selected', 'true');
       await expect(page.locator('#kit-name')).toHaveText(name);
       await expect(page.locator('#kit-panel')).toHaveAttribute('data-presentation', '2d');
       await expect(page.locator('#kit-image')).toBeVisible();
+      await expect(page.locator('.kit-sponsor')).toHaveText('NW$');
       await expect(page.locator('#kit-image')).toHaveAttribute('src', '/assets/collection.webp');
       const image = await page.locator('#kit-image').evaluate(el => {
         const box = el.getBoundingClientRect();
@@ -45,15 +46,15 @@ test('le masque retire le fond extérieur et conserve les quatre centres de mail
 
 test('sélection rapide et clavier, sans état d’animation périmé', async ({ page }) => {
   await page.goto('/');
-  const first = page.getByRole('tab', { name: 'Domicile V1', exact: true });
+  const first = page.getByRole('tab', { name: 'Domicile', exact: true });
   await first.focus(); await page.keyboard.press('ArrowLeft');
   await expect(page.getByRole('tab', { name: 'Third', exact: true })).toBeFocused();
   await page.keyboard.press('Home'); await expect(first).toBeFocused();
-  await page.evaluate(() => { for (const i of [1, 3, 0, 2, 1]) document.querySelector(`[data-kit="${i}"]`).click(); });
-  await expect(page.locator('#kit-name')).toHaveText('Domicile V2');
+  await page.evaluate(() => { for (const i of [1, 2, 0, 2, 0]) document.querySelector(`[data-kit="${i}"]`).click(); });
+  await expect(page.locator('#kit-name')).toHaveText('Domicile');
   await page.waitForTimeout(350);
-  await expect(page.locator('#kit-name')).toHaveText('Domicile V2');
-  await expect(page.locator('#kit-panel')).toHaveAttribute('aria-labelledby', 'kit-tab-1');
+  await expect(page.locator('#kit-name')).toHaveText('Domicile');
+  await expect(page.locator('#kit-panel')).toHaveAttribute('aria-labelledby', 'kit-tab-0');
 });
 
 test('le geste tactile sur le maillot conserve le défilement vertical', async ({ browser, baseURL }) => {

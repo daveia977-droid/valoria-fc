@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#090707">
   <title>VALORIA FC — La force du collectif</title>
-  <meta name="description" content="VALORIA FC : un club fictif, une identité, quatre maillots et un collectif. Site vitrine personnel.">
+  <meta name="description" content="VALORIA FC : identité, calendrier de Ligue des champions imaginé, trois maillots et collectif. Projet personnel.">
   <link rel="icon" href="/assets/favicon.png">
   <link rel="preload" as="image" href="/assets/hero-burgundy.webp">
 </head>
@@ -13,13 +13,13 @@
 <a class="skip" href="#contenu">Aller au contenu</a>
 <header class="navigation site-header">
   <a class="brand" href="#accueil" aria-label="VALORIA FC — accueil"><img src="/assets/crest.webp" alt="" width="700" height="875"><span>VALORIA FC</span></a>
-  <nav class="desktop-nav" aria-label="Navigation principale"><a href="#identite">Le club</a><a href="#collection">Collection</a><a class="org-link" href="#organisation">Organisation</a></nav>
+  <nav class="desktop-nav" aria-label="Navigation principale"><a href="#identite">Le club</a><a href="#matchs">Matchs</a><a href="#collection">Maillots</a><a class="org-link" href="#organisation">Organisation</a><a href="#supporters">Supporters</a></nav>
   <div class="header-actions"><button class="menu-toggle" id="menu-open" type="button" aria-haspopup="dialog" aria-controls="mobile-menu">Menu</button><button class="pause" id="pause" type="button" aria-pressed="false" aria-label="Mettre en pause les animations" disabled><img class="icon" data-icon="pause" alt="" width="16" height="16"><span class="pause-word">Pause</span></button></div>
 </header>
 <main id="contenu" tabindex="-1">
  <section class="story" id="accueil" aria-label="L’identité VALORIA FC">
   <div class="scene">
-   <div class="atmosphere" aria-hidden="true"><img class="textile" src="/assets/hero-burgundy.webp" alt="" width="1672" height="941"><div class="aura"></div><div class="beam"></div><div class="grain"></div></div>
+   <div class="atmosphere" aria-hidden="true"><img class="textile" src="/assets/hero-burgundy.webp" alt="" width="1672" height="941"><img class="stadium-decoration" src="/assets/stadium-decoration.svg" alt="" width="1600" height="800" aria-hidden="true"><div class="aura"></div><div class="beam"></div><div class="grain"></div></div>
    <div class="opening">
     <div class="title-reveal"><p class="overline">LA FORCE DU COLLECTIF</p><h1>VALORIA FC</h1></div>
     <div class="edition"><span>Football club</span><span>Projet personnel · Club fictif</span></div>
@@ -38,39 +38,66 @@
   </div>
  </section>
 
+
+<section class="match-centre" id="matchs" aria-labelledby="match-title">
+ <div class="match-wrap">
+  <header class="match-heading">
+   <div><p class="overline">02 / Parcours européen</p><h2 id="match-title">Ligue des <em>champions.</em></h2></div>
+   <p>Huit rencontres, une seule ambition. Retrouvez les scores, les affiches et les prochains rendez-vous de VALORIA FC.</p>
+  </header>
+  <div class="match-spotlight" aria-label="Affiche à la une">
+   <div class="match-spotlight-top"><span id="featured-round">PHASE DE LIGUE</span><span>2026 / 2027 · HEURE DE PARIS</span></div>
+   <div class="match-clash">
+    <div class="match-club"><img src="/assets/crest.webp" alt="Écusson VALORIA FC" width="63" height="78"><strong>VALORIA FC</strong></div>
+    <div class="match-centre-center"><span id="featured-date">25 novembre 2026</span><strong id="featured-time">21:00</strong><span>COUP D'ENVOI</span></div>
+    <div class="match-club"><span id="featured-crest" class="club-mark featured-club-mark barca" aria-hidden="true">BAR</span><strong id="featured-opponent">FC BARCELONE</strong></div>
+   </div>
+   <div class="match-spotlight-bottom"><span>UN MÊME MAILLOT · UNE MÊME PASSION</span><button type="button" id="featured-open" class="match-feature-cta">Découvrir la rencontre et les billets ↗</button></div>
+  </div>
+  <div class="match-countdown-bar"><span>Temps restant avant la prochaine rencontre</span><strong id="match-countdown" role="timer" aria-live="off">— : — : — : —</strong></div>
+  <div class="fixture-heading"><h3>Calendrier &amp; résultats</h3><div class="fixture-controls"><button id="fixture-previous" type="button" aria-label="Matchs précédents">‹</button><button id="fixture-next" type="button" aria-label="Matchs suivants">›</button></div></div>
+  <ol class="fixture-list" id="fixture-list" aria-label="Huit journées de la phase de ligue"></ol>
+ </div>
+</section>
+
 <section class="chapter collection-section" id="collection" aria-labelledby="collection-title">
  <div class="chapter-atmosphere" aria-hidden="true"><img src="/assets/hero-burgundy.webp" alt="" width="1672" height="941" loading="lazy"></div>
  <div class="collection-layout">
   <header class="chapter-intro collection-intro">
-   <p class="overline">02 / Collection</p><h2 id="collection-title">Nos<em>maillots.</em></h2>
-   <p class="chapter-copy">Quatre tenues.<br>Une même identité.</p>
+   <p class="overline">03 / Collection</p><h2 id="collection-title">Nos<em>maillots.</em></h2>
+   <p class="chapter-copy">Trois tenues.<br>Une même identité.</p>
    <p class="collection-season">2026 / 2027</p>
-   <details class="home-comparison" id="home-comparison"><summary>Comparer les deux domiciles</summary><div class="comparison-grid">
-     <figure><div class="comparison-kit-window" data-comparison="0"><img class="kit-strip" src="/assets/collection.webp" alt="Domicile V1 rouge et or, sans sponsor" width="1832" height="859" loading="lazy"></div><figcaption><h3>Domicile V1</h3><p>Rouge &amp; or</p></figcaption></figure>
-     <figure><div class="comparison-kit-window" data-comparison="1"><img class="kit-strip" src="/assets/collection.webp" alt="Domicile V2 bleu nuit et or, sans sponsor" width="1832" height="859" loading="lazy"></div><figcaption><h3>Domicile V2</h3><p>Bleu nuit &amp; or</p></figcaption></figure>
-   </div></details>
+   
    <a class="line-link collection-onward" href="#organisation">Découvrir l’organisation <img class="icon" data-icon="arrow" alt="" width="18" height="18"></a>
   </header>
   <div class="collection-display">
    <div class="kit-tabs" role="tablist" aria-label="Choisir une tenue">
-    <button class="kit-tab" id="kit-tab-0" type="button" role="tab" data-kit="0" aria-selected="true" aria-controls="kit-panel">Domicile V1</button>
-    <button class="kit-tab" id="kit-tab-1" type="button" role="tab" data-kit="1" aria-selected="false" aria-controls="kit-panel" tabindex="-1">Domicile V2</button>
-    <button class="kit-tab" id="kit-tab-2" type="button" role="tab" data-kit="2" aria-selected="false" aria-controls="kit-panel" tabindex="-1">Extérieur</button>
-    <button class="kit-tab" id="kit-tab-3" type="button" role="tab" data-kit="3" aria-selected="false" aria-controls="kit-panel" tabindex="-1">Third</button>
+    <button class="kit-tab" id="kit-tab-0" type="button" role="tab" data-kit="0" aria-selected="true" aria-controls="kit-panel">Domicile</button>
+    <button class="kit-tab" id="kit-tab-1" type="button" role="tab" data-kit="1" aria-selected="false" aria-controls="kit-panel" tabindex="-1">Extérieur</button>
+    <button class="kit-tab" id="kit-tab-2" type="button" role="tab" data-kit="2" aria-selected="false" aria-controls="kit-panel" tabindex="-1">Third</button>
    </div>
    <div class="kit-panel" id="kit-panel" role="tabpanel" aria-labelledby="kit-tab-0" tabindex="0" data-presentation="2d">
-    <div class="kit-image-wrap"><div class="kit-viewport"><img id="kit-image" class="kit-strip" src="/assets/collection.webp" alt="Maillot Domicile V1 VALORIA FC rouge et or, sans sponsor" width="1832" height="859" loading="lazy" draggable="false"></div></div>
-    <div class="kit-details"><div><h3 id="kit-name">Domicile V1</h3><p id="kit-colours">Rouge &amp; or</p></div><p class="kit-counter"><b id="kit-number">01</b> / 04</p></div>
+    <div class="kit-image-wrap"><div class="kit-viewport"><img id="kit-image" class="kit-strip" src="/assets/collection.webp" alt="Maillot Domicile VALORIA FC bleu nuit et or avec sponsor NW$" width="1832" height="859" loading="lazy" draggable="false"><span class="kit-sponsor" aria-label="Sponsor NW$">NW$</span></div></div>
+    <div class="kit-details"><div><h3 id="kit-name">Domicile</h3><p id="kit-colours">Bleu nuit &amp; or</p></div><p class="kit-counter"><b id="kit-number">01</b> / 03</p></div>
    </div>
    <p class="sr-only" id="kit-announcement" role="status" aria-live="polite" aria-atomic="true"></p>
   </div>
  </div>
 </section>
 
+
+<section class="supporters-section" id="supporters" aria-labelledby="supporters-title">
+ <div class="supporters-wave" aria-hidden="true"></div>
+ <div class="supporters-inner">
+  <div><p class="overline">04 / Notre douzième homme</p><h2 id="supporters-title">La voix des <em>supporters.</em></h2><p>Un blason, des couleurs, une énergie collective. De la première minute au coup de sifflet final, l'esprit VALORIA se vit ensemble.</p></div>
+  <div class="supporters-figure"><strong>10 200</strong><span>SUPPORTERS · L'ESPRIT VALORIA FC</span></div>
+ </div>
+</section>
+
 <section class="chapter organisation-section" id="organisation" aria-labelledby="organisation-title">
  <div class="chapter-atmosphere" aria-hidden="true"><img src="/assets/hero-burgundy.webp" alt="" width="1672" height="941" loading="lazy"></div>
  <div class="organisation-layout">
-  <header class="chapter-intro organisation-intro"><p class="overline">03 / Organisation</p><h2 id="organisation-title">Notre<em>structure.</em></h2><p class="chapter-copy">Un collectif organisé pour porter<br>l’ambition du club.</p><p class="organisation-hint">Choisissez un nom pour découvrir sa fonction et ses rattachements.</p></header>
+  <header class="chapter-intro organisation-intro"><p class="overline">05 / Organisation</p><h2 id="organisation-title">Notre<em>structure.</em></h2><p class="chapter-copy">Un collectif organisé pour porter<br>l’ambition du club.</p><p class="organisation-hint">Choisissez un nom pour découvrir sa fonction et ses rattachements.</p></header>
   <div class="organisation-editorial" id="club-people" aria-label="Direction et pôles du club">
    <ol class="leadership-list" aria-label="Yvan dirige le club ; Messi, sous sa responsabilité, coordonne les trois pôles">
     <li><span class="member-step" aria-hidden="true">01 / Présidence</span><button class="person-button leader-button" type="button" data-person="yvan" aria-haspopup="dialog" aria-controls="person-dialog"><span class="person-role-label">Président</span><strong>Yvan</strong><img class="icon person-arrow" data-icon="arrow" alt="" width="18" height="18"></button></li>
@@ -91,7 +118,39 @@
 
 </main>
 <footer class="footer"><div class="footer-top"><a class="brand" href="#accueil"><img src="/assets/crest.webp" alt="" width="700" height="875"><span>VALORIA FC</span></a><p>Projet personnel · Club fictif</p><a class="line-link" href="#accueil">Retour en haut <img class="icon" data-icon="arrow" alt="" width="18" height="18"></a></div><nav class="legal-links" aria-label="Informations légales"><a href="./mentions-legales.html">Mentions légales</a><a href="./confidentialite.html">Confidentialité</a><a href="./cgu.html">CGU</a></nav></footer>
-<dialog id="mobile-menu" class="menu-dialog" aria-labelledby="menu-title"><div class="dialog-head"><p id="menu-title">VALORIA FC</p><button class="close-button" type="button" data-close>Fermer</button></div><nav aria-label="Navigation mobile"><a href="#identite">Le club</a><a href="#collection">Collection</a><a href="#organisation">Organisation</a><a href="#contact">Parlons du projet</a></nav></dialog>
+
+<dialog class="match-dialog" id="match-dialog" aria-labelledby="dialog-opponent">
+ <div class="dialog-head"><p class="overline" id="dialog-matchday">PHASE DE LIGUE</p><button type="button" data-close>Fermer ✕</button></div>
+ <h2 id="dialog-opponent">La rencontre</h2>
+ <p class="match-dialog-meta" id="dialog-date"></p>
+ <p id="dialog-result" hidden></p>
+ <p id="dialog-past" hidden>Cette rencontre ne propose pas de billets.</p>
+ <div id="ticket-purchase">
+  <form id="ticket-form">
+   <label for="ticket-tribune">Choisissez votre tribune</label>
+   <select id="ticket-tribune" name="tribune"><option value="A">Tribune A — 110 €</option><option value="B" selected>Tribune B — 70 €</option><option value="C">Tribune C — 35 €</option></select>
+   <label for="ticket-quantity">Nombre de billets</label>
+   <select id="ticket-quantity" name="quantity"><option value="1" selected>1 billet</option><option value="2">2 billets</option><option value="3">3 billets</option><option value="4">4 billets</option></select>
+   <div class="ticket-specimen" aria-label="Aperçu d'un billet de démonstration">
+    <span class="specimen-mark">VALORIA FC · NW$</span>
+    <strong id="ticket-match">VALORIA FC / ADVERSAIRE</strong>
+    <small id="ticket-date">DATE ET HEURE</small>
+    <span id="ticket-choice">TRIBUNE B · 1 PLACE</span>
+    <strong id="ticket-price">70 €</strong>
+    <span class="ticket-watermark">SPÉCIMEN — NON VALABLE POUR L'ACCÈS</span>
+   </div>
+   <button class="ticket-submit" type="submit">Enregistrer mon billet</button>
+   <p class="match-dialog-meta">Simulation uniquement · Aucun paiement et aucune réservation réelle.</p>
+  </form>
+ </div>
+ <div id="ticket-confirmation" class="ticket-confirmation" hidden>
+  <h3 id="ticket-confirmation-title" tabindex="-1">Votre billet est enregistré.</h3>
+  <p>Votre aperçu de démonstration est terminé. Aucun billet réel n'a été émis.</p>
+  <button type="button" id="ticket-ok" class="ticket-submit">OK</button>
+ </div>
+</dialog>
+
+<dialog id="mobile-menu" class="menu-dialog" aria-labelledby="menu-title"><div class="dialog-head"><p id="menu-title">VALORIA FC</p><button class="close-button" type="button" data-close>Fermer</button></div><nav aria-label="Navigation mobile"><a href="#identite">Le club</a><a href="#matchs">Matchs &amp; résultats</a><a href="#collection">Maillots</a><a href="#supporters">Supporters</a><a href="#organisation">Organisation</a><a href="#contact">Parlons du projet</a></nav></dialog>
     <dialog
       id="contact-dialog"
       class="contact-dialog"

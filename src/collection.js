@@ -1,8 +1,7 @@
 const kits = [
-  { name: 'Domicile V1', colours: 'Rouge & or', alt: 'Maillot Domicile V1 VALORIA FC rouge et or, sans sponsor', center: 265, width: 480, left: 0, right: 487 },
-  { name: 'Domicile V2', colours: 'Bleu nuit & or', alt: 'Maillot Domicile V2 VALORIA FC bleu nuit et or, sans sponsor', center: 703, width: 450, left: 487, right: 920 },
-  { name: 'Extérieur', colours: 'Crème & or', alt: 'Maillot Extérieur VALORIA FC crème et or, sans sponsor', center: 1132, width: 450, left: 920, right: 1349 },
-  { name: 'Third', colours: 'Violet & or', alt: 'Troisième maillot VALORIA FC noir, violet et or, sans sponsor', center: 1570, width: 480, left: 1349, right: 1832 },
+  { name: 'Domicile', colours: 'Bleu nuit & or', alt: 'Maillot domicile VALORIA FC bleu nuit et or, sponsor NW$', center: 703, width: 450, left: 487, right: 920 },
+  { name: 'Extérieur', colours: 'Crème & or', alt: 'Maillot extérieur VALORIA FC crème et or, sponsor NW$', center: 1132, width: 450, left: 920, right: 1349 },
+  { name: 'Third', colours: 'Violet & or', alt: 'Troisième maillot VALORIA FC noir, violet et or, sponsor NW$', center: 1570, width: 480, left: 1349, right: 1832 },
 ];
 
 function position(viewport, image, index) {
@@ -21,13 +20,11 @@ export function initCollection() {
   const viewport = section.querySelector('.kit-viewport');
   const image = viewport.querySelector('img');
   const panel = section.querySelector('#kit-panel');
-  const comparison = section.querySelector('#home-comparison');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   let selected = 0, animation;
   const paused = () => reduced.matches || document.documentElement.classList.contains('static-motion');
   const resize = () => {
     position(viewport, image, selected);
-    section.querySelectorAll('[data-comparison]').forEach(element => position(element, element.querySelector('img'), Number(element.dataset.comparison)));
   };
   function select(index, focus = false, animate = true) {
     animation?.cancel(); selected = index;
@@ -45,15 +42,13 @@ export function initCollection() {
   tabs.forEach((tab, index) => {
     tab.addEventListener('click', () => select(index));
     tab.addEventListener('keydown', event => {
-      const next = { ArrowRight: (index + 1) % 4, ArrowLeft: (index + 3) % 4, Home: 0, End: 3 }[event.key];
+      const next = { ArrowRight: (index + 1) % kits.length, ArrowLeft: (index + kits.length - 1) % kits.length, Home: 0, End: kits.length - 1 }[event.key];
       if (next === undefined) return; event.preventDefault(); select(next, true);
     });
   });
   const observer = new ResizeObserver(resize);
   observer.observe(viewport);
-  section.querySelectorAll('[data-comparison]').forEach(element => observer.observe(element));
   section.querySelectorAll('.kit-strip').forEach(element => element.addEventListener('load', resize));
-  comparison.addEventListener('toggle', resize);
   const cancel = () => { if (paused()) animation?.cancel(); };
   reduced.addEventListener('change', cancel);
   new MutationObserver(cancel).observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });

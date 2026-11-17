@@ -1,8 +1,10 @@
 import './style.css';
 import './hero-motion.js';
 import { initCollection } from './collection.js';
+import { initMatchday } from './matchday.js';
 import { initClubOrganisation } from './club-organisation.js';
 initCollection();
+initMatchday();
 initClubOrganisation();
 
 const menu = document.querySelector('#mobile-menu');

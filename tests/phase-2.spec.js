@@ -65,48 +65,16 @@ for (const width of [390, 1440]) {
     ).toBe(true);
   });
 
-  test(`comparaison des deux domiciles au clavier à ${width}px`, async ({
-    page,
-  }) => {
+  test(`collection V2 : trois tenues et sponsor à ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
-    await page.emulateMedia({ reducedMotion: "reduce" });
-    await page.goto("/");
-    const comparison = page.locator("#home-comparison");
-    await comparison.locator("summary").focus();
-    await page.keyboard.press("Enter");
-    await expect(comparison).toHaveAttribute("open", "");
-    await expect(
-      comparison.getByRole("heading", { name: "Domicile V1", exact: true }),
-    ).toBeVisible();
-    await expect(
-      comparison.getByRole("heading", { name: "Domicile V2", exact: true }),
-    ).toBeVisible();
-    const boxes = await comparison
-      .locator(".comparison-kit-window")
-      .evaluateAll((nodes) =>
-        nodes.map((n) => {
-          const r = n.getBoundingClientRect();
-          return { x: r.x, y: r.y, width: r.width };
-        }),
-      );
-    expect(Math.abs(boxes[0].y - boxes[1].y)).toBeLessThan(1);
-    expect(boxes[1].x).toBeGreaterThan(boxes[0].x + boxes[0].width);
-    const sources = await comparison
-      .locator("img")
-      .evaluateAll((images) => images.map((i) => i.getAttribute("src")));
-    expect(sources).toEqual([
-      "/assets/collection.webp",
-      "/assets/collection.webp",
-    ]);
-    expect(
-      await page.evaluate(
-        () => document.documentElement.scrollWidth <= innerWidth,
-      ),
-    ).toBe(true);
-    await comparison.locator("summary").press("Enter");
-    await expect(comparison).not.toHaveAttribute("open");
-    await page.getByRole("tab", { name: /Extérieur/ }).click();
-    await expect(page.locator("#kit-name")).toHaveText("Extérieur");
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await page.goto('/');
+    await expect(page.getByRole('tab')).toHaveCount(3);
+    await expect(page.locator('#home-comparison')).toHaveCount(0);
+    await page.getByRole('tab', { name: 'Domicile', exact: true }).click();
+    await expect(page.locator('#kit-name')).toHaveText('Domicile');
+    await expect(page.locator('.kit-sponsor')).toHaveText('NW$');
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   });
 }
 

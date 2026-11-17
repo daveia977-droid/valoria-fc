@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 800" preserveAspectRatio="xMidYMax slice" role="img" aria-label="Décor de tribunes et silhouettes de supporters">
+<defs>
+<linearGradient id="b" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#08060b" stop-opacity="0"/><stop offset=".4" stop-color="#271126" stop-opacity=".18"/><stop offset="1" stop-color="#120b18" stop-opacity=".94"/></linearGradient>
+<linearGradient id="c" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#c19c74" stop-opacity=".5"/><stop offset="1" stop-color="#511e39" stop-opacity=".12"/></linearGradient>
+<pattern id="tribune" width="62" height="27" patternUnits="userSpaceOnUse"><path d="M0 24h62" stroke="#a47865" stroke-opacity=".25"/><circle cx="12" cy="9" r="4" fill="#d6ab83" opacity=".5"/><circle cx="31" cy="11" r="4" fill="#ad7980" opacity=".6"/><circle cx="51" cy="9" r="4" fill="#e8d5b4" opacity=".32"/></pattern>
+<g id="fan" fill="#482138"><circle cx="0" cy="-52" r="15"/><path d="M-26 16q-6-46 12-55 15-10 28 0 19 10 14 55z"/><path d="M-12-24-50-62M11-23 45-80" stroke="#482138" stroke-width="14" stroke-linecap="round"/></g>
+<g id="fan2" fill="#291723"><circle cx="0" cy="-55" r="16"/><path d="M-28 16Q-35-28-18-44q19-13 36 0Q35-31 29 16z"/><path d="M-19-20-55-30M20-22 60-42" stroke="#291723" stroke-width="15" stroke-linecap="round"/></g>
+</defs>
+<path d="M0 240 Q800 400 1600 240 L1600 800H0Z" fill="url(#b)"/>
+<path d="M0 345Q800 440 1600 345V720H0Z" fill="url(#tribune)" opacity=".9"/>
+<g fill="none" stroke="#bb9769" opacity=".24"><path d="M0 470Q800 560 1600 470"/><path d="M0 510Q800 620 1600 510"/><path d="M0 560Q800 690 1600 560"/></g>
+<g opacity=".64"><use href="#fan" transform="translate(100 720) scale(1.5)"/><use href="#fan2" transform="translate(225 745) scale(1.65)"/><use href="#fan" transform="translate(360 740) scale(1.45)"/><use href="#fan2" transform="translate(520 748) scale(1.75)"/><use href="#fan" transform="translate(700 760) scale(1.55)"/><use href="#fan2" transform="translate(880 748) scale(1.6)"/><use href="#fan" transform="translate(1040 760) scale(1.58)"/><use href="#fan2" transform="translate(1225 752) scale(1.85)"/><use href="#fan" transform="translate(1430 750) scale(1.63)"/><use href="#fan2" transform="translate(1590 748) scale(1.55)"/></g>
+<g stroke="#dbc18e" fill="none" opacity=".42" stroke-width="2"><circle cx="245" cy="180" r="27"/><path d="m245 153-11 18 10 13 19-5 6-16m-35 8-13 7m23 6 2 22m17-27 12 9"/><circle cx="1380" cy="320" r="33"/><path d="m1380 287-13 22 14 18 22-8 8-21m-44 11-18 12m32 6 5 23m17-31 15 10"/></g>
+<g fill="#f0c894" opacity=".28"><circle cx="67" cy="315" r="3"/><circle cx="445" cy="260" r="2"/><circle cx="752" cy="190" r="3"/><circle cx="910" cy="312" r="2"/><circle cx="1177" cy="214" r="3"/><circle cx="1508" cy="272" r="2"/></g>
+<path d="M0 800V730Q800 690 1600 730V800Z" fill="#0b0810" opacity=".38"/>
+</svg>
