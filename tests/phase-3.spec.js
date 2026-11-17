@@ -47,19 +47,15 @@ for (const width of [320, 390, 768, 1440]) {
       "aria-current",
       "location",
     );
-    await page.locator("#home-comparison summary").click();
-    const ratios = await page
-      .locator("#home-comparison img")
-      .evaluateAll((images) =>
-        images.map((img) => {
-          const r = img.getBoundingClientRect();
-          return {
-            rendered: r.width / r.height,
-            natural: img.naturalWidth / img.naturalHeight,
-          };
-        }),
-      );
-    ratios.forEach((r) => expect(r.rendered).toBeCloseTo(r.natural, 2));
+    await page.getByRole("tab", { name: "Domicile", exact: true }).click();
+    await expect(page.locator("#kit-name")).toHaveText("Domicile");
+    await expect(page.locator(".kit-tab")).toHaveCount(3);
+    const ratio = await page.locator("#kit-image").evaluate(img => {
+      const r = img.getBoundingClientRect();
+      return { rendered: r.width / r.height, natural: img.naturalWidth / img.naturalHeight };
+    });
+    expect(ratio.rendered).toBeCloseTo(ratio.natural, 2);
+    await expect(page.locator(".kit-sponsor")).toHaveText("NW$");
     expect(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,
