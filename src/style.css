@@ -217,3 +217,9 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px
 /* V2 collection: native 2D three-kit selection. */
 .kit-tabs { grid-template-columns: repeat(3,minmax(0,1fr)); }
 .match-club img { width: 63px; height: 78px; object-fit: contain; filter: drop-shadow(0 8px 14px #0009); }
+
+/* V2 navigation: keep five destinations accessible without crowding tablets. */
+@media (min-width: 761px) and (max-width: 1180px) {
+  .navigation nav.desktop-nav { display: none; }
+  .menu-toggle { display: block; }
+}
