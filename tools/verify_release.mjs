@@ -55,33 +55,7 @@ try {
     for (const [i, name] of ['Domicile', 'Extérieur', 'Third'].entries()) {
       await page.getByRole('tab', { name, exact: true }).click();
       assert.equal(await page.locator('#kit-name').innerText(), name);
-      assert.equal(await page.locator('.kit-sponsor').innerText(), 'NW
-      assert.equal(await page.locator('#kit-panel').getAttribute('data-presentation'), '2d');
-      if (width === 1440) await screenshot(page, '#collection', `maillot-${i}-1440`, true);
-    }
-    assert.equal(await page.locator('[data-view], #kit-back-state, #collection canvas').count(), 0);
-    if ([390, 1440].includes(width)) await screenshot(page, '#organisation', `organisation-${width}`, true);
-    for (const id of ['yvan', 'messi', 'charel', 'marco', 'mamady', 'dylan', 'emilie']) {
-      await page.locator(`#club-people [data-person="${id}"]`).click();
-      assert(await page.locator('#person-dialog').evaluate(el => el.open));
-      await page.keyboard.press('Escape');
-    }
-    const links = await page.locator('a[href^="#"]').evaluateAll(nodes => nodes.map(el => el.getAttribute('href')).filter(href => href.length > 1 && !document.getElementById(href.slice(1)))); assert.deepEqual(links, []);
-    for (const file of ['mentions-legales', 'confidentialite', 'cgu']) {
-      const legal = new URL(`${file}.html`, url).href;
-      const response = await page.goto(legal, { waitUntil: 'networkidle' }); assert.equal(response.status(), 200);
-      assert.equal(await page.locator('h1').count(), 1);
-      assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
-      if (file === 'mentions-legales' && width === 390) await page.screenshot({ path: `${dir}/mentions-legales-390.png` });
-    }
-    report.viewports.push({ width, hero: true, collection2d: 4, organisationProfiles: 7, legalPages: 3, overflow: false });
-    await page.close();
-  }
-  assert.deepEqual(report.errors, []); assert.deepEqual(report.missing, []); assert.deepEqual(report.modelRequests, []);
-  report.resources = [...new Set(report.resources)]; report.status = 'passed';
-} catch (error) { report.status = 'failed'; report.failure = error.message; throw error; }
-finally { writeFileSync(`${dir}/release-verification.json`, JSON.stringify(report, null, 2)); console.log(JSON.stringify({ url, status: report.status, viewports: report.viewports.length, errors: report.errors, missing: report.missing, failure: report.failure }, null, 2)); await browser.close(); }
-);
+      assert.equal(await page.locator('.kit-sponsor').innerText(), 'NW$');
       assert.equal(await page.locator('#kit-panel').getAttribute('data-presentation'), '2d');
       if (width === 1440) await screenshot(page, '#collection', `maillot-${i}-1440`, true);
     }
