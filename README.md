@@ -2,7 +2,7 @@
 
 Site vitrine personnel d’un club fictif, avec un budget maximal de **0 €**. Vite, HTML, CSS et JavaScript ; polices et ressources locales, aucune API payante.
 
-Le hero « Écrin bordeaux » se transforme au scroll en scène d’identité. La collection propose quatre maillots 2D de face, sans sponsor, dos ou rotation. La structure présente Yvan, Messi et les trois pôles avec leurs rattachements, à travers sept profils interactifs. Le formulaire télécharge seulement un brouillon local.
+Le hero « Écrin bordeaux » se transforme au scroll en scène d’identité. La V2 en préparation présente trois maillots 2D de face : Domicile (ancien V2 bleu nuit et or), Extérieur et Third. Le maillot rouge V1 et le comparateur sont retirés de l’interface, sans supprimer l’atlas source. Le partenaire NW$ apparaît en surimpression CSS réversible ; le fichier de texture n’est pas modifié. La structure présente Yvan, Messi et les trois pôles avec leurs rattachements, à travers sept profils interactifs. Le formulaire télécharge seulement un brouillon local.
 
 ## Lancer
 
@@ -32,3 +32,7 @@ Les visuels sources restent conservés. Le masque `collection-mask.png` rend le 
 Les pages `mentions-legales.html`, `confidentialite.html` et `cgu.html` décrivent le projet et le fonctionnement observé. La France est confirmée ; les informations de publication et le contact de l’éditeur restent à compléter, ainsi que les coordonnées détaillées de l’hébergeur. Aucun nom, adresse ou pratique de collecte n’a été inventé.
 
 Détails de livraison : [docs/v1-publication.md](docs/v1-publication.md).
+
+## V2 en préparation
+
+La branche `feat/valoria-v2-collection` prépare la nouvelle collection officielle à trois maillots et le partenaire NW$. `main` reste la V1 publiée. Le marquage NW$ est une surimpression de présentation, à valider visuellement sur les trois coupes avant publication. Calendrier, billetterie de démonstration, supporters et décor de l’accueil viendront dans la suite de la V2. Aucun paiement ni réservation réelle.
