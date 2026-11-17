@@ -15,7 +15,7 @@ Projet personnel, fictif et sans activité commerciale réelle. Pour toutes les 
 
 Conserver Vite, HTML, CSS et JavaScript et les fonctionnalités existantes. Noir, bordeaux, or et crème ; violet uniquement dans le troisième maillot. Ne pas modifier l’écusson ou les maillots officiels sans accord. Pas de sculpture, contenus ou actifs propriétaires de Laocoön. Son prompt technique est une référence de principes, pas une demande de copie.
 
-Sept personnes uniquement : Yvan → Messi → Charel / Mamady / Émilie ; Charel → Marco ; Mamady → Dylan. Garder leurs responsabilités validées, les quatre maillots sans sponsor et les textes du projet. Ne pas inventer de joueurs, entraîneur, sponsor, stade, résultats ou palmarès.
+Sept personnes uniquement : Yvan → Messi → Charel / Mamady / Émilie ; Charel → Marco ; Mamady → Dylan. Garder leurs responsabilités validées et les textes du projet. V2 : afficher seulement trois maillots 2D de face — Domicile = ancien Domicile V2 bleu nuit/or, Extérieur crème/or, Third noir/violet/or. L’ancien Domicile V1 rouge et le comparateur ne figurent plus dans l’interface, mais les sources restent archivées. Le sponsor approuvé est NW$ ; préférer un marquage réversible tant que les visuels finaux ne sont pas validés. Ne pas inventer de joueurs, entraîneur, sponsor, stade, résultats ou palmarès.
 
 ## Développement et validation
 
