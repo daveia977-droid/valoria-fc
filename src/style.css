@@ -223,3 +223,127 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px
   .navigation nav.desktop-nav { display: none; }
   .menu-toggle { display: block; }
 }
+
+
+/* --- VALORIA FC V2.5: Stade vivant, composition editorialement retenue. --- */
+/* One approved light WebP; distinct crops/overlays preserve contrast and keep the hero crest dominant. */
+.scene .atmosphere::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, #08060b54 0%, #09070a4b 29%, #0b071055 66%, #090707b8 100%);
+}
+.scene .textile {
+  object-position: 50% 73%; opacity: .88;
+  transform: scale(1.06) translateY(calc(var(--p) * -1.5%));
+  filter: saturate(.84) brightness(.83);
+  mask-image: linear-gradient(#000d 0%, #000 20%, #000 85%, #0009 100%);
+}
+.scene .opening h1 { text-shadow: 0 3px 32px #030104ce; }
+.scene .identity h2, .scene .identity-copy { text-shadow: 0 3px 35px #050308c9; }
+.scene .edition { justify-content: center; }
+.chapter { background: #0a070a; }
+.chapter-atmosphere img { object-position: 50% 78%; opacity: .17; filter: saturate(.70) brightness(.65); }
+.collection-section .chapter-atmosphere img { object-position: 50% 83%; opacity: .12; }
+.organisation-section .chapter-atmosphere img { object-position: 50% 78%; opacity: .20; }
+.collection-section::after, .organisation-section::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(90deg, #0c080dee, #110911c5 58%, #0a080bbb);
+}
+.match-centre {
+  background: linear-gradient(115deg, #0c0710ef, #1c0815c3 60%, #07070be8),
+              url('/assets/stade-valoria-v25.webp') 50% 77% / cover no-repeat;
+}
+.match-spotlight {
+  background: linear-gradient(110deg, #260e1ee7 0%, #130c1cbd 52%, #160910ec 100%),
+              url('/assets/stade-valoria-v25.webp') 50% 80% / cover no-repeat;
+  box-shadow: 0 25px 58px #0008, inset 0 1px 0 #fff2;
+}
+.match-heading h2, .fixture-heading h3, .supporters-inner h2, .chapter h2 { text-wrap: balance; }
+.match-heading p:last-child, .supporters-inner p { text-wrap: pretty; }
+.fixture-card { box-shadow: inset 0 1px 0 #fff9, 0 8px 25px #0003; }
+.fixture-card.is-next { background: linear-gradient(150deg, #fff7e8, #e7dacb); }
+.fixture-controls button, .match-feature-cta { transition: background-color 150ms ease, color 150ms ease, transform 150ms ease; }
+.match-countdown-bar { box-shadow: inset 0 1px 0 #d8b27836; }
+.supporters-section {
+  background: linear-gradient(110deg, #220d1bfa, #190b19e4 55%, #0b080ff0),
+              url('/assets/stade-valoria-v25.webp') 50% 80% / cover no-repeat;
+  border-top: 1px solid #d8b2782a;
+}
+.supporters-wave { opacity: .06; }
+.supporters-figure {
+  background: #120b16a6;
+  box-shadow: inset 0 1px 0 #d8b27848, 0 22px 45px #0005;
+}
+.contact-strip {
+  margin-block: 28px;
+  padding: clamp(38px, 6vw, 75px);
+  background: linear-gradient(105deg, #1b0d19f5 10%, #1a0b1bcf, #0b070de8),
+              url('/assets/stade-valoria-v25.webp') 50% 77% / cover no-repeat;
+  border: 1px solid #d8b27840;
+}
+.footer { background: linear-gradient(180deg, #170c1000, #170b1430); }
+.footer-top { border-top-color: #d8b27861; }
+
+/* In-place sponsor wordmark — an SVG text mark follows the original 2D garment. */
+.kit-viewport { isolation: isolate; }
+.kit-sponsor {
+  position: absolute; z-index: 3;
+  left: 50%; top: 39%;
+  width: 55%; max-width: 245px; min-width: 98px; height: auto;
+  overflow: visible;
+  transform: translate(-50%, -50%) rotate(-3deg);
+  color: #eec787;
+  filter: drop-shadow(0 1px 1px #09060bb5) drop-shadow(0 2px 4px #09060b82);
+  pointer-events: none;
+}
+.kit-sponsor-type {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 95px; font-style: italic; font-weight: 600; letter-spacing: -4px;
+  fill: currentColor;
+  paint-order: stroke fill;
+  stroke: #20101a; stroke-width: 1.2px; stroke-linejoin: round;
+}
+.kit-sponsor-swish { opacity: .92; }
+#kit-panel[data-kit="1"] .kit-sponsor { color: #6d2237; filter: drop-shadow(0 1px 1px #fbf1dc99); }
+#kit-panel[data-kit="1"] .kit-sponsor-type { stroke: #f9e8d1; stroke-width: .9px; }
+#kit-panel[data-kit="2"] .kit-sponsor { color: #f2cc8a; }
+.kit-image-wrap::before { background: radial-gradient(ellipse, #842c4635, #1f0b160d 45%, transparent 72%); }
+.kit-tabs [aria-selected="true"] { box-shadow: inset 0 0 0 1px #eac48c64; }
+@media (hover: hover) and (pointer: fine) {
+  .fixture-card { transition: transform 160ms cubic-bezier(.2,0,0,1), box-shadow 160ms ease; }
+  .fixture-card:hover { transform: translateY(-3px); box-shadow: inset 0 1px 0 #fff9, 0 12px 28px #0005; }
+  .match-feature-cta:hover { transform: translateY(-1px); }
+}
+@media (max-width: 760px) {
+  .scene .edition { display: none; }
+  .scene .textile { object-position: center 74%; opacity: .70; transform: scale(1.035) translateY(calc(var(--p) * -1%)); }
+  .match-centre { background-position: 50% 72%; }
+  .match-spotlight { background-position: 50% 77%; }
+  .chapter-atmosphere img { opacity: .11; }
+  .contact-strip { margin: 16px 24px 30px; padding: 38px 22px; }
+  .kit-sponsor { width: 54%; top: 38%; }
+  .supporters-figure { box-shadow: inset 0 1px 0 #d8b27848; }
+}
+@media (max-width: 360px) {
+  .contact-strip { margin-inline: 20px; padding-inline: 19px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scene .textile { transform: none; }
+  .fixture-card, .match-feature-cta, .fixture-controls button { transition: none !important; transform: none !important; }
+}
+.static-motion .scene .textile { transform: none; }
+
+
+/* Web interface guidelines: explicit dark controls, mobile safe areas and contained dialogs. */
+:root { color-scheme: dark; }
+a, button { -webkit-tap-highlight-color: rgba(216,178,120,.15); }
+.match-dialog, .contact-dialog, .menu-dialog, .person-dialog { overscroll-behavior: contain; }
+@media (max-width: 760px) {
+  .navigation {
+    padding-inline: max(22px, env(safe-area-inset-left)), max(22px, env(safe-area-inset-right));
+  }
+}
+@media (max-width: 360px) {
+  .navigation {
+    padding-inline: max(17px, env(safe-area-inset-left)), max(17px, env(safe-area-inset-right));
+  }
+}

@@ -30,6 +30,7 @@ export function initCollection() {
     animation?.cancel(); selected = index;
     tabs.forEach((tab, i) => { tab.setAttribute('aria-selected', String(i === index)); tab.tabIndex = i === index ? 0 : -1; });
     panel.setAttribute('aria-labelledby', tabs[index].id);
+    panel.dataset.kit = String(index);
     section.querySelector('#kit-name').textContent = kits[index].name;
     section.querySelector('#kit-colours').textContent = kits[index].colours;
     section.querySelector('#kit-number').textContent = `0${index + 1}`;

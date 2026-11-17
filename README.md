@@ -36,3 +36,11 @@ Détails de livraison : [docs/v1-publication.md](docs/v1-publication.md).
 ## V2 — provenance et limites
 
 Le calendrier suit les dates générales de la phase de ligue 2026/27 publiées par l'UEFA, mais toutes les affiches VALORIA sont imaginaires. Les tarifs de simulation 35/70/110 € sont inspirés des ordres de grandeur affichés par le FC Bayern pour ses rencontres européennes (https://fcbayern.com/en/tickets/info/prices-and-concessions), sans constituer une offre de vente. Les noms des clubs servent d'exemples ; aucun blason adverse ou logo UEFA n'est reproduit. Les insignes sont des monogrammes originaux. Les détails de démonstration figurent dans les CGU. Décor de tribunes SVG dessiné dans le dépôt sans nouvelle dépendance.
+
+## V2.5 — scène et identité visuelle (17 novembre 2026)
+
+- Fond de stade validé, issu du visuel approuvé par l’utilisateur, optimisé en WebP pour un usage décoratif léger (480 × 600, source inchangée conservée hors du dépôt). L’image possède un espace sombre central : elle accompagne le blason sans lui faire concurrence.
+- La scène d’accueil n’affiche plus la mention « Projet personnel · Club fictif » ; le caractère imaginaire reste explicité dans les pages légales et dans les indications de billetterie non valable.
+- Les trois tenues originales de face sont conservées ; NW$ est présenté sous forme de logotype typographique serif incliné avec filet courbe, en or sur Domicile/Third et en bordeaux sur Extérieur. Aucun pixel des tenues d’origine n’est modifié.
+- Le stade revient avec des opacités et cadrages distincts dans le calendrier, les maillots, les supporters, l’organisation, les sections de contact et les pages légales, avec masques sombres pour maintenir la lisibilité.
+- Références de méthode consultées, sans ajouter de dépendance : [Vercel Web Design Guidelines](https://github.com/vercel-labs/agent-skills/tree/main/skills/web-design-guidelines), [Anthropic Frontend Design](https://github.com/anthropics/skills/tree/main/skills/frontend-design), [Make Interfaces Feel Better](https://github.com/jakubkrehel/make-interfaces-feel-better), en conservant Vite et le système CSS existant. Seules leurs recommandations de conception sont appliquées ; aucun code externe ni police n’a été copié.

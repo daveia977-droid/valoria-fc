@@ -16,3 +16,31 @@
 .legal-main nav { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 50px; }
 .legal-main nav a { display: flex; align-items: center; min-height: 44px; font-size: 13px; }
 @media(max-width:760px) { .legal-header { padding: 20px 24px; } .legal-header .brand { font-size: 10px; gap: 8px; } .legal-header > a:last-child { font-size: 11px; } .legal-main { margin-top: 55px; } .legal-main p, .legal-main li { font-size: 16px; } }
+
+
+/* V2.5: a quiet stadium motif on every legal document, never behind unmasked body text. */
+body {
+  background-color: #090707;
+  background-image:
+    linear-gradient(180deg, #0a0709c9 0%, #0a080bed 36%, #090707 80%),
+    url('/assets/stade-valoria-v25.webp');
+  background-position: center top, center top;
+  background-repeat: no-repeat;
+  background-size: 100% 100%, min(680px, 100vw) auto;
+}
+.legal-header { background: #0c090eec; }
+.legal-main {
+  position: relative;
+  padding: clamp(24px, 4vw, 46px);
+  background: linear-gradient(180deg, #0d0a10e8, #0a080bec);
+  box-shadow: inset 0 1px 0 #d8b27845, 0 22px 60px #0005;
+  border: 1px solid #d8b27836;
+}
+.legal-main h1 { text-wrap: balance; }
+.legal-main p { text-wrap: pretty; }
+@media (max-width: 760px) {
+  .legal-main { width: calc(100% - 36px); padding: 22px 20px; margin: 42px auto 60px; }
+}
+@media (max-width: 360px) {
+  .legal-main { width: calc(100% - 24px); padding: 20px 15px; }
+}

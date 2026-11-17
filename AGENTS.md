@@ -22,3 +22,7 @@ Sept personnes uniquement : Yvan → Messi → Charel / Mamady / Émilie ; Chare
 Utiliser le checkout existant ; pas de nouveau worktree sauf demande explicite. Conserver le scroll natif, le curseur système, la sélection du texte, la navigation au clavier et prefers-reduced-motion. Ne pas imposer une page de 900 vh. Préserver les tests existants, ajouter les contrôles utiles, tester 320/390/768/1440 px, compiler et présenter des captures avant de passer à une nouvelle phase.
 
 Un ZIP est une archive à télécharger et extraire, pas un aperçu du site. Vérifier un serveur et un navigateur avant de prétendre disposer d’une prévisualisation. Si le relais partagé est indisponible, expliquer comment lancer Vite localement ; ne pas inventer de lien public.
+
+## V2.5 — validation artistique du 17/11/2026
+
+Utiliser le fond stade bordeaux/or validé sans supporters proéminents derrière l’écusson ; privilégier masques, ombres et cadrages éditoriaux légers dans chaque section et sur les pages légales. Ne pas réintroduire « Projet personnel · Club fictif » sur le hero ou dans le pied de page : l’information figure dans les mentions légales et les CGU. Le sponsor NW$ doit rester lisible sur le devant des trois maillots et utiliser la typographie stylisée validée. Conserver la billetterie de pure démonstration et les données sportives imaginaires. Les skills tiers servent de guides de qualité (Vercel, Anthropic, Jakub Krehel), pas de dépendances applicatives.
