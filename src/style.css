@@ -19,7 +19,7 @@
 .collection-season::before { content: ''; width: 32px; height: 1px; background: #d8b27890; }
 .collection-onward { margin-top: 34px; font-size: 12px; }
 .collection-display { min-width: 0; }
-.kit-tabs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; padding: 5px; border: 1px solid #d8b27870; border-radius: 32px; background: #100a0ba0; }
+.kit-tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; padding: 5px; border: 1px solid #d8b27870; border-radius: 32px; background: #100a0ba0; }
 .kit-tab { min-height: 44px; padding: 10px 6px; font-size: 12px; line-height: 1.4; border: 1px solid transparent; border-radius: 25px; color: var(--cream); background: transparent; transition: background-color 160ms, color 160ms; }
 .kit-tab[aria-selected='true'] { background: linear-gradient(105deg, #f1dba6, #d8b278); color: #21150b; font-weight: 500; border-color: #e8ca91; }
 .kit-tab:focus-visible { outline-offset: 3px; }
@@ -28,22 +28,15 @@
 .kit-image-wrap::before { content: ''; position: absolute; inset: 12% -5%; z-index: -1; pointer-events: none; background: radial-gradient(ellipse, #621c3040, transparent 65%); }
 .kit-viewport { height: 100%; width: auto; aspect-ratio: .74; position: relative; overflow: hidden; filter: drop-shadow(0 22px 25px #0006); }
 .kit-strip { position: absolute; left: 0; top: -14.81%; height: 132.56%; width: auto; max-width: none; user-select: none; pointer-events: none; mask-image: url('/assets/collection-mask.png'); mask-size: 100% 100%; mask-repeat: no-repeat; }
+/* Sponsor is a removable visual overlay, not a destructive edit to the original kit atlas. */
+.kit-sponsor { position: absolute; top: 41%; left: 50%; z-index: 1; transform: translate(-50%, -50%); pointer-events: none; white-space: nowrap; font: 700 clamp(13px, 2vw, 22px)/1 Manrope, sans-serif; letter-spacing: -.06em; color: #f1dba6; text-shadow: 0 1px 3px #000c; }
+.kit-viewport[data-kit-variant='away'] .kit-sponsor { color: #592536; text-shadow: none; }
+.kit-sponsor-caption { margin-top: 5px; font-size: 11px; color: var(--gold); letter-spacing: .02em; }
 .kit-details { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 20px 0 0; margin: 16px 16px 0; border-top: 1px solid #d8b27850; }
 .kit-details h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 34px; line-height: 1.1; font-weight: 600; margin: 0; }
 #kit-colours { font-size: 12px; color: var(--muted); line-height: 1.6; margin-top: 8px; }
 .kit-counter { font-size: 10px; letter-spacing: .14em; color: var(--muted); white-space: nowrap; }
 .kit-counter b { color: var(--gold); font-weight: 500; }
-.home-comparison { margin-top: 30px; max-width: 360px; }
-.home-comparison summary { min-height: 44px; display: flex; align-items: center; gap: 15px; font-size: 12px; line-height: 1.6; color: var(--muted); cursor: pointer; list-style: none; border-bottom: 1px solid #d8b27850; padding: 9px 0; }
-.home-comparison summary::-webkit-details-marker { display: none; }
-.home-comparison summary::after { content: '+'; margin-left: auto; color: var(--gold); font-size: 20px; }
-.home-comparison[open] summary::after { content: '−'; }
-summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 5px; }
-.comparison-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 25px; }
-.comparison-grid figure { margin: 0; min-width: 0; text-align: center; }
-.comparison-kit-window { height: min(17vw, 210px); width: auto; aspect-ratio: .74; overflow: hidden; position: relative; margin: 0 auto; }
-.comparison-grid h3 { font-size: 12px; font-weight: 500; margin: 12px 0 6px; }
-.comparison-grid p { font-size: 11px; color: var(--muted); }
 
 /* Editorial hierarchy, not a diagram or a vertical stack of cards. */
 .organisation-section { padding: 140px 6.5% 115px; }
@@ -157,8 +150,6 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px
   .kit-details { margin: 14px 0 0; padding-top: 20px; }
   .kit-details h3 { font-size: 32px; }
   .collection-onward { display: none; }
-  .home-comparison { margin-top: 20px; }
-  .comparison-kit-window { height: min(45vw, 200px); }
   .organisation-section { padding: 96px 24px 72px; }
   .organisation-intro { display: block; margin-bottom: 40px; padding-top: 0; }
   .organisation-intro h2 { font-size: 67px; }
