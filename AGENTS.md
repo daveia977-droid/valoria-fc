@@ -26,3 +26,7 @@ Un ZIP est une archive à télécharger et extraire, pas un aperçu du site. Vé
 ## V2.5 — validation artistique du 17/11/2026
 
 Utiliser le fond stade bordeaux/or validé sans supporters proéminents derrière l’écusson ; privilégier masques, ombres et cadrages éditoriaux légers dans chaque section et sur les pages légales. Ne pas réintroduire « Projet personnel · Club fictif » sur le hero ou dans le pied de page : l’information figure dans les mentions légales et les CGU. Le sponsor NW$ doit rester lisible sur le devant des trois maillots et utiliser la typographie stylisée validée. Conserver la billetterie de pure démonstration et les données sportives imaginaires. Les skills tiers servent de guides de qualité (Vercel, Anthropic, Jakub Krehel), pas de dépendances applicatives.
+
+## V3 — conservation des règles (18 novembre 2026)
+
+Préserver l’identité bordeaux/or, le blason et le fond V2.5. Il reste trois maillots de face (Domicile, Extérieur, Third), sponsor NW$. Les huit journées conservent leurs scores et dates fictifs ; le rendu des matchs à l’extérieur peut inverser l’ordre des équipes sans modifier le score du point de vue de VALORIA. Dans la billetterie, conserver les identifiants des sélecteurs de tribune et quantité, le spécimen sans droit d’accès, l’absence de paiement et la confirmation de démonstration. Respecter les lecteurs d’écran, la préférence de mouvement réduit et les écrans à partir de 320 px. Ne pas rétablir la mention de club fictif sur le visuel de couverture : elle figure dans les informations légales.

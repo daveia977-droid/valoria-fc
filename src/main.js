@@ -35,6 +35,7 @@ const root = document.documentElement;
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 const chapters = [...document.querySelectorAll('.chapter')];
 const nav = [...document.querySelectorAll('.desktop-nav a')];
+const navigationStops = [...document.querySelectorAll('#matchs, #collection, #supporters, #organisation')];
 const paused = () => reduced.matches || root.classList.contains('static-motion');
 root.classList.add('js-chapters');
 const visibility = new IntersectionObserver(entries => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); }); }, { rootMargin: '0px 0px -8% 0px', threshold: 0 });
@@ -46,11 +47,13 @@ function render() {
   let active = '#identite';
   chapters.forEach((chapter, i) => {
     const r = rectangles[i];
-    if (r.top <= innerHeight * .4) active = `#${chapter.id}`;
     if (r.bottom < 0 || r.top > innerHeight) return;
     const p = Math.max(-1, Math.min(1, (innerHeight / 2 - r.top - r.height / 2) / innerHeight));
     chapter.style.setProperty('--chapter-shift', `${paused() ? 0 : p * (innerWidth < 761 ? 16 : 26)}px`);
   });
+  for (const stop of navigationStops) {
+    if (stop.getBoundingClientRect().top <= innerHeight * .45) active = `#${stop.id}`;
+  }
   nav.forEach(link => { if (link.getAttribute('href') === active) link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current'); });
 }
 function schedule() { if (!frame && !document.hidden) frame = requestAnimationFrame(render); }

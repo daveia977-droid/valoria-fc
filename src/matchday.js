@@ -16,20 +16,28 @@ const dateCompact = new Intl.DateTimeFormat('fr-FR', { timeZone: 'Europe/Paris',
 const dateTime = new Intl.DateTimeFormat('fr-FR', { timeZone: 'Europe/Paris', hour: '2-digit', minute: '2-digit' });
 const price = value => new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(value);
 const ongoing = game => !game.score && Date.now() < new Date(game.date).getTime();
+const resultLabel = game => !game.score ? (ongoing(game) ? 'À VENIR' : 'PASSÉ') : game.score[0] > game.score[1] ? 'VICTOIRE' : game.score[0] < game.score[1] ? 'DÉFAITE' : 'MATCH NUL';
+const resultClass = game => !game.score ? (ongoing(game) ? 'result-upcoming' : 'result-past') : game.score[0] > game.score[1] ? 'result-win' : game.score[0] < game.score[1] ? 'result-loss' : 'result-draw';
 const statusText = game => game.score ? 'TERMINÉ' : ongoing(game) ? 'À VENIR' : 'PASSÉ';
 const scoreText = game => game.score ? game.score[0] + ' — ' + game.score[1] : dateTime.format(new Date(game.date));
+const scoreboardText = game => game.score && !game.atHome ? game.score[1] + ' — ' + game.score[0] : scoreText(game);
 const shortDate = game => dateCompact.format(new Date(game.date)).replace('.', '').toUpperCase();
 const badge = (letters, extra = '') => '<span class="club-mark ' + extra + '" aria-hidden="true">' + letters + '</span>';
 
 function fixtureCard(game, index, featuredId) {
-  return '<li class="fixture-slide"><button type="button" class="fixture-card' +
+  const recent = resultLabel(game);
+  const result = resultClass(game);
+  const home = '<span class="fixture-team">' + badge('V', 'valoria-mark') + '<span>VALORIA</span></span>';
+  const away = '<span class="fixture-team">' + badge(game.sigle, game.mark) + '<span>' + game.rival + '</span></span>';
+  return '<li class="fixture-slide"><button type="button" class="fixture-card ' + result +
     (game.id === featuredId ? ' is-next' : '') +
-    '" data-fixture="' + game.id + '" aria-label="Journée ' + (index + 1) + ' : VALORIA FC contre ' + game.rival + ', ' + statusText(game) + ', ' + scoreText(game) + '">' +
-    '<span class="fixture-top"><span>JOURNÉE ' + String(index + 1).padStart(2, '0') + '</span><span>' + statusText(game) + '</span></span>' +
+    '" data-fixture="' + game.id + '" aria-label="Journée ' + (index + 1) + ' : ' + (game.atHome ? 'VALORIA FC contre ' + game.rival : game.rival + ' contre VALORIA FC') + ', ' + recent + ', ' + scoreboardText(game) + '">' +
+    '<span class="fixture-top"><span>JOURNÉE ' + String(index + 1).padStart(2, '0') + '</span><span class="fixture-status">' + statusText(game) + '</span></span>' +
     '<span class="fixture-date">' + shortDate(game) + '</span>' +
-    '<span class="fixture-clubs"><span class="fixture-team">' + badge('V', 'valoria-mark') + '<span>VALORIA</span></span>' +
-    '<strong class="fixture-score">' + scoreText(game) + '</strong>' +
-    '<span class="fixture-team">' + badge(game.sigle, game.mark) + '<span>' + game.rival + '</span></span></span>' +
+    '<span class="fixture-clubs">' + (game.atHome ? home : away) +
+    '<strong class="fixture-score">' + scoreboardText(game) + '</strong>' +
+    (game.atHome ? away : home) + '</span>' +
+    '<span class="fixture-result-label">' + (game.score ? 'VALORIA : ' + recent : game.atHome ? 'À DOMICILE' : 'À L’EXTÉRIEUR') + '</span>' +
     '<span class="fixture-bottom">' + (game.score ? 'Voir le résultat' : ongoing(game) ? 'Voir le match et les billets' : 'Voir le match') + '<span aria-hidden="true">↗</span></span></button></li>';
 }
 
@@ -47,6 +55,7 @@ export function initMatchday() {
   const featureMark = document.querySelector('#featured-crest');
   featureMark.textContent = focusGame.sigle;
   featureMark.className = 'club-mark featured-club-mark ' + focusGame.mark;
+  document.querySelector('#featured-venue').textContent = (focusGame.atHome ? 'À DOMICILE' : 'À L’EXTÉRIEUR') + ' · HEURE DE PARIS';
   featureButton.textContent = nextGame ? 'Découvrir la rencontre et les billets ↗' : 'Voir la dernière rencontre ↗';
 
   const countdown = document.querySelector('#match-countdown');
@@ -83,6 +92,7 @@ export function initMatchday() {
     const n = Math.max(1, Math.min(4, Number(qty.value) || 1));
     document.querySelector('#ticket-choice').textContent = 'TRIBUNE ' + tribune.value + ' · ' + n + (n === 1 ? ' PLACE' : ' PLACES');
     document.querySelector('#ticket-price').textContent = price(rates[tribune.value] * n);
+    document.querySelector('#ticket-total-label').textContent = price(rates[tribune.value] * n);
     document.querySelector('#ticket-match').textContent = 'VALORIA FC / ' + selected.rival;
     document.querySelector('#ticket-date').textContent = shortDate(selected) + ' · ' + dateTime.format(new Date(selected.date));
   }
@@ -93,7 +103,8 @@ export function initMatchday() {
     document.querySelector('#dialog-opponent').textContent = game.rival;
     document.querySelector('#dialog-matchday').textContent = 'JOURNÉE ' + (games.indexOf(game) + 1) + ' · PHASE DE LIGUE';
     document.querySelector('#dialog-date').textContent = dateFormat.format(new Date(game.date)) + ' · ' + dateTime.format(new Date(game.date)) + ' (Paris)';
-    document.querySelector('#dialog-result').textContent = game.score ? 'VALORIA FC  ' + scoreText(game) + '  ' + game.rival : '';
+    document.querySelector('#ticket-location').textContent = game.atHome ? 'VALORIA FC reçoit · Match à domicile' : 'VALORIA FC se déplace · Match à l’extérieur';
+    document.querySelector('#dialog-result').textContent = game.score ? (game.atHome ? 'VALORIA FC  ' + scoreText(game) + '  ' + game.rival : game.rival + '  ' + scoreboardText(game) + '  VALORIA FC') : '';
     document.querySelector('#dialog-result').hidden = !game.score;
     form.reset();
     purchase.hidden = !ongoing(game);

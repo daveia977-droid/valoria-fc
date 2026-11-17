@@ -44,3 +44,13 @@ Le calendrier suit les dates générales de la phase de ligue 2026/27 publiées 
 - Les trois tenues originales de face sont conservées ; NW$ est présenté sous forme de logotype typographique serif incliné avec filet courbe, en or sur Domicile/Third et en bordeaux sur Extérieur. Aucun pixel des tenues d’origine n’est modifié.
 - Le stade revient avec des opacités et cadrages distincts dans le calendrier, les maillots, les supporters, l’organisation, les sections de contact et les pages légales, avec masques sombres pour maintenir la lisibilité.
 - Références de méthode consultées, sans ajouter de dépendance : [Vercel Web Design Guidelines](https://github.com/vercel-labs/agent-skills/tree/main/skills/web-design-guidelines), [Anthropic Frontend Design](https://github.com/anthropics/skills/tree/main/skills/frontend-design), [Make Interfaces Feel Better](https://github.com/jakubkrehel/make-interfaces-feel-better), en conservant Vite et le système CSS existant. Seules leurs recommandations de conception sont appliquées ; aucun code externe ni police n’a été copié.
+
+## V3 — finition des interactions (18 novembre 2026)
+
+- Deux portes d’entrée dans la scène d’accueil : présentation du club et accès au calendrier, y compris sur iPhone.
+- Huit affiches de Ligue des champions imaginées : calendrier tactile, ordre domicile/déplacement et scores affichés dans l’ordre des équipes, labels « Victoire », « Défaite » ou « Match nul » du point de vue de VALORIA FC. Le résumé des résultats ne constitue aucune information sportive réelle.
+- Billetterie de démonstration : groupes de sélection natifs, deux colonnes adaptatives, total indicatif mis à jour et ticket « SPÉCIMEN » sans réservation ni paiement.
+- Sponsor NW$ conservé en lettrage doré ou bordeaux sur les trois tenues 2D existantes, avec positionnement affiné par maillot.
+- Ambiance supporters sobre : Ferveur, Unité, Respect, sans témoignages inventés ; compteur de démonstration inchangé.
+- Contrôles clavier et tactile renforcés, surlignage de navigation pour les sections Matchs/Supporters et motion réduite respectée.
+- Zéro nouvelle dépendance payante ou externe ; fond de stade approuvé de la V2.5 et fichiers sources d’origine conservés.

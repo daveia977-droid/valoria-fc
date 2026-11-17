@@ -347,3 +347,196 @@ a, button { -webkit-tap-highlight-color: rgba(216,178,120,.15); }
     padding-inline: max(17px, env(safe-area-inset-left)), max(17px, env(safe-area-inset-right));
   }
 }
+
+
+/* VALORIA FC — V3 / finition de l'expérience, sans ajout de bibliothèque. */
+.hero-action { gap: clamp(10px, 1.7vw, 22px); flex-wrap: wrap; align-items: center; }
+.hero-fixture-link {
+  min-height: 44px; padding: 10px 8px; display: inline-flex; align-items: center; gap: 15px;
+  font-size: 11px; font-weight: 600; letter-spacing: .03em; color: #f0d3a4;
+  border-bottom: 1px solid #eac48a86; text-shadow: 0 2px 12px #000c;
+  transition: color 160ms ease, border-color 160ms ease;
+}
+.hero-fixture-link:hover, .hero-fixture-link:focus-visible { color: #fff0d3; border-bottom-color: #fff0d3; }
+.hero-fixture-link span { display: inline-block; font-size: 18px; line-height: 1; }
+.scene .atmosphere::before {
+  content: ""; position: absolute; width: min(55vw, 540px); aspect-ratio: 1; border-radius: 50%;
+  left: 50%; top: 54%; transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse, transparent 43%, #e9ba7920 64%, transparent 73%);
+  pointer-events: none;
+}
+#matchs, #supporters, #collection, #organisation { scroll-margin-top: 104px; }
+
+/* Scores readable without relying on colour alone; short cards are still swipable. */
+.fixture-subtitle { color: #c4ada7; font-size: 12px; margin-top: 12px; letter-spacing: .02em; }
+.fixture-list { padding-block: 6px 24px; scroll-padding-inline: 4px; }
+.fixture-card {
+  height: 270px;
+  padding: 20px;
+  background: linear-gradient(148deg, #fff9ef 0%, #eee7e0 74%, #e7d8ce 100%);
+  box-shadow: 0 5px 17px #0003, inset 0 1px #ffffffbb;
+  transition: background-color 180ms ease, box-shadow 180ms ease, transform 180ms cubic-bezier(.2,0,0,1);
+}
+.fixture-card.is-next { background: linear-gradient(150deg, #fff8e7, #ecddc9 80%); border-color: #c09663; }
+.fixture-top { align-items: center; color: #5a5764; font-size: 10px; }
+.fixture-status {
+  padding: 5px 8px; border: 1px solid #2b1d2838; border-radius: 999px;
+  background: #3816220b; font-size: 9px; letter-spacing: .07em;
+}
+.fixture-card.result-upcoming .fixture-status { color: #6c2f43; background: #80284516; border-color: #9b486a55; }
+.fixture-card.result-win .fixture-status { color: #25523d; background: #27544113; border-color: #32614755; }
+.fixture-card.result-loss .fixture-status { color: #8c3745; background: #8c374512; border-color: #9e475355; }
+.fixture-card.result-draw .fixture-status { color: #414d65; background: #41516b12; border-color: #59647c66; }
+.fixture-date { margin-top: 18px; font-size: 25px; }
+.fixture-clubs { margin: 14px 0 4px; gap: 6px; }
+.fixture-team { gap: 6px; font-size: 10px; line-height: 1.28; }
+.fixture-team .club-mark {
+  position: relative; isolation: isolate; width: 46px; height: 46px;
+  border: 2px solid #fff5e1a6;
+  box-shadow: 0 4px 9px #20172129, inset 0 0 0 3px #ffffff14;
+  font-weight: 800;
+}
+.fixture-team .valoria-mark { border-color: #af7e48; }
+.fixture-score { font: 800 19px/1.2 Manrope, sans-serif; color: #2b1b25; white-space: nowrap; }
+.fixture-result-label { margin-top: auto; text-align: center; font-size: 10px; letter-spacing: .10em; color: #654a59; font-weight: 700; }
+.fixture-card.result-win .fixture-result-label { color: #25523d; }
+.fixture-card.result-loss .fixture-result-label { color: #8c3745; }
+.fixture-card.result-draw .fixture-result-label { color: #475670; }
+.fixture-bottom { margin-top: 11px; padding-top: 9px; border-color: #3c29373b; min-height: 28px; align-items: center; }
+.fixture-bottom span { font-size: 17px; }
+.match-centre .fixture-controls button { min-width: 44px; min-height: 44px; border-radius: 50%; }
+.match-centre .fixture-controls button:focus-visible, .match-feature-cta:focus-visible { outline: 3px solid #f5daab; outline-offset: 4px; }
+.match-spotlight { border-color: #d5a96a85; }
+.match-clash { align-items: center; }
+.match-club .featured-club-mark {
+  width: 84px; height: 84px; font-size: 19px; line-height: 1;
+  border-width: 2px; box-shadow: 0 0 0 5px #d6b2811a, 0 14px 22px #0007;
+}
+.match-club strong { max-width: 220px; text-wrap: balance; }
+.match-centre-center strong { font-variant-numeric: tabular-nums; }
+.match-countdown-bar { gap: 16px; }
+.fixture-controls button:active, .match-feature-cta:active { transform: scale(.96); }
+
+/* Three official 2D kits: make the wordmark appear applied to the garment. */
+.kit-image-wrap { max-width: 100%; }
+.kit-viewport { max-width: 100%; }
+.kit-sponsor { filter: drop-shadow(0 1px 1px #050309ad) drop-shadow(0 3px 3px #0703088c); }
+.kit-sponsor-type {
+  letter-spacing: -4.2px; font-size: 97px;
+  paint-order: stroke fill; stroke-width: 1.05px;
+}
+#kit-panel[data-kit="0"] .kit-sponsor { top: 39.4%; left: 49.7%; width: 52%; }
+#kit-panel[data-kit="1"] .kit-sponsor { top: 38.7%; left: 50.4%; width: 51%; }
+#kit-panel[data-kit="2"] .kit-sponsor { top: 39.8%; left: 50%; width: 52%; }
+.kit-details { align-items: end; padding-top: 23px; border-top-color: #ebc68c68; }
+.kit-counter { font-variant-numeric: tabular-nums; }
+.kit-panel[data-kit="1"] .kit-image-wrap::before { background: radial-gradient(ellipse, #dcc29820, transparent 66%); }
+.kit-panel[data-kit="2"] .kit-image-wrap::before { background: radial-gradient(ellipse, #6833722f, transparent 67%); }
+
+/* Demo ticket: intentional hierarchy, native selectors on iPhone, no false reservation. */
+.match-dialog { border-radius: 8px; box-shadow: 0 30px 80px #000d; overscroll-behavior: contain; }
+.match-dialog .dialog-head button { min-width: 44px; }
+.match-dialog-location { color: #eac58e; font-size: 12px; letter-spacing: .015em; padding-top: 10px; }
+.ticket-step {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  font: 600 16px/1.4 Manrope, sans-serif; color: var(--cream); margin-top: 4px;
+}
+.ticket-step span { color: var(--gold); font-size: 10px; white-space: nowrap; letter-spacing: .03em; }
+.ticket-controls { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 13px; margin: 6px 0 2px; }
+.ticket-field { display: grid; gap: 9px; min-width: 0; }
+#ticket-form .ticket-field label { color: #d3bda9; font-size: 12px; }
+#ticket-form .ticket-field select {
+  min-width: 0; width: 100%; border-radius: 6px; padding: 13px 30px 13px 11px;
+  background: #2e1c2b; border: 1px solid #d4aa7580; color: #fff4e1;
+  font-family: Manrope, sans-serif; font-size: 14px; line-height: 1.35;
+}
+#ticket-form .ticket-field select:focus-visible { outline: 3px solid #f7d8a1; outline-offset: 2px; }
+.ticket-specimen {
+  background: linear-gradient(118deg, #f4e4c7 0%, #e6cda6 48%, #f9f2e4 100%);
+  border-left: 5px solid #842d4a; border-radius: 4px;
+  box-shadow: 0 12px 32px #0008, inset 0 0 0 1px #ffffff8f;
+}
+.ticket-specimen::before {
+  content: ""; position: absolute; inset: 11px; z-index: 0; border: 1px solid #5c263827; pointer-events: none;
+}
+.ticket-specimen-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; border-bottom: 1px dashed #82344859; padding-bottom: 16px; }
+.ticket-specimen-top .specimen-mark { margin: 0; }
+.ticket-season { font-size: 10px; color: #782e3f; font-weight: 700; letter-spacing: .04em; }
+.ticket-pretitle { display: block; font-size: 10px; color: #824052; letter-spacing: .12em; margin: 19px 0 6px; font-weight: 700; }
+.ticket-specimen strong#ticket-match { font: 600 clamp(20px, 4vw, 29px)/1.08 'Cormorant Garamond', Georgia, serif; margin-bottom: 12px; }
+.ticket-specimen #ticket-choice { display: block; font-size: 12px; letter-spacing: .07em; font-weight: 700; margin-top: 18px; }
+.ticket-specimen #ticket-price { font: 600 31px/1.25 'Cormorant Garamond', Georgia, serif; margin-top: 4px; }
+.ticket-specimen .ticket-watermark { border-top: 1px dashed #82344872; padding-top: 13px; font-size: 10px; letter-spacing: .04em; }
+.ticket-summary {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  border-top: 1px solid #d8b27856; padding: 15px 2px 7px; color: #dac5ac; font-size: 12px;
+}
+.ticket-summary strong { color: #efca8b; font: 700 20px/1 Manrope, sans-serif; font-variant-numeric: tabular-nums; }
+.ticket-submit { border-radius: 4px; font-weight: 750; letter-spacing: .02em; }
+.ticket-submit:focus-visible { outline: 3px solid #fff0c4; outline-offset: 4px; }
+.ticket-submit:active { transform: scale(.96); }
+.ticket-disclaimer { font-size: 11px; text-wrap: pretty; }
+.ticket-confirmation-icon {
+  display: grid; place-items: center; margin: 0 auto 16px;
+  width: 62px; height: 62px; border-radius: 50%;
+  color: #f2d19e; background: #36202c; border: 1px solid #d8b2789c; font-size: 30px;
+}
+.ticket-confirmation h3 { text-wrap: balance; }
+
+/* Supporters: fabric-inspired accents, no fabricated posts or engagement metrics. */
+.supporters-inner { gap: clamp(24px, 5vw, 65px); }
+.supporters-inner p { max-width: 540px; }
+.supporters-values { margin-top: 28px; display: flex; gap: 10px; flex-wrap: wrap; }
+.supporters-values span {
+  border: 1px solid #d8b2785b; padding: 10px 15px;
+  background: #d8b2780c; color: #ebcfa6; font-size: 12px;
+}
+.supporters-scarf {
+  pointer-events: none; position: absolute; right: -140px; top: 15%; width: min(70vw, 900px); height: 145px;
+  border-block: 2px solid #e6c08823; opacity: .24; transform: rotate(-14deg);
+  background: repeating-linear-gradient(90deg, #401329 0 72px, #d5a267 72px 85px, #240f25 85px 134px);
+  mask-image: linear-gradient(90deg, transparent, black 35%, black 72%, transparent);
+}
+.supporters-figure { position: relative; isolation: isolate; }
+.supporters-figure::before {
+  content: ""; position: absolute; inset: 9px; pointer-events: none; border: 1px solid #eacb9d23;
+}
+.supporters-figure strong { text-shadow: 0 6px 27px #0006; }
+
+/* Navigation and small-screen comfort. */
+.desktop-nav a { transition: color 160ms ease; }
+.navigation { padding-left: max(24px, env(safe-area-inset-left)); padding-right: max(24px, env(safe-area-inset-right)); }
+#match-dialog { max-height: min(90dvh, 900px); }
+@media (max-width: 760px) {
+  .hero-action { left: 12px; right: 12px; gap: 10px; }
+  .hero-fixture-link { min-height: 44px; padding: 10px 8px; font-size: 10px; }
+  #matchs, #supporters, #collection, #organisation { scroll-margin-top: 86px; }
+  .fixture-heading { align-items: end; }
+  .fixture-heading h3 { font-size: clamp(28px, 7vw, 38px); }
+  .fixture-subtitle { font-size: 11px; }
+  .fixture-card { height: 260px; padding: 18px; }
+  .fixture-score { font-size: 17px; }
+  .match-club .featured-club-mark { width: 58px; height: 58px; font-size: 13px; }
+  .match-centre-center strong { font-size: clamp(27px, 7vw, 43px); }
+  .match-dialog { padding: 20px; }
+  .ticket-controls { grid-template-columns: minmax(0, 1fr) minmax(106px, .6fr); gap: 9px; }
+  #ticket-form .ticket-field select { font-size: 13px; padding-left: 8px; padding-right: 24px; }
+  .supporters-scarf { height: 78px; right: -160px; top: 30%; opacity: .14; }
+  .supporters-values { margin-top: 23px; }
+}
+@media (max-width: 375px) {
+  .hero-action { gap: 3px; }
+  .hero-fixture-link { padding-inline: 5px; font-size: 9px; }
+  .ticket-controls { grid-template-columns: 1fr; }
+  .fixture-heading { flex-wrap: wrap; }
+  .fixture-card { padding: 16px; }
+  .fixture-team { font-size: 9px; }
+  .supporters-values span { padding: 8px 10px; }
+}
+@media (max-height: 650px) and (max-width: 760px) {
+  .hero-action { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fixture-card, .hero-fixture-link, .desktop-nav a, .ticket-submit { transition: none !important; }
+  .fixture-card:active, .ticket-submit:active, .match-feature-cta:active { transform: none; }
+}
