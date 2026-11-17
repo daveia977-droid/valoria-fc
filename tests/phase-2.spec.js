@@ -65,49 +65,30 @@ for (const width of [390, 1440]) {
     ).toBe(true);
   });
 
-  test(`comparaison des deux domiciles au clavier à ${width}px`, async ({
+  test(`collection officielle à trois maillots au clavier à ${width}px`, async ({
     page,
   }) => {
     await page.setViewportSize({ width, height: 900 });
     await page.emulateMedia({ reducedMotion: "reduce" });
     await page.goto("/");
-    const comparison = page.locator("#home-comparison");
-    await comparison.locator("summary").focus();
-    await page.keyboard.press("Enter");
-    await expect(comparison).toHaveAttribute("open", "");
-    await expect(
-      comparison.getByRole("heading", { name: "Domicile V1", exact: true }),
-    ).toBeVisible();
-    await expect(
-      comparison.getByRole("heading", { name: "Domicile V2", exact: true }),
-    ).toBeVisible();
-    const boxes = await comparison
-      .locator(".comparison-kit-window")
-      .evaluateAll((nodes) =>
-        nodes.map((n) => {
-          const r = n.getBoundingClientRect();
-          return { x: r.x, y: r.y, width: r.width };
-        }),
-      );
-    expect(Math.abs(boxes[0].y - boxes[1].y)).toBeLessThan(1);
-    expect(boxes[1].x).toBeGreaterThan(boxes[0].x + boxes[0].width);
-    const sources = await comparison
-      .locator("img")
-      .evaluateAll((images) => images.map((i) => i.getAttribute("src")));
-    expect(sources).toEqual([
-      "/assets/collection.webp",
-      "/assets/collection.webp",
-    ]);
-    expect(
-      await page.evaluate(
-        () => document.documentElement.scrollWidth <= innerWidth,
-      ),
-    ).toBe(true);
-    await comparison.locator("summary").press("Enter");
-    await expect(comparison).not.toHaveAttribute("open");
-    await page.getByRole("tab", { name: /Extérieur/ }).click();
-    await expect(page.locator("#kit-name")).toHaveText("Extérieur");
+    const tabs = page.locator(".kit-tab");
+    await expect(tabs).toHaveCount(3);
+    await expect(page.locator("#home-comparison")).toHaveCount(0);
+    const home = page.getByRole("tab", { name: "Domicile", exact: true });
+    await home.focus();
+    await page.keyboard.press("ArrowRight");
+    await expect(page.getByRole("tab", { name: "Extérieur", exact: true })).toBeFocused();
+    await page.keyboard.press("End");
+    await expect(page.getByRole("tab", { name: "Third", exact: true })).toBeFocused();
+    await page.keyboard.press("Home");
+    await expect(home).toBeFocused();
+    await expect(page.locator("#kit-name")).toHaveText("Domicile");
+    await expect(page.locator("#kit-colours")).toHaveText("Bleu nuit & or");
+    await expect(page.locator(".kit-sponsor")).toHaveText("NW$");
+    await expect(page.locator("#kit-number")).toHaveText("01");
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   });
+
 }
 
 test("défilement réversible : le blason et les textes retrouvent leur pose", async ({
@@ -172,13 +153,13 @@ test("mouvement réduit pendant une fiche : arrêt de toutes les animations", as
   await expect(page.locator(".emblem")).toHaveCSS("transform", "none");
 });
 
-test("accessibilité de la comparaison et de la fiche d’organisation", async ({
+test("accessibilité de la collection et de la fiche d’organisation", async ({
   page,
 }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
   await page.evaluate(() => document.fonts.ready);
-  await page.locator("#home-comparison summary").click();
+  await page.getByRole("tab", { name: "Extérieur", exact: true }).click();
   await page.addScriptTag({ path: require.resolve("axe-core/axe.min.js") });
   const check = async () => {
     const result = await page.evaluate(() =>
