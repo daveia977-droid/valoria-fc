@@ -1,0 +1,229 @@
+/* VALORIA FC V5.5 — ESGCI CUP et Boutique.
+   Match the approved warm ink / burgundy / gold system. No external styles. */
+#competitions, #esgci-cup, #boutique, #shop-catalogue { scroll-margin-top: 102px; }
+.competitions-intro, .esgci-section, .boutique-section {
+  --v55-cream:#f5ebdc; --v55-ink:#130d14; --v55-gold:#d8b278;
+  color:var(--cream);
+}
+.competitions-intro {
+  padding:96px max(24px,6.5%) 70px;
+  background:#110c13; border-top:1px solid #d8b27826;
+  border-bottom:1px solid #d8b2782b;
+}
+.competitions-intro-inner {max-width:1320px;margin:auto;display:grid;grid-template-columns:1.15fr .85fr;align-items:end;gap:clamp(24px,5vw,90px)}
+.competitions-intro h2 {
+ font:600 clamp(48px,6vw,88px)/.97 'Cormorant Garamond',Georgia,serif;
+ letter-spacing:-.038em;margin:17px 0 0;text-wrap:balance;
+}
+.competitions-intro h2 em {color:#e3c18e;font-weight:600}
+.competitions-links {display:grid;gap:0;border-top:1px solid #d8b27852}
+.competitions-links a {
+ display:grid;grid-template-columns:33px 1fr 24px;align-items:center;gap:15px;
+ padding:16px 1px;min-height:58px;border-bottom:1px solid #d8b27839;
+ color:#efdfcd;transition:background-color .16s ease,color .16s ease;
+}
+.competitions-links a:hover {color:#f0d1a2;background:#e5b97c0c}
+.competitions-links a span:first-child {color:#bd9f79;font-size:11px}
+.competitions-links a strong {font-weight:600;font-size:14px}
+.competitions-links a span:last-child {text-align:right;color:#d7b37e;font-size:17px}
+.esgci-section {
+ position:relative;isolation:isolate;overflow:hidden;
+ padding:clamp(82px,9vw,128px) max(24px,6.5%);
+ background:linear-gradient(108deg,#140d16f4,#20121df0 58%,#0b0a12f5),
+  url('/assets/stade-valoria-v25.webp') 50% 73%/cover no-repeat;
+ border-block:1px solid #d8b27839;
+}
+.esgci-inner {max-width:1320px;margin:auto}
+.esgci-header {display:flex;align-items:flex-start;justify-content:space-between;gap:26px;margin-bottom:42px}
+.esgci-titles {min-width:0;max-width:780px}
+.esgci-lockup {display:flex;align-items:end;gap:clamp(11px,3vw,34px);margin-top:18px}
+.esgci-wordmark {display:block;width:clamp(150px,25vw,300px);height:auto;object-fit:contain;flex:none}
+.esgci-lockup strong {color:#ecd0a0;line-height:.79;font:italic 600 clamp(59px,8.7vw,129px)/.8 'Cormorant Garamond',Georgia,serif;letter-spacing:-.045em}
+.esgci-deck {font-size:14px;line-height:1.75;color:#bdb0af;margin-top:23px;max-width:510px}
+.esgci-season-mark {min-width:108px;display:flex;flex-direction:column;align-items:flex-end;gap:3px;color:#c0a77e;font:600 11px/1.2 Manrope,sans-serif;letter-spacing:.07em;opacity:.8}
+.esgci-season-mark strong {font:600 87px/.8 'Cormorant Garamond',Georgia,serif;color:#e6c28e}
+.esgci-main-grid {display:grid;grid-template-columns:minmax(0,1.28fr) minmax(290px,.74fr);gap:22px;align-items:stretch}
+.esgci-table-wrap {min-width:0;padding:clamp(18px,2.6vw,34px);border:1px solid #d8b27852;border-radius:10px;background:#110e14e8;box-shadow:0 22px 35px #0005}
+.esgci-section-heading {display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px;padding:0 0 24px;border-bottom:1px solid #d8b27835}
+.esgci-section-heading h3 {font:600 clamp(30px,3.3vw,43px)/1 'Cormorant Garamond',Georgia,serif}
+.esgci-section-heading span {font-size:11px;color:#c4a787}
+.cup-table-scroller {overflow-x:auto;scrollbar-width:thin;scrollbar-color:#d4b17b #161019}
+.cup-table {width:100%;border-collapse:separate;border-spacing:0;text-align:center;font-variant-numeric:tabular-nums;min-width:410px}
+.cup-table thead th {font-size:10px;color:#c6b7ab;font-weight:600;padding:17px 8px 13px;border-bottom:1px solid #d8b27830}
+.cup-table thead th:nth-child(2), .cup-table tbody th {text-align:left}
+.cup-table tbody td,.cup-table tbody th {font-size:12px;font-weight:500;padding:11px 8px;border-bottom:1px solid #e6d5be15;vertical-align:middle;white-space:nowrap}
+.cup-table tbody th {min-width:155px}
+.cup-table .cup-rank {color:#e1c59a}
+.cup-table .cup-points {font-weight:800;color:#f1d3a3;font-size:15px}
+.cup-table tbody tr.cup-us {background:linear-gradient(90deg,#71223c83,#51172b54);color:#fff4e5}
+.cup-table tbody tr.cup-us td,.cup-table tbody tr.cup-us th {border-top:1px solid #dfb57870;border-bottom:1px solid #dfb57870}
+.cup-table tbody tr.cup-us td:first-child {border-left:1px solid #dfb57870;border-radius:7px 0 0 7px}
+.cup-table tbody tr.cup-us td:last-child {border-right:1px solid #dfb57870;border-radius:0 7px 7px 0}
+.cup-team-cell {display:flex;align-items:center;gap:12px;font-size:12px;font-weight:600}
+.cup-team-crest {display:inline-grid;place-items:center;flex:none;width:35px;height:40px;font-size:10px;letter-spacing:.01em;font-weight:800;color:#fff;border:1px solid #d8b27878;box-shadow:0 3px 6px #0004}
+.cup-team-crest[src] {object-fit:contain;border:0;box-shadow:none;width:33px;height:42px}
+.cup-badge-esgci {background:#0b5938;color:#e8f1df;border:2px solid #bbd6bc;clip-path:polygon(50% 0,100% 16%,100% 73%,50% 100%,0 73%,0 16%)}
+.cup-badge-rivage {background:#224b6f;color:#e0eef9;border-radius:9px 9px 45% 45%}
+.cup-badge-cite {background:repeating-linear-gradient(90deg,#111 0 8px,#fff 8px 13px);color:#d8ae75;text-shadow:0 1px 4px #000;border-radius:3px 3px 12px 12px}
+.cup-badge-nova {background:#191516;color:#eac88d;border-radius:4px 4px 10px 10px}
+.cup-badge-horizon {background:#761e36;border-radius:9px 9px 45% 45%;color:#f5d9ab}
+.esgci-next {
+ display:flex;flex-direction:column;min-width:0;gap:14px;
+ border-radius:10px;padding:clamp(20px,2.5vw,33px);color:#281b25;
+ background:linear-gradient(137deg,#f8eee0,#e5d1b4);
+ box-shadow:0 22px 38px #0005;
+}
+.esgci-match-label {font-size:11px;color:#6a394e;font-weight:800;letter-spacing:.04em}
+.esgci-versus {display:grid;grid-template-columns:minmax(0,1fr) 32px minmax(0,1fr);align-items:center;gap:8px;margin:13px 0 8px}
+.esgci-versus>div {display:flex;flex-direction:column;gap:11px;align-items:center;text-align:center;min-width:0}
+.esgci-versus img {width:62px;height:72px;object-fit:contain;filter:drop-shadow(0 3px 7px #271c2930)}
+.esgci-versus .cup-team-crest {width:61px;height:67px;font-size:15px}
+.esgci-versus strong {font-size:12px;line-height:1.35;font-weight:800;text-wrap:balance}
+.esgci-vs {font:italic 600 28px/1 'Cormorant Garamond',Georgia,serif;color:#956e49;text-align:center}
+.esgci-next-date {text-align:center;font-weight:650;font-size:14px;color:#391c2b;border-top:1px solid #762d4235;padding-top:18px}
+.esgci-next-note {text-align:center;font-size:12px;color:#755667}
+.esgci-next-divider {height:1px;background:#762d4233;margin-top:4px}
+.esgci-last-results h4 {color:#502539;font-weight:700;font-size:12px;margin-bottom:10px}
+.esgci-last-results ul {list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.esgci-last-results li {display:grid;grid-template-columns:24px 1fr;gap:9px;align-items:center;font-size:11px;line-height:1.5;color:#6b4252}
+.esgci-last-results li>span:first-child {color:#9e7967}
+.esgci-last-results strong {color:#492239}
+.esgci-calendar {margin-top:25px;border-top:1px solid #d8b27848;border-bottom:1px solid #d8b27848}
+.esgci-calendar summary {display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:58px;cursor:pointer;font-size:13px;font-weight:600;color:#efcf9e;list-style:none}
+.esgci-calendar summary::-webkit-details-marker {display:none}
+.esgci-calendar summary>span {transition:transform .18s ease}
+.esgci-calendar[open] summary>span {transform:rotate(180deg)}
+.esgci-calendar-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;padding:10px 0 28px}
+.cup-fixture-round {padding:20px;background:#120e15;border:1px solid #e1c49b28;border-radius:7px}
+.cup-fixture-round h4 {display:flex;gap:8px;flex-wrap:wrap;justify-content:space-between;font-size:13px;font-weight:600;color:#eed1a1;margin-bottom:14px}
+.cup-fixture-round h4 span {font-size:11px;color:#bda992}
+.cup-fixture-round ul {padding:0;margin:0;list-style:none;display:grid;gap:13px}
+.cup-result {display:grid;grid-template-columns:25px minmax(0,1fr) 42px minmax(0,1fr);gap:6px;align-items:center;font-size:10px;color:#cfc0b7}
+.cup-result-round {color:#947d73}
+.cup-result-home {text-align:right}
+.cup-result-away {text-align:left}
+.cup-result strong {color:#edd1a6;font-size:12px;text-align:center;white-space:nowrap}
+/* Commerce, sans checkout actif. */
+.boutique-section {background:linear-gradient(125deg,#140d14f5,#1b0f1cf0 55%,#0f0b10f5),url('/assets/stade-valoria-v25.webp') 50% 80%/cover no-repeat;padding:clamp(78px,9vw,132px) max(24px,6.5%);border-top:1px solid #d8b27825}
+.boutique-v55-inner {max-width:1320px;margin:auto}
+.boutique-v55-hero {display:grid;grid-template-columns:minmax(0,1.2fr) minmax(240px,.8fr);overflow:hidden;border:1px solid #d8b27840;border-radius:12px;background:linear-gradient(125deg,#310f23ef,#180d18f1 66%,#100d16f8);min-height:370px}
+.boutique-v55-copy {display:flex;flex-direction:column;align-items:start;justify-content:center;padding:clamp(30px,5vw,68px)}
+.boutique-v55-copy h2 {font:600 clamp(51px,6vw,93px)/.95 'Cormorant Garamond',Georgia,serif;letter-spacing:-.033em;margin:16px 0 21px;text-wrap:balance}
+.boutique-v55-copy h2 em {display:block;color:#ebc58e;font-weight:600}
+.boutique-v55-copy>p:not(.overline) {font-size:14px;line-height:1.85;max-width:510px;color:#d0c0ba;text-wrap:pretty}
+.boutique-v55-state {display:inline-flex;align-items:center;gap:10px;margin-top:24px;color:#e6caa0;font-size:11px;line-height:1.5;border:1px solid #d8b2783f;padding:11px 13px;border-radius:5px}
+.boutique-v55-link {display:inline-flex;align-items:center;gap:14px;min-height:44px;color:#f4dfbc;border-bottom:1px solid #d8b27893;margin-top:22px;font-size:12px;font-weight:600}
+.boutique-v55-link:hover {color:#fff0d0}
+.boutique-v55-brand {position:relative;display:flex;justify-content:center;align-items:center;flex-direction:column;gap:18px;min-width:0;overflow:hidden;background:linear-gradient(0deg,#150d19d8,#611d3640),url('/assets/stade-valoria-v25.webp') center 77%/cover no-repeat}
+.boutique-v55-brand img {position:relative;z-index:1;width:clamp(105px,16vw,175px);height:auto;filter:drop-shadow(0 12px 15px #0008)}
+.boutique-v55-brand>span:last-child {position:relative;z-index:1;font-size:10px;font-weight:700;color:#eed0a4;text-align:center;letter-spacing:.12em;line-height:1.9}
+.boutique-v55-orbit {position:absolute;inset:auto;width:260px;aspect-ratio:1;border-radius:50%;border:1px solid #ebc58c29;box-shadow:0 0 0 36px #ebc58c09,0 0 0 76px #ebc58c07}
+.boutique-v55-catalogue {margin-top:75px}
+.shop-catalogue-heading {display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:23px}
+.shop-catalogue-heading h3 {font:600 clamp(38px,5vw,64px)/1 'Cormorant Garamond',Georgia,serif;margin-top:8px;letter-spacing:-.025em}
+#shop-result-count {color:#dec4a1;font-size:12px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.shop-filters {display:flex;gap:9px;overflow-x:auto;scrollbar-width:thin;padding:0 0 15px;margin-bottom:24px;overscroll-behavior-inline:contain}
+.shop-filter {flex:none;min-height:44px;background:#211821;color:#ddcfc3;border:1px solid #d8b27835;border-radius:6px;font-size:12px;font-weight:600;padding:10px 17px;white-space:nowrap}
+.shop-filter:hover {background:#2e1d29;border-color:#d8b27875}
+.shop-filter.is-active {background:#e6c48e;color:#261521;border-color:#e6c48e}
+.shop-filter:focus-visible,.shop-product-view:focus-visible {outline:3px solid #f3d7a0;outline-offset:3px}
+.shop-products {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.shop-product {min-width:0;border:1px solid #e2d4c054;border-radius:11px;overflow:hidden;background:#f5ecdf;color:#251820;display:flex;flex-direction:column;box-shadow:0 8px 16px #0003}
+.shop-product[hidden] {display:none!important}
+.shop-art {display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;height:clamp(192px,21vw,275px);background:linear-gradient(150deg,#f8f2e9,#e1d1c0)}
+.shop-art-accessory img {width:min(95%,245px);height:100%;object-fit:contain;display:block;filter:drop-shadow(0 8px 12px #0002)}
+.shop-art-kit {background:linear-gradient(150deg,#d8d4d0,#ece4d6)}
+.shop-kit-frame {position:relative;overflow:hidden;height:88%;width:auto;max-width:100%;flex:none}
+.shop-kit-sheet {position:absolute;display:block;max-width:none!important;width:auto;left:0;object-fit:fill}
+.shop-kit-sponsor {position:absolute;z-index:2;left:50%;top:39%;width:54%;height:auto;transform:translate(-50%,-50%) rotate(-3deg);color:#e9c68a;filter:drop-shadow(0 1px 1px #0b070ca8);pointer-events:none}
+.shop-kit-sponsor text {font:italic 600 94px 'Cormorant Garamond',Georgia,serif;letter-spacing:-4px;fill:currentColor;stroke:#251321;stroke-width:1px;paint-order:stroke fill}
+.shop-kit-frame[data-shop-kit="1"] .shop-kit-sponsor {color:#6f263e}
+.shop-kit-frame[data-shop-kit="1"] .shop-kit-sponsor text {stroke:#f6e3c9}
+.shop-product-copy {padding:19px;display:flex;flex:1;flex-direction:column;gap:7px}
+.shop-product-category {color:#926f64;font-size:10px;font-weight:700;letter-spacing:.035em}
+.shop-product h3 {font-size:16px;line-height:1.3;font-weight:750;color:#301523}
+.shop-product p {font-size:12px;color:#68535a;line-height:1.55}
+.shop-product-bottom {margin-top:auto;padding-top:19px;display:flex;flex-direction:column;align-items:flex-start;gap:11px}
+.shop-product-bottom>span {font-size:12px;color:#6a4657;font-weight:650}
+.shop-product-view {display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;min-height:40px;border:1px solid #8a5261;background:transparent;color:#5b2138;font-size:12px;font-weight:700;padding:10px 12px;border-radius:5px}
+.shop-product-view:hover {background:#5b2138;color:#f9e8d5}
+.shop-catalogue-note {max-width:760px;margin-top:25px;color:#bba9a2;line-height:1.7;font-size:12px}
+.shop-product-dialog {background:#180f19;border:1px solid #cba77878;border-radius:12px;color:var(--cream);width:min(540px,calc(100vw - 28px));max-height:90dvh;overflow-y:auto;padding:clamp(18px,3vw,34px);box-shadow:0 30px 80px #000b}
+.shop-product-dialog::backdrop {background:#030205cc;backdrop-filter:blur(5px)}
+.shop-product-dialog .dialog-head {display:flex;align-items:center;justify-content:space-between;gap:15px}
+.shop-product-dialog .dialog-head button {min-height:44px;padding:9px 12px;border:1px solid #d8b27875;border-radius:7px;color:#f6e9d5;background:none;font-size:12px}
+.shop-dialog-visual {margin:20px 0 26px;height:290px;border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#efe4d7}
+.shop-dialog-visual .shop-art {height:100%;width:100%}
+.shop-dialog-visual .shop-kit-frame {height:90%}
+.shop-product-dialog h2 {font:600 clamp(39px,6vw,56px)/1 'Cormorant Garamond',Georgia,serif;letter-spacing:-.025em}
+.shop-dialog-meta {color:#e1bf89;font-size:13px;margin-top:11px}
+.shop-dialog-desc {color:#cfc0b8;font-size:14px;line-height:1.75;margin-top:17px}
+.shop-dialog-availability {margin-top:18px;padding:14px;background:#2b1c2a;border:1px solid #d8b27846;border-radius:7px;font-size:12px;font-weight:700;color:#f0d3a7}
+.shop-dialog-disclaimer {font-size:11px;line-height:1.7;color:#baa9a8;margin-top:13px}
+@media(max-width:1100px){
+ .esgci-main-grid {grid-template-columns:1fr}
+ .esgci-next {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start;column-gap:30px}
+ .esgci-next>.esgci-match-label,.esgci-next>.esgci-versus,.esgci-next>.esgci-next-date,.esgci-next>.esgci-next-note {grid-column:1}
+ .esgci-next>.esgci-next-divider,.esgci-next>.esgci-last-results {grid-column:2}
+ .esgci-next>.esgci-next-divider {grid-row:1;align-self:end}
+ .esgci-next>.esgci-last-results {grid-row:2/span 3}
+ .shop-products {grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:760px){
+ #competitions,#esgci-cup,#boutique {scroll-margin-top:80px}
+ .competitions-intro {padding:76px 22px 56px}
+ .competitions-intro-inner {grid-template-columns:1fr;gap:31px}
+ .competitions-intro h2 {font-size:clamp(44px,10vw,64px)}
+ .esgci-section {padding:76px 20px}
+ .esgci-header {margin-bottom:27px}
+ .esgci-season-mark {display:none}
+ .esgci-wordmark {width:clamp(130px,38vw,210px)}
+ .esgci-lockup strong {font-size:clamp(49px,12vw,80px)}
+ .esgci-main-grid {gap:17px}
+ .esgci-table-wrap {padding:17px 12px}
+ .esgci-section-heading {padding-bottom:16px}
+ .esgci-section-heading h3 {font-size:34px}
+ .cup-table {min-width:0;width:100%}
+ .cup-detail-col {display:none}
+ .cup-table tbody td,.cup-table tbody th {font-size:11px;padding:11px 3px}
+ .cup-table tbody th {min-width:0}
+ .cup-team-cell {gap:7px;font-size:11px;line-height:1.3}
+ .cup-team-crest {width:29px;height:34px;font-size:8px}
+ .cup-team-crest[src] {width:27px;height:34px}
+ .cup-table thead th {font-size:10px;padding:13px 3px}
+ .esgci-next {display:flex;gap:13px;padding:21px}
+ .esgci-next>.esgci-next-divider,.esgci-next>.esgci-last-results {grid-column:auto;grid-row:auto}
+ .esgci-versus {max-width:400px;width:100%;margin:15px auto}
+ .esgci-next-date {margin-top:10px}
+ .esgci-calendar-grid {grid-template-columns:1fr}
+ .boutique-section {padding:72px 20px 91px}
+ .boutique-v55-hero {grid-template-columns:1fr}
+ .boutique-v55-copy {padding:32px 24px}
+ .boutique-v55-copy h2 {font-size:clamp(49px,11vw,68px)}
+ .boutique-v55-brand {min-height:220px;flex-direction:row;gap:25px}
+ .boutique-v55-brand img {width:94px}
+ .boutique-v55-orbit {width:210px}
+ .boutique-v55-catalogue {margin-top:57px}
+ .shop-catalogue-heading h3 {font-size:clamp(37px,8vw,53px)}
+ .shop-products {grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+ .shop-art {height:210px}
+ .shop-product-copy {padding:14px}
+ .shop-product h3 {font-size:14px}
+ .shop-product p,.shop-product-bottom>span {font-size:11px}
+ .shop-product-view {font-size:11px;padding:10px}
+}
+@media(max-width:365px){
+ .esgci-section {padding-inline:12px}
+ .esgci-table-wrap {padding:14px 9px}
+ .cup-team-cell {gap:5px;font-size:10px}
+ .cup-team-crest {width:25px;height:30px}
+ .cup-team-crest[src] {width:25px;height:32px}
+ .cup-table .cup-points {font-size:13px}
+ .boutique-section {padding-inline:16px}
+ .shop-art {height:185px}
+ .shop-product-copy {padding:11px}
+ .shop-product-view {padding:8px;font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){
+ .competitions-links a,.shop-filter,.shop-product-view,.esgci-calendar summary>span {transition:none}
+}

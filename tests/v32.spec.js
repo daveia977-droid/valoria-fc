@@ -20,9 +20,11 @@ test('V3.2 : entrée Boutique, annonce à venir, aucune vente effective', async 
   await expect(page.locator('#boutique-title')).toContainText('Boutique officielle');
   await expect(page.locator('#boutique-title')).toContainText('à venir');
   await expect(page.locator('.boutique-state')).toContainText('Ouverture prochainement');
-  await expect(page.locator('#boutique button, #boutique form, #boutique input')).toHaveCount(0);
-  await page.getByRole('link', { name: /Découvrir les maillots/ }).click();
-  await expect(page).toHaveURL(/#collection$/);
+  await expect(page.locator('#boutique .shop-filter')).toHaveCount(6);
+  await expect(page.locator('#shop-products .shop-product')).toHaveCount(8);
+  await expect(page.locator('#boutique form, #boutique input, #boutique [type="submit"]')).toHaveCount(0);
+  await page.locator('.boutique-v55-link').click();
+  await expect(page).toHaveURL(/#shop-catalogue$/);
 });
 
 test('V3.2 : affichage mobile et menu avec boutique et histoire', async ({ page }) => {

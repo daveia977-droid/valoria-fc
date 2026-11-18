@@ -13,7 +13,7 @@
 <a class="skip" href="#contenu">Aller au contenu</a>
 <header class="navigation site-header">
   <a class="brand" href="#accueil" aria-label="VALORIA FC — accueil"><img src="/assets/crest.webp" alt="" width="700" height="875"><span>VALORIA FC</span></a>
-  <nav class="desktop-nav" aria-label="Navigation principale"><a href="#club">Le club</a><a href="#matchs">Matchs</a><a href="#collection">Maillots</a><a href="#boutique">Boutique</a><a href="#supporters">Supporters</a><a class="org-link" href="#organisation">Organisation</a></nav>
+  <nav class="desktop-nav" aria-label="Navigation principale"><a href="#club">Le club</a><a href="#competitions">Compétitions</a><a href="#collection">Maillots</a><a href="#boutique">Boutique</a><a href="#supporters">Supporters</a><a class="org-link" href="#organisation">Organisation</a></nav>
   <div class="header-actions"><button class="menu-toggle" id="menu-open" type="button" aria-haspopup="dialog" aria-controls="mobile-menu"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Menu</span></button><button class="pause" id="pause" type="button" aria-pressed="false" aria-label="Mettre en pause les animations" disabled><span class="pause-symbol" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 5v14M16 5v14"/></svg></span><span class="pause-word">Pause</span></button></div>
 </header>
 <main id="contenu" tabindex="-1">
@@ -53,10 +53,21 @@
  </div>
 </section>
 
+
+<section class="competitions-intro" id="competitions" aria-labelledby="competitions-title">
+  <div class="competitions-intro-inner">
+    <div><p class="overline">03 / Les compétitions</p><h2 id="competitions-title">Une même passion.<br><em>Deux terrains de jeu.</em></h2></div>
+    <nav class="competitions-links" aria-label="Choisir une compétition">
+      <a href="#matchs"><span>01</span><strong>Ligue des champions</strong><span aria-hidden="true">↗</span></a>
+      <a href="#esgci-cup"><span>02</span><strong>ESGCI CUP</strong><span aria-hidden="true">↗</span></a>
+    </nav>
+  </div>
+</section>
+
 <section class="match-centre" id="matchs" aria-labelledby="match-title">
  <div class="match-wrap">
   <header class="match-heading">
-   <div><p class="overline">03 / Parcours européen</p><h2 id="match-title">Ligue des <em>champions.</em></h2></div>
+   <div><p class="overline">04 / Parcours européen</p><h2 id="match-title">Ligue des <em>champions.</em></h2></div>
    <p>Huit rencontres, une seule ambition. Retrouvez les scores, les affiches et les prochains rendez-vous de VALORIA FC.</p>
   </header>
   <div class="match-spotlight" aria-label="Affiche à la une">
@@ -74,15 +85,60 @@
  </div>
 </section>
 
+
+<section class="esgci-section" id="esgci-cup" aria-labelledby="cup-title">
+  <div class="esgci-inner">
+    <header class="esgci-header">
+      <div class="esgci-titles">
+        <p class="overline">05 / Compétition · Saison 2026–2027</p>
+        <div class="esgci-lockup">
+          <img class="esgci-wordmark" src="/assets/esgci-wordmark-transparent.svg" alt="ESGCI" width="1290" height="452" loading="lazy">
+          <strong>CUP</strong>
+        </div>
+        <h2 id="cup-title" class="sr-only">ESGCI CUP — Classement et calendrier</h2>
+        <p class="esgci-deck">Un championnat pour écrire une nouvelle page de l'histoire de VALORIA FC.</p>
+      </div>
+      <div class="esgci-season-mark" aria-hidden="true"><span>EST.</span><strong>26</strong><span>/ 27</span></div>
+    </header>
+    <div class="esgci-main-grid">
+      <div class="esgci-table-wrap">
+        <div class="esgci-section-heading"><h3>Classement général</h3><span>Après 4 journées</span></div>
+        <div class="cup-table-scroller">
+        <table class="cup-table" aria-label="Classement de l’ESGCI CUP après quatre journées">
+          <thead><tr><th scope="col">#</th><th scope="col">Club</th><th scope="col">MJ</th><th scope="col" class="cup-detail-col">G</th><th scope="col" class="cup-detail-col">N</th><th scope="col" class="cup-detail-col">P</th><th scope="col">Diff.</th><th scope="col">Pts</th></tr></thead>
+          <tbody id="cup-table-body"></tbody>
+        </table>
+        </div>
+      </div>
+      <aside class="esgci-next" aria-label="Prochain match ESGCI CUP">
+        <span class="esgci-match-label">Prochaine journée · J05</span>
+        <div class="esgci-versus">
+          <div><img src="/assets/crest.webp" alt="" width="64" height="80"><strong>VALORIA FC</strong></div>
+          <span class="esgci-vs">VS</span>
+          <div><span class="cup-team-crest cup-badge-esgci" aria-hidden="true">EU</span><strong id="cup-next-opponent">ESGCI United</strong></div>
+        </div>
+        <p class="esgci-next-date"><span id="cup-next-date">Sam. 28 nov.</span> · <strong id="cup-next-time">16:00</strong></p>
+        <p class="esgci-next-note">La prochaine affiche du championnat.</p>
+        <div class="esgci-next-divider"></div>
+        <div class="esgci-last-results"><h4>Derniers résultats de VALORIA</h4><ul id="cup-recent-results"></ul></div>
+      </aside>
+    </div>
+    <details class="esgci-calendar" id="cup-calendar">
+      <summary>Voir les cinq journées du championnat <span aria-hidden="true">↓</span></summary>
+      <div class="esgci-calendar-grid" id="cup-fixtures"></div>
+    </details>
+  </div>
+</section>
+
 <section class="chapter collection-section" id="collection" aria-labelledby="collection-title">
  <div class="chapter-atmosphere" aria-hidden="true"><img src="/assets/stade-valoria-v25.webp" alt="" width="480" height="600" loading="lazy"></div>
  <div class="collection-layout">
   <header class="chapter-intro collection-intro">
-   <p class="overline">04 / Collection</p><h2 id="collection-title">Nos<em>maillots.</em></h2>
+   <p class="overline">06 / Collection</p><h2 id="collection-title">Nos<em>maillots.</em></h2>
    <p class="chapter-copy">Trois tenues.<br>Une même identité.</p>
    <p class="collection-season">2026 / 2027</p>
    
-   <a class="line-link collection-onward" href="#boutique">Découvrir la future boutique <span class="editorial-arrow" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+   <a class="line-link collection-onward" href="#boutique">Explorer la boutique <span class="editorial-arrow" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
   </header>
   <div class="collection-display">
    <div class="kit-tabs" role="tablist" aria-label="Choisir une tenue">
@@ -102,19 +158,36 @@
 
 
 <section class="boutique-section" id="boutique" aria-labelledby="boutique-title">
- <div class="boutique-section-inner">
-  <div class="boutique-visual" aria-hidden="true">
-   <div class="boutique-visual-lines"></div>
-   <img src="/assets/crest.webp" alt="" width="700" height="875" loading="lazy">
-   <span>VALORIA FC · EST. 2026</span>
+ <div class="boutique-v55-inner">
+  <div class="boutique-v55-hero">
+    <div class="boutique-v55-copy">
+      <p class="overline">07 / Boutique VALORIA</p>
+      <h2 id="boutique-title">Boutique officielle <em>à venir.</em></h2>
+      <p>Nos couleurs ne s'arrêtent pas au coup de sifflet. Découvrez les maillots, écharpes et accessoires que nous imaginons pour ceux qui portent VALORIA au quotidien.</p>
+      <div class="boutique-v55-state"><span class="boutique-state-dot" aria-hidden="true"></span>Collection en préparation · Pas encore de vente</div>
+      <a href="#shop-catalogue" class="boutique-v55-link">Explorer les articles <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="boutique-v55-brand" aria-hidden="true">
+      <span class="boutique-v55-orbit"></span>
+      <img src="/assets/crest.webp" alt="" width="700" height="875" loading="lazy">
+      <span>VALORIA FC<br>2026 / 2027</span>
+    </div>
   </div>
-  <div class="boutique-copy">
-   <p class="overline">05 / La boutique</p>
-   <h2 id="boutique-title">Boutique officielle <em>à venir.</em></h2>
-   <p>Nos couleurs ont une histoire. Bientôt, elles pourront aussi se porter.</p>
-   <p>Nous préparons la boutique du club et la présentation de nos premiers maillots. En attendant son ouverture, découvrez la collection 2026–2027.</p>
-   <div class="boutique-state" role="status"><span class="boutique-state-dot" aria-hidden="true"></span> Ouverture prochainement</div>
-   <a class="boutique-link" href="#collection">Découvrir les maillots <span aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+  <div id="shop-catalogue" class="boutique-v55-catalogue">
+    <div class="shop-catalogue-heading">
+      <div><p class="overline">LA COLLECTION</p><h3>Porter nos couleurs.</h3></div>
+      <span id="shop-result-count" role="status" aria-live="polite">8 articles</span>
+    </div>
+    <div class="shop-filters" role="group" aria-label="Filtrer le catalogue">
+      <button class="shop-filter is-active" type="button" data-filter="tous" aria-pressed="true">Tout voir</button>
+      <button class="shop-filter" type="button" data-filter="maillots" aria-pressed="false">Maillots</button>
+      <button class="shop-filter" type="button" data-filter="echarpes" aria-pressed="false">Écharpes</button>
+      <button class="shop-filter" type="button" data-filter="gants" aria-pressed="false">Gants</button>
+      <button class="shop-filter" type="button" data-filter="chaussettes" aria-pressed="false">Chaussettes</button>
+      <button class="shop-filter" type="button" data-filter="accessoires" aria-pressed="false">Accessoires</button>
+    </div>
+    <div class="shop-products" id="shop-products" aria-label="Articles VALORIA FC"></div>
+    <p class="shop-catalogue-note">Maillots : visuels de la collection VALORIA FC. Accessoires : concepts illustrés. Prix et disponibilité seront annoncés avant toute ouverture commerciale.</p>
   </div>
  </div>
 </section>
@@ -122,7 +195,7 @@
 <section class="supporters-section" id="supporters" aria-labelledby="supporters-title">
  <div class="supporters-wave" aria-hidden="true"></div><div class="supporters-scarf" aria-hidden="true"></div>
  <div class="supporters-inner">
-  <div><p class="overline">06 / Notre douzième homme</p><h2 id="supporters-title">La voix des <em>supporters.</em></h2><p>Un blason, des couleurs, une énergie collective. De la première minute au coup de sifflet final, l'esprit VALORIA se vit ensemble.</p><div class="supporters-values" aria-label="Valeurs des supporters"><span>Ferveur</span><span>Unité</span><span>Respect</span></div></div>
+  <div><p class="overline">08 / Notre douzième homme</p><h2 id="supporters-title">La voix des <em>supporters.</em></h2><p>Un blason, des couleurs, une énergie collective. De la première minute au coup de sifflet final, l'esprit VALORIA se vit ensemble.</p><div class="supporters-values" aria-label="Valeurs des supporters"><span>Ferveur</span><span>Unité</span><span>Respect</span></div></div>
   <div class="supporters-figure"><strong>10 200</strong><span>SUPPORTERS · L'ESPRIT VALORIA FC</span></div>
  </div>
 </section>
@@ -130,7 +203,7 @@
 <section class="chapter organisation-section" id="organisation" aria-labelledby="organisation-title">
  <div class="chapter-atmosphere" aria-hidden="true"><img src="/assets/stade-valoria-v25.webp" alt="" width="480" height="600" loading="lazy"></div>
  <div class="organisation-layout">
-  <header class="chapter-intro organisation-intro"><p class="overline">07 / Organisation</p><h2 id="organisation-title">Notre<em>structure.</em></h2><p class="chapter-copy">Un collectif organisé pour porter<br>l’ambition du club.</p><p class="organisation-hint">Choisissez un nom pour découvrir sa fonction et ses rattachements.</p></header>
+  <header class="chapter-intro organisation-intro"><p class="overline">09 / Organisation</p><h2 id="organisation-title">Notre<em>structure.</em></h2><p class="chapter-copy">Un collectif organisé pour porter<br>l’ambition du club.</p><p class="organisation-hint">Choisissez un nom pour découvrir sa fonction et ses rattachements.</p></header>
   <div class="organisation-editorial" id="club-people" aria-label="Direction et pôles du club">
    <ol class="leadership-list" aria-label="Yvan dirige le club ; Messi, sous sa responsabilité, coordonne les trois pôles">
     <li><span class="member-step" aria-hidden="true">01 / Présidence</span><button class="person-button leader-button" type="button" data-person="yvan" aria-haspopup="dialog" aria-controls="person-dialog"><span class="person-role-label">Président</span><strong>Yvan</strong></button></li>
@@ -151,6 +224,17 @@
 
 </main>
 <footer class="footer"><div class="footer-top"><a class="brand" href="#accueil"><img src="/assets/crest.webp" alt="" width="700" height="875"><span>VALORIA FC</span></a><p>La force du collectif</p><a class="line-link" href="#accueil">Retour en haut <span class="editorial-arrow" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a></div><nav class="legal-links" aria-label="Informations légales"><a href="./mentions-legales.html">Mentions légales</a><a href="./confidentialite.html">Confidentialité</a><a href="./cgu.html">CGU</a></nav></footer>
+
+
+<dialog class="shop-product-dialog" id="shop-product-dialog" aria-labelledby="shop-dialog-title">
+ <div class="dialog-head"><p class="overline">Boutique VALORIA · Avant-première</p><button type="button" data-close>Fermer <span aria-hidden="true">×</span></button></div>
+ <div id="shop-dialog-visual" class="shop-dialog-visual"></div>
+ <h2 id="shop-dialog-title">Article VALORIA</h2>
+ <p id="shop-dialog-detail" class="shop-dialog-meta"></p>
+ <p id="shop-dialog-desc" class="shop-dialog-desc"></p>
+ <p class="shop-dialog-availability">En préparation · Prix à annoncer</p>
+ <p class="shop-dialog-disclaimer">Fiche de présentation : aucune commande ni réservation n’est proposée actuellement.</p>
+</dialog>
 
 <dialog class="match-dialog" id="match-dialog" aria-labelledby="dialog-opponent">
  <div class="dialog-head"><p class="overline" id="dialog-matchday">PHASE DE LIGUE</p><button type="button" data-close><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18M6 6l12 12"/></svg><span>Fermer</span></button></div>
@@ -187,7 +271,7 @@
  </div>
 </dialog>
 
-<dialog id="mobile-menu" class="menu-dialog" aria-labelledby="menu-title"><div class="dialog-head"><p id="menu-title">VALORIA FC</p><button class="close-button" type="button" data-close><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18M6 6l12 12"/></svg><span>Fermer</span></button></div><nav aria-label="Navigation mobile"><a href="#club">Le club</a><a href="#matchs">Matchs &amp; résultats</a><a href="#collection">Maillots</a><a href="#boutique">Boutique</a><a href="#supporters">Supporters</a><a href="#organisation">Organisation</a><a href="#contact">Parlons du projet</a></nav></dialog>
+<dialog id="mobile-menu" class="menu-dialog" aria-labelledby="menu-title"><div class="dialog-head"><p id="menu-title">VALORIA FC</p><button class="close-button" type="button" data-close><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18M6 6l12 12"/></svg><span>Fermer</span></button></div><nav aria-label="Navigation mobile"><a href="#club">Le club</a><a href="#competitions">Compétitions</a><a href="#collection">Maillots</a><a href="#boutique">Boutique</a><a href="#supporters">Supporters</a><a href="#organisation">Organisation</a><a href="#contact">Parlons du projet</a></nav></dialog>
     <dialog
       id="contact-dialog"
       class="contact-dialog"

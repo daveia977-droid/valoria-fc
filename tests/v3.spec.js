@@ -51,7 +51,7 @@ test('V3 : onglet actif sur le calendrier et les supporters', async ({ page }) =
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/');
   await page.locator('#matchs').scrollIntoViewIfNeeded();
-  await expect.poll(() => page.locator('.desktop-nav a[href="#matchs"]').getAttribute('aria-current')).toBe('location');
+  await expect.poll(() => page.locator('.desktop-nav a[href="#competitions"]').getAttribute('aria-current')).toBe('location');
   await page.locator('#supporters').scrollIntoViewIfNeeded();
   await expect.poll(() => page.locator('.desktop-nav a[href="#supporters"]').getAttribute('aria-current')).toBe('location');
   await expect(page.locator('.supporters-values span')).toHaveText(['Ferveur', 'Unité', 'Respect']);
