@@ -162,9 +162,9 @@
   <div class="boutique-v55-hero">
     <div class="boutique-v55-copy">
       <p class="overline">07 / Boutique VALORIA</p>
-      <h2 id="boutique-title">Boutique officielle <em>à venir.</em></h2>
-      <p>Nos couleurs ne s'arrêtent pas au coup de sifflet. Découvrez les maillots, écharpes et accessoires que nous imaginons pour ceux qui portent VALORIA au quotidien.</p>
-      <div class="boutique-v55-state"><span class="boutique-state-dot" aria-hidden="true"></span>Collection en préparation · Pas encore de vente</div>
+      <h2 id="boutique-title">Boutique officielle <em>VALORIA.</em></h2>
+      <p>Nos couleurs ne s’arrêtent pas au coup de sifflet. Découvrez les maillots, écharpes et accessoires de notre univers, choisissez vos articles et découvrez le parcours de commande en avant-première.</p>
+      <div class="boutique-v55-state"><span class="boutique-state-dot" aria-hidden="true"></span>Collection 26/27 · Prix de démonstration · Sans paiement réel</div>
       <a href="#shop-catalogue" class="boutique-v55-link">Explorer les articles <span aria-hidden="true">↗</span></a>
     </div>
     <div class="boutique-v55-brand" aria-hidden="true">
@@ -176,7 +176,7 @@
   <div id="shop-catalogue" class="boutique-v55-catalogue">
     <div class="shop-catalogue-heading">
       <div><p class="overline">LA COLLECTION</p><h3>Porter nos couleurs.</h3></div>
-      <span id="shop-result-count" role="status" aria-live="polite">8 articles</span>
+      <div class="shop-catalogue-actions"><span id="shop-result-count" role="status" aria-live="polite">8 articles</span><button type="button" class="shop-cart-open" id="shop-cart-open" aria-haspopup="dialog" aria-controls="shop-cart-dialog"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h2l2 12h12l2-9H6"/><circle cx="10" cy="21" r="1"/><circle cx="18" cy="21" r="1"/></svg>Panier <span id="shop-cart-count" aria-label="Nombre d’articles">0</span></button></div>
     </div>
     <div class="shop-filters" role="group" aria-label="Filtrer le catalogue">
       <button class="shop-filter is-active" type="button" data-filter="tous" aria-pressed="true">Tout voir</button>
@@ -187,7 +187,7 @@
       <button class="shop-filter" type="button" data-filter="accessoires" aria-pressed="false">Accessoires</button>
     </div>
     <div class="shop-products" id="shop-products" aria-label="Articles VALORIA FC"></div>
-    <p class="shop-catalogue-note">Maillots : visuels de la collection VALORIA FC. Accessoires : concepts illustrés. Prix et disponibilité seront annoncés avant toute ouverture commerciale.</p>
+    <p class="shop-catalogue-note">Les photos de merchandising sont des concepts visuels et les maillots reprennent la collection validée. Tarifs indicatifs inspirés de grandes boutiques de football. Panier, choix de livraison et confirmation sont simulés : aucune vente, aucun débit, aucun envoi de commande.</p>
   </div>
  </div>
 </section>
@@ -227,13 +227,43 @@
 
 
 <dialog class="shop-product-dialog" id="shop-product-dialog" aria-labelledby="shop-dialog-title">
- <div class="dialog-head"><p class="overline">Boutique VALORIA · Avant-première</p><button type="button" data-close>Fermer <span aria-hidden="true">×</span></button></div>
+ <div class="dialog-head"><p class="overline">VALORIA FC / La boutique</p><button type="button" data-close>Fermer <span aria-hidden="true">×</span></button></div>
  <div id="shop-dialog-visual" class="shop-dialog-visual"></div>
- <h2 id="shop-dialog-title">Article VALORIA</h2>
+ <div class="shop-dialog-title-row"><h2 id="shop-dialog-title">Article VALORIA</h2><strong id="shop-dialog-price" class="shop-dialog-price">— €</strong></div>
  <p id="shop-dialog-detail" class="shop-dialog-meta"></p>
  <p id="shop-dialog-desc" class="shop-dialog-desc"></p>
- <p class="shop-dialog-availability">En préparation · Prix à annoncer</p>
- <p class="shop-dialog-disclaimer">Fiche de présentation : aucune commande ni réservation n’est proposée actuellement.</p>
+ <div class="shop-dialog-selection"><label for="shop-dialog-size">Taille</label><select id="shop-dialog-size" name="size"><option>Unique</option></select><label for="shop-dialog-quantity">Quantité</label><input type="number" id="shop-dialog-quantity" name="quantity" min="1" max="9" value="1" inputmode="numeric"></div>
+ <button type="button" class="shop-primary-action" id="shop-detail-add">Ajouter au panier</button>
+ <p id="shop-dialog-feedback" class="shop-dialog-feedback" role="status" aria-live="polite"></p>
+ <p class="shop-dialog-disclaimer">Présentation du projet : paiement et livraison réels indisponibles. Prix indicatifs uniquement.</p>
+</dialog>
+
+<dialog class="shop-cart-dialog" id="shop-cart-dialog" aria-labelledby="shop-cart-title">
+ <div class="dialog-head"><p class="overline">VALORIA FC / Boutique</p><button type="button" data-close>Fermer <span aria-hidden="true">×</span></button></div>
+ <h2 id="shop-cart-title">Votre panier</h2>
+ <p class="shop-cart-intro">Choisissez vos articles et une date souhaitée. Tout le parcours est une démonstration sans achat réel.</p>
+ <ul id="shop-cart-lines" class="shop-cart-lines" aria-live="polite"></ul>
+ <div id="shop-cart-summary">
+  <div class="shop-cart-summary-line"><span>Sous-total indicatif</span><strong id="shop-cart-subtotal">0 €</strong></div>
+  <div class="shop-cart-summary-line"><span>Livraison</span><span>À confirmer</span></div>
+  <div class="shop-cart-summary-total"><span>Total produits</span><strong id="shop-cart-total">0 €</strong></div>
+  <form id="shop-cart-form">
+   <label for="shop-delivery-date">Date de livraison souhaitée</label>
+   <input type="date" id="shop-delivery-date" required>
+   <p id="shop-date-hint" class="shop-date-hint">La date est une préférence, pas une garantie.</p>
+   <button class="shop-primary-action" id="shop-checkout-submit" type="submit" disabled>Valider la simulation</button>
+  </form>
+  <p class="shop-demo-warning">Aucun paiement ni commande réelle. Le bouton « Payer » sera disponible uniquement après activation d’un prestataire sécurisé et des conditions de vente.</p>
+ </div>
+</dialog>
+
+<dialog class="shop-confirm-dialog" id="shop-confirm-dialog" aria-labelledby="shop-confirm-title">
+ <div class="dialog-head"><p class="overline">VALORIA FC / Démonstration</p><button type="button" data-close>Fermer <span aria-hidden="true">×</span></button></div>
+ <div class="shop-confirm-check" aria-hidden="true">✓</div>
+ <h2 id="shop-confirm-title">Votre sélection est validée !</h2>
+ <p>Merci d’avoir découvert notre boutique. Il s’agit d’une simulation : aucune commande n’a été passée et aucun paiement n’a été débité.</p>
+ <div class="shop-confirm-recap"><span>Articles</span><strong id="shop-confirm-detail"></strong><span>Total indicatif</span><strong id="shop-confirm-total"></strong><span>Date souhaitée</span><strong id="shop-confirm-date"></strong></div>
+ <button type="button" class="shop-primary-action" id="shop-confirm-ok">Retour à la boutique</button>
 </dialog>
 
 <dialog class="match-dialog" id="match-dialog" aria-labelledby="dialog-opponent">

@@ -58,6 +58,6 @@ for (const width of [320, 390, 430, 768, 1440]) {
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
     await expect(page.getByRole('tab')).toHaveCount(3);
     await expect(page.locator('#club-people [data-person]')).toHaveCount(7);
-    await expect(page.locator('#boutique-title')).toContainText('à venir');
+    await expect(page.locator('#boutique-title')).toContainText('VALORIA');
   });
 }

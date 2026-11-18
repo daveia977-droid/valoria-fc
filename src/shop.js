@@ -1,99 +1,179 @@
 import { uiIcon } from './ui-icons.js';
-const merchandise = Object.freeze([
-  { id:'domicile', type:'maillots', name:'Maillot Domicile', detail:'Bleu nuit & or · 2026/27', note:'La tenue principale de VALORIA FC, avec le marquage NW$. Visuel officiel du projet.', kit:0 },
-  { id:'exterieur', type:'maillots', name:'Maillot Extérieur', detail:'Crème & or · 2026/27', note:'Une silhouette claire, fidèle à la collection validée du club.', kit:1 },
-  { id:'third', type:'maillots', name:'Maillot Third', detail:'Noir, violet & or · 2026/27', note:'Notre troisième identité sur le terrain, dans les couleurs de la collection.', kit:2 },
-  { id:'echarpe', type:'echarpes', name:'Écharpe VALORIA', detail:'Bordeaux & or · Concept', note:'Une écharpe à porter les jours de match ou dans les tribunes.', image:'scarf.svg' },
-  { id:'gants', type:'gants', name:'Gants d’entraînement', detail:'Noir & bordeaux · Concept', note:'Une paire de gants pensée pour les séances d’hiver.', image:'gloves.svg' },
-  { id:'chaussettes', type:'chaussettes', name:'Chaussettes club', detail:'Bordeaux & or · Concept', note:'Des chaussettes longues inspirées de notre identité.', image:'socks.svg' },
-  { id:'casquette', type:'accessoires', name:'Casquette VALORIA', detail:'Bordeaux & or · Concept', note:'Un accessoire de tous les jours aux couleurs du club.', image:'cap.svg' },
-  { id:'gourde', type:'accessoires', name:'Gourde VALORIA', detail:'Bordeaux & or · Concept', note:'Une gourde réutilisable pensée pour les entraînements.', image:'bottle.svg' }
+
+const currency = new Intl.NumberFormat('fr-FR', {style:'currency',currency:'EUR',maximumFractionDigits:2});
+const money = amount => currency.format(amount);
+export const merchandise = Object.freeze([
+ {id:'domicile',type:'maillots',name:'Maillot Domicile',detail:'Bleu nuit & or · 2026/27',note:'Le maillot officiel de VALORIA FC, bleu nuit et or, avec le marquage NW$.',kit:0,price:100,sizes:['XS','S','M','L','XL','2XL']},
+ {id:'exterieur',type:'maillots',name:'Maillot Extérieur',detail:'Crème & or · 2026/27',note:'La tenue extérieure crème et or validée pour la collection 2026/27.',kit:1,price:100,sizes:['XS','S','M','L','XL','2XL']},
+ {id:'third',type:'maillots',name:'Maillot Third',detail:'Noir, violet & or · 2026/27',note:'Troisième maillot VALORIA FC, dans le style noir, violet et or.',kit:2,price:100,sizes:['XS','S','M','L','XL','2XL']},
+ {id:'echarpe',type:'echarpes',name:'Écharpe VALORIA',detail:'Bordeaux & or · Concept photo',note:'Écharpe de supporter en bordeaux et or. Photographie conceptuelle, produit non fabriqué.',photo:0,price:30,sizes:['Unique']},
+ {id:'gants',type:'gants',name:'Gants d’entraînement',detail:'Noir & bordeaux · Concept photo',note:'Gants d’entraînement aux couleurs de VALORIA FC. Concept, disponibilité à confirmer.',photo:1,price:30,sizes:['S','M','L']},
+ {id:'chaussettes',type:'chaussettes',name:'Chaussettes club',detail:'Bordeaux & or · Concept photo',note:'Chaussettes de football côtelées. Concept de merchandising, sans stock réel.',photo:2,price:20,sizes:['36–39','40–43','44–47']},
+ {id:'casquette',type:'accessoires',name:'Casquette VALORIA',detail:'Bordeaux & or · Concept photo',note:'Casquette brodée inspirée du club. Visuel de présentation uniquement.',photo:3,price:30,sizes:['Unique']},
+ {id:'gourde',type:'accessoires',name:'Gourde VALORIA',detail:'Bordeaux & or · Concept photo',note:'Gourde métallique bordeaux et or imaginée pour VALORIA FC.',photo:4,price:30,sizes:['Unique']}
 ]);
-const atlas = [
-  {center:703,width:450,left:487,right:920},
-  {center:1132,width:450,left:920,right:1349},
-  {center:1570,width:480,left:1349,right:1832}
+const atlas=[
+ {center:703,width:450,left:487,right:920},
+ {center:1132,width:450,left:920,right:1349},
+ {center:1570,width:480,left:1349,right:1832}
 ];
-const sponsor = '<svg class="shop-kit-sponsor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 106" aria-hidden="true" focusable="false"><text x="120" y="72" text-anchor="middle">NW$</text><path d="M38 82C85 91 152 94 205 79" fill="none" stroke="currentColor" stroke-width="3.8" stroke-linecap="round"/></svg>';
+const sponsor='<svg class="shop-kit-sponsor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 106" aria-hidden="true" focusable="false"><text x="120" y="72" text-anchor="middle">NW$</text><path d="M38 82C85 91 152 94 205 79" fill="none" stroke="currentColor" stroke-width="3.8" stroke-linecap="round"/></svg>';
+const STORAGE_KEY='valoria-cart-v6-session';
+const positions=['0%','25%','50%','75%','100%'];
+const itemById=id=>merchandise.find(item=>item.id===id);
+const cleanQuantity=value=>Math.max(1,Math.min(9,Number.parseInt(value,10)||1));
+const cartKey=(id,size)=>id+':'+size;
+const formatDate=date=>new Intl.DateTimeFormat('fr-FR',{day:'numeric',month:'long',year:'numeric'}).format(date);
+const dateString=date=>[date.getFullYear(),String(date.getMonth()+1).padStart(2,'0'),String(date.getDate()).padStart(2,'0')].join('-');
+const addDays=(d,n)=>new Date(d.getFullYear(),d.getMonth(),d.getDate()+n);
 
-function merchandiseArt(item) {
-  if (item.kit !== undefined) {
-    return '<div class="shop-art shop-art-kit" aria-hidden="true"><div class="shop-kit-frame" data-shop-kit="' + item.kit + '">' +
-      '<img class="shop-kit-sheet" src="/assets/collection.webp" alt="" width="1832" height="859" loading="lazy">' + sponsor + '</div></div>';
-  }
-  return '<div class="shop-art shop-art-accessory"><img src="/assets/shop/' + item.image + '" alt="Illustration du concept : ' + item.name + '" width="640" height="640" loading="lazy"></div>';
+function readCart() {
+ try{
+  const raw=JSON.parse(sessionStorage.getItem(STORAGE_KEY)||'[]');
+  if(!Array.isArray(raw)) return [];
+  return raw.filter(e=>e&&itemById(e.id)&&itemById(e.id).sizes.includes(e.size)&&Number.isFinite(Number(e.qty)))
+   .map(e=>({id:e.id,size:e.size,qty:cleanQuantity(e.qty)})).slice(0,25);
+ }catch{return []}
+}
+const sum=cart=>cart.reduce((acc,line)=>acc+itemById(line.id).price*line.qty,0);
+const count=cart=>cart.reduce((acc,line)=>acc+line.qty,0);
+
+function merchandiseArt(item){
+ if(item.kit!==undefined) return '<div class="shop-art shop-art-kit" aria-label="Visuel du maillot '+item.name+'"><div class="shop-kit-frame" data-shop-kit="'+item.kit+'">'+
+  '<img class="shop-kit-sheet" src="/assets/collection.webp" alt="" width="1832" height="859" loading="lazy">'+sponsor+'</div></div>';
+ return '<div class="shop-art shop-art-accessory"><div class="shop-product-photo" role="img" aria-label="Photographie conceptuelle de '+item.name+'" style="--photo-position:'+positions[item.photo]+'"></div></div>';
+}
+function productCard(item){
+ return '<article class="shop-product" data-category="'+item.type+'">'+merchandiseArt(item)+
+  '<div class="shop-product-copy"><span class="shop-product-category">'+(item.kit!==undefined?'Collection 2026 / 2027':'Merchandising · Concept')+'</span>'+
+  '<h3>'+item.name+'</h3><p>'+item.detail+'</p>'+
+  '<div class="shop-product-bottom"><span class="shop-card-price">'+money(item.price)+'</span>'+
+  '<button type="button" class="shop-product-view" data-product="'+item.id+'">Voir les détails '+uiIcon('arrow-up-right')+'</button></div></div></article>';
+}
+function positionGarments(root){
+ for(const frame of root.querySelectorAll('.shop-kit-frame')){
+  if(!frame.clientWidth) continue;
+  const image=frame.querySelector('.shop-kit-sheet'),kit=atlas[Number(frame.dataset.shopKit)];
+  frame.style.aspectRatio=String(kit.width/648);
+  image.style.height=(859/648*100)+'%';
+  image.style.top=(-96/648*100)+'%';
+  image.style.clipPath='inset(0 '+((1-kit.right/1832)*100)+'% 0 '+(kit.left/1832*100)+'%)';
+  if(image.clientWidth) image.style.transform='translateX('+(frame.clientWidth/2-kit.center/1832*image.clientWidth)+'px)';
+ }
 }
 
-function catalogueCard(item) {
-  const concept = item.kit === undefined;
-  return '<article class="shop-product" data-category="' + item.type + '">' +
-    merchandiseArt(item) +
-    '<div class="shop-product-copy"><span class="shop-product-category">' + (concept ? 'Merchandising' : 'Collection 2026 / 2027') + '</span>' +
-    '<h3>' + item.name + '</h3><p>' + item.detail + '</p>' +
-    '<div class="shop-product-bottom"><span>Prix à annoncer</span><button type="button" class="shop-product-view" data-product="' + item.id + '">Voir la fiche ' + uiIcon('arrow-up-right') + '</button></div>' +
-    '</div></article>';
-}
-
-function positionGarments(root) {
-  for (const frame of root.querySelectorAll('.shop-kit-frame')) {
-    const image = frame.querySelector('.shop-kit-sheet');
-    const kit = atlas[Number(frame.dataset.shopKit)];
-    frame.style.aspectRatio = kit.width / 648;
-    image.style.height = (859 / 648 * 100) + '%';
-    image.style.top = (-96 / 648 * 100) + '%';
-    image.style.clipPath = 'inset(0 ' + ((1-kit.right/1832)*100) + '% 0 ' + (kit.left/1832*100) + '%)';
-    image.style.transform = 'translateX(' + (frame.clientWidth/2 - kit.center/1832*image.clientWidth) + 'px)';
-  }
-}
-export function initShop() {
-  const section = document.querySelector('#boutique');
-  if (!section) return;
-  const grid = section.querySelector('#shop-products');
-  const filters = [...section.querySelectorAll('.shop-filter')];
-  const dialog = document.querySelector('#shop-product-dialog');
-  grid.innerHTML = merchandise.map(catalogueCard).join('');
-
-  const resize = () => positionGarments(document);
+export function initShop(){
+ const section=document.querySelector('#boutique'); if(!section)return;
+ const grid=section.querySelector('#shop-products');
+ const filters=[...section.querySelectorAll('.shop-filter')];
+ const detail=document.querySelector('#shop-product-dialog');
+ const cartDialog=document.querySelector('#shop-cart-dialog');
+ const confirmation=document.querySelector('#shop-confirm-dialog');
+ const cartContainer=cartDialog.querySelector('#shop-cart-lines');
+ const cartCount=section.querySelector('#shop-cart-count');
+ const openCart=section.querySelector('#shop-cart-open');
+ const submit=cartDialog.querySelector('#shop-checkout-submit');
+ const date=cartDialog.querySelector('#shop-delivery-date');
+ const dateHint=cartDialog.querySelector('#shop-date-hint');
+ let activeProduct=null, opener=null,cart=readCart();
+ grid.innerHTML=merchandise.map(productCard).join('');
+ const resize=()=>positionGarments(document);
+ requestAnimationFrame(resize);
+ const observer=new ResizeObserver(resize);
+ const observe=root=>{for(const frame of root.querySelectorAll('.shop-kit-frame')){observer.observe(frame);frame.querySelector('img').addEventListener('load',resize)}};
+ observe(grid);
+ filters.forEach(button=>button.addEventListener('click',()=>{
+  const filter=button.dataset.filter;
+  for(const btn of filters){const active=btn===button;btn.setAttribute('aria-pressed',String(active));btn.classList.toggle('is-active',active)}
+  let n=0;
+  for(const card of grid.querySelectorAll('.shop-product')){const show=filter==='tous'||card.dataset.category===filter;card.hidden=!show;if(show)n++}
+  section.querySelector('#shop-result-count').textContent=n+(n===1?' article':' articles');
   requestAnimationFrame(resize);
-  const observer = new ResizeObserver(resize);
-  for (const frame of document.querySelectorAll('.shop-kit-frame')) {
-    observer.observe(frame);
-    frame.querySelector('img').addEventListener('load', resize);
+ }));
+
+ function renderCart(){
+  const total=sum(cart); cartCount.textContent=String(count(cart));
+  cartDialog.querySelector('#shop-cart-total').textContent=money(total);
+  cartDialog.querySelector('#shop-cart-subtotal').textContent=money(total);
+  cartContainer.innerHTML=cart.length?cart.map(line=>{
+   const item=itemById(line.id),key=cartKey(line.id,line.size);
+   return '<li class="shop-cart-line" data-key="'+key+'">'+
+    merchandiseArt(item)+
+    '<div class="shop-cart-line-info"><strong>'+item.name+'</strong><span>'+line.size+' · '+money(item.price)+' / unité</span>'+
+    '<div class="shop-qty-control"><button type="button" data-qty="-1" aria-label="Diminuer '+item.name+'">−</button><output>'+line.qty+'</output><button type="button" data-qty="1" aria-label="Augmenter '+item.name+'">+</button></div></div>'+
+    '<div class="shop-cart-line-end"><strong>'+money(item.price*line.qty)+'</strong><button type="button" data-remove aria-label="Retirer '+item.name+'">Retirer</button></div></li>';
+   }).join(''):'<li class="shop-cart-empty">Votre panier est vide. Explorez les articles VALORIA pour commencer.</li>';
+  cartDialog.querySelector('#shop-cart-summary').hidden=cart.length===0;
+  submit.disabled=cart.length===0;
+  if(cart.length)requestAnimationFrame(resize);
+ }
+ function persist(){try{sessionStorage.setItem(STORAGE_KEY,JSON.stringify(cart))}catch{} renderCart()}
+ function addToCart(id,size,qty){
+  const item=itemById(id);if(!item||!item.sizes.includes(size))return;
+  const existing=cart.find(l=>l.id===id&&l.size===size);
+  if(existing) existing.qty=cleanQuantity(existing.qty+qty);
+  else cart.push({id,size,qty:cleanQuantity(qty)});
+  persist();
+ }
+
+ grid.addEventListener('click',event=>{
+  const button=event.target.closest('button[data-product]');if(!button)return;
+  activeProduct=itemById(button.dataset.product);if(!activeProduct)return;
+  opener=button;
+  detail.querySelector('#shop-dialog-title').textContent=activeProduct.name;
+  detail.querySelector('#shop-dialog-detail').textContent=activeProduct.detail;
+  detail.querySelector('#shop-dialog-desc').textContent=activeProduct.note;
+  detail.querySelector('#shop-dialog-price').textContent=money(activeProduct.price);
+  detail.querySelector('#shop-dialog-size').innerHTML=activeProduct.sizes.map(s=>'<option value="'+s+'">'+s+'</option>').join('');
+  detail.querySelector('#shop-dialog-quantity').value='1';
+  detail.querySelector('#shop-dialog-visual').innerHTML=merchandiseArt(activeProduct);
+  detail.querySelector('#shop-dialog-feedback').textContent='';
+  detail.showModal();
+  observe(detail.querySelector('#shop-dialog-visual'));
+  requestAnimationFrame(resize);
+ });
+ detail.querySelector('#shop-detail-add').addEventListener('click',()=>{
+  if(!activeProduct)return;
+  addToCart(activeProduct.id,detail.querySelector('#shop-dialog-size').value,
+    cleanQuantity(detail.querySelector('#shop-dialog-quantity').value));
+  detail.querySelector('#shop-dialog-feedback').textContent='Ajouté au panier. Vous pouvez continuer vos achats.';
+  detail.close();cartDialog.showModal();requestAnimationFrame(resize);
+ });
+ detail.addEventListener('close',()=>{opener?.focus({preventScroll:true});opener=null});
+
+ function setDeliveryRange(){
+  const today=new Date();date.min=dateString(addDays(today,7));date.max=dateString(addDays(today,75));
+  date.value=date.min;
+  dateHint.textContent='Date souhaitée à partir du '+formatDate(addDays(today,7))+' (non garantie).';
+ }
+ openCart.addEventListener('click',()=>{setDeliveryRange();renderCart();cartDialog.showModal()});
+ cartContainer.addEventListener('click',event=>{
+  const button=event.target.closest('button');if(!button)return;
+  const li=button.closest('li[data-key]');if(!li)return;
+  const line=cart.find(l=>cartKey(l.id,l.size)===li.dataset.key);if(!line)return;
+  if(button.hasAttribute('data-remove'))cart=cart.filter(l=>l!==line);
+  else if(button.hasAttribute('data-qty')){
+   const diff=Number(button.dataset.qty);
+   if(diff<0&&line.qty===1)cart=cart.filter(l=>l!==line);
+   else line.qty=cleanQuantity(line.qty+diff);
   }
-
-  filters.forEach(button => button.addEventListener('click', () => {
-    const filter = button.dataset.filter;
-    for (const item of filters) {
-      const active = item === button;
-      item.setAttribute('aria-pressed', String(active));
-      item.classList.toggle('is-active', active);
-    }
-    let count = 0;
-    for (const card of grid.querySelectorAll('.shop-product')) {
-      const visible = filter === 'tous' || card.dataset.category === filter;
-      card.hidden = !visible;
-      if (visible) count++;
-    }
-    section.querySelector('#shop-result-count').textContent = count + (count === 1 ? ' article' : ' articles');
-    requestAnimationFrame(resize);
-  }));
-
-  let opener;
-  grid.addEventListener('click', event => {
-    const btn = event.target.closest('button[data-product]');
-    if (!btn) return;
-    const item = merchandise.find(x => x.id === btn.dataset.product);
-    if (!item) return;
-    opener = btn;
-    dialog.querySelector('#shop-dialog-title').textContent = item.name;
-    dialog.querySelector('#shop-dialog-detail').textContent = item.detail;
-    dialog.querySelector('#shop-dialog-desc').textContent = item.note;
-    const media = dialog.querySelector('#shop-dialog-visual');
-    media.innerHTML = merchandiseArt(item);
-    dialog.showModal();
-    const frame = media.querySelector('.shop-kit-frame');
-    if (frame) { observer.observe(frame); frame.querySelector('img').addEventListener('load', resize, { once:true }); }
-    requestAnimationFrame(resize);
-  });
-  dialog.addEventListener('close', () => { opener?.focus({preventScroll:true}); opener = null; });
+  persist();
+ });
+ cartDialog.querySelector('#shop-cart-form').addEventListener('submit',event=>{
+  event.preventDefault();
+  if(cart.length===0||!date.value)return;
+  const selected=new Date(date.value+'T12:00:00');
+  const min=new Date(date.min+'T00:00:00'),max=new Date(date.max+'T23:59:59');
+  if(Number.isNaN(selected.getTime())||selected<min||selected>max){date.setCustomValidity('Sélectionnez une date autorisée.');date.reportValidity();return}
+  date.setCustomValidity('');
+  const lines=cart.map(l=>itemById(l.id).name+' ('+l.size+') × '+l.qty);
+  confirmation.querySelector('#shop-confirm-detail').textContent=lines.join(' · ');
+  confirmation.querySelector('#shop-confirm-total').textContent=money(sum(cart));
+  confirmation.querySelector('#shop-confirm-date').textContent=formatDate(selected);
+  cart=[];persist();
+  cartDialog.close();confirmation.showModal();
+ });
+ date.addEventListener('input',()=>date.setCustomValidity(''));
+ confirmation.querySelector('#shop-confirm-ok').addEventListener('click',()=>confirmation.close());
+ renderCart();
 }

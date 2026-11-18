@@ -40,13 +40,14 @@ test('V5.5 : huit articles et cinq catégories de merchandising', async ({page})
   await page.getByRole('button',{name:'Tout voir',exact:true}).click();
   await expect(page.locator('#shop-products .shop-product:visible')).toHaveCount(8);
 });
-test('V5.5 : fiche produit sans bouton payer ni formulaire',async ({page}) => {
+test('V6 : fiche produit avec prix et taille sans moyen de paiement réel',async ({page}) => {
   await page.goto('/');
   await page.locator('.shop-product-view[data-product="echarpe"]').click();
   await expect(page.locator('#shop-product-dialog')).toBeVisible();
   await expect(page.locator('#shop-dialog-title')).toHaveText('Écharpe VALORIA');
-  await expect(page.locator('.shop-dialog-availability')).toBeVisible();
-  await expect(page.locator('#shop-product-dialog form, #shop-product-dialog input')).toHaveCount(0);
+  await expect(page.locator('#shop-dialog-price')).toContainText('30');
+  await expect(page.locator('#shop-product-dialog form')).toHaveCount(0);
+  await expect(page.locator('#shop-dialog-quantity')).toHaveValue('1');
   await page.locator('#shop-product-dialog [data-close]').click();
   await expect(page.locator('#shop-product-dialog')).not.toBeVisible();
 });

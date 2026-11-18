@@ -18,8 +18,8 @@ test('V3.2 : entrée Boutique, annonce à venir, aucune vente effective', async 
     .getByRole('link', { name: 'Boutique' }).click();
   await expect(page).toHaveURL(/#boutique$/);
   await expect(page.locator('#boutique-title')).toContainText('Boutique officielle');
-  await expect(page.locator('#boutique-title')).toContainText('à venir');
-  await expect(page.locator('.boutique-state')).toContainText('Ouverture prochainement');
+  await expect(page.locator('#boutique-title')).toContainText('VALORIA');
+  await expect(page.locator('.boutique-v55-state')).toContainText('Sans paiement réel');
   await expect(page.locator('#boutique .shop-filter')).toHaveCount(6);
   await expect(page.locator('#shop-products .shop-product')).toHaveCount(8);
   await expect(page.locator('#boutique form, #boutique input, #boutique [type="submit"]')).toHaveCount(0);
@@ -79,6 +79,6 @@ test('V3.2 : informations de future commercialisation, aucune transaction', asyn
   await expect(page.locator('.legal-main')).toContainText('future boutique');
   await expect(page.locator('.legal-main')).toContainText('aucune vente');
   await page.goto('/cgu.html');
-  await expect(page.locator('.legal-main')).toContainText('Boutique officielle à venir');
+  await expect(page.locator('.legal-main')).toContainText('simulation locale');
   await expect(page.locator('.legal-main')).toContainText('aucun achat');
 });

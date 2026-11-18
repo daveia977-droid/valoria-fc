@@ -1,0 +1,96 @@
+/* VALORIA FC V6 — studio merchandising, ergonomic basket and honest preview checkout.
+   Photo contact sheet is original generated concept photography, not stock inventory. */
+:root{--v6-wine:#5a2039;--v6-warm:#f5ece0;--v6-gold:#d8b278}
+#boutique{scroll-margin-top:95px}
+.boutique-v55-copy h2{font-size:clamp(52px,5.6vw,86px)}
+.boutique-v55-state{background:#e0bd8710;color:#ead1ad}
+.shop-catalogue-actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:flex-end}
+.shop-cart-open{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:44px;border:1px solid #dfc18a90;border-radius:8px;background:#dcc08c;color:#281323;padding:9px 13px;font-size:13px;font-weight:750}
+.shop-cart-open:hover{background:#f0d2a0}
+.shop-cart-open .ui-icon{width:19px;height:19px}
+#shop-cart-count{display:inline-grid;place-items:center;min-width:25px;height:25px;padding:0 5px;border-radius:50%;background:#632038;color:#fff3e2;font-size:12px;font-variant-numeric:tabular-nums}
+.shop-product{border-radius:8px;box-shadow:0 7px 17px #0003}
+.shop-art{background:#f3e9db;overflow:hidden}
+.shop-art-kit{background:linear-gradient(165deg,#fbf5eb,#e8dbcd 96%)}
+.shop-art-kit::before{content:"";position:absolute;inset:8% 6%;border:1px solid #ae977c29;pointer-events:none}
+.shop-kit-frame{z-index:1;filter:drop-shadow(0 5px 8px #21191a38)}
+.shop-kit-sheet{mask-image:url('/assets/collection-mask.png');-webkit-mask-image:url('/assets/collection-mask.png');mask-repeat:no-repeat;-webkit-mask-repeat:no-repeat;mask-size:100% 100%;-webkit-mask-size:100% 100%}
+.shop-product-photo{width:100%;height:100%;background-image:url('/assets/shop/merch-photography-v6.webp');background-size:500% 100%;background-position:var(--photo-position,0%) 50%;background-repeat:no-repeat}
+.shop-card-price{font-size:19px!important;font-weight:800;color:#5e233c!important;line-height:1.35;font-variant-numeric:tabular-nums}
+.shop-product-bottom{gap:12px}
+.shop-product-view{min-height:44px}
+.shop-product-view .ui-icon{flex:none;width:18px;height:18px}
+.shop-dialog-title-row{display:flex;justify-content:space-between;align-items:start;gap:12px}
+.shop-dialog-title-row h2{flex:1;min-width:0}
+.shop-dialog-price{font-weight:800;color:#f3d1a0;font-size:21px;white-space:nowrap;margin-top:5px}
+.shop-dialog-selection{display:grid;grid-template-columns:1fr 1fr;gap:10px 12px;margin:21px 0 15px}
+.shop-dialog-selection label{font-size:12px;color:#e2cba9;font-weight:700}
+.shop-dialog-selection select,.shop-dialog-selection input{width:100%;min-width:0;min-height:46px;border-radius:7px;border:1px solid #d9b87d75;background:#2f2030;color:#fff3df;font:600 16px/1.2 Manrope,sans-serif;padding:8px 12px}
+.shop-dialog-selection label[for="shop-dialog-size"]{grid-row:1;grid-column:1}
+.shop-dialog-selection #shop-dialog-size{grid-row:2;grid-column:1}
+.shop-dialog-selection label[for="shop-dialog-quantity"]{grid-row:1;grid-column:2}
+.shop-dialog-selection #shop-dialog-quantity{grid-row:2;grid-column:2}
+.shop-primary-action{width:100%;min-height:48px;display:inline-flex;justify-content:center;align-items:center;border:1px solid #e2c48e;border-radius:7px;color:#301521;background:#e8c994;font-weight:800;font-size:14px;padding:13px 16px;transition:background-color .15s ease}
+.shop-primary-action:hover:not(:disabled){background:#f6d7a6}
+.shop-primary-action:disabled{opacity:.45;cursor:not-allowed}
+.shop-dialog-feedback{min-height:1px;font-size:12px;color:#dfc591}
+.shop-cart-dialog,.shop-confirm-dialog{width:min(690px,calc(100vw - 28px));max-height:min(90dvh,850px);overflow-y:auto;overscroll-behavior:contain;border:1px solid #d9b27880;background:#160f19;border-radius:13px;color:#f5eadb;padding:clamp(17px,3vw,30px);box-shadow:0 25px 65px #000b}
+.shop-cart-dialog::backdrop,.shop-confirm-dialog::backdrop{background:#030205d4;backdrop-filter:blur(5px)}
+.shop-cart-dialog .dialog-head,.shop-confirm-dialog .dialog-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.shop-cart-dialog .dialog-head button,.shop-confirm-dialog .dialog-head button{min-height:44px;border:1px solid #d8b27874;border-radius:7px;background:none;color:#e9d5b7;padding:9px 12px;font-size:12px}
+.shop-cart-dialog h2,.shop-confirm-dialog h2{font:600 clamp(46px,6vw,65px)/.95 'Cormorant Garamond',Georgia,serif;margin:17px 0 12px}
+.shop-cart-intro,.shop-confirm-dialog>p{font-size:13px;line-height:1.7;color:#c7b6b1;text-wrap:pretty}
+.shop-cart-lines{display:grid;gap:0;list-style:none;margin:25px 0;padding:0;border-top:1px solid #d7b47c40}
+.shop-cart-empty{padding:40px 5px;color:#dbc6b2;font-size:14px}
+.shop-cart-line{display:grid;grid-template-columns:86px minmax(0,1fr) auto;gap:16px;align-items:center;padding:17px 0;border-bottom:1px solid #d7b47c38}
+.shop-cart-line .shop-art{width:86px;height:90px;border-radius:7px}
+.shop-cart-line .shop-kit-frame{height:80%}
+.shop-cart-line-info{display:flex;flex-direction:column;gap:9px;min-width:0}
+.shop-cart-line-info strong{font-size:14px;line-height:1.3}
+.shop-cart-line-info>span{font-size:11px;color:#c4afaa}
+.shop-cart-line-end{display:flex;align-items:flex-end;flex-direction:column;gap:15px;white-space:nowrap}
+.shop-cart-line-end>strong{font-size:14px;color:#efd0a2;font-variant-numeric:tabular-nums}
+.shop-cart-line-end button{color:#e4bfb6;text-decoration:underline;text-underline-offset:3px;font-size:11px;min-height:32px}
+.shop-qty-control{display:inline-flex;align-items:center;width:max-content;border:1px solid #d8b2785d;border-radius:6px;overflow:hidden}
+.shop-qty-control button{width:37px;height:35px;background:#281928;color:#e8cda4;font-size:20px}
+.shop-qty-control button:hover{background:#3a2136}
+.shop-qty-control output{min-width:32px;text-align:center;font-size:12px;font-variant-numeric:tabular-nums}
+.shop-cart-summary-line,.shop-cart-summary-total{display:flex;justify-content:space-between;gap:15px;align-items:baseline;min-height:34px;font-size:13px;color:#d8c4ad}
+.shop-cart-summary-total{border-top:1px solid #d8b27860;padding-top:16px;margin-top:10px;color:#fff0d9}
+.shop-cart-summary-total strong{font-size:23px;color:#f2d3a5;font-variant-numeric:tabular-nums}
+.shop-cart-dialog #shop-cart-form{margin:22px 0 14px;display:grid;gap:10px}
+.shop-cart-dialog #shop-cart-form label{font-size:13px;font-weight:700;color:#f4dbb8}
+.shop-cart-dialog #shop-delivery-date{min-height:48px;border:1px solid #d8b2788c;border-radius:7px;padding:10px 13px;background:#f5eadc;color:#311a26;font:600 16px Manrope,sans-serif;max-width:100%}
+.shop-date-hint,.shop-demo-warning{font-size:11px;line-height:1.7;color:#bca9a7}
+.shop-date-hint{margin:0 0 5px}
+.shop-demo-warning{margin-top:14px;border-left:2px solid #d8b27887;padding:5px 0 5px 12px}
+.shop-confirm-dialog{text-align:center}
+.shop-confirm-dialog .dialog-head{text-align:left}
+.shop-confirm-check{width:64px;height:64px;display:grid;place-items:center;border-radius:50%;margin:20px auto 17px;border:1px solid #e6c58b83;background:#3c2535;color:#f0d5a7;font-size:30px}
+.shop-confirm-dialog h2{margin-bottom:20px;text-wrap:balance}
+.shop-confirm-recap{display:grid;grid-template-columns:112px minmax(0,1fr);text-align:left;gap:14px;padding:22px 0;margin:25px 0;border-block:1px solid #d8b27844}
+.shop-confirm-recap span{font-size:12px;color:#bba9a4}
+.shop-confirm-recap strong{font-size:13px;font-weight:700;overflow-wrap:anywhere}
+.shop-cart-dialog button:focus-visible,.shop-confirm-dialog button:focus-visible,.shop-dialog-selection :is(select,input):focus-visible,.shop-delivery-date:focus-visible,.shop-cart-open:focus-visible{outline:3px solid #f3d7a0;outline-offset:3px}
+@media(max-width:760px){
+ .shop-catalogue-heading{align-items:start;gap:12px}
+ .shop-catalogue-actions{align-items:end;flex-direction:column;gap:9px}
+ .shop-cart-open{padding:9px 11px}
+ .shop-card-price{font-size:17px!important}
+ .shop-art-kit{background:#f5ede2}
+ .shop-cart-line{grid-template-columns:65px minmax(0,1fr) auto;gap:10px;padding:14px 0}
+ .shop-cart-line .shop-art{width:65px;height:75px}
+ .shop-cart-line-info strong{font-size:12px}
+ .shop-cart-line-end>strong{font-size:12px}
+ .shop-cart-dialog{padding:19px 15px}
+}
+@media(max-width:375px){
+ .shop-product-bottom{gap:9px}
+ .shop-cart-line{grid-template-columns:50px minmax(0,1fr) auto}
+ .shop-cart-line .shop-art{width:50px;height:60px}
+ .shop-qty-control button{width:32px}
+ .shop-qty-control output{min-width:24px}
+ .shop-cart-line-end>strong{font-size:11px}
+ .shop-catalogue-actions{gap:6px}
+}
+@media(prefers-reduced-motion:reduce){.shop-primary-action{transition:none}}
