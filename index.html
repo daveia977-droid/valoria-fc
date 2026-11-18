@@ -164,7 +164,7 @@
       <p class="overline">07 / Boutique VALORIA</p>
       <h2 id="boutique-title">Boutique officielle <em>VALORIA.</em></h2>
       <p>Nos couleurs ne s’arrêtent pas au coup de sifflet. Découvrez les maillots, écharpes et accessoires de notre univers, choisissez vos articles et découvrez le parcours de commande en avant-première.</p>
-      <div class="boutique-v55-state"><span class="boutique-state-dot" aria-hidden="true"></span>Collection 26/27 · Prix de démonstration · Sans paiement réel</div>
+      <div class="boutique-v55-state"><span class="boutique-state-dot" aria-hidden="true"></span>Collection 26/27 · Le style VALORIA · Démonstration</div>
       <a href="#shop-catalogue" class="boutique-v55-link">Explorer les articles <span aria-hidden="true">↗</span></a>
     </div>
     <div class="boutique-v55-brand" aria-hidden="true">
@@ -187,7 +187,7 @@
       <button class="shop-filter" type="button" data-filter="accessoires" aria-pressed="false">Accessoires</button>
     </div>
     <div class="shop-products" id="shop-products" aria-label="Articles VALORIA FC"></div>
-    <p class="shop-catalogue-note">Les photos de merchandising sont des concepts visuels et les maillots reprennent la collection validée. Tarifs indicatifs inspirés de grandes boutiques de football. Panier, choix de livraison et confirmation sont simulés : aucune vente, aucun débit, aucun envoi de commande.</p>
+    <p class="shop-catalogue-note">Les photos de merchandising sont des concepts visuels et les maillots reprennent la collection validée. Le badge « Meilleure vente » du maillot Third est une mise en avant éditoriale, non fondée sur des ventes réelles. Tarifs indicatifs. Le panier calcule automatiquement une date estimée à J+7. Il s'agit d'une démonstration : aucune vente, aucun débit et aucun envoi de commande.</p>
   </div>
  </div>
 </section>
@@ -238,32 +238,39 @@
  <p class="shop-dialog-disclaimer">Présentation du projet : paiement et livraison réels indisponibles. Prix indicatifs uniquement.</p>
 </dialog>
 
-<dialog class="shop-cart-dialog" id="shop-cart-dialog" aria-labelledby="shop-cart-title">
- <div class="dialog-head"><p class="overline">VALORIA FC / Boutique</p><button type="button" data-close>Fermer <span aria-hidden="true">×</span></button></div>
- <h2 id="shop-cart-title">Votre panier</h2>
- <p class="shop-cart-intro">Choisissez vos articles et une date souhaitée. Tout le parcours est une démonstration sans achat réel.</p>
- <ul id="shop-cart-lines" class="shop-cart-lines" aria-live="polite"></ul>
- <div id="shop-cart-summary">
-  <div class="shop-cart-summary-line"><span>Sous-total indicatif</span><strong id="shop-cart-subtotal">0 €</strong></div>
-  <div class="shop-cart-summary-line"><span>Livraison</span><span>À confirmer</span></div>
-  <div class="shop-cart-summary-total"><span>Total produits</span><strong id="shop-cart-total">0 €</strong></div>
-  <form id="shop-cart-form">
-   <label for="shop-delivery-date">Date de livraison souhaitée</label>
-   <input type="date" id="shop-delivery-date" required>
-   <p id="shop-date-hint" class="shop-date-hint">La date est une préférence, pas une garantie.</p>
-   <button class="shop-primary-action" id="shop-checkout-submit" type="submit" disabled>Valider la simulation</button>
-  </form>
-  <p class="shop-demo-warning">Aucun paiement ni commande réelle. Le bouton « Payer » sera disponible uniquement après activation d’un prestataire sécurisé et des conditions de vente.</p>
+
+<dialog class="shop-cart-dialog" id="shop-cart-dialog" aria-labelledby="shop-cart-title" aria-describedby="shop-cart-intro">
+ <div class="shop-cart-layout">
+  <header class="shop-cart-header">
+   <div class="shop-cart-heading"><p class="overline">BOUTIQUE VALORIA · 2026 / 2027</p><h2 id="shop-cart-title">Votre sac <span id="shop-cart-heading-count">· 0 article</span></h2></div>
+   <button class="shop-cart-close" type="button" data-close aria-label="Fermer le panier"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+  </header>
+  <p id="shop-cart-intro" class="shop-cart-intro">Vos couleurs, vos choix. Vérifiez votre sélection avant de la valider.</p>
+  <div class="shop-cart-scroller">
+   <ul id="shop-cart-lines" class="shop-cart-lines" aria-live="polite" aria-label="Articles du panier"></ul>
+  </div>
+  <section id="shop-cart-summary" class="shop-cart-summary" aria-label="Récapitulatif de votre sélection">
+   <div class="shop-cart-summary-note">Tarifs de démonstration · aucun débit bancaire</div>
+   <div class="shop-cart-summary-line"><span>Sous-total</span><strong id="shop-cart-subtotal">0 €</strong></div>
+   <div class="shop-cart-delivery"><span class="shop-cart-delivery-icon" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18"/></svg></span><div><strong>Livraison estimée</strong><span id="shop-date-hint" class="shop-date-hint">Dans 7 jours</span></div></div>
+   <div class="shop-cart-summary-total"><span>Total des articles</span><strong id="shop-cart-total">0 €</strong></div>
+   <form id="shop-cart-form">
+    <input type="hidden" id="shop-delivery-date" name="delivery_date">
+    <div class="shop-cart-actions"><button type="button" id="shop-continue" class="shop-cart-continue">Continuer mes achats</button><button class="shop-primary-action" id="shop-checkout-submit" type="submit" disabled>Valider ma sélection</button></div>
+   </form>
+   <p class="shop-demo-warning">Aucun paiement, aucune commande ni livraison réels : cette sélection est une démonstration.</p>
+  </section>
  </div>
 </dialog>
 
 <dialog class="shop-confirm-dialog" id="shop-confirm-dialog" aria-labelledby="shop-confirm-title">
- <div class="dialog-head"><p class="overline">VALORIA FC / Démonstration</p><button type="button" data-close>Fermer <span aria-hidden="true">×</span></button></div>
- <div class="shop-confirm-check" aria-hidden="true">✓</div>
- <h2 id="shop-confirm-title">Votre sélection est validée !</h2>
- <p>Merci d’avoir découvert notre boutique. Il s’agit d’une simulation : aucune commande n’a été passée et aucun paiement n’a été débité.</p>
- <div class="shop-confirm-recap"><span>Articles</span><strong id="shop-confirm-detail"></strong><span>Total indicatif</span><strong id="shop-confirm-total"></strong><span>Date souhaitée</span><strong id="shop-confirm-date"></strong></div>
- <button type="button" class="shop-primary-action" id="shop-confirm-ok">Retour à la boutique</button>
+ <div class="dialog-head"><p class="overline">VALORIA FC / Votre sélection</p><button type="button" data-close aria-label="Fermer la confirmation"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+ <div class="shop-confirm-check" aria-hidden="true"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4L19 6"/></svg></div>
+ <p class="shop-confirm-overline">Merci de faire partie de l'histoire</p>
+ <h2 id="shop-confirm-title">Notre blason.<br><em>Vos couleurs.</em></h2>
+ <p class="shop-confirm-message">Votre sélection VALORIA est validée en démonstration. Voici votre récapitulatif : aucune commande réelle ni aucun paiement n'a été effectué.</p>
+ <div class="shop-confirm-recap"><span>Articles choisis</span><strong id="shop-confirm-detail"></strong><span>Total indicatif</span><strong id="shop-confirm-total"></strong><span>Livraison estimée à J+7</span><strong id="shop-confirm-date"></strong></div>
+ <button type="button" class="shop-primary-action" id="shop-confirm-ok">OK, retour à la boutique</button>
 </dialog>
 
 <dialog class="match-dialog" id="match-dialog" aria-labelledby="dialog-opponent">

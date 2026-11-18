@@ -3,6 +3,7 @@ const paths = Object.freeze({
   'arrow-up-right': '<path d="M7 17 17 7M8 7h9v9"/>',
   'arrow-down': '<path d="M12 4v16m-7-7 7 7 7-7"/>',
   'arrow-left': '<path d="M19 12H5m7 7-7-7 7-7"/>',
+  'trash-2': '<path d="M3 6h18M8 6V4h8v2m3 0-1 14H6L5 6m5 4v7m4-7v7"/>',
   'arrow-right': '<path d="M5 12h14m-7-7 7 7-7 7"/>',
   'chevron-left': '<path d="m15 18-6-6 6-6"/>',
   'chevron-right': '<path d="m9 18 6-6-6-6"/>',

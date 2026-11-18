@@ -1,0 +1,268 @@
+/* VALORIA FC V7 — studio jerseys and Real-inspired, original cart layout.
+   Character: fine burgundy line, warm ivory, restrained gold, native accessible controls. */
+:root { --v7-ink: #241721; --v7-paper: #faf5ed; --v7-border: #5b374b22; --v7-wine: #592037; --v7-gold: #c89c5f; }
+/* Product images have no coloured black studio panel. The transparent cutout is
+   reconstructed on the client from the original atlas and shipped alpha mask. */
+.shop-art-kit, .shop-dialog-visual .shop-art-kit {
+  background: #fbf8f3;
+  isolation: isolate;
+}
+.shop-art-kit::before { display: none; }
+.shop-kit-frame { position: relative; filter: none; z-index: 1; overflow: visible; flex: none; }
+.shop-kit-sheet { 
+  mask-image: url('/assets/collection-mask.png'); 
+  -webkit-mask-image: url('/assets/collection-mask.png');
+  mask-repeat:no-repeat; -webkit-mask-repeat:no-repeat;
+  mask-size:100% 100%; -webkit-mask-size:100% 100%;
+}
+.shop-kit-cutout {
+  display:block; height: 100%; width:auto; max-width:100%;
+  object-fit:contain; object-position:center;
+  filter:drop-shadow(0 9px 10px #42293826);
+}
+.shop-kit-frame[data-cutout="ready"] { overflow:visible; }
+.shop-kit-sponsor { z-index: 3; }
+.shop-art-kit .shop-best-seller {
+  position:absolute; z-index:4; top:13px; left:13px;
+  background:#241822; color:#fff6e7;
+  font:700 10px/1.2 Manrope, sans-serif;
+  letter-spacing:.025em; padding:10px 13px; border-radius:5px;
+  border:1px solid #614b501e; box-shadow:0 2px 6px #0002;
+  pointer-events:none;
+}
+.shop-product[data-category="maillots"] .shop-art { background: #fdf9f4; }
+.shop-product { background:#fdf8f0; border-color:#d4c2aa7d; box-shadow:0 4px 13px #0002; }
+.shop-product h3 { color:#291925; }
+.shop-card-price { color:#582339!important; }
+.shop-product-view { border:1px solid #8f6c76; border-radius:7px; background:transparent; }
+.shop-product-view:hover { background:#59233c; border-color:#59233c; color:#fff5e4; }
+.shop-dialog-visual { background:#fbf7f1; border:1px solid #d8c5a94d; }
+.shop-dialog-visual .shop-best-seller { top:14px; left:14px; }
+.shop-kit-frame[data-shop-kit="2"] .shop-kit-sponsor { color:#edd5a2; }
+
+/* ESGCI CUP: user-supplied wordmark is recoloured in the asset, while the league
+   treatment shares Valoria's restrained gold instead of introducing school green. */
+.esgci-lockup { gap:clamp(14px,2.8vw,32px); }
+.esgci-wordmark { filter:drop-shadow(0 2px 12px #0004); }
+.esgci-section-heading, .esgci-table-wrap { border-color:#d6b27e46; }
+.esgci-lockup strong { color:#f2dfbc; }
+
+/* Basket: inspired by the reference's clear product rows and sticky subtotal;
+   all shapes, type and colours are Valoria's own. */
+.shop-cart-dialog {
+  position:fixed;
+  inset:0 0 0 auto;
+  margin:0;
+  padding:0;
+  width:min(620px,100vw); max-width:100vw;
+  height:100dvh; max-height:100dvh;
+  border:0; border-left:1px solid #d0bfa7;
+  border-radius:16px 0 0 16px;
+  background:#f8f3eb; color:var(--v7-ink);
+  box-shadow:-25px 0 70px #0007;
+  overflow:hidden; overscroll-behavior:contain;
+}
+.shop-cart-dialog::backdrop { background:#070409b5; backdrop-filter:blur(5px); }
+.shop-cart-layout { display:grid; grid-template-rows:auto auto minmax(0,1fr) auto; height:100%; min-height:0; }
+.shop-cart-header {
+  padding:30px clamp(20px,4vw,42px) 17px;
+  display:flex; align-items:center; justify-content:space-between; gap:20px;
+}
+.shop-cart-heading .overline { color:#895767; font-size:10px; font-weight:650; }
+.shop-cart-heading h2 {
+  font:700 clamp(25px,3vw,34px)/1.15 Manrope, sans-serif;
+  color:#251521; letter-spacing:-.035em; margin:11px 0 0;
+}
+#shop-cart-heading-count { font-size:.63em; letter-spacing:0; color:#855f70; font-weight:600; white-space:nowrap; }
+.shop-cart-close {
+  width:48px; height:48px; min-width:48px; border-radius:50%; padding:0;
+  border:1px solid #d1bfb4; color:#5d2943; background:#fffbf6;
+  display:grid; place-items:center; cursor:pointer;
+}
+.shop-cart-close:hover { background:#f5e8dd; border-color:#986c77; }
+.shop-cart-close .ui-icon { width:22px; height:22px; }
+.shop-cart-intro {
+  margin:0 clamp(20px,4vw,42px); padding:0 0 19px;
+  border-bottom:1px solid #e0d1c2;
+  color:#77626a; font-size:12px; line-height:1.6;
+}
+.shop-cart-scroller {
+  padding:21px clamp(20px,4vw,42px) 28px;
+  min-height:0; overflow-y:auto; overscroll-behavior:contain;
+  scrollbar-width:thin; scrollbar-color:#ad9395 #eee6df;
+}
+.shop-cart-lines { display:grid; gap:15px; margin:0; padding:0; border:0; list-style:none; }
+.shop-cart-empty {
+  display:flex; align-items:center; justify-content:center;
+  padding:45px 16px; background:#fffdfa; border:1px solid #dfd0c1;
+  border-radius:12px; font-size:13px; color:#75596a; text-align:center;
+}
+.shop-cart-line {
+  display:grid; grid-template-columns:minmax(0,1fr); gap:0; padding:0;
+  border-radius:14px; background:#fffdfa; border:1px solid #e0d0c1;
+  box-shadow:0 1px 2px #2c162213; overflow:hidden;
+}
+.shop-cart-line-main {
+  display:grid; grid-template-columns:114px minmax(0,1fr) auto;
+  gap:15px; align-items:center;
+  padding:17px; min-width:0;
+}
+.shop-cart-line .shop-art {
+  width:114px; height:134px; border-radius:9px;
+  background:#f7f2eb; border:1px solid #e8dfd5;
+}
+.shop-cart-line .shop-kit-frame { height:93%; max-width:98%; }
+.shop-cart-line .shop-best-seller { display:none; }
+.shop-cart-line .shop-product-photo { border-radius:7px; }
+.shop-cart-line-info { display:flex; flex-direction:column; gap:6px; min-width:0; }
+.shop-cart-line-info strong {
+  color:#241821; font-size:13px; font-weight:750; line-height:1.4;
+  white-space:normal; overflow-wrap:anywhere;
+}
+.shop-cart-line-category { font-size:9px; font-weight:750; color:#926c75; letter-spacing:.075em; }
+.shop-cart-size { color:#6c5762; font-size:11px; }
+.shop-cart-unit-price { color:#8b7580; font-size:10px; margin-top:3px; }
+.shop-cart-line-total {
+  align-self:end; justify-self:end; white-space:nowrap;
+  color:#5c253e; font-size:15px; font-weight:800; font-variant-numeric:tabular-nums;
+}
+.shop-cart-line-actions {
+  border-top:1px solid #eadfd3; background:#fffbf7;
+  padding:11px 17px; display:flex; justify-content:space-between; align-items:center; gap:14px;
+}
+.shop-qty-control { display:inline-flex; border:0; border-radius:0; gap:12px; align-items:center; }
+.shop-qty-control button {
+  display:grid; place-items:center; width:36px; height:36px;
+  border-radius:50%; border:1px solid #d5c5b9; background:#fff;
+  color:#5b2a44; font-size:21px; line-height:1;
+}
+.shop-qty-control button:hover { background:#f7e9de; border-color:#ae848b; }
+.shop-qty-control output { min-width:16px; text-align:center; font-size:13px; font-weight:800; color:#241821; }
+.shop-cart-remove {
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  min-height:40px; border:0; background:transparent; color:#67334c;
+  text-decoration:none!important; font-size:11px; font-weight:700; padding:4px 2px;
+}
+.shop-cart-remove:hover { color:#8e234d; }
+.shop-cart-remove .ui-icon { width:17px; height:17px; }
+.shop-cart-summary {
+  position:relative; z-index:1;
+  background:#fffaf4; color:#2c1b27;
+  border-top:1px solid #e0d1bf; box-shadow:0 -8px 22px #1d101518;
+  padding:16px clamp(20px,4vw,42px) calc(19px + env(safe-area-inset-bottom));
+}
+.shop-cart-summary-note {
+  font-size:11px; color:#7a6a70; padding:0 0 10px; border-bottom:1px solid #e8ddd0;
+}
+.shop-cart-summary-line,.shop-cart-summary-total {
+  display:flex; align-items:baseline; justify-content:space-between;
+  gap:10px; min-height:0; margin:0; padding:10px 0;
+  font-size:12px; color:#72626b;
+}
+.shop-cart-summary-line strong { font-size:15px; font-weight:800; color:#422638; }
+.shop-cart-delivery {
+  display:flex; align-items:center; gap:12px;
+  border-top:1px solid #ebe0d4; padding:10px 0;
+  color:#5d3d4b;
+}
+.shop-cart-delivery-icon {
+  display:grid; place-items:center; flex:none;
+  width:36px; height:36px; border-radius:8px;
+  background:#f4e6d4; color:#783852;
+}
+.shop-cart-delivery >div { display:flex; flex-direction:column; gap:4px; }
+.shop-cart-delivery strong { font-size:12px; color:#4b273b; }
+.shop-date-hint { color:#88636e; font-size:11px; margin:0; line-height:1.4; }
+.shop-cart-summary-total {
+  border-top:1px solid #d7c7b6; padding-top:12px; margin:0;
+  font-size:14px; font-weight:800; color:#352334;
+}
+.shop-cart-summary-total strong { color:#311c2b; font-size:24px; }
+.shop-cart-dialog #shop-cart-form { display:block; margin:10px 0 0; }
+.shop-cart-actions { display:grid; grid-template-columns:1fr 1.2fr; gap:11px; align-items:stretch; }
+.shop-cart-continue {
+  border:1px solid #bfa6a5; border-radius:8px; color:#5a2843;
+  min-height:50px; background:transparent; font-size:12px; font-weight:800; padding:12px;
+}
+.shop-cart-continue:hover { background:#f4ece4; }
+.shop-cart-dialog .shop-primary-action {
+  min-height:50px; border-radius:8px; background:#592139; border-color:#592139;
+  color:#fff7e9; box-shadow:none; font-size:12px; padding:12px 15px;
+}
+.shop-cart-dialog .shop-primary-action:hover:not(:disabled) { background:#762f4b; }
+.shop-cart-dialog .shop-primary-action:disabled { background:#a29a99; border-color:#a29a99; opacity:.7; }
+.shop-demo-warning { margin:10px 0 0; border:0; padding:0; font-size:10px; color:#8b7c80; line-height:1.55; text-align:center; }
+.shop-cart-dialog button:focus-visible,.shop-cart-continue:focus-visible {
+  outline:3px solid #c88c55; outline-offset:2px;
+}
+/* Confirmation — the same burgundy and gold language as the rest of the club. */
+.shop-confirm-dialog {
+  padding:clamp(22px,4vw,39px);
+  background:linear-gradient(145deg,#271123,#110e16);
+  border:1px solid #d3ad7a74; color:#f6e8d5; width:min(570px,calc(100vw - 28px));
+}
+.shop-confirm-check {
+  margin:24px auto 16px;
+  background:#47273d; width:68px; height:68px; border-color:#dfbd8f9e;
+}
+.shop-confirm-check .ui-icon { width:34px; height:34px; }
+.shop-confirm-overline { color:#e5c597; font-size:11px; text-transform:uppercase; letter-spacing:.10em; }
+.shop-confirm-dialog h2 { font:600 clamp(46px,7vw,74px)/.95 'Cormorant Garamond',Georgia,serif; letter-spacing:-.03em; margin:12px 0 22px; }
+.shop-confirm-dialog h2 em { color:#e3bc80; font-weight:600; }
+.shop-confirm-message { font-size:13px; line-height:1.7; color:#d9c8c2; }
+.shop-confirm-recap {
+  grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);
+  background:#e4c8940a; border:1px solid #e4c8944b;
+  border-radius:10px; padding:18px; gap:13px;
+  margin:23px 0;
+}
+.shop-confirm-recap span { color:#d4b797; font-size:11px; }
+.shop-confirm-recap strong { color:#fff1d9; font-size:12px; }
+.shop-confirm-dialog .shop-primary-action { background:#e6c593; color:#301522; }
+@media (min-width:1025px) and (prefers-reduced-motion:no-preference) {
+ .shop-cart-dialog[open] { animation:v7Slide .24s cubic-bezier(.2,.8,.2,1) both; }
+ @keyframes v7Slide { from { transform:translateX(35px); opacity:.8; } to { transform:translateX(0); opacity:1; } }
+}
+@media (max-width:760px) {
+ .shop-cart-dialog {
+   inset:0; width:100vw; max-width:100vw;
+   height:100dvh; max-height:100dvh;
+   border:0; border-radius:0; box-shadow:none;
+ }
+ .shop-cart-header { padding:21px 19px 13px; gap:12px; }
+ .shop-cart-heading h2 { font-size:clamp(21px,5.5vw,27px); margin-top:8px; }
+ .shop-cart-intro { margin:0 19px; padding-bottom:13px; font-size:11px; }
+ .shop-cart-scroller { padding:15px 15px 20px; }
+ .shop-cart-line-main { grid-template-columns:88px minmax(0,1fr); gap:12px; padding:11px; }
+ .shop-cart-line .shop-art { width:88px; height:105px; }
+ .shop-cart-line-info strong { font-size:12px; }
+ .shop-cart-line-total { grid-column:2; justify-self:start; margin-top:1px; font-size:14px; }
+ .shop-cart-line-actions { padding:8px 12px; }
+ .shop-qty-control button { width:34px; height:34px; }
+ .shop-cart-summary { padding:10px 17px calc(13px + env(safe-area-inset-bottom)); }
+ .shop-cart-summary-note { font-size:10px; padding-bottom:7px; }
+ .shop-cart-summary-line { padding:7px 0; }
+ .shop-cart-summary-total { padding:8px 0; }
+ .shop-cart-summary-total strong { font-size:21px; }
+ .shop-cart-delivery { padding:8px 0; }
+ .shop-cart-actions { gap:8px; }
+ .shop-cart-dialog .shop-primary-action,.shop-cart-continue { min-height:48px; padding:10px; font-size:11px; }
+ .shop-demo-warning { font-size:10px; margin-top:8px; }
+ .shop-art-kit .shop-best-seller { left:9px; top:9px; padding:8px 10px; font-size:9px; }
+}
+@media (max-width:365px) {
+ .shop-cart-close { width:40px;height:40px;min-width:40px; }
+ .shop-cart-header { padding:16px 14px 12px; }
+ .shop-cart-intro { margin-inline:14px; }
+ .shop-cart-scroller { padding:12px; }
+ .shop-cart-summary { padding:10px 12px calc(11px + env(safe-area-inset-bottom)); }
+ .shop-cart-line-main { grid-template-columns:70px minmax(0,1fr); gap:9px; }
+ .shop-cart-line .shop-art { width:70px; height:90px; }
+ .shop-cart-line-info strong { font-size:11px; }
+ .shop-cart-actions { grid-template-columns:1fr 1fr; }
+ .shop-cart-continue, .shop-cart-dialog .shop-primary-action { font-size:10px; }
+}
+@media (prefers-reduced-motion:reduce) {
+ .shop-cart-dialog[open] { animation:none!important; }
+ .shop-qty-control button,.shop-cart-remove { transition:none!important; }
+}

@@ -29,8 +29,9 @@ test('V6 : panier fonctionnel, taille, quantités, date et confirmation démo', 
  await expect(page.locator('#shop-cart-total')).toContainText('200');
  await expect(page.locator('#shop-cart-lines .shop-cart-line')).toHaveCount(1);
  const delivery=page.locator('#shop-delivery-date');
- await expect(delivery).toHaveAttribute('min',/^\d{4}-\d{2}-\d{2}$/);
- await delivery.fill(await delivery.getAttribute('min'));
+ await expect(delivery).toHaveAttribute('type','hidden');
+ await expect(delivery).toHaveValue(/^\d{4}-\d{2}-\d{2}$/);
+ await expect(page.locator('#shop-date-hint')).toContainText('J+7');
  await page.locator('#shop-checkout-submit').click();
  await expect(page.locator('#shop-confirm-dialog')).toBeVisible();
  await expect(page.locator('#shop-confirm-total')).toContainText('200');
