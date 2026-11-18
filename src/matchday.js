@@ -22,13 +22,13 @@ const statusText = game => game.score ? 'TERMINÉ' : ongoing(game) ? 'À VENIR' 
 const scoreText = game => game.score ? game.score[0] + ' — ' + game.score[1] : dateTime.format(new Date(game.date));
 const scoreboardText = game => game.score && !game.atHome ? game.score[1] + ' — ' + game.score[0] : scoreText(game);
 const shortDate = game => dateCompact.format(new Date(game.date)).replace('.', '').toUpperCase();
-const badge = (letters, extra = '') => '<span class="club-mark ' + extra + '" aria-hidden="true">' + letters + '</span>';
+const wordmark = (letters, extra = '') => '<span class="opponent-wordmark ' + extra + '" aria-hidden="true">' + letters + '</span>';
 
 function fixtureCard(game, index, featuredId) {
   const recent = resultLabel(game);
   const result = resultClass(game);
-  const home = '<span class="fixture-team">' + badge('V', 'valoria-mark') + '<span>VALORIA</span></span>';
-  const away = '<span class="fixture-team">' + badge(game.sigle, game.mark) + '<span>' + game.rival + '</span></span>';
+  const home = '<span class="fixture-team"><img class="fixture-own-crest" src="/assets/crest.webp" alt="" width="52" height="65" loading="lazy"><span>VALORIA</span></span>';
+  const away = '<span class="fixture-team">' + wordmark(game.sigle, game.mark) + '<span>' + game.rival + '</span></span>';
   return '<li class="fixture-slide"><button type="button" class="fixture-card ' + result +
     (game.id === featuredId ? ' is-next' : '') +
     '" data-fixture="' + game.id + '" aria-label="Journée ' + (index + 1) + ' : ' + (game.atHome ? 'VALORIA FC contre ' + game.rival : game.rival + ' contre VALORIA FC') + ', ' + recent + ', ' + scoreboardText(game) + '">' +
@@ -54,7 +54,7 @@ export function initMatchday() {
   document.querySelector('#featured-round').textContent = 'PHASE DE LIGUE · JOURNÉE ' + (games.indexOf(focusGame) + 1);
   const featureMark = document.querySelector('#featured-crest');
   featureMark.textContent = focusGame.sigle;
-  featureMark.className = 'club-mark featured-club-mark ' + focusGame.mark;
+  featureMark.className = 'opponent-wordmark featured-wordmark ' + focusGame.mark;
   document.querySelector('#featured-venue').textContent = (focusGame.atHome ? 'À DOMICILE' : 'À L’EXTÉRIEUR') + ' · HEURE DE PARIS';
   featureButton.textContent = nextGame ? 'Découvrir la rencontre et les billets ↗' : 'Voir la dernière rencontre ↗';
 

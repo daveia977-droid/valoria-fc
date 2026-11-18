@@ -11,8 +11,8 @@ test("navigation, collection accessible et brouillon local", async ({
   await expect(page.getByRole("heading", { level: 1 })).toContainText(
     "VALORIA FC",
   );
-  await page.getByRole("link", { name: "Découvrir le club" }).click();
-  await expect(page).toHaveURL(/#identite$/);
+  await page.getByRole("navigation", { name: "Navigation principale" }).getByRole("link", { name: "Le club" }).click();
+  await expect(page).toHaveURL(/#club$/);
   await page.getByRole("tab", { name: /Domicile/ }).click();
   await expect(page.locator("#kit-name")).toHaveText("Domicile");
   await page.getByRole("tab", { name: /Domicile/ }).press("End");

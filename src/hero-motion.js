@@ -1,15 +1,12 @@
 import pauseIcon from '@phosphor-icons/core/assets/regular/pause.svg';
 import playIcon from '@phosphor-icons/core/assets/regular/play.svg';
-import arrowIcon from '@phosphor-icons/core/assets/regular/arrow-up-right.svg';
-import downIcon from '@phosphor-icons/core/assets/regular/arrow-down.svg';
 
 const root = document.documentElement;
 const story = document.querySelector('.story');
 const scene = document.querySelector('.scene');
 const identity = document.querySelector('.identity');
-const heroAction = document.querySelector('.hero-action');
 const toggle = document.querySelector('#pause');
-const clubLink = document.querySelector('.navigation a[href="#identite"]');
+const clubLink = document.querySelector('.navigation a[href="#club"]');
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 const mobile = matchMedia('(max-width: 760px)');
 const short = matchMedia('(max-height: 650px)');
@@ -23,7 +20,7 @@ const stopped = () => manual || reduced.matches;
 const variable = (name, value) => root.style.setProperty(name, String(value));
 
 for (const icon of document.querySelectorAll('[data-icon]')) {
-  icon.src = { pause: pauseIcon, arrow: arrowIcon, down: downIcon }[icon.dataset.icon];
+  if (icon.dataset.icon === 'pause') icon.src = pauseIcon;
 }
 
 function render() {
@@ -43,14 +40,11 @@ function render() {
   variable('--scale', 1 - t * (mobile.matches ? (short.matches ? .4 : .44) : .06));
   variable('--tilt', `${t * -7}deg`);
   // Keep keyboard focus on a persistent control before its current branch disappears.
-  if ((p < .68 && identity.contains(document.activeElement)) ||
-      (p > .22 && heroAction.contains(document.activeElement))) {
-    clubLink.focus({ preventScroll: true });
+  if (p < .68 && identity.contains(document.activeElement)) {
+    (clubLink.getClientRects().length ? clubLink : document.querySelector('.navigation .brand')).focus({ preventScroll: true });
   }
   identity.setAttribute('aria-hidden', String(p < .68));
   identity.inert = p < .68;
-  heroAction.inert = p > .22;
-  heroAction.setAttribute('aria-hidden', String(p > .22));
   scene.dataset.progress = p.toFixed(5);
 }
 
@@ -75,8 +69,6 @@ function sync() {
     for (const animation of entrances) animation.cancel();
     identity.removeAttribute('aria-hidden');
     identity.inert = false;
-    heroAction.removeAttribute('aria-hidden');
-    heroAction.inert = false;
     if (keepIdentityPosition) {
       const shift = identity.querySelector('h2').getBoundingClientRect().top - previousTop;
       scrollBy({ top: shift, behavior: 'instant' });
@@ -116,7 +108,6 @@ if (!stopped()) {
   for (const [selector, delay, start] of [
     ['.title-reveal', 60, { opacity: 0, transform: 'translateY(14px)' }],
     ['.crest-reveal', 170, { opacity: 0, transform: 'translateY(18px) scale(.96)' }],
-    ['.hero-action', 330, { opacity: 0 }],
     ['.scene-footer', 380, { opacity: 0 }],
   ]) {
     entrances.push(document.querySelector(selector).animate([start, { opacity: 1, transform: 'none' }], {

@@ -1,0 +1,283 @@
+
+/*
+ * VALORIA FC V3.2 — retouches premium.
+ * Le relief reste purement visuel : l'écusson d'origine et la hiérarchie de
+ * l'organigramme ne sont ni remplacés ni remodelés.
+ */
+:root { --v32-ink: #09070c; --v32-wine: #351323; --v32-gold: #d8b278; }
+body { overflow-x: clip; }
+.navigation {
+  background: linear-gradient(180deg, #0b070ced 0%, #160912c9 68%, #12070c4f 100%);
+  -webkit-backdrop-filter: blur(9px);
+  backdrop-filter: blur(9px);
+  border-bottom: 1px solid #d8b2781b;
+}
+.navigation .desktop-nav { gap: clamp(12px, 1.8vw, 30px); }
+.navigation .desktop-nav a { font-weight: 600; letter-spacing: .012em; }
+.navigation .desktop-nav a[href="#boutique"] { color: #efd0a0; }
+.navigation .desktop-nav a[href="#boutique"]:hover { color: #fff0d7; }
+.editorial-arrow { display: inline-block; font-size: 17px; line-height: 1; color: var(--gold); }
+.line-link:hover .editorial-arrow, .boutique-link:hover span { transform: translate(2px,-2px); }
+.editorial-arrow, .boutique-link span { transition: transform 160ms cubic-bezier(.2,0,0,1); }
+.scene .opening h1 { text-shadow: 0 9px 40px #000f, 0 1px 1px #d8b27816; }
+.scene .textile { filter: saturate(.88) brightness(.82); }
+.emblem { transform-style: preserve-3d; }
+.emblem .crest-reveal {
+  position: relative;
+  transform-style: preserve-3d;
+  filter: drop-shadow(-9px 15px 9px #0009) drop-shadow(12px 21px 20px #050207c8);
+}
+.emblem .crest-reveal::before {
+  content: ""; position: absolute; z-index: -1; inset: 9% 8% 3%;
+  transform: translateZ(-24px) translateY(15px) scale(.9);
+  background: radial-gradient(ellipse at 39% 30%, #f5d39a40 0%, #b17c4940 30%, #210c1e17 72%, transparent 82%);
+  filter: blur(15px);
+  pointer-events: none;
+}
+.emblem .crest-reveal::after {
+  content: ""; position: absolute; inset: 10% 10% 12%;
+  pointer-events: none;
+  background: linear-gradient(111deg, transparent 24%, #fff2d814 39%, #fff2d828 47%, transparent 56%);
+  mix-blend-mode: screen;
+  clip-path: ellipse(38% 43% at 50% 50%);
+}
+.emblem img {
+  filter: drop-shadow(-3px 6px 3px #000c) drop-shadow(8px 17px 18px #0009) drop-shadow(0 0 13px #eac48b24);
+  transform: rotateY(var(--tilt, 0deg)) translateZ(10px);
+}
+.emblem-shadow { background: radial-gradient(ellipse, #e4aa5b2c 0%, #6d173015 43%, transparent 69%); }
+.static-motion .emblem img { transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .emblem img, .static-motion .emblem img { transform: none; }
+  .editorial-arrow, .boutique-link span { transition: none; }
+}
+
+/* The club's founding story — editorial and readable rather than a generic card deck. */
+.club-story {
+  position: relative; isolation: isolate; overflow: hidden;
+  padding: clamp(92px, 10vw, 152px) max(24px, 6.5%);
+  scroll-margin-top: 112px;
+  border-top: 1px solid #d8b27824;
+  border-bottom: 1px solid #d8b27832;
+  background:
+    linear-gradient(110deg, #0c080fef 0%, #1d0b19f0 54%, #0c0810f2 100%),
+    url('/assets/stade-valoria-v25.webp') 50% 75% / cover no-repeat;
+}
+.club-story::after {
+  content: ""; position: absolute; pointer-events: none; z-index: -1;
+  inset: 0; background: radial-gradient(ellipse 40% 70% at 17% 49%, #c5974230, transparent 75%);
+}
+.club-story-inner {
+  max-width: 1320px; margin: auto;
+  display: grid; grid-template-columns: minmax(240px, .72fr) minmax(0, 1.36fr);
+  gap: clamp(36px, 8vw, 132px); align-items: center;
+}
+.club-story-year { display: grid; align-content: center; gap: 16px; min-width: 0; }
+.club-story-year strong {
+  font: 600 clamp(94px, 13vw, 205px)/.78 'Cormorant Garamond', Georgia, serif;
+  letter-spacing: -.065em; color: #e3bb82; font-variant-numeric: lining-nums tabular-nums;
+  text-shadow: 0 12px 42px #0008, 0 -1px 0 #fff3;
+}
+.club-story-year > span:not(.club-story-stroke) {
+  text-transform: uppercase; font-size: 11px; font-weight: 600; letter-spacing: .1em;
+  color: #e0ccad; padding-left: 6px;
+}
+.club-story-stroke { height: 1px; width: 128px; background: linear-gradient(90deg, #eccb95b8, transparent); }
+.club-story-editorial { max-width: 760px; }
+.club-story-editorial h2 {
+  font: 600 clamp(51px, 6vw, 91px)/.96 'Cormorant Garamond', Georgia, serif;
+  margin: 20px 0 28px; letter-spacing: -.045em; text-wrap: balance;
+}
+.club-story-editorial h2 em { color: #e5bd81; font-weight: 600; }
+.club-story-editorial p:not(.overline) { font-size: 14px; line-height: 1.95; color: #c7b7b1; max-width: 640px; text-wrap: pretty; }
+.club-story-editorial p + p { margin-top: 17px; }
+.club-story-editorial .club-story-lead { color: #f6e9d8 !important; font-size: clamp(16px, 1.5vw, 19px) !important; line-height: 1.7 !important; }
+.club-story-values { display: flex; align-items: center; flex-wrap: wrap; gap: 18px; margin-top: 35px; }
+.club-story-values span {
+  color: #e7c994; font-size: 12px; font-weight: 600;
+  padding: 6px 0; border-bottom: 1px solid #d8b27867;
+}
+
+/* Clear commercial intent without a fake shop, payment, or checkout. */
+.boutique-section {
+  padding: clamp(85px, 10vw, 145px) max(24px, 6.5%);
+  scroll-margin-top: 112px; background: #0a070b;
+  border-block: 1px solid #d8b27830; overflow: hidden;
+}
+.boutique-section-inner {
+  max-width: 1320px; margin: 0 auto; display: grid; align-items: stretch;
+  grid-template-columns: minmax(0, .93fr) minmax(0, 1.05fr);
+  gap: clamp(34px, 7vw, 110px);
+}
+.boutique-visual {
+  position: relative; isolation: isolate; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; min-height: 435px; gap: 25px;
+  border: 1px solid #dfbe8b5c;
+  background:
+    radial-gradient(ellipse 45% 55% at 50% 35%, #9d623336, transparent 92%),
+    linear-gradient(135deg, #29101f, #09080d 78%);
+  box-shadow: inset 0 1px #f5d6a124, 0 28px 48px #0007;
+}
+.boutique-visual::before {
+  content: ""; position: absolute; inset: 16px; border: 1px solid #d8b27828; pointer-events: none;
+}
+.boutique-visual-lines {
+  position: absolute; z-index: -1; inset: 15% 20%;
+  border: 1px solid #d6b0782c; border-radius: 50%;
+  box-shadow: 0 0 0 35px #d8b27808, 0 0 0 70px #d8b27806;
+}
+.boutique-visual img {
+  width: min(42%, 190px); height: auto; object-fit: contain;
+  filter: drop-shadow(4px 14px 12px #000c) drop-shadow(0 0 18px #deb67533);
+}
+.boutique-visual > span {
+  font-size: 10px; font-weight: 700; letter-spacing: .15em; color: #e7ca9b;
+  text-shadow: 0 3px 15px #000d;
+}
+.boutique-copy { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; min-width: 0; }
+.boutique-copy h2 {
+  font: 600 clamp(56px, 6vw, 90px)/.96 'Cormorant Garamond', Georgia, serif;
+  letter-spacing: -.04em; margin: 20px 0 25px; text-wrap: balance;
+}
+.boutique-copy h2 em { display: block; color: #e8c086; font-weight: 600; }
+.boutique-copy p:not(.overline) { max-width: 560px; color: #c5b4b0; font-size: 14px; line-height: 1.85; text-wrap: pretty; }
+.boutique-copy p + p { margin-top: 16px; }
+.boutique-state {
+  display: inline-flex; align-items: center; gap: 10px; padding: 12px 16px;
+  border: 1px solid #dab57f61; background: #e3c08b0c;
+  color: #e8cb9d; margin-top: 30px; font-size: 11px; font-weight: 600;
+}
+.boutique-state-dot { width: 7px; height: 7px; border-radius: 50%; background: #e4bf82; box-shadow: 0 0 0 4px #e4bf8216; }
+.boutique-link {
+  margin-top: 24px; display: inline-flex; align-items: center; gap: 38px;
+  min-height: 44px; color: #f6e8d0; font-size: 12px; font-weight: 600;
+  border-bottom: 1px solid #eac48b8f; padding: 8px 0;
+}
+.boutique-link span { font-size: 18px; color: var(--gold); }
+
+/* Match centre: authentic VALORIA crest and intentional typographic opponent marks. */
+.fixture-own-crest { width: 47px; height: 49px; max-width: 100%; object-fit: contain; filter: drop-shadow(1px 5px 5px #1b101b42); }
+.fixture-team .opponent-wordmark {
+  display: grid; place-items: center;
+  width: 46px; height: 46px; margin: 0 auto 2px;
+  color: #442635; border: 0; border-bottom: 2px solid #a4715b;
+  background: transparent; font: 800 13px/1.1 Manrope, sans-serif; letter-spacing: .04em;
+}
+.fixture-team .opponent-wordmark.barca { color: #35254f; border-bottom-color: #a52f53; }
+.fixture-team .opponent-wordmark.bayern { color: #7b2643; border-bottom-color: #b86852; }
+.fixture-team .opponent-wordmark.chelsea { color: #23416b; border-bottom-color: #4372ab; }
+.fixture-team .opponent-wordmark.liverpool { color: #7a293a; border-bottom-color: #9c6a57; }
+.fixture-team .opponent-wordmark.inter { color: #213d57; border-bottom-color: #55728a; }
+.match-club .featured-wordmark {
+  display: grid; place-items: center;
+  min-width: 78px; height: 78px; padding: 6px 12px;
+  border-bottom: 2px solid #dfbd85;
+  color: #f3e2c7; background: transparent; border-radius: 0;
+  font: 800 clamp(22px, 3vw, 39px)/1.1 Manrope, sans-serif;
+  letter-spacing: .08em;
+  text-shadow: 0 9px 20px #000c;
+}
+.fixture-card .fixture-team { justify-content: center; }
+.fixture-card .fixture-score { white-space: nowrap; }
+
+/* Organigramme: original membership and connections untouched; only their surfaces gain depth. */
+.organisation-editorial {
+  position: relative; isolation: isolate;
+  padding: clamp(22px, 3vw, 36px);
+  border: 1px solid #d6b27e4b;
+  background: linear-gradient(145deg, #34172572 0%, #140c17bc 44%, #0e0b12d9 100%);
+  box-shadow: inset 0 1px 0 #f1d6b022, 0 28px 72px #0008;
+  border-radius: 4px;
+}
+.organisation-editorial::before {
+  content: ""; pointer-events: none; z-index: -1; position: absolute;
+  inset: 0 0 auto; height: 60%;
+  background: radial-gradient(ellipse 60% 80% at 40% 0%, #c58d4c18, transparent 80%);
+}
+.organisation-editorial .leadership-list > li {
+  padding: clamp(14px, 1.8vw, 21px);
+  border: 1px solid #d8b27831;
+  background: linear-gradient(144deg, #4a1e2f63, #190f1a6d);
+  box-shadow: 0 12px 26px #0003, inset 0 1px #efd4a119;
+}
+.organisation-editorial .poles-list > .pole {
+  padding: clamp(15px, 1.7vw, 20px);
+  border: 1px solid #d8b2782e;
+  background: linear-gradient(145deg, #3316254b, #160c1863);
+  box-shadow: 0 12px 22px #0003, inset 0 1px #e9c78e12;
+}
+.person-button { transition: color 160ms ease, transform 160ms cubic-bezier(.2,0,0,1); }
+.person-button:hover strong { color: #f2d19b; }
+.person-button:focus-visible { outline: 2px solid #f0d4a2; outline-offset: 3px; }
+.person-button.is-selected strong { text-shadow: 0 4px 12px #0009; }
+@media (hover: hover) and (pointer: fine) {
+  .person-button:hover { transform: translateY(-2px); }
+  .organisation-editorial .poles-list > .pole:hover { box-shadow: 0 16px 30px #0005, inset 0 1px #e9c78e16; }
+}
+
+/* Ticket: subtle copper fibres and type hierarchy, no fake QR-code or scannable barcode. */
+.ticket-specimen {
+  overflow: hidden; border-radius: 3px;
+  background: linear-gradient(118deg, #f6e9d3 0%, #e4caa3 49%, #f5e8d5 100%);
+  box-shadow: 0 16px 38px #0009, inset 0 1px 0 #fff9;
+}
+.ticket-specimen::after {
+  content: 'VALORIA'; position: absolute;
+  right: -8%; bottom: 14%; font: 600 clamp(60px, 13vw, 106px)/.8 'Cormorant Garamond', Georgia, serif;
+  letter-spacing: -.055em; transform: rotate(-18deg); color: #61274210; pointer-events: none;
+}
+.ticket-specimen-top { padding-bottom: 18px; border-bottom: 1px dashed #7c3d496d; }
+.ticket-pretitle { letter-spacing: .12em; }
+#ticket-match { letter-spacing: -.025em; }
+.ticket-watermark { display: block; font-weight: 800; text-align: left; color: #60213b; }
+.ticket-summary { border-color: #d8b27873; }
+.ticket-submit { box-shadow: inset 0 1px #fff6, 0 6px 13px #0005; }
+.ticket-submit:hover { box-shadow: inset 0 1px #fff9, 0 8px 18px #0008; }
+
+/* Responsive dimensions: mobile first, no overflow in the org chart. */
+@media (min-width: 761px) and (max-width: 1270px) {
+  .navigation .desktop-nav { gap: 14px; }
+}
+@media (max-width: 860px) {
+  .club-story-inner { grid-template-columns: 1fr; gap: 45px; }
+  .club-story-year { display: flex; align-items: end; gap: 24px; }
+  .club-story-year strong { font-size: clamp(100px, 19vw, 156px); }
+  .club-story-year > span:not(.club-story-stroke) { padding-bottom: 13px; }
+  .club-story-stroke { display: none; }
+  .boutique-section-inner { grid-template-columns: 1fr; gap: 38px; }
+  .boutique-visual { min-height: 310px; }
+  .boutique-visual img { width: min(31%, 145px); }
+}
+@media (max-width: 760px) {
+  .navigation { backdrop-filter: blur(7px); -webkit-backdrop-filter: blur(7px); }
+  .club-story { padding: 85px 24px 91px; scroll-margin-top: 78px; }
+  .club-story-inner { gap: 39px; }
+  .club-story-year { align-items: center; gap: 16px; }
+  .club-story-year strong { font-size: clamp(90px, 22vw, 128px); }
+  .club-story-year > span:not(.club-story-stroke) { font-size: 10px; padding: 0; }
+  .club-story-editorial h2 { font-size: clamp(50px, 11vw, 72px); margin-bottom: 24px; }
+  .club-story-editorial p:not(.overline) { font-size: 14px; line-height: 1.85; }
+  .club-story-editorial .club-story-lead { font-size: 17px !important; }
+  .boutique-section { padding: 82px 24px 95px; scroll-margin-top: 78px; }
+  .boutique-visual { min-height: 280px; }
+  .boutique-copy h2 { font-size: clamp(54px, 11vw, 78px); }
+  .match-club .featured-wordmark { min-width: 54px; height: 54px; font-size: 18px; padding: 4px; }
+  .fixture-own-crest { width: 42px; height: 47px; }
+  .organisation-editorial { padding: 12px; border-color: #d8b27836; }
+  .organisation-editorial .leadership-list > li { background: none; border: none; box-shadow: none; padding: 6px 2px; }
+  .organisation-editorial .poles-list > .pole {
+    padding: 19px 0; border: 0; border-top: 1px solid #d8b27836;
+    background: none; box-shadow: none;
+  }
+}
+@media (max-width: 375px) {
+  .club-story { padding-inline: 20px; }
+  .club-story-year strong { font-size: 82px; }
+  .club-story-year > span:not(.club-story-stroke) { font-size: 9px; }
+  .boutique-section { padding-inline: 20px; }
+  .organisation-editorial { padding: 8px; }
+  .organisation-editorial .leadership-list > li { padding: 5px 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .person-button, .editorial-arrow, .boutique-link span { transition: none !important; transform: none !important; }
+}

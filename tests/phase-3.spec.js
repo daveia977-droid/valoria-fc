@@ -38,12 +38,12 @@ for (const width of [320, 390, 768, 1440]) {
         .getByRole("link", { name: "Le club", exact: true })
         .click();
     }
-    await expect(page).toHaveURL(/#identite$/);
+    await expect(page).toHaveURL(/#club$/);
     const sectionTop = await page
-      .locator("#identite")
+      .locator("#club")
       .evaluate((el) => el.getBoundingClientRect().top);
     expect(sectionTop).toBeGreaterThanOrEqual(header.height);
-    await expect(page.locator('.desktop-nav a[href="#identite"]')).toHaveAttribute(
+    await expect(page.locator('.desktop-nav a[href="#club"]')).toHaveAttribute(
       "aria-current",
       "location",
     );

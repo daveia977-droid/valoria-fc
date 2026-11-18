@@ -8,8 +8,11 @@ test('V3 : accès direct aux rencontres depuis la scène, sans supprimer le blas
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1 })).toContainText('VALORIA FC');
   await expect(page.locator('.scene .crest-reveal img')).toHaveAttribute('src', '/assets/crest.webp');
-  await page.getByRole('link', { name: /Voir les matchs/ }).click();
-  await expect(page).toHaveURL(/#matchs$/);
+  await expect(page.locator('.hero-action')).toHaveCount(0);
+  await page.getByRole('button', { name: 'Menu', exact: true }).click();
+  await page.getByRole('navigation', { name: 'Navigation mobile' }).getByRole('link', { name: 'Le club', exact: true }).click();
+  await expect(page).toHaveURL(/#club$/);
+  await expect(page.locator('#club-story-title')).toBeVisible();
   await expect(page.locator('#fixture-list .fixture-card')).toHaveCount(8);
   expect(errors).toEqual([]);
 });
@@ -71,7 +74,7 @@ test('V3 : préférences de mouvement réduit et cibles tactiles', async ({ page
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/');
   await expect(page.locator('#pause')).toHaveAttribute('aria-pressed', 'true');
-  const box = await page.getByRole('link', { name: /Voir les matchs/ }).boundingBox();
+  const box = await page.getByRole('button', { name: 'Menu', exact: true }).boundingBox();
   expect(box.height).toBeGreaterThanOrEqual(44);
   await expect(page.locator('.scene .textile')).toHaveCSS('transform', 'none');
 });

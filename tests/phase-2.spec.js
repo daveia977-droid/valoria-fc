@@ -140,13 +140,13 @@ test("mouvement réduit pendant une fiche : arrêt de toutes les animations", as
   await expect(page.locator(".emblem")).toHaveCSS("transform", "none");
 });
 
-test("accessibilité de la comparaison et de la fiche d’organisation", async ({
+test("accessibilité de la collection et de la fiche d’organisation", async ({
   page,
 }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
   await page.evaluate(() => document.fonts.ready);
-  await page.locator("#home-comparison summary").click();
+  await page.locator('#kit-panel').scrollIntoViewIfNeeded();
   await page.addScriptTag({ path: require.resolve("axe-core/axe.min.js") });
   const check = async () => {
     const result = await page.evaluate(() =>

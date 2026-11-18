@@ -54,3 +54,14 @@ Le calendrier suit les dates générales de la phase de ligue 2026/27 publiées 
 - Ambiance supporters sobre : Ferveur, Unité, Respect, sans témoignages inventés ; compteur de démonstration inchangé.
 - Contrôles clavier et tactile renforcés, surlignage de navigation pour les sections Matchs/Supporters et motion réduite respectée.
 - Zéro nouvelle dépendance payante ou externe ; fond de stade approuvé de la V2.5 et fichiers sources d’origine conservés.
+
+## V3.2 — histoire, boutique en préparation et profondeur (18 novembre 2026)
+
+- Le hero est épuré : les textes « Découvrir le club », « Un blason. Une même identité. » et le raccourci « Voir les matchs » ont été retirés. Le blason officiel garde sa position et gagne un relief optique CSS (ombres, perspective, éclat discret), sans altérer l’image.
+- Une rubrique **Notre histoire** raconte le projet de jeunes ambitieux né en 2026, avec une écriture naturelle et sans inventer de faits sportifs, juridiques ni de palmarès.
+- Une entrée de navigation **Boutique** conduit à une rubrique dédiée **Boutique officielle à venir**. Aucun paiement, commande, prix de vente, collecte ou panier n’est opérationnel avant une éventuelle ouverture future.
+- L’organigramme conserve ses sept membres et leur hiérarchie ; seule la présentation gagne des surfaces, contrastes et ombres. Les décors de typographie remplacent les petites flèches non essentielles.
+- Les faux écussons circulaires d’adversaires ont été remplacés par des signatures typographiques, tandis que VALORIA conserve son authentique blason. Aucun logo adverse protégé n’est repris.
+- Le billet spécimen reçoit des effets de papier et des repères visuels sans fausse lecture possible comme billet réel.
+- Navigation et tests mis à jour, avec respect des contraintes mobiles, du clavier, de la réduction des mouvements et du budget nul.
+- La méthode éditoriale « Plume » est appliquée : phrases complètes, ton naturel, fidélité aux faits fournis. Aucun service externe ou migration de framework.

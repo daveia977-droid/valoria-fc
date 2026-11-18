@@ -35,7 +35,7 @@ const root = document.documentElement;
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 const chapters = [...document.querySelectorAll('.chapter')];
 const nav = [...document.querySelectorAll('.desktop-nav a')];
-const navigationStops = [...document.querySelectorAll('#matchs, #collection, #supporters, #organisation')];
+const navigationStops = [...document.querySelectorAll('#club, #matchs, #collection, #boutique, #supporters, #organisation')];
 const paused = () => reduced.matches || root.classList.contains('static-motion');
 root.classList.add('js-chapters');
 const visibility = new IntersectionObserver(entries => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); }); }, { rootMargin: '0px 0px -8% 0px', threshold: 0 });
@@ -44,7 +44,7 @@ let frame = 0;
 function render() {
   frame = 0;
   const rectangles = chapters.map(chapter => chapter.getBoundingClientRect());
-  let active = '#identite';
+  let active = '#club';
   chapters.forEach((chapter, i) => {
     const r = rectangles[i];
     if (r.bottom < 0 || r.top > innerHeight) return;

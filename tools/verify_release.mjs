@@ -52,7 +52,7 @@ try {
     await settle(page); assert.equal(await page.locator('.identity').getAttribute('aria-hidden'), 'false');
     if ([390, 1440].includes(width)) await screenshot(page, null, `identite-${width}`);
     if ([390, 1440].includes(width)) await screenshot(page, '#collection', `collection-${width}`, true);
-    for (const [i, name] of ['Domicile V1', 'Domicile V2', 'Extérieur', 'Third'].entries()) {
+    for (const [i, name] of ['Domicile', 'Extérieur', 'Third'].entries()) {
       await page.getByRole('tab', { name, exact: true }).click();
       assert.equal(await page.locator('#kit-name').innerText(), name);
       assert.equal(await page.locator('#kit-panel').getAttribute('data-presentation'), '2d');
@@ -73,7 +73,7 @@ try {
       assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
       if (file === 'mentions-legales' && width === 390) await page.screenshot({ path: `${dir}/mentions-legales-390.png` });
     }
-    report.viewports.push({ width, hero: true, collection2d: 4, organisationProfiles: 7, legalPages: 3, overflow: false });
+    report.viewports.push({ width, hero: true, collection2d: 3, organisationProfiles: 7, legalPages: 3, overflow: false });
     await page.close();
   }
   assert.deepEqual(report.errors, []); assert.deepEqual(report.missing, []); assert.deepEqual(report.modelRequests, []);
