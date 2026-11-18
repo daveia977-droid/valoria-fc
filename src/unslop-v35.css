@@ -1,0 +1,228 @@
+/* VALORIA FC V3.5 — Unslop polish
+   Direction: retenue, détermination, chaleur / matières du stade
+   Design method: heydamir/unslop (Damir Sokolovsky), CC BY 4.0
+   https://github.com/heydamir/unslop
+   All team graphics are independently drawn, non-official identifiers.
+*/
+:root {
+  --v35-bg: #0d0a0e;
+  --v35-raised: #181319;
+  --v35-line: #e6d7c020;
+  --v35-gold: #d8b278;
+  --v35-muted: #bfb3ab;
+  --v35-ease: cubic-bezier(.22, 1, .36, 1);
+}
+body { background: var(--v35-bg); }
+.ui-icon {
+  display: inline-block; vertical-align: middle; flex: 0 0 18px;
+  width: 18px; height: 18px; color: inherit;
+  stroke: currentColor; stroke-width: 1.7;
+}
+.editorial-arrow, .boutique-link > span { display: inline-flex; align-items: center; justify-content: center; }
+.line-link, .boutique-link, .scroll-cue { gap: 12px; }
+.line-link:hover .editorial-arrow { transform: none; }
+.overline { font-size: 11px; letter-spacing: .08em; font-weight: 500; }
+.chapter h2, .club-story-editorial h2, .boutique-copy h2 { text-wrap: balance; }
+.chapter-copy, .club-story-editorial p:not(.overline), .boutique-copy p:not(.overline) { color: var(--v35-muted); }
+.navigation {
+  border-bottom: 1px solid var(--v35-line);
+  background: linear-gradient(180deg, #100b12f4, #100b12bf 80%, transparent);
+  backdrop-filter: blur(7px);
+}
+.navigation .desktop-nav a { font-size: 12px; font-weight: 500; letter-spacing: 0; }
+.navigation .desktop-nav a[aria-current='location']::after { background: var(--v35-gold); height: 1px; }
+.header-actions { align-items: center; }
+.pause { display: inline-flex; align-items: center; font-size: 12px; gap: 8px; }
+.pause-symbol { display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; }
+.menu-toggle { gap: 10px; align-items: center; justify-content: center; }
+button[data-close] { display: inline-flex; gap: 8px; justify-content: center; align-items: center; }
+button[data-close] .ui-icon { opacity: .86; }
+.scene .opening h1 { text-shadow: 0 4px 22px #09060bbc; }
+.scene .aura { opacity: .22; }
+.scene .beam { opacity: .24; }
+.scene .atmosphere::before { opacity: .28; }
+.emblem .crest-reveal {
+  filter: drop-shadow(0 13px 13px #0009) drop-shadow(0 23px 21px #070508a6);
+}
+.emblem .crest-reveal::after { opacity: .25; }
+.emblem-shadow { filter: blur(19px); opacity: .6; }
+.emblem img { filter: drop-shadow(0 12px 14px #080608bf); }
+.circle .ui-icon { width: 18px; height: 18px; }
+.scroll-cue { color: #e6d6bf; }
+.club-story {
+  background: linear-gradient(105deg, #100d13f7 0%, #171018e8 56%, #100b12f1),
+    url('/assets/stade-valoria-v25.webp') center 75%/cover no-repeat;
+}
+.club-story::after { opacity: .3; }
+.club-story-year strong { text-shadow: none; color: #dcc099; }
+.club-story-editorial p:not(.overline) { max-width: 620px; }
+.club-story-values { gap: 20px; }
+.club-story-values span { font-size: 12px; letter-spacing: 0; color: #e7d2b3; }
+.match-centre {
+  background: linear-gradient(110deg, #100c12ed, #180d18c9 70%, #100c11eb),
+    url('/assets/stade-valoria-v25.webp') center 77%/cover no-repeat;
+}
+.match-centre::before { opacity: .025; }
+.match-heading h2, .supporters-inner h2 { letter-spacing: -.025em; }
+.match-heading p:last-child { max-width: 330px; }
+.match-spotlight {
+  background: linear-gradient(112deg, #1e101bcf, #160e18bb 48%, #140d18e1),
+    url('/assets/stade-valoria-v25.webp') center 80%/cover no-repeat;
+  border: 1px solid #d8b2783c;
+  box-shadow: 0 16px 38px #0006;
+}
+.match-spotlight::before { opacity: .24; }
+.match-spotlight-top, .match-spotlight-bottom { letter-spacing: .035em; }
+.match-feature-cta, .ticket-submit {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  border-radius: 7px; box-shadow: none;
+  transition: background-color 160ms var(--v35-ease), border-color 160ms var(--v35-ease), color 160ms var(--v35-ease);
+}
+.match-feature-cta:hover { transform: none; }
+.fixture-heading h3 { letter-spacing: -.02em; }
+.fixture-controls button {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: #1c151e; color: #efe0ce;
+  border: 1px solid #d8b27842; border-radius: 8px;
+  transition: border-color 150ms ease, background-color 150ms ease;
+}
+.fixture-controls button:hover { background: #2a202b; border-color: #d8b27888; }
+.fixture-list { gap: 16px; }
+.fixture-slide { scroll-snap-align: start; }
+.fixture-card, .fixture-card.is-next {
+  clip-path: none;
+  border-radius: 11px;
+  height: 276px;
+  padding: 20px;
+  border: 1px solid #d7c8b5a6;
+  background: #f5efe7;
+  color: #261b21;
+  box-shadow: 0 2px 6px #0002;
+  transition: border-color 150ms ease, background-color 150ms ease, box-shadow 150ms ease;
+}
+.fixture-card.is-next { border: 1px solid #b69161; background: #f0e5d5; }
+.fixture-card:hover, .fixture-card:active { transform: none; box-shadow: 0 4px 13px #0003; }
+.fixture-card:focus-visible { outline: 2px solid #f0c386; outline-offset: 3px; }
+.fixture-status { padding: 4px 8px; background: transparent; }
+.fixture-team { align-items: center; gap: 5px; }
+.fixture-team > span:last-child {
+  display: block; max-width: 112px; line-height: 1.35; font-weight: 600;
+  color: #302630; overflow-wrap: anywhere;
+}
+.fixture-own-crest {
+  width: 54px; height: 56px; object-fit: contain;
+  filter: drop-shadow(0 2px 3px #160c1930);
+}
+.fixture-team .opponent-crest {
+  width: 54px; height: 56px; object-fit: contain; margin-inline: auto;
+  background: transparent; border: 0; border-radius: 0;
+  filter: drop-shadow(0 2px 3px #211b2024);
+}
+.fixture-score { color: #291a24; font-size: 19px; font-variant-numeric: tabular-nums; }
+.fixture-date { font-size: 27px; }
+.fixture-result-label { margin-top: auto; }
+.fixture-bottom { color: #514553; font-size: 11px; border-top-color: #30202828; }
+.fixture-bottom .ui-icon { width: 17px; height: 17px; color: #6e4454; }
+.fixture-card.result-upcoming .fixture-status { color: #6c344f; }
+.match-club .featured-opponent-crest {
+  width: 90px; height: 90px; max-width: none; object-fit: contain;
+  border: none; border-radius: 0; filter: drop-shadow(0 6px 14px #0007);
+}
+.match-club .featured-opponent-crest, .match-club img { background: transparent; }
+.match-club strong { text-transform: none; letter-spacing: 0; font-size: clamp(14px, 1.9vw, 20px); }
+.match-club img[src="/assets/crest.webp"] { width: 72px; height: 88px; }
+.match-centre-center strong { font-variant-numeric: tabular-nums; }
+.match-dialog {
+  background: #17111b; border: 1px solid #d8b27866; border-radius: 12px;
+  box-shadow: 0 17px 48px #000b;
+}
+.match-dialog-badges {
+  display: flex; align-items: center; justify-content: center; gap: 16px;
+  padding: 6px 0 14px; border-bottom: 1px solid #d8b27824;
+}
+.match-dialog-badges.is-away { flex-direction: row-reverse; }
+.match-dialog-badges img { width: 58px; height: 66px; object-fit: contain; }
+.match-dialog-badges .opponent-crest { width: 66px; height: 66px; }
+.match-dialog-badges > span { font-size: 12px; color: #ceb78f; letter-spacing: .04em; }
+.match-dialog .dialog-head button { border-radius: 7px; font-size: 12px; border-color: #d8b27855; }
+.match-dialog-meta { color: #c3b2af; }
+#ticket-form select { border-radius: 7px; }
+#ticket-form select:focus-visible { outline: 2px solid #f1d39b; outline-offset: 2px; }
+.ticket-specimen {
+  box-shadow: 0 6px 18px #0005;
+  border: 1px solid #c9a882;
+  border-left: 4px solid #78364a;
+  background: #ecdbc0;
+}
+.ticket-specimen::after { opacity: .35; }
+.ticket-specimen::before { border-color: #673b4530; }
+.ticket-specimen .ticket-watermark { letter-spacing: 0; }
+.ticket-confirmation-icon .ui-icon { width: 27px; height: 27px; }
+.boutique-section { background: #0f0b10; }
+.boutique-visual {
+  background: #1b111a;
+  border: 1px solid #d8b27835;
+  box-shadow: 0 8px 26px #0005;
+}
+.boutique-visual::before { border-color: #d8b27818; }
+.boutique-visual-lines { opacity: .12; }
+.boutique-visual img { filter: drop-shadow(0 9px 14px #000a); }
+.boutique-state { border: 1px solid #d8b27845; background: #d8b27806; }
+.boutique-link { gap: 14px; }
+.boutique-link > span { color: #e2c39a; }
+.supporters-section {
+  background: linear-gradient(110deg, #1d111bea, #130d13eb 70%, #0b0b0ff2),
+    url('/assets/stade-valoria-v25.webp') center 78%/cover no-repeat;
+}
+.supporters-scarf { opacity: .07; }
+.supporters-figure { border: 1px solid #d8b27832; box-shadow: none; }
+.supporters-figure::before { border-color: #d8b27818; }
+.supporters-values span { font-size: 12px; background: transparent; border-color: #d8b27838; }
+.organisation-editorial {
+  background: #171119; border: 1px solid #d8b27830;
+  box-shadow: none;
+}
+.organisation-editorial::before { opacity: .25; }
+.organisation-editorial .leadership-list > li,
+.organisation-editorial .poles-list > .pole {
+  background: #24182370; box-shadow: none; border-color: #d8b27830;
+}
+.person-button { transition: color 150ms var(--v35-ease); }
+.person-button:hover { transform: none; }
+.person-button:hover strong { color: #eed2aa; }
+.contact-strip { border: 1px solid #d8b2783a; }
+.footer { border-top: 1px solid #d8b2781a; }
+@media (max-width: 1180px) {
+  .menu-toggle { display: inline-flex; font-size: 12px; }
+}
+@media (max-width: 760px) {
+  .navigation { backdrop-filter: blur(4px); }
+  .scene .aura, .scene .beam { opacity: .09; }
+  .overline { font-size: 10px; }
+  .fixture-card, .fixture-card.is-next { height: 266px; padding: 17px; }
+  .fixture-team .opponent-crest, .fixture-own-crest { width: 48px; height: 52px; }
+  .match-club .featured-opponent-crest { width: 61px; height: 61px; }
+  .match-club img[src="/assets/crest.webp"] { width: 55px; height: 70px; }
+  .match-club strong { font-size: 12px; }
+  .match-spotlight { padding: 28px 17px; }
+  .match-dialog-badges { gap: 12px; }
+  .match-dialog-badges img { width: 49px; height: 61px; }
+  .match-dialog-badges .opponent-crest { width: 58px; height: 58px; }
+  .organisation-editorial { background: #160e16; }
+  .organisation-editorial .leadership-list > li,
+  .organisation-editorial .poles-list > .pole { background: transparent; }
+  .boutique-visual { box-shadow: none; }
+}
+@media (max-width: 375px) {
+  .fixture-card, .fixture-card.is-next { padding: 15px; }
+  .fixture-team .opponent-crest, .fixture-own-crest { width: 44px; height: 48px; }
+  .match-club .featured-opponent-crest { width: 55px; height: 55px; }
+  .fixture-team > span:last-child { font-size: 9px; }
+}
+@media (hover: none) {
+  .fixture-card:hover, .fixture-card:active { box-shadow: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ui-icon, .fixture-card, .match-feature-cta, .person-button { transition: none !important; }
+  .scene .aura, .scene .beam { opacity: .04; transform: none; }
+}

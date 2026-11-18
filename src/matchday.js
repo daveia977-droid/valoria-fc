@@ -1,3 +1,4 @@
+import { uiIcon } from './ui-icons.js';
 
 const games = [
   { id: 'j1', date: '2026-09-09T21:00:00+02:00', rival: 'Bayern Munich', sigle: 'FCB', mark: 'bayern', atHome: true, score: [2, 0] },
@@ -22,13 +23,13 @@ const statusText = game => game.score ? 'TERMINÉ' : ongoing(game) ? 'À VENIR' 
 const scoreText = game => game.score ? game.score[0] + ' — ' + game.score[1] : dateTime.format(new Date(game.date));
 const scoreboardText = game => game.score && !game.atHome ? game.score[1] + ' — ' + game.score[0] : scoreText(game);
 const shortDate = game => dateCompact.format(new Date(game.date)).replace('.', '').toUpperCase();
-const wordmark = (letters, extra = '') => '<span class="opponent-wordmark ' + extra + '" aria-hidden="true">' + letters + '</span>';
+const opponentBadge = (game, featured = false) => '<img class="opponent-crest' + (featured ? ' featured-opponent-crest' : '') + '" src="/assets/opponents/' + game.mark + '.svg" alt="" width="128" height="128" loading="lazy" decoding="async">';
 
 function fixtureCard(game, index, featuredId) {
   const recent = resultLabel(game);
   const result = resultClass(game);
   const home = '<span class="fixture-team"><img class="fixture-own-crest" src="/assets/crest.webp" alt="" width="52" height="65" loading="lazy"><span>VALORIA</span></span>';
-  const away = '<span class="fixture-team">' + wordmark(game.sigle, game.mark) + '<span>' + game.rival + '</span></span>';
+  const away = '<span class="fixture-team">' + opponentBadge(game) + '<span>' + game.rival + '</span></span>';
   return '<li class="fixture-slide"><button type="button" class="fixture-card ' + result +
     (game.id === featuredId ? ' is-next' : '') +
     '" data-fixture="' + game.id + '" aria-label="Journée ' + (index + 1) + ' : ' + (game.atHome ? 'VALORIA FC contre ' + game.rival : game.rival + ' contre VALORIA FC') + ', ' + recent + ', ' + scoreboardText(game) + '">' +
@@ -38,7 +39,7 @@ function fixtureCard(game, index, featuredId) {
     '<strong class="fixture-score">' + scoreboardText(game) + '</strong>' +
     (game.atHome ? away : home) + '</span>' +
     '<span class="fixture-result-label">' + (game.score ? 'VALORIA : ' + recent : game.atHome ? 'À DOMICILE' : 'À L’EXTÉRIEUR') + '</span>' +
-    '<span class="fixture-bottom">' + (game.score ? 'Voir le résultat' : ongoing(game) ? 'Voir le match et les billets' : 'Voir le match') + '<span aria-hidden="true">↗</span></span></button></li>';
+    '<span class="fixture-bottom">' + (game.score ? 'Voir le résultat' : ongoing(game) ? 'Voir le match et les billets' : 'Voir le match') + uiIcon('arrow-up-right') + '</span></button></li>';
 }
 
 export function initMatchday() {
@@ -53,10 +54,11 @@ export function initMatchday() {
   document.querySelector('#featured-time').textContent = dateTime.format(new Date(focusGame.date));
   document.querySelector('#featured-round').textContent = 'PHASE DE LIGUE · JOURNÉE ' + (games.indexOf(focusGame) + 1);
   const featureMark = document.querySelector('#featured-crest');
-  featureMark.textContent = focusGame.sigle;
-  featureMark.className = 'opponent-wordmark featured-wordmark ' + focusGame.mark;
+  featureMark.src = '/assets/opponents/' + focusGame.mark + '.svg';
+  featureMark.alt = 'Emblème stylisé non officiel pour ' + focusGame.rival;
+  featureMark.className = 'opponent-crest featured-opponent-crest';
   document.querySelector('#featured-venue').textContent = (focusGame.atHome ? 'À DOMICILE' : 'À L’EXTÉRIEUR') + ' · HEURE DE PARIS';
-  featureButton.textContent = nextGame ? 'Découvrir la rencontre et les billets ↗' : 'Voir la dernière rencontre ↗';
+  featureButton.innerHTML = (nextGame ? 'Découvrir la rencontre et les billets' : 'Voir la dernière rencontre') + ' ' + uiIcon('arrow-up-right');
 
   const countdown = document.querySelector('#match-countdown');
   function clock() {
@@ -101,6 +103,10 @@ export function initMatchday() {
     selected = game;
     trigger = opener;
     document.querySelector('#dialog-opponent').textContent = game.rival;
+    const opponentCrest = document.querySelector('#dialog-opponent-crest');
+    opponentCrest.src = '/assets/opponents/' + game.mark + '.svg';
+    opponentCrest.alt = '';
+    document.querySelector('.match-dialog-badges').classList.toggle('is-away', !game.atHome);
     document.querySelector('#dialog-matchday').textContent = 'JOURNÉE ' + (games.indexOf(game) + 1) + ' · PHASE DE LIGUE';
     document.querySelector('#dialog-date').textContent = dateFormat.format(new Date(game.date)) + ' · ' + dateTime.format(new Date(game.date)) + ' (Paris)';
     document.querySelector('#ticket-location').textContent = game.atHome ? 'VALORIA FC reçoit · Match à domicile' : 'VALORIA FC se déplace · Match à l’extérieur';

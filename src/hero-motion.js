@@ -1,5 +1,4 @@
-import pauseIcon from '@phosphor-icons/core/assets/regular/pause.svg';
-import playIcon from '@phosphor-icons/core/assets/regular/play.svg';
+import { uiIcon } from './ui-icons.js';
 
 const root = document.documentElement;
 const story = document.querySelector('.story');
@@ -19,9 +18,6 @@ const ease = x => x * x * (3 - 2 * x);
 const stopped = () => manual || reduced.matches;
 const variable = (name, value) => root.style.setProperty(name, String(value));
 
-for (const icon of document.querySelectorAll('[data-icon]')) {
-  if (icon.dataset.icon === 'pause') icon.src = pauseIcon;
-}
 
 function render() {
   frame = 0;
@@ -64,7 +60,7 @@ function sync() {
   toggle.setAttribute('aria-pressed', String(isStopped));
   toggle.setAttribute('aria-label', reduced.matches ? 'Animations réduites selon vos préférences' : isStopped ? 'Reprendre les animations' : 'Mettre en pause les animations');
   toggle.querySelector('.pause-word').textContent = isStopped ? 'En pause' : 'Pause';
-  toggle.querySelector('.icon').src = isStopped ? playIcon : pauseIcon;
+  toggle.querySelector('.pause-symbol').innerHTML = uiIcon(isStopped ? 'play' : 'pause');
   if (isStopped) {
     for (const animation of entrances) animation.cancel();
     identity.removeAttribute('aria-hidden');

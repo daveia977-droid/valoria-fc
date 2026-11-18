@@ -38,12 +38,12 @@ test('V3.2 : affichage mobile et menu avec boutique et histoire', async ({ page 
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });
 
-test('V3.2 : orga inchangée, vraie identité du club et aucun faux écusson', async ({ page }) => {
+test('V3.5 : orga inchangée, vrai blason du club et emblèmes graphiques originaux', async ({ page }) => {
   await page.goto('/');
   const people = await page.locator('#club-people .person-button').evaluateAll(nodes => nodes.map(el => el.dataset.person));
   expect(people).toEqual(['yvan', 'messi', 'charel', 'marco', 'mamady', 'dylan', 'emilie']);
   await expect(page.locator('#fixture-list .fixture-own-crest')).toHaveCount(8);
-  await expect(page.locator('#fixture-list .opponent-wordmark')).toHaveCount(8);
+  await expect(page.locator('#fixture-list .opponent-crest')).toHaveCount(8);
   await expect(page.locator('#fixture-list .club-mark')).toHaveCount(0);
   await expect(page.locator('.organisation-editorial')).toBeVisible();
 });

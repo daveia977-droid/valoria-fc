@@ -65,3 +65,12 @@ Le calendrier suit les dates générales de la phase de ligue 2026/27 publiées 
 - Le billet spécimen reçoit des effets de papier et des repères visuels sans fausse lecture possible comme billet réel.
 - Navigation et tests mis à jour, avec respect des contraintes mobiles, du clavier, de la réduction des mouvements et du budget nul.
 - La méthode éditoriale « Plume » est appliquée : phrases complètes, ton naturel, fidélité aux faits fournis. Aucun service externe ou migration de framework.
+
+## V3.5 — Design Unslop et identités adverses (18 novembre 2026)
+
+- Méthode de design : **[Unslop de Damir Sokolovsky](https://github.com/heydamir/unslop)**, licence [Creative Commons Attribution 4.0](https://creativecommons.org/licenses/by/4.0/). Cette refonte s’appuie sur sa grille de lecture (audit, direction, espacements, couleurs, icônes, typographie, structure, détails, visuels, mouvement). Crédit : Damir Sokolovsky, @heydamir. Aucune bibliothèque d’exécution issue du skill n’est ajoutée au site.
+- Référence détaillée : [docs/v35-unslop-audit.md](docs/v35-unslop-audit.md).
+- Palette conservée : noir, bordeaux, or, crème, avec violet réservé au Third. Écarts de spacing réduits, rayons/hairlines cohérents, suppression de halos superflus ; la photographie de stade V2.5, le blason et la collection NW$ sont inchangés.
+- Une même famille d’icônes vectorielles dans `src/ui-icons.js` pour menus, navigation, actions, résultats et fermeture des fenêtres. Pictogrammes au trait 1,7 et 18 px, avec intitulés accessibles ; la gestion de pause et de mouvement réduit est conservée.
+- Huit **emblèmes vectoriels originaux non officiels**, dessinés pour VALORIA (fichiers `public/assets/opponents/*.svg`) : Bayern, Juventus, PSG, Atlético, Barcelone, Chelsea, Liverpool et Inter. Couleurs inspirées des équipes, silhouettes distinctes, monogrammes propres ; aucun blason, logo UEFA, dessin protégé ou affiliation réelle reproduit. Ils apparaissent sur le bandeau, l’affiche du prochain match et dans les fiches de rencontre.
+- Les résultats, dates, scores, billets de démonstration, boutique non ouverte, organigramme et textes ne sont pas modifiés. Pas de nouveaux services, paiements ni dépendances d’exécution. Vérifier les tests et déploiements avant la livraison.
