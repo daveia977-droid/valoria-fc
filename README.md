@@ -117,3 +117,11 @@ Le calendrier suit les dates générales de la phase de ligue 2026/27 publiées 
 - QA : Vite build, Playwright 320, 390, 430, 768, 1440 ; galerie, navigation, clavier, réduction de mouvement, autres sections.
 - Transparence : photos et modèles conceptuels générés par IA, aucun produit fabriqué ni encaissement réel, boutique/billetterie en démonstration.
 - Guides d'inspiration conservés : Impeccable, UI UX Pro Max, Unslop, Taste Skill, Frontend Design. Zéro dépendance de production ajoutée.
+
+## V8.1 — Galerie photo harmonisée et correctif Safari iPhone (23 novembre 2026)
+
+- Problème constaté sur capture mobile : titre, compteur et boutons visibles mais galerie photo vide. La grille mobile initiale utilisait une rangée 1fr dans une grille à hauteur automatique, et les seules images étaient positionnées en absolu. Cela peut rendre la rangée nulle dans certains navigateurs WebKit.
+- Correction structurelle : galerie mobile en flex horizontal avec largeur ET hauteur explicites sur chaque figure ; les images absolues ne contrôlent plus la taille. Aucun JS de mesure ni carrousel automatique. CSS actif même si JavaScript est désactivé.
+- Ordre validé : Studio femme, Street duo, Studio homme, Street femme. Les quatre visuels validés sont conservés, blasons et sponsors inclus.
+- Harmonie photographique via CSS uniquement : cadrages cohérents, saturation légèrement atténuée, contraste doux et reflet bordeaux-or subtil. Flèches ↗ des liens inchangées.
+- Tests V8.1 : tailles mobiles 320/375/390/430, hauteur des cartes, galerie sans JavaScript, navigation, boutique, réduction des mouvements.

@@ -83,3 +83,41 @@ test('V8 — reduced motion, shirt tabs and shop intact',async ({page})=>{
   await expect(page.locator('#shop-cart-open')).toBeAttached();
 });
 
+
+
+test('V8.1 — Safari-safe mobile cards have explicit nonzero layout sizes', async ({page}) => {
+  for (const width of [320,375,390,430]) {
+    await page.setViewportSize({width,height:844});
+    await page.goto('/#campagne');
+    const gallery=await page.locator('.campaign-v8-rail').evaluate(rail=>({
+      display:getComputedStyle(rail).display,
+      cards:[...rail.querySelectorAll('.campaign-v8-card')].map(card=>({
+        height:card.getBoundingClientRect().height,
+        width:card.getBoundingClientRect().width,
+        imageNaturalWidth:card.querySelector('img').naturalWidth,
+        imagePosition:getComputedStyle(card.querySelector('img')).position,
+      }))
+    }));
+    expect(gallery.display).toBe('flex');
+    expect(gallery.cards).toHaveLength(4);
+    expect(gallery.cards.every(card=>card.height>=330&&card.width>200)).toBe(true);
+    expect(gallery.cards[0].imageNaturalWidth).toBeGreaterThan(800);
+  }
+});
+
+test('V8.1 — mobile gallery remains visible without JS, user-supplied photo order',async ({browser})=>{
+  const context=await browser.newContext({viewport:{width:390,height:844},javaScriptEnabled:false});
+  const page=await context.newPage();
+  await page.goto('/');
+  const cards=page.locator('.campaign-v8-card');
+  await expect(cards).toHaveCount(4);
+  const images=await cards.locator('img').evaluateAll(list=>list.map(img=>img.getAttribute('src')));
+  expect(images).toEqual([
+   '/assets/campaign/studio-femme-v8.webp',
+   '/assets/campaign/street-duo-v8.webp',
+   '/assets/campaign/studio-homme-v8.webp',
+   '/assets/campaign/street-femme-v8.webp',
+  ]);
+  expect(await cards.first().evaluate(c=>c.getBoundingClientRect().height)).toBeGreaterThan(330);
+  await context.close();
+});

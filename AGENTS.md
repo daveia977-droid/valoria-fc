@@ -54,3 +54,7 @@ Sur la boutique, afficher trois maillots découpés depuis l'atlas d'origine sur
 ## V8 — Campagne & performance
 
 Conserver l'ordre Collection → Campagne → Boutique, quatre photos validées et corrigées (Studio homme, Studio femme, Street femme, Street duo). Créations IA et modèles fictifs, sans prétention de produits physiquement fabriqués ou de vrais ambassadeurs du club. Assets WebP locaux. Mobile : galerie horizontale manuelle, snap, flèches et compteur ; pas de lecture automatique. Desktop : disposition éditoriale asymétrique et profondeur CSS retenue, sans WebGL supplémentaire. Préserver toute la V7, club, maillots, huit matchs, ESGCI Cup, organigramme, panier démonstratif sans paiement, estimation à J+7, pause/mouvement réduit/accessibilité.
+
+## V8.1 — Non-régression des photos iPhone
+
+Le rail Campagne mobile DOIT rester en flex horizontal, avec largeur et hauteur explicites pour les figures : une image en position absolue ne peut pas dimensionner une grille implicite Safari. Conserver les quatre photos et l'ordre femme studio / duo street / homme studio / femme street. Le traitement chromatique doit rester un filtre CSS discret, jamais une retouche du blason VALORIA ou du sponsor NW$. Conserver les flèches ↗ dans les liens et les flèches du carrousel. Vérifier la hauteur réelle des cartes à 320, 375, 390 et 430 px.
