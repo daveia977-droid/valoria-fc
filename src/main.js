@@ -5,11 +5,13 @@ import { initMatchday } from './matchday.js';
 import { initClubOrganisation } from './club-organisation.js';
 import { initEsgciCup } from './esgci-cup.js';
 import { initShop } from './shop.js';
+import { initCampaign } from './campaign.js';
 initCollection();
 initMatchday();
 initClubOrganisation();
 initEsgciCup();
 initShop();
+initCampaign();
 
 const menu = document.querySelector('#mobile-menu');
 const contact = document.querySelector('#contact-dialog');
@@ -39,7 +41,8 @@ const root = document.documentElement;
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 const chapters = [...document.querySelectorAll('.chapter')];
 const nav = [...document.querySelectorAll('.desktop-nav a')];
-const navigationStops = [...document.querySelectorAll('#club, #competitions, #matchs, #esgci-cup, #collection, #boutique, #supporters, #organisation')];
+let highlightedNavigation = null;
+const navigationStops = [...document.querySelectorAll('#club, #competitions, #matchs, #esgci-cup, #collection, #campagne, #boutique, #supporters, #organisation')];
 const paused = () => reduced.matches || root.classList.contains('static-motion');
 root.classList.add('js-chapters');
 const visibility = new IntersectionObserver(entries => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); }); }, { rootMargin: '0px 0px -8% 0px', threshold: 0 });
@@ -58,7 +61,10 @@ function render() {
   for (const stop of navigationStops) {
     if (stop.getBoundingClientRect().top <= innerHeight * .45) active = (stop.id === 'matchs' || stop.id === 'esgci-cup') ? '#competitions' : `#${stop.id}`;
   }
-  nav.forEach(link => { if (link.getAttribute('href') === active) link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current'); });
+  if (active !== highlightedNavigation) {
+    highlightedNavigation = active;
+    nav.forEach(link => { if (link.getAttribute('href') === active) link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current'); });
+  }
 }
 function schedule() { if (!frame && !document.hidden) frame = requestAnimationFrame(render); }
 addEventListener('scroll', schedule, { passive: true }); addEventListener('resize', schedule, { passive: true });

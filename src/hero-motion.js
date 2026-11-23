@@ -12,6 +12,8 @@ const short = matchMedia('(max-height: 650px)');
 const entrances = [];
 let manual = false;
 let frame = 0;
+let lastProgress = Number.NaN, lastViewportWidth = 0, lastViewportHeight = 0;
+let lastIdentityVisible = null;
 let focusTimer;
 const clamp = x => Math.min(1, Math.max(0, x));
 const ease = x => x * x * (3 - 2 * x);
@@ -23,6 +25,11 @@ function render() {
   frame = 0;
   if (stopped() || document.hidden) return;
   const p = clamp(-story.getBoundingClientRect().top / Math.max(1, story.offsetHeight - scene.offsetHeight));
+  // Skip identical frames: scrolling outside the hero must not repaint its layers.
+  if (Math.abs(p - lastProgress) < .0003 && lastViewportWidth === innerWidth && lastViewportHeight === innerHeight) return;
+  lastProgress = p;
+  lastViewportWidth = innerWidth;
+  lastViewportHeight = innerHeight;
   const t = ease(clamp((p - .08) / .8));
   const reveal = ease(clamp((p - .4) / .3));
   variable('--p', p.toFixed(5));
@@ -39,8 +46,12 @@ function render() {
   if (p < .68 && identity.contains(document.activeElement)) {
     (clubLink.getClientRects().length ? clubLink : document.querySelector('.navigation .brand')).focus({ preventScroll: true });
   }
-  identity.setAttribute('aria-hidden', String(p < .68));
-  identity.inert = p < .68;
+  const identityVisible = p >= .68;
+  if (identityVisible !== lastIdentityVisible) {
+    lastIdentityVisible = identityVisible;
+    identity.setAttribute('aria-hidden', String(!identityVisible));
+    identity.inert = !identityVisible;
+  }
   scene.dataset.progress = p.toFixed(5);
 }
 
@@ -49,6 +60,8 @@ function schedule() {
 }
 
 function sync() {
+  lastProgress = Number.NaN;
+  lastIdentityVisible = null;
   clearTimeout(focusTimer);
   if (frame) cancelAnimationFrame(frame);
   frame = 0;

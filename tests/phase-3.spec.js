@@ -27,6 +27,9 @@ for (const width of [320, 390, 768, 1440]) {
     if (width < 761) {
       const tree = await page.locator("#club-people").boundingBox();
       expect(tree.height).toBeLessThan(800);
+    }
+    // V2 and later use the mobile menu for all tablet widths below 1181px.
+    if (width < 1181) {
       await page.getByRole("button", { name: "Menu", exact: true }).click();
       await page
         .getByRole("navigation", { name: "Navigation mobile" })

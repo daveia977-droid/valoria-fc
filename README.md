@@ -105,3 +105,15 @@ Le calendrier suit les dates générales de la phase de ligue 2026/27 publiées 
 - Confirmation graphique avec récapitulatif, total indicatif, date J+7, bouton « OK ». Le panier temporaire est vidé ensuite. Aucune commande ou paiement réel, aucune donnée bancaire.
 - Corrections de lisibilité, focus clavier, cibles tactiles, mouvement réduit ; CSS indépendant `src/v7.css` ajouté après les styles V6.
 - Les 5 référentiels approuvés restent des guides de conception : Impeccable, UI UX Pro Max, Unslop, Taste Skill et Frontend Design. Aucun SDK ni service payant ajouté.
+
+## V8 — Porter nos couleurs. Partout. (23 novembre 2026)
+
+- Quatre photographies validées, publiées entre Collection et Boutique : Studio homme (Domicile), Studio femme (Domicile), Street femme (Extérieur), Street duo (Third et Extérieur). Duo avec sac vide ; studio femme avec écusson corrigé sans couronne/lauriers.
+- Les 4 fichiers JPEG fournis (1 486 690 octets cumulés) sont optimisés en WebP (qualité 81, sans changement de cadrage source). Ensemble environ 327 Ko. Assets locaux dans public/assets/campaign, pas de CDN ni de génération à la visite. Images lazy-loaded, async-decoded, dimensions intrinsèques et alt text.
+- Galerie éditoriale asymétrique sur desktop (deux photos studio hautes, deux street empilées) ; sur iPhone, défilement horizontal manuel et scroll-snap avec boutons, compteur, clavier, sans autoplay. CTA lisible vers la boutique.
+- Profondeur mesurée via perspective et transitions CSS, hover discret de la collection et des photos, sans nouvelle scène WebGL. Le blason reste en 2.5D. Sur mobile, les effets de filtre lourds sont atténués.
+- Boucle d'animation d'accueil optimisée : une progression inchangée n'impose pas de réécrire les variables CSS ou les attributs aria/inert. Navigation active mise à jour uniquement lorsque la section change.
+- Accessibilité : role=img valide sur la représentation des maillots, meilleur contraste des catégories. Test phase-3 adapté au vrai breakpoint menu 1180px.
+- QA : Vite build, Playwright 320, 390, 430, 768, 1440 ; galerie, navigation, clavier, réduction de mouvement, autres sections.
+- Transparence : photos et modèles conceptuels générés par IA, aucun produit fabriqué ni encaissement réel, boutique/billetterie en démonstration.
+- Guides d'inspiration conservés : Impeccable, UI UX Pro Max, Unslop, Taste Skill, Frontend Design. Zéro dépendance de production ajoutée.

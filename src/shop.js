@@ -40,7 +40,7 @@ const sum=cart=>cart.reduce((acc,line)=>acc+itemById(line.id).price*line.qty,0);
 const count=cart=>cart.reduce((acc,line)=>acc+line.qty,0);
 
 function merchandiseArt(item){
- if(item.kit!==undefined) return '<div class="shop-art shop-art-kit" aria-label="Visuel du maillot '+item.name+'"><div class="shop-kit-frame" data-shop-kit="'+item.kit+'">'+
+ if(item.kit!==undefined) return '<div class="shop-art shop-art-kit" role="img" aria-label="Visuel du maillot '+item.name+'"><div class="shop-kit-frame" data-shop-kit="'+item.kit+'">'+
   (transparentKits.has(item.kit)
     ? '<img class="shop-kit-cutout" src="'+transparentKits.get(item.kit)+'" alt="" width="480" height="648">'
     : '<img class="shop-kit-sheet" src="/assets/collection.webp" alt="" width="1832" height="859" loading="lazy">'

@@ -1,0 +1,204 @@
+/* VALORIA FC — V8 / editorial campaign + measured depth.
+   Built atop the approved black / burgundy / gold identity. No runtime design dependency. */
+:root { --v8-gold:#dfbb84; --v8-gold-2:#c69c69; --v8-ink:#120c13; --v8-plum:#311725; --v8-paper:#f5eee5; }
+#campagne { scroll-margin-top:90px; }
+.campaign-v8 {
+  position:relative; isolation:isolate; overflow:hidden;
+  color:#f4e8dc; background:linear-gradient(148deg,#1a0c17 0%,#25111e 49%,#0d0a11 100%);
+  border-top:1px solid #a777613a; border-bottom:1px solid #d8b27850;
+}
+.campaign-v8::before {
+  content:""; position:absolute; z-index:-1; pointer-events:none;
+  inset:0;
+  background:radial-gradient(ellipse 40% 40% at 16% 10%,#90435d30,transparent 80%),
+             radial-gradient(ellipse 38% 45% at 97% 95%,#b5895522,transparent 80%);
+}
+.campaign-v8::after {
+  content:"VALORIA"; position:absolute; pointer-events:none; z-index:-1;
+  right:-.035em; top:105px; opacity:.045; white-space:nowrap;
+  font:600 clamp(120px,22vw,355px)/.8 "Cormorant Garamond",Georgia,serif;
+  letter-spacing:-.075em; color:#e7c18a;
+}
+.campaign-v8-inner { width:min(1460px,100%); padding:clamp(64px,8vw,124px) clamp(22px,5.2vw,82px) clamp(50px,7vw,98px); margin:auto; }
+.campaign-v8-top { display:grid; grid-template-columns:1.25fr .75fr; align-items:end; gap:clamp(24px,6vw,100px); margin-bottom:clamp(25px,4vw,56px); }
+.campaign-v8-kicker {
+  display:flex; align-items:center; gap:15px; margin:0 0 19px;
+  color:var(--v8-gold); font:650 10px/1.5 Manrope,sans-serif; letter-spacing:.19em;
+  text-transform:uppercase;
+}
+.campaign-v8-kicker::before { content:""; width:29px; height:1px; background:#d8b278; flex:none; }
+.campaign-v8-title {
+  font:600 clamp(60px,7.8vw,118px)/.87 "Cormorant Garamond",Georgia,serif;
+  letter-spacing:-.045em; color:#fbefe0; max-width:890px;
+  text-wrap:balance;
+}
+.campaign-v8-title em { display:block; color:#dcb584; font-weight:600; font-style:italic; }
+.campaign-v8-lead { max-width:340px; padding-bottom:5px; }
+.campaign-v8-lead p { color:#d8c7c7; font-size:clamp(12px,1.15vw,14px); line-height:1.88; }
+.campaign-v8-lead a {
+  display:inline-flex; gap:20px; align-items:center; min-height:44px;
+  margin-top:22px; border-bottom:1px solid #c9a26d8e;
+  color:#f2cd98; font-size:11px; font-weight:750; letter-spacing:.025em;
+}
+.campaign-v8-lead a:hover { color:#fff5e5; border-color:#fff5e5; }
+.campaign-v8-stage { position:relative; }
+.campaign-v8-rail {
+  display:grid; grid-template-columns:minmax(0,1.02fr) minmax(0,1.02fr) minmax(0,.92fr);
+  grid-template-rows:repeat(2,minmax(0,1fr));
+  height:clamp(450px,50.3vw,654px);
+  gap:clamp(9px,1.25vw,18px);
+}
+.campaign-v8-card {
+  position:relative; isolation:isolate; display:block; min-width:0; min-height:0;
+  margin:0; overflow:hidden; background:#271b24;
+  border:1px solid #edcca631; box-shadow:0 13px 28px #09070a35, inset 0 0 0 1px #f5dbb008;
+  transform:translateZ(0); border-radius:2px;
+}
+.campaign-v8-card:nth-child(1),.campaign-v8-card:nth-child(2) { grid-row:1 / 3; }
+.campaign-v8-card:nth-child(3) { grid-column:3; grid-row:1; }
+.campaign-v8-card:nth-child(4) { grid-column:3; grid-row:2; }
+.campaign-v8-card img {
+  position:absolute; inset:0; width:100%; height:100%; max-width:none; display:block;
+  object-fit:cover; object-position:center 38%;
+  transform:scale(1); transition:transform 700ms cubic-bezier(.16,.7,.25,1);
+}
+.campaign-v8-card:nth-child(1) img { object-position:50% 37%; }
+.campaign-v8-card:nth-child(2) img { object-position:50% 34%; }
+.campaign-v8-card:nth-child(3) img { object-position:50% 35%; }
+.campaign-v8-card:nth-child(4) img { object-position:50% 31%; }
+.campaign-v8-card::after {
+  content:""; position:absolute; z-index:0; pointer-events:none; inset:0;
+  background:linear-gradient(180deg,transparent 47%,#140a16a3 83%,#100812cf 100%);
+}
+.campaign-v8-card-number {
+  position:absolute; z-index:1; top:16px; left:18px;
+  font:700 9px/1.5 Manrope,sans-serif; letter-spacing:.12em;
+  text-shadow:0 2px 8px #0009; color:#fff5e4;
+}
+.campaign-v8-card figcaption {
+  position:absolute; z-index:1; left:clamp(14px,2vw,29px); right:16px; bottom:clamp(16px,2.1vw,28px);
+  display:flex; flex-direction:column; align-items:flex-start; gap:7px;
+}
+.campaign-v8-card figcaption span {
+  font:700 9px/1.5 Manrope,sans-serif; letter-spacing:.15em; text-transform:uppercase;
+  color:#efc88b;
+}
+.campaign-v8-card figcaption strong {
+  font:600 clamp(26px,3vw,44px)/.96 "Cormorant Garamond",Georgia,serif;
+  letter-spacing:-.015em; text-shadow:0 3px 19px #0008; color:#fff5e9;
+}
+.campaign-v8-card:nth-child(n+3) figcaption strong { font-size:clamp(24px,2.3vw,35px); }
+.campaign-v8-bottom {
+  display:flex; align-items:center; justify-content:space-between;
+  flex-wrap:wrap; gap:18px 36px; margin-top:24px; padding-top:18px;
+  border-top:1px solid #e6c08c3f;
+}
+.campaign-v8-bottom p { max-width:680px; font-size:11px; line-height:1.8; color:#c8b4ba; }
+.campaign-v8-bottom a {
+  display:inline-flex; min-height:44px; align-items:center; gap:17px;
+  font-size:11px; font-weight:750; color:#f2ca91; white-space:nowrap;
+  border-bottom:1px solid #bb915db5;
+}
+.campaign-v8-bottom a:hover { color:white; border-color:white; }
+.campaign-v8-bottom a svg { flex:none; }
+.campaign-v8-controls { display:none; }
+/* The approved crest remains a 2D artwork: depth is composed using perspective,
+   rather than rendering another always-on WebGL scene. */
+@media (hover:hover) and (pointer:fine) and (min-width:761px) {
+  .campaign-v8-rail { perspective:1800px; }
+  .campaign-v8-card { transition:transform 450ms cubic-bezier(.16,.7,.25,1),box-shadow 450ms ease,border-color 450ms ease; transform-style:preserve-3d; }
+  .campaign-v8-card:hover { transform:translate3d(0,-6px,12px) rotateX(1.4deg); box-shadow:0 24px 45px #04020885; border-color:#e3c2968a; z-index:2; }
+  .campaign-v8-card:hover img { transform:scale(1.035); }
+  .collection-display { perspective:1100px; }
+  .kit-image-wrap { transition:transform 480ms cubic-bezier(.16,.7,.25,1),filter 480ms ease; transform-style:preserve-3d; }
+  .kit-image-wrap:hover { transform:translate3d(0,-5px,16px) rotateY(-3deg) rotateX(1.3deg); filter:drop-shadow(0 20px 30px #0005); }
+}
+/* No additional scroll JS required. One reveal, only on desktop and only
+   while motion is enabled. Nothing hidden if JavaScript is unavailable. */
+@media (min-width:761px) and (prefers-reduced-motion:no-preference) {
+  html:not(.static-motion) .campaign-v8.is-enhanced:not(.is-visible) .campaign-v8-top,
+  html:not(.static-motion) .campaign-v8.is-enhanced:not(.is-visible) .campaign-v8-stage {
+    opacity:0; transform:translateY(28px);
+  }
+  .campaign-v8.is-enhanced .campaign-v8-top,
+  .campaign-v8.is-enhanced .campaign-v8-stage {
+    transition:opacity .72s ease,transform .85s cubic-bezier(.16,1,.3,1);
+  }
+  .campaign-v8.is-enhanced .campaign-v8-stage { transition-delay:.11s; }
+}
+@media (min-width:761px) and (max-width:1100px) {
+  .campaign-v8-top { grid-template-columns:1.15fr .85fr; gap:24px; }
+  .campaign-v8-title { font-size:clamp(63px,7.6vw,94px); }
+  .campaign-v8-rail { height:clamp(450px,53vw,560px); }
+}
+@media (max-width:760px) {
+  #campagne { scroll-margin-top:72px; }
+  .campaign-v8-inner { padding:64px 0 47px; }
+  .campaign-v8::after { font-size:132px; top:95px; }
+  .campaign-v8-top { display:block; padding:0 max(20px,env(safe-area-inset-left)); margin-bottom:28px; }
+  .campaign-v8-kicker { font-size:9px; letter-spacing:.135em; gap:10px; }
+  .campaign-v8-title { font-size:clamp(63px,15vw,90px); line-height:.91; }
+  .campaign-v8-lead { margin-top:20px; max-width:500px; }
+  .campaign-v8-lead p { font-size:12px; line-height:1.78; }
+  .campaign-v8-lead a { margin-top:12px; }
+  .campaign-v8-rail {
+    display:grid; grid-auto-flow:column; grid-template-columns:none; grid-template-rows:1fr;
+    grid-auto-columns:min(79vw,375px);
+    align-items:stretch; gap:13px; height:auto; min-height:0;
+    overflow-x:auto; overflow-y:hidden; overscroll-behavior-x:contain;
+    scroll-snap-type:x mandatory; scroll-padding-inline:20px;
+    padding:0 20px 11px; scrollbar-width:none;
+    -webkit-overflow-scrolling:touch; touch-action:pan-x pan-y;
+  }
+  .campaign-v8-rail::-webkit-scrollbar { display:none; }
+  .campaign-v8-card,.campaign-v8-card:nth-child(1),.campaign-v8-card:nth-child(2),
+  .campaign-v8-card:nth-child(3),.campaign-v8-card:nth-child(4) {
+    grid-row:auto; grid-column:auto; aspect-ratio:4/5; height:auto; min-height:0;
+    scroll-snap-align:start; box-shadow:0 10px 23px #0003;
+  }
+  .campaign-v8-card img { object-position:50% 33%; }
+  .campaign-v8-card:nth-child(n+3) img { object-position:center 33%; }
+  .campaign-v8-card figcaption strong,.campaign-v8-card:nth-child(n+3) figcaption strong { font-size:33px; }
+  .campaign-v8-controls {
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    padding:11px max(20px,env(safe-area-inset-left)) 0;
+  }
+  .campaign-v8-count { font:700 10px/1.4 Manrope,sans-serif; color:#e9c48c; letter-spacing:.1em; font-variant-numeric:tabular-nums; }
+  .campaign-v8-count span { color:#a8999e; margin:0 4px; }
+  .campaign-v8-navigation { display:flex; align-items:center; gap:8px; }
+  .campaign-v8-navigation button {
+    display:grid; place-items:center; width:44px; height:44px;
+    border-radius:50%; background:#2e1828; color:#f4dfbf;
+    border:1px solid #d5b17e65;
+  }
+  .campaign-v8-navigation button:disabled { opacity:.4; cursor:default; }
+  .campaign-v8-navigation button:not(:disabled):active { background:#5a2841; }
+  .campaign-v8-navigation svg { width:18px;height:18px; }
+  .campaign-v8-bottom { margin:24px max(20px,env(safe-area-inset-left)) 0; padding-top:17px; display:block; }
+  .campaign-v8-bottom p { font-size:10px; line-height:1.65; }
+  .campaign-v8-bottom a { margin-top:18px; }
+  .kit-image-wrap,.kit-viewport { transform-style:flat; }
+  /* Premium depth without repaint-heavy full-screen effects on a phone. */
+  .scene .aura,.scene .beam { display:none; }
+  .scene .grain { opacity:.08; }
+  .scene .textile { filter:none; }
+}
+@media (max-width:360px) {
+  .campaign-v8-title { font-size:clamp(55px,16vw,66px); }
+  .campaign-v8-rail { grid-auto-columns:calc(100vw - 55px); }
+  .campaign-v8-card figcaption strong { font-size:28px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .campaign-v8-card,.campaign-v8-card img,.kit-image-wrap,.campaign-v8-top,.campaign-v8-stage {
+    transition:none!important; transform:none!important; animation:none!important;
+  }
+}
+html.static-motion .campaign-v8-card,
+html.static-motion .campaign-v8-card img,
+html.static-motion .kit-image-wrap,
+html.static-motion .campaign-v8-top,
+html.static-motion .campaign-v8-stage { transition:none!important; transform:none!important; animation:none!important; }
+
+
+/* WCAG: high-contrast tiny category labels on the ivory product cards. */
+.shop-product-category { color:#694b43; }

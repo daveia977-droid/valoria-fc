@@ -50,3 +50,7 @@ La V6 présente huit articles à prix indicatifs calqués sur les gammes publiqu
 ## V7 — Contrat visuel et commercial
 
 Sur la boutique, afficher trois maillots découpés depuis l'atlas d'origine sur fond ivoire, avec NW$ inchangé. Le Third porte « Meilleure vente » à titre de mise en avant fictive ; les CGU l'indiquent. Logo ESGCI doré dans la compétition, sans revendication d'association avec l'école. Le panier est adapté aux captures Real Madrid mais aux propres couleurs VALORIA, avec quantité +/−, taille, retrait, total et récapitulatif collé en bas sur iPhone. Afficher automatiquement une estimation J+7 calculée localement (calendrier manuel supprimé), non garantie. Maintenir le checkout en simulation, jamais prétendre à une commande expédiée ou un débit. Préserver toutes les sections et modes de clavier/accessibilité/motion réduite.
+
+## V8 — Campagne & performance
+
+Conserver l'ordre Collection → Campagne → Boutique, quatre photos validées et corrigées (Studio homme, Studio femme, Street femme, Street duo). Créations IA et modèles fictifs, sans prétention de produits physiquement fabriqués ou de vrais ambassadeurs du club. Assets WebP locaux. Mobile : galerie horizontale manuelle, snap, flèches et compteur ; pas de lecture automatique. Desktop : disposition éditoriale asymétrique et profondeur CSS retenue, sans WebGL supplémentaire. Préserver toute la V7, club, maillots, huit matchs, ESGCI Cup, organigramme, panier démonstratif sans paiement, estimation à J+7, pause/mouvement réduit/accessibilité.
