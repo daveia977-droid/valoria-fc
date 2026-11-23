@@ -52,7 +52,7 @@ function productCard(item){
   '<div class="shop-product-copy"><span class="shop-product-category">'+(item.kit!==undefined?'Collection 2026 / 2027':'Merchandising · Concept')+'</span>'+
   '<h3>'+item.name+'</h3><p>'+item.detail+'</p>'+
   '<div class="shop-product-bottom"><span class="shop-card-price">'+money(item.price)+'</span>'+
-  '<button type="button" class="shop-product-view" data-product="'+item.id+'">Voir les détails '+uiIcon('arrow-up-right')+'</button></div></div></article>';
+  '<button type="button" class="shop-product-view" data-product="'+item.id+'">Voir les détails '+uiIcon('arrow-right')+'</button></div></div></article>';
 }
 function positionGarments(root){
  for(const frame of root.querySelectorAll('.shop-kit-frame')){

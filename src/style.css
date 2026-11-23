@@ -6,6 +6,7 @@
 @import './v6.css';
 @import './v7.css';
 @import './v8.css';
+@import './v82.css';
 
 [hidden] { display: none !important; }
 .header-actions { display: flex; align-items: center; gap: 14px; }

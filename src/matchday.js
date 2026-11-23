@@ -39,7 +39,7 @@ function fixtureCard(game, index, featuredId) {
     '<strong class="fixture-score">' + scoreboardText(game) + '</strong>' +
     (game.atHome ? away : home) + '</span>' +
     '<span class="fixture-result-label">' + (game.score ? 'VALORIA : ' + recent : game.atHome ? 'À DOMICILE' : 'À L’EXTÉRIEUR') + '</span>' +
-    '<span class="fixture-bottom">' + (game.score ? 'Voir le résultat' : ongoing(game) ? 'Voir le match et les billets' : 'Voir le match') + uiIcon('arrow-up-right') + '</span></button></li>';
+    '<span class="fixture-bottom">' + (game.score ? 'Voir le résultat' : ongoing(game) ? 'Voir le match et les billets' : 'Voir le match') + uiIcon('arrow-right') + '</span></button></li>';
 }
 
 export function initMatchday() {
@@ -58,7 +58,7 @@ export function initMatchday() {
   featureMark.alt = 'Emblème stylisé non officiel pour ' + focusGame.rival;
   featureMark.className = 'opponent-crest featured-opponent-crest';
   document.querySelector('#featured-venue').textContent = (focusGame.atHome ? 'À DOMICILE' : 'À L’EXTÉRIEUR') + ' · HEURE DE PARIS';
-  featureButton.innerHTML = (nextGame ? 'Découvrir la rencontre et les billets' : 'Voir la dernière rencontre') + ' ' + uiIcon('arrow-up-right');
+  featureButton.innerHTML = (nextGame ? 'Découvrir la rencontre et les billets' : 'Voir la dernière rencontre') + ' ' + uiIcon('arrow-right');
 
   const countdown = document.querySelector('#match-countdown');
   function clock() {

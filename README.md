@@ -125,3 +125,12 @@ Le calendrier suit les dates générales de la phase de ligue 2026/27 publiées 
 - Ordre validé : Studio femme, Street duo, Studio homme, Street femme. Les quatre visuels validés sont conservés, blasons et sponsors inclus.
 - Harmonie photographique via CSS uniquement : cadrages cohérents, saturation légèrement atténuée, contraste doux et reflet bordeaux-or subtil. Flèches ↗ des liens inchangées.
 - Tests V8.1 : tailles mobiles 320/375/390/430, hauteur des cartes, galerie sans JavaScript, navigation, boutique, réduction des mouvements.
+
+## VALORIA V8.2 — Film d’accueil, navigation, supporters (23 novembre 2026)
+
+- Compteur affiché : 13 542, avec hiérarchie visuelle renforcée. C'est une donnée éditoriale de démonstration, et non un chiffre de vrais comptes vérifié. La limite est expliquée dans la page Confidentialité, sans faux compteur temps réel.
+- Remplacement de toutes les flèches diagonales par des icônes horizontales sobres (SVG accessible, translation de survol légère), y compris les liens de campagne, les matchs et la boutique.
+- Performance du héros : variables CSS d'animation appliquées à la seule scène et non à tout le document HTML. Les préférences de mouvement réduit et la pause manuelle sont conservées.
+- Écusson historique intact : contours et profondeur rendus en CSS avec moins de couches de filtres GPU, ombre directionnelle plus réaliste et fond de stade plus lisible.
+- Téléphone : réduction des flous/filtres coûteux, vignettage naturel sur le vrai fond du stade. Aucun moteur 3D supplémentaire.
+- Tests : Playwright pour flèches, confidentialité, animation locale, responsive 320 à 1440 pixels, galerie, boutique, accessibilité.

@@ -58,3 +58,7 @@ Conserver l'ordre Collection → Campagne → Boutique, quatre photos validées 
 ## V8.1 — Non-régression des photos iPhone
 
 Le rail Campagne mobile DOIT rester en flex horizontal, avec largeur et hauteur explicites pour les figures : une image en position absolue ne peut pas dimensionner une grille implicite Safari. Conserver les quatre photos et l'ordre femme studio / duo street / homme studio / femme street. Le traitement chromatique doit rester un filtre CSS discret, jamais une retouche du blason VALORIA ou du sponsor NW$. Conserver les flèches ↗ dans les liens et les flèches du carrousel. Vérifier la hauteur réelle des cartes à 320, 375, 390 et 430 px.
+
+## VALORIA V8.2 — Anti-slop et performance
+
+Les variables CSS animées doivent rester sur la scène hero, pas sur document.documentElement. L'écusson de base est conservé sans remplacement; améliorer son rendu uniquement en CSS. Éviter les gros flous GPU sur mobile. Les icônes de navigation sont des flèches horizontales SVG, pas des glyphes diagonaux. Le compteur Supporters doit rester à 13 542 avec sa transparence dans confidentialite.html. Préserver la galerie V8.1 et les fonctionnalités V7.

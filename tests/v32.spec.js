@@ -19,7 +19,7 @@ test('V3.2 : entrée Boutique, annonce à venir, aucune vente effective', async 
   await expect(page).toHaveURL(/#boutique$/);
   await expect(page.locator('#boutique-title')).toContainText('Boutique officielle');
   await expect(page.locator('#boutique-title')).toContainText('VALORIA');
-  await expect(page.locator('.boutique-v55-state')).toContainText('Sans paiement réel');
+  await expect(page.locator('#boutique')).toContainText('Sans paiement réel');
   await expect(page.locator('#boutique .shop-filter')).toHaveCount(6);
   await expect(page.locator('#shop-products .shop-product')).toHaveCount(8);
   await expect(page.locator('#boutique form, #boutique input, #boutique [type="submit"]')).toHaveCount(0);
@@ -76,9 +76,10 @@ for (const width of [320, 390, 430, 768, 1440]) {
 
 test('V3.2 : informations de future commercialisation, aucune transaction', async ({ page }) => {
   await page.goto('/mentions-legales.html');
-  await expect(page.locator('.legal-main')).toContainText('future boutique');
-  await expect(page.locator('.legal-main')).toContainText('aucune vente');
+  // V7+ has an interactive demonstration boutique, not a future-availability placeholder.
+  await expect(page.locator('.legal-main')).toContainText('boutique');
+  await expect(page.locator('.legal-main')).toContainText('Aucun paiement');
   await page.goto('/cgu.html');
-  await expect(page.locator('.legal-main')).toContainText('simulation locale');
-  await expect(page.locator('.legal-main')).toContainText('aucun achat');
+  await expect(page.locator('.legal-main')).toContainText('démonstration locale');
+  await expect(page.locator('.legal-main')).toContainText('aucune commande');
 });

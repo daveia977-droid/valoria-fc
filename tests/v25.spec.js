@@ -7,7 +7,7 @@ test('V2.5 : accueil dégagé, photographie de stade validée', async ({ page })
   await expect(page.locator('.scene')).not.toContainText('Club fictif');
   await expect(page.locator('.scene')).not.toContainText('Projet personnel');
   await expect(page.locator('#matchs')).toBeVisible();
-  await expect(page.locator('#supporters')).toContainText('10 200');
+  await expect(page.locator('#supporters')).toContainText('13 542');
   const photo = await page.locator('.scene .textile').evaluate(async image => {
     await image.decode();
     return { width: image.naturalWidth, height: image.naturalHeight };

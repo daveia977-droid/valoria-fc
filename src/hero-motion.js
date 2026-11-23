@@ -18,7 +18,9 @@ let focusTimer;
 const clamp = x => Math.min(1, Math.max(0, x));
 const ease = x => x * x * (3 - 2 * x);
 const stopped = () => manual || reduced.matches;
-const variable = (name, value) => root.style.setProperty(name, String(value));
+// Hero animation values belong to the scene, not to the entire document.
+// Scoping limits style recalculation during scroll, especially in mobile Safari.
+const variable = (name, value) => scene.style.setProperty(name, String(value));
 
 
 function render() {

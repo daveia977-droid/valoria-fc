@@ -6,7 +6,7 @@ test('calendrier V2 : huit rencontres et grande affiche', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator('#fixture-list .fixture-card')).toHaveCount(8);
   await expect(page.locator('#featured-opponent')).toContainText('BARCELONE');
-  await expect(page.locator('#supporters')).toContainText('10 200');
+  await expect(page.locator('#supporters')).toContainText('13 542');
   await expect(page.locator('.scene .textile')).toHaveAttribute('src', '/assets/stade-valoria-v25.webp');
   expect(errors).toEqual([]);
 });

@@ -1,0 +1,162 @@
+/* VALORIA FC V8.2 — editorial polish without generative-looking ornament.
+   No additional JS libraries; no change to the actual historic crest artwork. */
+
+/* Restrained typography and quiet action affordances */
+:root { --v82-warm:#e2bc83; --v82-quiet:#d0b8aa; }
+.link-end-mark,
+.editorial-arrow { display:inline-flex; justify-content:center; align-items:center; flex:none; width:24px; height:24px; color:var(--v82-warm); }
+.link-end-icon,.editorial-arrow .ui-icon { display:block; flex:none; width:20px; height:20px; stroke:currentColor; }
+.line-link,.campaign-v8-lead a,.campaign-v8-bottom a,.boutique-v55-link,.competitions-links a,.shop-product-view,.match-feature-cta {
+  text-decoration:none;
+  transition: color .18s ease, border-color .18s ease, background-color .18s ease;
+}
+.line-link,.campaign-v8-lead a,.campaign-v8-bottom a,.boutique-v55-link {
+  gap:18px; letter-spacing:.012em;
+}
+.line-link .editorial-arrow,.link-end-mark,.shop-product-view .ui-icon,.match-feature-cta .ui-icon,.fixture-bottom .ui-icon {
+  transition: transform .2s cubic-bezier(.2,.8,.2,1), opacity .2s ease;
+}
+@media (hover:hover) and (pointer:fine) {
+  .line-link:hover .editorial-arrow,.campaign-v8-lead a:hover .link-end-mark,
+  .campaign-v8-bottom a:hover .link-end-mark,.boutique-v55-link:hover .link-end-mark,
+  .competitions-links a:hover .link-end-mark,
+  .shop-product-view:hover .ui-icon,.match-feature-cta:hover .ui-icon,
+  .fixture-card:hover .fixture-bottom .ui-icon { transform:translateX(4px); }
+}
+.competitions-links a > .link-end-mark { margin-left:auto; }
+.boutique-v55-link .link-end-mark,.campaign-v8-bottom .link-end-mark,
+.campaign-v8-lead .link-end-mark { line-height:1; font-size:inherit; }
+.editorial-arrow { font-size:initial; }
+.link-end-mark { font-size:initial; }
+a:focus-visible,button:focus-visible { outline:2px solid #e5c48c; outline-offset:4px; }
+
+/* Original hero photograph: depth and focus come from the stadium photograph,
+   not animated glow layers or fake 3D meshes. */
+.scene {
+  background:#0c090e;
+  backface-visibility:hidden;
+}
+.scene .textile {
+  object-position:50% 75%; opacity:.79;
+  filter:saturate(.83) contrast(1.075) brightness(.93);
+  transform:scale(1.045) translate3d(0,calc(var(--p) * -1.1%),0);
+  mask-image:linear-gradient(#000c 0%,#000 22%,#000 84%,#000a 100%);
+}
+.scene .atmosphere::after {
+  background:
+    radial-gradient(ellipse 56% 58% at 50% 57%,transparent 20%,#0b07123d 70%,#080509a8 100%),
+    linear-gradient(180deg,#09060b88 0%,#0a071048 35%,#0d06103d 65%,#080509b5 100%);
+}
+.scene .atmosphere::before {
+  background:radial-gradient(ellipse at center,transparent 55%,#b17b4218 67%,transparent 78%);
+  opacity:.6;
+}
+.scene .grain { opacity:.055; }
+.scene .opening h1 {
+  letter-spacing: -.01em;
+  text-shadow:0 8px 24px #020106ac;
+}
+.scene .identity h2 { text-shadow:0 8px 22px #020106c4; }
+.scene .edition { letter-spacing:.19em; color:#d2bba8; }
+.navigation {
+  border-bottom:1px solid #dbc19422;
+  -webkit-backdrop-filter:blur(6px);
+  backdrop-filter:blur(6px);
+}
+.navigation .brand img {
+  filter:drop-shadow(0 3px 6px #0008);
+}
+
+/* Real 2D crest has enough texture. Reduce expensive nested filter passes
+   and use a single directional shadow to suggest tangible depth. */
+.emblem { perspective:1450px; }
+.emblem .crest-reveal { filter:none; }
+.emblem .crest-reveal::before {
+  opacity:.48; filter:blur(8px);
+  background:radial-gradient(ellipse at 46% 48%,#d4ac6d40 4%,#5b2c3a2a 48%,transparent 78%);
+}
+.emblem .crest-reveal::after {
+  background:linear-gradient(112deg,transparent 35%,#fce5bd15 47%,transparent 60%);
+  opacity:.7;
+}
+.emblem img {
+  filter:drop-shadow(0 18px 16px #010105ca);
+  transform:rotateY(var(--tilt,0deg)) translateZ(8px);
+  -webkit-backface-visibility:hidden; backface-visibility:hidden;
+}
+.emblem-shadow {
+  opacity:.65;
+  background:radial-gradient(ellipse at center,#b1805132 0%,#41203419 50%,transparent 70%);
+  filter:blur(12px);
+}
+
+/* Hero visual remains fluid on lower-power/mobile GPUs:
+   low-cost opacity and one crest transform; avoid big blurred compositing layers. */
+@media (max-width:760px) {
+  .navigation {
+    background:#0e0910ed;
+    -webkit-backdrop-filter:none;backdrop-filter:none;
+  }
+  .scene .textile {
+    object-position:50% 73%;
+    filter:none;opacity:.74;
+    transform:none;
+    mask-image:none;
+  }
+  .scene .atmosphere::before { display:none; }
+  .scene .atmosphere::after {
+    background:linear-gradient(180deg,#09070b91 0%,#0e07124b 39%,#0e081044 67%,#090609b4 100%);
+  }
+  .scene .grain { display:none; }
+  .emblem-shadow { filter:none; opacity:.34; }
+  .emblem .crest-reveal::before { filter:none; opacity:.22; }
+  .emblem .crest-reveal::after { opacity:.45; }
+  .emblem img { filter:drop-shadow(0 11px 11px #020104c2); }
+  .scene .opening h1 { text-shadow:0 4px 15px #020104c7; }
+}
+/* No 'sparkle on hover' animations or automatic motion loops */
+@media (prefers-reduced-motion:reduce) {
+  .link-end-mark,.editorial-arrow,.shop-product-view .ui-icon,
+  .match-feature-cta .ui-icon,.fixture-bottom .ui-icon { transition:none!important; transform:none!important; }
+}
+html.static-motion .link-end-mark,html.static-motion .editorial-arrow { transition:none!important; transform:none!important; }
+
+/* Stronger supporters presence without a new gradient-card or fake live ticker */
+.supporters-inner { grid-template-columns:minmax(0,1fr) minmax(0,.95fr); gap:clamp(24px,5vw,72px); }
+.supporters-figure {
+  min-width:0; padding:clamp(26px,4.3vw,60px) clamp(22px,4vw,56px);
+  border:1px solid #c4a47771;
+  background:#140c13;
+  box-shadow:inset 0 1px #e9cda827;
+}
+.supporters-figure strong {
+  display:block;
+  font:600 clamp(76px,10.7vw,152px)/.86 'Cormorant Garamond',Georgia,serif;
+  letter-spacing:-.053em;
+  font-variant-numeric:tabular-nums;
+  color:#f1cc91;
+  text-shadow:none;
+  white-space:nowrap;
+}
+.supporters-figure span {
+  margin-top:clamp(17px,2.5vw,34px);padding-top:17px;
+  border-top:1px solid #d7b27a66;
+  font:650 10px/1.7 Manrope,sans-serif;
+  letter-spacing:.14em;color:#e2d0c3;
+}
+.supporters-figure::before { border-color:#d8b27819; }
+/* Retain the text content; this is not a live or independently verified count. */
+@media (max-width:1000px) {
+  .supporters-inner { grid-template-columns:1fr; }
+  .supporters-figure { width:100%; max-width:680px; }
+  .supporters-figure strong { font-size:clamp(78px,13vw,144px); }
+}
+@media (max-width:760px) {
+  .supporters-figure { padding:clamp(23px,7vw,40px); }
+  .supporters-figure strong { font-size:clamp(65px,16vw,106px); letter-spacing:-.045em; }
+  .supporters-figure span { font-size:9px; letter-spacing:.1em; }
+}
+@media (max-width:360px) {
+  .supporters-figure strong { font-size:64px; }
+}
+
