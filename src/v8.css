@@ -236,3 +236,16 @@ html.static-motion .campaign-v8-stage { transition:none!important; transform:non
     background:linear-gradient(180deg,transparent 56%,rgba(16,8,18,.38) 76%,rgba(16,8,18,.82) 100%);
   }
 }
+
+/* V8.3 training card — subdued floodlight tint, same editorial treatment
+   as studio and street cards; no new animation or branding overlay. */
+.campaign-v8-card[data-campaign-type="training"] img {
+  object-position:50% 45%;
+  filter:saturate(.90) contrast(1.035) brightness(.96);
+}
+.campaign-v8-card[data-campaign-type="training"]::after {
+  background:linear-gradient(180deg,transparent 52%,rgba(18,9,21,.22) 72%,rgba(18,9,21,.88) 100%);
+}
+@media (max-width:760px) {
+  .campaign-v8-card[data-campaign-type="training"] img {object-position:50% 47%;}
+}

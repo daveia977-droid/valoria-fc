@@ -134,3 +134,10 @@ Le calendrier suit les dates générales de la phase de ligue 2026/27 publiées 
 - Écusson historique intact : contours et profondeur rendus en CSS avec moins de couches de filtres GPU, ombre directionnelle plus réaliste et fond de stade plus lisible.
 - Téléphone : réduction des flous/filtres coûteux, vignettage naturel sur le vrai fond du stade. Aucun moteur 3D supplémentaire.
 - Tests : Playwright pour flèches, confidentialité, animation locale, responsive 320 à 1440 pixels, galerie, boutique, accessibilité.
+
+## VALORIA V8.3 — Entraînement nocturne (23 novembre 2026)
+
+- Galerie limitée à quatre visuels : entraînement nocturne, studio femme, studio homme, duo streetwear. La photo streetwear solo reste disponible parmi les assets.
+- Première photo : vraie personne sur le terrain, avec maillot Domicile ajouté numériquement. Recadrage optimisé 832 x 1105, environ 109 Ko, conservé dans public/assets/campaign/training-night-v83.webp.
+- Sur ordinateur, composition éditoriale asymétrique ; sur mobile, carrousel horizontal manuel sans lecture automatique. Un simple réglage CSS harmonise la teinte et la lumière du Training.
+- Les textes de la galerie et les documents légaux distinguent la photo de personne réelle des trois scènes fictives générées avec IA.

@@ -9,8 +9,8 @@ test('V8 — campaign is between collection and boutique', async ({page}) => {
   expect(order.indexOf('boutique')).toBe(order.indexOf('campagne')+1);
   await expect(page.locator('.campaign-v8-card')).toHaveCount(4);
   await expect(page.locator('.campaign-v8-card img')).toHaveCount(4);
-  await expect(page.locator('.campaign-v8-bottom')).toContainText('générés avec');
-  await expect(page.locator('.campaign-v8-bottom')).toContainText('produits fabriqués');
+  await expect(page.locator('.campaign-v8-bottom')).toContainText('modèles fictifs générés avec');
+  await expect(page.locator('.campaign-v8-bottom')).toContainText('produit fabriqué');
   await expect(page.locator('#campaign-v8-title')).toContainText('Partout.');
   await expect(page.locator('.desktop-nav a[href="#campagne"]')).toHaveCount(1);
   await expect(page.locator('#mobile-menu a[href="#campagne"]')).toHaveCount(1);
@@ -23,7 +23,7 @@ test('V8 — all four local campaign WebP photographs load', async ({page}) => {
   const images=page.locator('.campaign-v8-card img');
   for (const element of await images.all()) {
     const src=await element.getAttribute('src');
-    expect(src).toMatch(/^\/assets\/campaign\/[\w-]+-v8\.webp$/);
+    expect(src).toMatch(/^\/assets\/campaign\/[\w-]+-v8(?:3)?\.webp$/);
     const response=await page.request.get(src);
     expect(response.ok()).toBe(true);
     expect(response.headers()['content-type']).toMatch(/webp/i);
@@ -113,11 +113,27 @@ test('V8.1 — mobile gallery remains visible without JS, user-supplied photo or
   await expect(cards).toHaveCount(4);
   const images=await cards.locator('img').evaluateAll(list=>list.map(img=>img.getAttribute('src')));
   expect(images).toEqual([
+   '/assets/campaign/training-night-v83.webp',
    '/assets/campaign/studio-femme-v8.webp',
-   '/assets/campaign/street-duo-v8.webp',
    '/assets/campaign/studio-homme-v8.webp',
-   '/assets/campaign/street-femme-v8.webp',
+   '/assets/campaign/street-duo-v8.webp',
   ]);
   expect(await cards.first().evaluate(c=>c.getBoundingClientRect().height)).toBeGreaterThan(330);
   await context.close();
+});
+
+
+test('V8.3 — training portrait is first and optimized without enlarging gallery',async ({page})=>{
+ await page.setViewportSize({width:390,height:844});
+ await page.goto('/#campagne');
+ const images=page.locator('.campaign-v8-card img');
+ await expect(images).toHaveCount(4);
+ await expect(images.first()).toHaveAttribute('src','/assets/campaign/training-night-v83.webp');
+ const response=await page.request.get('/assets/campaign/training-night-v83.webp');
+ expect(response.ok()).toBe(true);
+ expect((await response.body()).length).toBeLessThan(210000);
+ await expect(page.locator('.campaign-v8-card').first()).toContainText('Sous les projecteurs.');
+ await expect(page.locator('.campaign-v8-bottom')).toContainText('personne réelle');
+ await page.locator('#campaign-v8-next').click();
+ await expect(page.locator('#campaign-v8-current')).toHaveText('02');
 });

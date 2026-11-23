@@ -62,3 +62,7 @@ Le rail Campagne mobile DOIT rester en flex horizontal, avec largeur et hauteur 
 ## VALORIA V8.2 — Anti-slop et performance
 
 Les variables CSS animées doivent rester sur la scène hero, pas sur document.documentElement. L'écusson de base est conservé sans remplacement; améliorer son rendu uniquement en CSS. Éviter les gros flous GPU sur mobile. Les icônes de navigation sont des flèches horizontales SVG, pas des glyphes diagonaux. Le compteur Supporters doit rester à 13 542 avec sa transparence dans confidentialite.html. Préserver la galerie V8.1 et les fonctionnalités V7.
+
+## VALORIA V8.3
+
+Préserver l'ordre photographique exact : Training nuit (personne réelle / maillot ajouté), Studio femme, Studio homme, Street duo. Garder quatre cartes maximum ; aucun autoplay, aucune nouvelle dépendance. Préserver le correctif WebKit V8.1, le polish V8.2 et la transparence sur le caractère numérique des maillots. Le premier WebP est un cadrage de la photo approuvée.
