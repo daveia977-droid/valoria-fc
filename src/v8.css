@@ -43,7 +43,7 @@
 .campaign-v8-lead a:hover { color:#fff5e5; border-color:#fff5e5; }
 .campaign-v8-stage { position:relative; }
 .campaign-v8-rail {
-  display:grid; grid-template-columns:minmax(0,1.02fr) minmax(0,1.02fr) minmax(0,.92fr);
+  display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,.92fr) minmax(0,.92fr);
   grid-template-rows:repeat(2,minmax(0,1fr));
   height:clamp(450px,50.3vw,654px);
   gap:clamp(9px,1.25vw,18px);
@@ -54,9 +54,11 @@
   border:1px solid #edcca631; box-shadow:0 13px 28px #09070a35, inset 0 0 0 1px #f5dbb008;
   transform:translateZ(0); border-radius:2px;
 }
-.campaign-v8-card:nth-child(1),.campaign-v8-card:nth-child(2) { grid-row:1 / 3; }
+.campaign-v8-card:nth-child(1) { grid-column:1; grid-row:1 / 3; }
+.campaign-v8-card:nth-child(2) { grid-column:2; grid-row:1; }
 .campaign-v8-card:nth-child(3) { grid-column:3; grid-row:1; }
-.campaign-v8-card:nth-child(4) { grid-column:3; grid-row:2; }
+.campaign-v8-card:nth-child(4) { grid-column:2; grid-row:2; }
+.campaign-v8-card:nth-child(5) { grid-column:3; grid-row:2; }
 .campaign-v8-card img {
   position:absolute; inset:0; width:100%; height:100%; max-width:none; display:block;
   object-fit:cover; object-position:center 38%;
@@ -66,6 +68,7 @@
 .campaign-v8-card:nth-child(2) img { object-position:50% 34%; }
 .campaign-v8-card:nth-child(3) img { object-position:50% 35%; }
 .campaign-v8-card:nth-child(4) img { object-position:50% 31%; }
+.campaign-v8-card:nth-child(5) img { object-position:50% 29%; }
 .campaign-v8-card::after {
   content:""; position:absolute; z-index:0; pointer-events:none; inset:0;
   background:linear-gradient(180deg,transparent 47%,#140a16a3 83%,#100812cf 100%);
@@ -154,7 +157,7 @@
   }
   .campaign-v8-rail::-webkit-scrollbar { display:none; }
   .campaign-v8-card,.campaign-v8-card:nth-child(1),.campaign-v8-card:nth-child(2),
-  .campaign-v8-card:nth-child(3),.campaign-v8-card:nth-child(4) {
+  .campaign-v8-card:nth-child(3),.campaign-v8-card:nth-child(4),.campaign-v8-card:nth-child(5) {
     display:block; position:relative; box-sizing:border-box;
     flex:0 0 min(79vw,375px); width:min(79vw,375px); min-width:min(79vw,375px);
     height:clamp(340px,98.75vw,468px); min-height:340px;
@@ -194,7 +197,7 @@
 @media (max-width:360px) {
   .campaign-v8-title { font-size:clamp(55px,16vw,66px); }
   .campaign-v8-card,.campaign-v8-card:nth-child(1),.campaign-v8-card:nth-child(2),
-  .campaign-v8-card:nth-child(3),.campaign-v8-card:nth-child(4) {
+  .campaign-v8-card:nth-child(3),.campaign-v8-card:nth-child(4),.campaign-v8-card:nth-child(5) {
     flex-basis:calc(100vw - 55px); width:calc(100vw - 55px); min-width:calc(100vw - 55px);
   }
   .campaign-v8-card figcaption strong { font-size:28px; }
@@ -248,4 +251,14 @@ html.static-motion .campaign-v8-stage { transition:none!important; transform:non
 }
 @media (max-width:760px) {
   .campaign-v8-card[data-campaign-type="training"] img {object-position:50% 47%;}
+}
+
+/* V8.4 — fifth portrait is last, keeping the four previous photos intact.
+   Match the campaign's burgundy/gold editorial finish without modifying the portrait. */
+.campaign-v8-card[data-campaign-type="street-portrait"] img {
+  object-position:50% 29%;
+  filter:saturate(.9) contrast(1.035) brightness(.975);
+}
+@media (max-width:760px) {
+  .campaign-v8-card[data-campaign-type="street-portrait"] img { object-position:50% 36%; }
 }
