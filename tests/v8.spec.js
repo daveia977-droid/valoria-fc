@@ -7,8 +7,8 @@ test('V8 — campaign is between collection and boutique', async ({page}) => {
   const order=await page.locator('main > section[id]').evaluateAll(sections=>sections.map(section=>section.id));
   expect(order.indexOf('campagne')).toBe(order.indexOf('collection')+1);
   expect(order.indexOf('boutique')).toBe(order.indexOf('campagne')+1);
-  await expect(page.locator('.campaign-v8-card')).toHaveCount(4);
-  await expect(page.locator('.campaign-v8-card img')).toHaveCount(4);
+  await expect(page.locator('.campaign-v8-card')).toHaveCount(5);
+  await expect(page.locator('.campaign-v8-card img')).toHaveCount(5);
   await expect(page.locator('.campaign-v8-bottom')).toContainText('modèles fictifs générés avec');
   await expect(page.locator('.campaign-v8-bottom')).toContainText('produit fabriqué');
   await expect(page.locator('#campaign-v8-title')).toContainText('Partout.');
@@ -18,9 +18,9 @@ test('V8 — campaign is between collection and boutique', async ({page}) => {
   expect(errors).toEqual([]);
 });
 
-test('V8 — all four local campaign WebP photographs load', async ({page}) => {
+test('V8 — four original local campaign WebP photographs load', async ({page}) => {
   await page.goto('/#campagne');
-  const images=page.locator('.campaign-v8-card img');
+  const images=page.locator('.campaign-v8-card:not(:last-child) img');
   for (const element of await images.all()) {
     const src=await element.getAttribute('src');
     expect(src).toMatch(/^\/assets\/campaign\/[\w-]+-v8(?:3)?\.webp$/);
@@ -36,7 +36,7 @@ test('V8 — all four local campaign WebP photographs load', async ({page}) => {
   }
 });
 
-test('V8 — manual mobile gallery and no autoplay', async ({page}) => {
+test('V8 — manual five-image mobile gallery and no autoplay', async ({page}) => {
   await page.setViewportSize({width:390,height:844});
   await page.goto('/#campagne');
   const rail=page.locator('#campaign-v8-rail');
@@ -65,7 +65,7 @@ for (const width of [320,390,430,768,1440]) {
       galleryWidth:document.getElementById('campaign-v8-rail').clientWidth,
     }));
     expect(view.documentWidth).toBeLessThanOrEqual(view.viewportWidth+1);
-    expect(view.cards).toBe(4);
+    expect(view.cards).toBe(5);
     expect(view.galleryWidth).toBeGreaterThan(0);
     if(width<=760)await expect(page.locator('.campaign-v8-controls')).toBeVisible();
   });
@@ -99,7 +99,7 @@ test('V8.1 — Safari-safe mobile cards have explicit nonzero layout sizes', asy
       }))
     }));
     expect(gallery.display).toBe('flex');
-    expect(gallery.cards).toHaveLength(4);
+    expect(gallery.cards).toHaveLength(5);
     expect(gallery.cards.every(card=>card.height>=330&&card.width>200)).toBe(true);
     expect(gallery.cards[0].imageNaturalWidth).toBeGreaterThan(800);
   }
@@ -110,13 +110,14 @@ test('V8.1 — mobile gallery remains visible without JS, user-supplied photo or
   const page=await context.newPage();
   await page.goto('/');
   const cards=page.locator('.campaign-v8-card');
-  await expect(cards).toHaveCount(4);
+  await expect(cards).toHaveCount(5);
   const images=await cards.locator('img').evaluateAll(list=>list.map(img=>img.getAttribute('src')));
   expect(images).toEqual([
    '/assets/campaign/training-night-v83.webp',
    '/assets/campaign/studio-femme-v8.webp',
    '/assets/campaign/studio-homme-v8.webp',
    '/assets/campaign/street-duo-v8.webp',
+   'https://d2ol7oe51mr4n9.cloudfront.net/user_3MU2YkLzO9ZeuERIymS9UYipWBe/56c4ef88-5394-4838-84fb-640d72f73ad3.jpg',
   ]);
   expect(await cards.first().evaluate(c=>c.getBoundingClientRect().height)).toBeGreaterThan(330);
   await context.close();
@@ -127,7 +128,7 @@ test('V8.3 — training portrait is first and optimized without enlarging galler
  await page.setViewportSize({width:390,height:844});
  await page.goto('/#campagne');
  const images=page.locator('.campaign-v8-card img');
- await expect(images).toHaveCount(4);
+ await expect(images).toHaveCount(5);
  await expect(images.first()).toHaveAttribute('src','/assets/campaign/training-night-v83.webp');
  const response=await page.request.get('/assets/campaign/training-night-v83.webp');
  expect(response.ok()).toBe(true);
@@ -136,4 +137,17 @@ test('V8.3 — training portrait is first and optimized without enlarging galler
  await expect(page.locator('.campaign-v8-bottom')).toContainText('personne réelle');
  await page.locator('#campaign-v8-next').click();
  await expect(page.locator('#campaign-v8-current')).toHaveText('02');
+});
+
+
+test('V8.4 — fifth street portrait is appended and navigation reaches it',async({page})=>{
+  await page.setViewportSize({width:390,height:844});
+  await page.goto('/#campagne');
+  const cards=page.locator('.campaign-v8-card');
+  await expect(cards).toHaveCount(5);
+  await expect(cards.nth(4).locator('img')).toHaveAttribute('src', 'https://d2ol7oe51mr4n9.cloudfront.net/user_3MU2YkLzO9ZeuERIymS9UYipWBe/56c4ef88-5394-4838-84fb-640d72f73ad3.jpg');
+  await expect(cards.nth(4)).toContainText('Street · Extérieur');
+  for (let i=0;i<4;i++) await page.locator('#campaign-v8-next').click();
+  await expect(page.locator('#campaign-v8-current')).toHaveText('05');
+  await expect(page.locator('#campaign-v8-next')).toBeDisabled();
 });
