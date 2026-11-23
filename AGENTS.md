@@ -65,4 +65,4 @@ Les variables CSS animées doivent rester sur la scène hero, pas sur document.d
 
 ## VALORIA V8.3
 
-Préserver l'ordre photographique exact : Training nuit (personne réelle / maillot ajouté), Studio femme, Studio homme, Street duo. Garder quatre cartes maximum ; aucun autoplay, aucune nouvelle dépendance. Préserver le correctif WebKit V8.1, le polish V8.2 et la transparence sur le caractère numérique des maillots. Le premier WebP est un cadrage de la photo approuvée.
+Préserver l'ordre photographique exact : Training nuit (personne réelle / maillot ajouté), Studio femme, Studio homme, Street duo, puis Street portrait Extérieur (photo fournie le 23 novembre 2026). Conserver les cinq photos, sans remplacement ni autoplay ni nouvelle dépendance JavaScript. Préserver le correctif WebKit V8.1, le polish V8.2 et la transparence sur le caractère numérique des maillots. Le premier WebP est un cadrage de la photo approuvée.
