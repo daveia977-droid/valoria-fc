@@ -7,7 +7,7 @@ export const people = {
     reports: ["messi"],
   },
   messi: {
-    name: "Messi",
+    name: "Messie",
     role: "Directeur général",
     description:
       "Coordination des services, ressources humaines, fonctionnement quotidien et coordination sportive.",
@@ -46,7 +46,7 @@ export const people = {
     name: "Émilie",
     role: "Marketing et communication",
     description:
-      "Image de marque, communication, réseaux sociaux et fidélisation des supporters, directement sous la responsabilité de Messi.",
+      "Image de marque, communication, réseaux sociaux et fidélisation des supporters, directement sous la responsabilité de Messie.",
     manager: "messi",
     reports: [],
   },

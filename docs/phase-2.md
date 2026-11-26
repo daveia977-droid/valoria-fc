@@ -6,7 +6,7 @@ Le site Vite existant a été amélioré sans ajout de dépendance, sans React/N
 
 ### Organigramme interactif
 
-L’arbre HTML suit exactement les rattachements du projet : Yvan → Messi → Charel / Mamady / Émilie ; Charel → Marco ; Mamady → Dylan. Le dessin est construit avec des listes imbriquées et des boutons, sans image SVG générée ou canvas.
+L’arbre HTML suit exactement les rattachements du projet : Yvan → Messie → Charel / Mamady / Émilie ; Charel → Marco ; Mamady → Dylan. Le dessin est construit avec des listes imbriquées et des boutons, sans image SVG générée ou canvas.
 
 Un clic, une touche Entrée ou Espace sur un nom ouvre sa fiche : fonction, responsabilités connues, responsable direct et équipe directe. Des boutons permettent de consulter les fiches des personnes rattachées ou du responsable. Le nombre de personnes dans une branche est calculé à partir des sept noms fournis. Une absence de rattachement est explicitement limitée à l’organigramme du projet ; aucun employé n’est inventé.
 
@@ -54,7 +54,7 @@ Les ressources séparées restent absentes : tous les visuels sont des recadrage
 Dans `artifacts/phase-2/` :
 
 - `organisation-desktop.jpg` et `organisation-mobile.jpg` : arbre complet, captures issues de la page rendue.
-- `fiche-desktop.jpg` et `fiche-mobile.jpg` : fonction de Charel, responsable Messi et collaborateur Marco.
+- `fiche-desktop.jpg` et `fiche-mobile.jpg` : fonction de Charel, responsable Messie et collaborateur Marco.
 - `comparison-desktop.jpg` et `comparison-mobile.jpg` : maillots domicile côte à côte.
 - `hero-desktop.jpg` et `hero-mobile.jpg` : introduction.
 - `org-before-after.jpg` : comparaison de l’organisation avant/après.

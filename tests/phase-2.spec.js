@@ -26,7 +26,7 @@ for (const width of [390, 1440]) {
     await expect(dialog.locator("#person-role")).toHaveText(
       "Finances et transferts",
     );
-    await expect(dialog.locator("#person-manager")).toContainText("Messi");
+    await expect(dialog.locator("#person-manager")).toContainText("Messie");
     await dialog
       .locator("#person-reports")
       .getByRole("button", { name: /Marco/ })
@@ -45,7 +45,7 @@ for (const width of [390, 1440]) {
 
     for (const [id, name, role] of [
       ["yvan", "Yvan", "Président"],
-      ["messi", "Messi", "Directeur général"],
+      ["messi", "Messie", "Directeur général"],
       ["mamady", "Mamady", "Logistique et commerce"],
       ["dylan", "Dylan", "Équipements"],
       ["emilie", "Émilie", "Marketing et communication"],
@@ -135,7 +135,7 @@ test("mouvement réduit pendant une fiche : arrêt de toutes les animations", as
     )
     .toBe(0);
   await expect(page.locator("#person-dialog")).toBeVisible();
-  await expect(page.locator("#person-name")).toHaveText("Messi");
+  await expect(page.locator("#person-name")).toHaveText("Messie");
   await page.keyboard.press("Escape");
   await expect(page.locator(".emblem")).toHaveCSS("transform", "none");
 });

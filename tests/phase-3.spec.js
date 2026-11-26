@@ -61,7 +61,7 @@ for (const width of [320, 390, 768, 1440]) {
     await expect(page.locator("#person-role")).toHaveText(
       "Marketing et communication",
     );
-    await expect(page.locator("#person-manager")).toContainText("Messi");
+    await expect(page.locator("#person-manager")).toContainText("Messie");
     await page.keyboard.press("Escape");
     await expect(page.locator("#person-dialog")).not.toBeVisible();
     expect(external).toEqual([]);
