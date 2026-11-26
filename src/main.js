@@ -1,3 +1,4 @@
+import './clean-url.js';
 import './style.css';
 import './hero-motion.js';
 import { initCollection } from './collection.js';
