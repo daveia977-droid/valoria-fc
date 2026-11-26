@@ -53,7 +53,7 @@ test('V3.5 : orga inchangée, vrai blason du club et emblèmes graphiques origin
 test('V3.2 : billet spécimen et calendrier toujours disponibles', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator('#fixture-list .fixture-card')).toHaveCount(8);
-  await page.locator('[data-fixture="j5"]').click();
+  await page.locator('[data-fixture="j6"]').click();
   await page.locator('#ticket-tribune').selectOption('A');
   await page.locator('#ticket-quantity').selectOption('2');
   await expect(page.locator('#ticket-total-label')).toContainText('220');

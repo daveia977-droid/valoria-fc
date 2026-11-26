@@ -5,7 +5,7 @@ const games = [
   { id: 'j2', date: '2026-10-13T21:00:00+02:00', rival: 'Juventus', sigle: 'JUV', mark: 'juventus', atHome: false, score: [1, 2] },
   { id: 'j3', date: '2026-10-21T21:00:00+02:00', rival: 'Paris Saint-Germain', sigle: 'PAR', mark: 'paris', atHome: true, score: [0, 0] },
   { id: 'j4', date: '2026-11-04T21:00:00+01:00', rival: 'Atlético Madrid', sigle: 'ATM', mark: 'atletico', atHome: false, score: [3, 1] },
-  { id: 'j5', date: '2026-11-25T21:00:00+01:00', rival: 'FC Barcelone', sigle: 'BAR', mark: 'barca', atHome: true, score: null },
+  { id: 'j5', date: '2026-11-25T21:00:00+01:00', rival: 'FC Barcelone', sigle: 'BAR', mark: 'barca', atHome: true, score: [2, 1] },
   { id: 'j6', date: '2026-12-09T21:00:00+01:00', rival: 'Chelsea FC', sigle: 'CHE', mark: 'chelsea', atHome: false, score: null },
   { id: 'j7', date: '2027-01-20T21:00:00+01:00', rival: 'Liverpool FC', sigle: 'LIV', mark: 'liverpool', atHome: true, score: null },
   { id: 'j8', date: '2027-01-27T21:00:00+01:00', rival: 'Inter Milan', sigle: 'INT', mark: 'inter', atHome: false, score: null }

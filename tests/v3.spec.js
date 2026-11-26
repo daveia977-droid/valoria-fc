@@ -33,7 +33,7 @@ test('V3 : résultats visibles et ordre domicile / déplacement', async ({ page 
 
 test('V3 : ticket spécimen, total indicatif et fermeture au clavier', async ({ page }) => {
   await page.goto('/');
-  await page.locator('.fixture-card[data-fixture="j5"]').click();
+  await page.locator('.fixture-card[data-fixture="j7"]').click();
   await expect(page.locator('#ticket-purchase')).toBeVisible();
   await expect(page.locator('#ticket-location')).toContainText('domicile');
   await page.locator('#ticket-tribune').selectOption('A');

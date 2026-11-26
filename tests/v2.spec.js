@@ -5,7 +5,7 @@ test('calendrier V2 : huit rencontres et grande affiche', async ({ page }) => {
   page.on('pageerror', error => errors.push(error.message));
   await page.goto('/');
   await expect(page.locator('#fixture-list .fixture-card')).toHaveCount(8);
-  await expect(page.locator('#featured-opponent')).toContainText('BARCELONE');
+  await expect(page.locator('#featured-opponent')).toContainText('CHELSEA FC');
   await expect(page.locator('#supporters')).toContainText('13 542');
   await expect(page.locator('.scene .textile')).toHaveAttribute('src', '/assets/stade-valoria-v25.webp');
   expect(errors).toEqual([]);
@@ -21,7 +21,7 @@ test('le match passé ne permet pas d’enregistrer un billet', async ({ page })
 
 test('match futur, tribune, quantité, specimen et OK', async ({ page }) => {
   await page.goto('/');
-  await page.locator('[data-fixture="j5"]').click();
+  await page.locator('[data-fixture="j6"]').click();
   await expect(page.locator('#ticket-purchase')).toBeVisible();
   await page.locator('#ticket-tribune').selectOption('A');
   await page.locator('#ticket-quantity').selectOption('2');

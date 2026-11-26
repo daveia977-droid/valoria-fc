@@ -22,8 +22,23 @@ const rounds = [
   { day: '2026-11-07T16:00:00+01:00', games: [
     ['valoria','rivage',2,0], ['cite','esgci',0,1], ['nova','horizon',2,2]
   ]},
+  { day: '2026-11-21T16:00:00+01:00', games: [
+    ['valoria','esgci',1,2], ['rivage','horizon',2,1], ['cite','nova',1,1]
+  ]},
   { day: '2026-11-28T16:00:00+01:00', games: [
-    ['valoria','esgci',null,null], ['rivage','horizon',null,null], ['cite','nova',null,null]
+    ['horizon','valoria',null,null], ['nova','esgci',null,null], ['cite','rivage',null,null]
+  ]},
+  { day: '2026-12-12T16:00:00+01:00', games: [
+    ['nova','valoria',null,null], ['cite','horizon',null,null], ['rivage','esgci',null,null]
+  ]},
+  { day: '2026-12-19T16:00:00+01:00', games: [
+    ['cite','valoria',null,null], ['rivage','nova',null,null], ['esgci','horizon',null,null]
+  ]},
+  { day: '2027-01-09T16:00:00+01:00', games: [
+    ['rivage','valoria',null,null], ['esgci','cite',null,null], ['horizon','nova',null,null]
+  ]},
+  { day: '2027-01-16T16:00:00+01:00', games: [
+    ['esgci','valoria',null,null], ['horizon','rivage',null,null], ['nova','cite',null,null]
   ]}
 ];
 const frDate = new Intl.DateTimeFormat('fr-FR', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'Europe/Paris' });
@@ -72,17 +87,36 @@ export function initEsgciCup() {
       '<td>' + diffText + '</td><td class="cup-points">' + t.pts + '</td></tr>';
   }).join('');
 
-  const next = rounds[4], match = next.games[0];
-  holder.querySelector('#cup-next-date').textContent = frDate.format(new Date(next.day));
-  holder.querySelector('#cup-next-time').textContent = frTime.format(new Date(next.day));
-  holder.querySelector('#cup-next-opponent').textContent = teamById(match[1]).name;
+  const completed = rounds.filter(round => round.games.every(game => game[2] !== null && game[3] !== null)).length;
+  holder.querySelector('#cup-standing-round').textContent = 'Après ' + completed + (completed === 1 ? ' journée' : ' journées');
+  holder.querySelector('.cup-table').setAttribute('aria-label', 'Classement de l’ESGCI CUP après ' + completed + ' journées');
+  const nextIndex = rounds.findIndex(round => round.games.some(game => game.slice(0,2).includes('valoria') && game[2] === null));
+  const next = rounds[nextIndex];
+  if (next) {
+    const match = next.games.find(game => game.slice(0,2).includes('valoria'));
+    const opponent = teamById(match[0] === 'valoria' ? match[1] : match[0]);
+    const overdue = Date.now() >= new Date(next.day).getTime();
+    holder.querySelector('.esgci-match-label').textContent = (overdue ? 'Résultat à venir' : 'Prochaine journée') + ' · J' + String(nextIndex + 1).padStart(2, '0');
+    holder.querySelector('#cup-next-date').textContent = frDate.format(new Date(next.day));
+    holder.querySelector('#cup-next-time').textContent = frTime.format(new Date(next.day));
+    holder.querySelector('#cup-next-opponent').textContent = opponent.name;
+    const mark = holder.querySelector('#cup-next-badge');
+    mark.className = 'cup-team-crest cup-badge-' + opponent.css;
+    mark.textContent = opponent.initials;
+    holder.querySelector('.esgci-next-note').textContent = overdue ? 'Résultat en attente de publication.' : (match[0] === 'valoria' ? 'À domicile' : 'À l’extérieur') + ' · Phase ' + (nextIndex < 5 ? 'aller' : 'retour') + '.';
+  } else {
+    holder.querySelector('.esgci-match-label').textContent = 'Championnat terminé';
+    holder.querySelector('.esgci-versus').hidden = true;
+    holder.querySelector('.esgci-next-date').hidden = true;
+    holder.querySelector('.esgci-next-note').textContent = 'Retrouvez le classement final et tous les résultats.';
+  }
   holder.querySelector('#cup-fixtures').innerHTML = rounds.map((round,index) => 
     '<section class="cup-fixture-round"><h4>Journée ' + (index+1) + ' <span>' + frDate.format(new Date(round.day)) + '</span></h4>' +
     '<ul>' + round.games.map(game => resultsRow(game,index+1)).join('') + '</ul></section>'
   ).join('');
   const preview = holder.querySelector('#cup-recent-results');
-  preview.innerHTML = rounds.slice(1,4).reverse().map((round,index) => {
-    const game = round.games.find(g => g.includes('valoria'));
-    return '<li><span>J' + (4-index) + '</span><span>' + teamById(game[0]).short + ' <strong>' + game[2] + ' : ' + game[3] + '</strong> ' + teamById(game[1]).short + '</span></li>';
-  }).join('');
+  preview.innerHTML = rounds.map((round,index) => ({ number: index + 1, game: round.games.find(g => g.slice(0,2).includes('valoria')) }))
+    .filter(({ game }) => game && game[2] !== null && game[3] !== null).slice(-3).reverse().map(({ number, game }) =>
+      '<li><span>J' + number + '</span><span>' + teamById(game[0]).short + ' <strong>' + game[2] + ' : ' + game[3] + '</strong> ' + teamById(game[1]).short + '</span></li>'
+    ).join('');
 }

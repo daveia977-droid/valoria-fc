@@ -13,7 +13,7 @@ test('V3.5 : huit écussons originaux disponibles avec un blason VALORIA inchang
     expect(response.status()).toBe(200);
     expect(response.headers()['content-type']).toContain('svg');
   }
-  await expect(page.locator('#featured-crest')).toHaveAttribute('src', '/assets/opponents/barca.svg');
+  await expect(page.locator('#featured-crest')).toHaveAttribute('src', '/assets/opponents/chelsea.svg');
   await expect(page.locator('#featured-crest')).toHaveAttribute('alt', /non officiel/);
   await expect(page.locator('.emblem img')).toHaveAttribute('src', '/assets/crest.webp');
   expect(errors).toEqual([]);
@@ -26,8 +26,8 @@ test('V3.5 : les fiches de match affichent deux écussons dans le bon ordre', as
   await expect(page.locator('#dialog-opponent-crest')).toHaveAttribute('src', '/assets/opponents/juventus.svg');
   await expect(page.locator('.match-dialog-badges')).toHaveClass(/is-away/);
   await page.keyboard.press('Escape');
-  await page.locator('[data-fixture="j5"]').click();
-  await expect(page.locator('#dialog-opponent-crest')).toHaveAttribute('src', '/assets/opponents/barca.svg');
+  await page.locator('[data-fixture="j7"]').click();
+  await expect(page.locator('#dialog-opponent-crest')).toHaveAttribute('src', '/assets/opponents/liverpool.svg');
   await expect(page.locator('.match-dialog-badges')).not.toHaveClass(/is-away/);
   await page.locator('#ticket-tribune').selectOption('A');
   await page.locator('#ticket-quantity').selectOption('2');

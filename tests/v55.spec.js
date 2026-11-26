@@ -8,12 +8,18 @@ test('V5.5 : compétition ESGCI Cup, écusson transparent et classement cohéren
   await expect(page.locator('#esgci-cup')).toBeVisible();
   await expect(page.locator('#cup-table-body tr')).toHaveCount(6);
   const top = page.locator('#cup-table-body tr').first();
-  await expect(top).toContainText('VALORIA FC');
-  await expect(top.locator('.cup-points')).toHaveText('12');
-  await expect(top.locator('td').last()).toHaveText('12');
-  await expect(page.locator('#cup-table-body tr').nth(1)).toContainText('ESGCI United');
-  await expect(page.locator('#cup-table-body tr').nth(1).locator('.cup-points')).toHaveText('10');
-  await expect(page.locator('#cup-next-opponent')).toHaveText('ESGCI United');
+  await expect(top).toContainText('ESGCI United');
+  await expect(top.locator('.cup-points')).toHaveText('13');
+  await expect(top.locator('td').last()).toHaveText('13');
+  await expect(page.locator('#cup-table-body tr').nth(1)).toContainText('VALORIA FC');
+  await expect(page.locator('#cup-table-body tr').nth(1).locator('.cup-points')).toHaveText('12');
+  await expect(page.locator('#cup-next-opponent')).toHaveText('Horizon SC');
+  await expect(page.locator('#cup-standing-round')).toHaveText('Après 5 journées');
+  await expect(page.locator('#cup-recent-results li').first()).toContainText('1 : 2');
+  await expect(page.locator('[data-fixture="j5"] .fixture-score')).toHaveText('2 — 1');
+  await page.locator('[data-fixture="j5"]').click();
+  await expect(page.locator('#ticket-purchase')).toBeHidden();
+  await page.keyboard.press('Escape');
   const logo=await page.request.get('/assets/esgci-wordmark-transparent.svg');
   expect(logo.status()).toBe(200);
   const svg=await logo.text();
@@ -24,8 +30,8 @@ test('V5.5 : compétition ESGCI Cup, écusson transparent et classement cohéren
 test('V5.5 : calendrier ESGCI CUP complet', async ({page}) => {
   await page.goto('/');
   await page.locator('#cup-calendar summary').click();
-  await expect(page.locator('#cup-fixtures .cup-fixture-round')).toHaveCount(5);
-  await expect(page.locator('#cup-fixtures .cup-result')).toHaveCount(15);
+  await expect(page.locator('#cup-fixtures .cup-fixture-round')).toHaveCount(10);
+  await expect(page.locator('#cup-fixtures .cup-result')).toHaveCount(30);
   await expect(page.locator('#fixture-list .fixture-card')).toHaveCount(8);
 });
 test('V5.5 : huit articles et cinq catégories de merchandising', async ({page}) => {
