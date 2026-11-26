@@ -18,6 +18,6 @@ export default defineConfig({
       this.emitFile({ type: 'asset', fileName: 'version.json', source: JSON.stringify({ project: 'VALORIA FC', commit: commitId() }) + '\n' });
     },
   }],
-  build: { rollupOptions: { input: Object.fromEntries(["index", "mentions-legales", "confidentialite", "cgu"].map(page => [page, fileURLToPath(new URL(`./${page}.html`, import.meta.url))])) } },
+  build: { rollupOptions: { input: Object.fromEntries(["index", "mentions-legales", "confidentialite", "cgu", "management"].map(page => [page, fileURLToPath(new URL(`./${page}.html`, import.meta.url))])) } },
   server: { host: "0.0.0.0", allowedHosts: ["terminal.local"] },
 });
