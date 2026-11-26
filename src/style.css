@@ -547,3 +547,49 @@ a, button { -webkit-tap-highlight-color: rgba(216,178,120,.15); }
   .fixture-card, .hero-fixture-link, .desktop-nav a, .ticket-submit { transition: none !important; }
   .fixture-card:active, .ticket-submit:active, .match-feature-cta:active { transform: none; }
 }
+
+
+/* Academic dossier: editorial link, consistent with the club’s typography. */
+.organisation-dossier {
+  display: block;
+  width: 100%;
+  max-width: 340px;
+  margin-top: 30px;
+  padding: 5px 0 5px 15px;
+  border-left: 2px solid var(--gold);
+  color: var(--cream);
+  text-decoration: none;
+  transition: border-color .18s ease;
+}
+.organisation-dossier-label {
+  display: block;
+  color: var(--gold);
+  font-size: 10px;
+  line-height: 1.5;
+  font-weight: 600;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.organisation-dossier-title {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.45;
+  text-decoration: underline;
+  text-decoration-color: var(--gold);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+.organisation-dossier-detail {
+  display: block;
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+.organisation-dossier:hover .organisation-dossier-title { color: var(--gold); }
+.organisation-dossier:focus-visible { outline: 2px solid var(--gold); outline-offset: 5px; }
+@media (max-width: 1050px) { .organisation-dossier { grid-column: 2; margin-top: 22px; } }
+@media (max-width: 760px) { .organisation-dossier { margin-top: 24px; max-width: 100%; } }
+@media (prefers-reduced-motion: reduce) { .organisation-dossier { transition: none; } }
